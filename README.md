@@ -1,9 +1,6 @@
 # LushProtein — Customer Analytics Project
 
-**Course:** ISSS603 Science of Customer Analytics
-**Institution:** Singapore Management University (SMU)
-**Semester:** Sem 5 · Mid-Term Deliverables due 29 May 2026
-
+## To be done, Lens analysis, EDA's mentioned in class by professor and present in slides
 ---
 
 ## Table of Contents
