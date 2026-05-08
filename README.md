@@ -1,6 +1,7 @@
 # LushProtein — Customer Analytics Project
 
 ## To be done, Lens analysis, EDA's mentioned in class by professor and present in slides
+### Eg: Cohort analysis, AOF, AOV 
 ---
 
 ## Table of Contents
