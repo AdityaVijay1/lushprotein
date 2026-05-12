@@ -1,0 +1,31 @@
+type,product_title,variant_title,n_orders,n_customers,total_units
+checkout,LEAN PROTEIN,1 x 1kg Pack / Thai Milk Tea,165,157,197
+checkout,CLEAR PROTEIN,1 x 500g Pack / Peach,122,120,147
+checkout,LEAN PROTEIN,1 x 1kg Pack / Taro,113,107,126
+checkout,CLEAR PROTEIN,1 x 500g Pack / White Grape,94,92,105
+checkout,CREATINE MONOHYDRATE,1 x 250g Pack (50 servings),87,79,111
+checkout,LP CLASSIC SHAKER,White,75,73,78
+checkout,COLLAGEN GLOW,1 x 300g pack (30 servings),74,64,102
+checkout,SOY PROTEIN ISOLATE,1 x 1kg Pack (40 servings) / Unflavoured,31,28,40
+checkout,PLANT PROTEIN,480g Pack (16 servings) / Cocoa Dinosaur,25,20,41
+checkout,LEAN PROTEIN,2 x 1kg Packs (50 servings) *MOST POPULAR* / Taro,20,18,20
+checkout,BETTER WHEY PROTEIN,1kg (40 servings) / Cocoa Dinosaur,19,18,21
+checkout,🎁 LP CLASSIC SHAKER (100% off),White,14,14,14
+checkout,BETTER WHEY PROTEIN,1kg (40 servings) / Unflavoured,14,13,17
+checkout,CLEAR PROTEIN,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,13,13,13
+checkout,LEAN PROTEIN PEACH OOLONG (PRE-ORDER),1 x 1kg Pack (25 servings) / Peach Oolong,11,11,15
+recurring,LEAN PROTEIN,1 x 1kg Pack / Thai Milk Tea,102,44,121
+recurring,LEAN PROTEIN,1 x 1kg Pack / Taro,80,41,86
+recurring,CLEAR PROTEIN,1 x 500g Pack / Peach,71,38,93
+recurring,COLLAGEN GLOW,1 x 300g pack (30 servings),69,32,86
+recurring,CREATINE MONOHYDRATE,1 x 250g Pack (50 servings),63,33,73
+recurring,CLEAR PROTEIN,1 x 500g Pack / White Grape,43,26,52
+recurring,PLANT PROTEIN,480g Pack (16 servings) / Vanilla,32,9,56
+recurring,SOY PROTEIN ISOLATE,1 x 1kg Pack (40 servings) / Unflavoured,32,15,41
+recurring,SUPER OMEGA 3 CAPSULES,60 Softgels,22,5,22
+recurring,PLANT PROTEIN,480g Pack (16 servings) / Cocoa Dinosaur,20,11,37
+recurring,BETTER WHEY PROTEIN,1kg (40 servings) / Cocoa Dinosaur,18,13,20
+recurring,BETTER WHEY PROTEIN,1kg (40 servings) / Unflavoured,14,10,20
+recurring,PURE BURN THERMOGENIC CAPSULES,90 Tablets,13,3,13
+recurring,CLEAR PROTEIN,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,10,6,10
+recurring,LEAN PROTEIN,2 x 1kg Packs (50 servings) *MOST POPULAR* / Thai Milk Tea,9,4,9

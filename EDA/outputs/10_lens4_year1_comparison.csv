@@ -1,0 +1,6 @@
+cohort_year,n_customers,pct_repeat_90d,pct_repeat_180d,pct_repeat_365d,avg_y1_rev_sgd,note
+2020,803,0.1781,0.274,0.3711,441.03,Full data
+2021,1283,0.1715,0.219,0.2603,234.96,Full data
+2022,618,0.157,0.2055,0.2427,282.33,Full data
+2023,510,0.1314,0.1843,0.2216,108.28,Full data
+2024,1065,0.1803,0.2244,0.2563,104.95,Full data

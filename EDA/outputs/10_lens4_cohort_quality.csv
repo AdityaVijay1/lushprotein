@@ -1,0 +1,6 @@
+cohort_year,n_customers,avg_first_order_sgd,pct_discounted,avg_discount_depth_pct,top_channel
+2020,803,175.68,0.0,0.0,Subscription
+2021,1283,101.82,0.0,0.0,Subscription
+2022,618,168.93,0.11,0.5156,Subscription
+2023,510,72.57,0.5941,0.2256,Marketplace
+2024,1065,62.52,0.8272,0.4104,Subscription

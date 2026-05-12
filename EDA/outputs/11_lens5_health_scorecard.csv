@@ -1,0 +1,6 @@
+kpi,value,status,benchmark
+Overall Repeat Rate,32.4%,ALERT,Target: >35%
+YoY Retention (latest yr),6.8%,ALERT,Target: >40%
+Avg 90-Day Cohort Retention,22.0%,ALERT,Target: >25%
+Acquisition Dependency,41.0%,OK,Target: <50% (lower=better)
+Top 20% Revenue Concentration,79.5%,OK,Healthy if <80%

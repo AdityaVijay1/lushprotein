@@ -1,0 +1,9 @@
+cancellation_reason,n,n_customers,avg_tenure,pct
+I already have more than I need,143,109,91.6993006993007,0.31919642857142855
+Other reason,131,99,84.14503816793894,0.2924107142857143
+I no longer use this product,88,71,113.77272727272727,0.19642857142857142
+This was created by accident,40,32,39.075,0.08928571428571429
+This is too expensive,19,17,81.3157894736842,0.04241071428571429
+I need it sooner,14,13,98.5,0.03125
+(Unknown),8,7,76.375,0.017857142857142856
+I want a different product or variety,5,4,111.8,0.011160714285714286
