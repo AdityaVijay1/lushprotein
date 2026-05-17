@@ -226,7 +226,7 @@ for transition in range(1, 6):  # 1->2, 2->3, 3->4, 4->5, 5->6
     p25 = np.percentile(merged["days"], 25)
     p75 = np.percentile(merged["days"], 75)
 
-    pct_90d  = (merged["days"] <= 90).mean()
+    pct_60d  = (merged["days"] <= 60).mean()
     pct_180d = (merged["days"] <= 180).mean()
     pct_365d = (merged["days"] <= 365).mean()
 
@@ -238,7 +238,7 @@ for transition in range(1, 6):  # 1->2, 2->3, 3->4, 4->5, 5->6
         "median_days": round(median_days, 0),
         "p25_days": round(p25, 0),
         "p75_days": round(p75, 0),
-        "pct_within_90d": round(pct_90d, 4),
+        "pct_within_60d": round(pct_60d, 4),
         "pct_within_180d": round(pct_180d, 4),
         "pct_within_365d": round(pct_365d, 4),
     })
@@ -247,7 +247,7 @@ for transition in range(1, 6):  # 1->2, 2->3, 3->4, 4->5, 5->6
     print(f"    Made purchase {transition+1}:          {total_with_next:,}  ({conversion_rate:.1%})")
     print(f"    Median days:             {median_days:.0f}  days")
     print(f"    P25/P75:                 {p25:.0f} / {p75:.0f}  days")
-    print(f"    Within 90 days:          {pct_90d:.1%}")
+    print(f"    Within 60 days:          {pct_60d:.1%}")
     print()
 
 inter_df = pd.DataFrame(inter_rows)

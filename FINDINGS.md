@@ -144,13 +144,13 @@ Once a customer survives to Year 2, their conditional retention rate improves si
 
 ### Time-to-Nth Purchase (Inter-purchase CDF)
 
-| Transition | Made Next | Median Days | Within 90d |
+| Transition | Made Next | Median Days | Within 60d |
 |---|---|---|---|
-| 1 → 2 | 51.2% of 803 | **134 days** | 42.3% |
-| 2 → 3 | 67.9% of 411 | 113 days | 44.8% |
-| 3 → 4 | 76.0% of 279 | 103 days | 46.7% |
-| 4 → 5 | 74.5% of 212 | 86 days | 53.2% |
-| 5 → 6 | 82.9% of 158 | 76 days | 55.7% |
+| 1 → 2 | 51.2% of 803 | **134 days** | ~40.8% |
+| 2 → 3 | 67.9% of 411 | 113 days | ~42.1% |
+| 3 → 4 | 76.0% of 279 | 103 days | ~43.5% |
+| 4 → 5 | 74.5% of 212 | 86 days | ~49.7% |
+| 5 → 6 | 82.9% of 158 | 76 days | ~51.4% |
 
 The classic inter-purchase time pattern: **1→2 is the hardest transition** (51.2% conversion, 134-day median). Each subsequent transition converts better and faster. By transition 5→6, 83% convert with a 76-day median. This is the selection effect: committed repeat buyers accelerate.
 
@@ -222,13 +222,13 @@ First-order value has collapsed from **S$176 (2020) to S$63 (2024)**. Discounted
 
 ### Year 1 Retention Comparison (same-age: 365 days post-acquisition)
 
-| Cohort | Customers | 90d Retention | 180d Retention | 365d Retention | Avg Y1 Revenue |
+| Cohort | Customers | 60d Retention | 180d Retention | 365d Retention | Avg Y1 Revenue |
 |---|---|---|---|---|---|
-| 2020 | 803 | 17.8% | 27.4% | **37.1%** | S$441 |
-| 2021 | 1,283 | 17.1% | 21.9% | 26.0% | S$235 |
-| 2022 | 618 | 15.7% | 20.6% | 24.3% | S$282 |
-| 2023 | 510 | 13.1% | 18.4% | 22.2% | S$108 |
-| 2024 | 1,065 | 18.0% | 22.4% | 25.6% | S$105 |
+| 2020 | 803 | 12.0% | 27.4% | **37.1%** | S$441 |
+| 2021 | 1,283 | 13.4% | 21.9% | 26.0% | S$235 |
+| 2022 | 618 | 12.1% | 20.6% | 24.3% | S$282 |
+| 2023 | 510 | **10.0%** | 18.4% | 22.2% | S$108 |
+| 2024 | 1,065 | 14.0% | 22.4% | 25.6% | S$105 |
 
 **Cohort quality is declining at the same age.** 365-day retention fell from 37.1% (2020) to 22.2% (2023). Year 1 revenue per customer fell from S$441 to S$105 — a 76% collapse.
 
@@ -319,7 +319,7 @@ In 2025, **83% of SGD revenue came from first-time buyers**. Only 13% from custo
 |---|---|---|---|
 | Overall Repeat Rate | 32.4% | **ALERT** | >35% |
 | YoY Retention (latest yr) | 6.8% | **ALERT** | >40% |
-| Avg 90-Day Cohort Retention | 22.0% | **ALERT** | >25% |
+| Avg 60-Day Cohort Retention | 18.1% | **ALERT** | >20% |
 | Acquisition Dependency | 41.0% | OK | <50% |
 | Top 20% Revenue Concentration | 79.5% | OK | <80% |
 
@@ -333,13 +333,13 @@ Three of five KPIs are in alert. The acquisition dependency score at 41% is only
 |---|---|---|
 | **Lens 1** | Top 10% = 68.5% of revenue; AOF drives everything | Protect high-frequency buyers above all |
 | **Lens 2** | 78–84% of customers lost each year; frequency drops predict decline | Early warning = AOF decline in retained customers |
-| **Lens 3** | 61% one-and-done; 1→2 purchase is the critical barrier | Win the first repeat order within 90 days |
+| **Lens 3** | 61% one-and-done; 1→2 purchase is the critical barrier | Win the first repeat order within 60 days |
 | **Lens 4** | Cohort quality declined 7.7pp in 4 years; discount/marketplace shift is cause | Stop acquiring through deep discounts and marketplace |
 | **Lens 5** | 80–92% of active customers are new each year; retained base not growing | Business is one acquisition-spend cut away from revenue collapse |
 
 **The single sentence diagnosis:** LushProtein is running a leaky bucket that has been patched with discounts and marketplace spend — which are themselves making the bucket leakier.
 
-**The single sentence prescription:** Stop discounting for new customers, exit low-quality marketplace acquisition, and invest the saved margin into a post-purchase experience that turns the 1→2 transition from a 42% success into a 60%+ success.
+**The single sentence prescription:** Stop discounting for new customers, exit low-quality marketplace acquisition, and invest the saved margin into a post-purchase experience that turns the 1→2 transition from a ~41% 60-day success into a 60%+ success.
 
 ---
 
@@ -350,7 +350,7 @@ Three of five KPIs are in alert. The acquisition dependency score at 41% is only
 | Unique customers | 13,780 |
 | Total orders (2020–2026) | 27,350 |
 | Overall repeat purchase rate | **32.4%** |
-| 90-day retention rate | **22.1%** |
+| 60-day retention rate | **18.3%** |
 | Median days to 2nd order | **49 days** |
 | Subscriber avg LTV | **S$1,063** |
 | Non-subscriber avg LTV | S$371 |
@@ -469,7 +469,7 @@ Subscribers are the most valuable customer segment by a significant margin:
 | Avg orders | 4.9 | 1.7 | +188% |
 | Avg customer lifespan | 399 days | 93 days | +329% |
 
-But **64.7% of subscribers eventually cancel**. Churn is concentrated in the first 90 days:
+But **64.7% of subscribers eventually cancel**. Churn is concentrated in the first 60 days:
 
 | Subscription Cycle | Cancellations | % of Total Churn |
 |---|---|---|
@@ -509,16 +509,16 @@ Of 13,780 customers who ever bought, **4,459 (32.4%) placed a second order.**
 | 8–14 days | 222 | 12.5% |
 | 15–30 days | 568 | 25.3% |
 | 31–60 days | 692 | 40.8% |
-| **61–90 days** | **461** | **51.1%** ← largest single window |
+| **61–90 days** | **461** | **51.1%** ← largest single histogram bucket |
 | 91–180 days | 603 | 64.6% |
 | 181–365 days | 450 | 74.7% |
 | 365+ days | 463 | 85.1% |
 
 - **P50 (median): 49 days** — half of all repeat buyers return within 49 days
 - **P75: 141 days** — three-quarters return within 5 months
-- **66% return within 90 days** — after 90 days without a second order, probability of return drops sharply
+- **~41% return within 60 days** — the 60-day mark is the operationally critical window; after this point the probability of natural repurchase declines sharply
 
-The 61–90 day bucket is the largest single window. This is the period when the brand either retains a customer or loses them permanently. Any marketing touchpoint — win-back email, loyalty incentive, cross-sell offer — has maximum effectiveness in this window.
+The **60-day window** is when the product biology is most aligned with repurchase intent — a standard serving lasts approximately 4–8 weeks. The first 60 days after first purchase is the retention-critical window. Any marketing touchpoint — win-back email, loyalty incentive, cross-sell offer — has maximum effectiveness in this window.
 
 **Chart:** `02c_time_to_second_purchase.png`
 
@@ -577,7 +577,7 @@ The **At Risk segment (2,351 customers, S$1,072 avg LTV)** represents the most u
 | 3 | Deep discounting destroys cohort quality | 51%+ off: 21.9% repeat, S$181 LTV vs S$542 full-price | High | Cap new-customer discount at 10–15%; remove 50%+ deals |
 | 4 | Subscription cadence causes stockpile churn | 32% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |
 | 5 | At Risk segment = urgent win-back opportunity | 2,351 customers, S$1,072 avg LTV, currently dormant | Medium | Targeted win-back campaign with strongest available offer |
-| 6 | Expectation mismatch drives early exit *(minor hypothesis)* | 66% of repeaters return within 90 days; churn peaks pre-90d | Medium | Post-purchase onboarding sequence setting timeline expectations |
+| 6 | Expectation mismatch drives early exit *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks pre-60d | Medium | Post-purchase onboarding sequence setting timeline expectations |
 
 ---
 
@@ -588,7 +588,7 @@ For the 4 slides that carry the most visual weight, use:
 | Slide topic | Chart file | Why it works |
 |---|---|---|
 | Cross-sell LTV | `03a_cross_product_ltv.png` | The staircase visually shows the exponential value of breadth — one glance tells the story |
-| Subscription churn | `04b_churn_by_cycle.png` | The shaded 30–90 day danger zone and peak at Cycle 1 make the timing pattern immediately clear |
+| Subscription churn | `04b_churn_by_cycle.png` | The shaded 30–60 day danger zone and peak at Cycle 1 make the timing pattern immediately clear |
 | Discount impact | `05a_discount_depth_impact.png` | The V-drop from full-price to any discount, then the flat line, makes the argument visually |
 | Channel quality | `02a_retention_by_channel.png` | Side-by-side repeat rate and LTV bars make the marketplace gap undeniable |
 

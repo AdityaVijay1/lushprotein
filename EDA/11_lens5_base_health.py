@@ -303,9 +303,9 @@ if len(latest_comp) >= 2:
 else:
     yoy_retention = 0
 
-# KPI 3: 90-day cohort retention (from existing analysis)
+# KPI 3: 60-day cohort retention (from existing analysis)
 cohort_ret = pd.read_csv(OUTPUT_DIR / "03_cohort_retention_heatmap.csv")
-avg_90d = cohort_ret["retention_90d"].mean() if "retention_90d" in cohort_ret.columns else 0
+avg_90d = cohort_ret["retention_60d"].mean() if "retention_60d" in cohort_ret.columns else 0
 
 # KPI 4: Acquisition dependency (% of latest year revenue from new customers)
 latest_yr = CALENDAR_YEARS[-1]
@@ -322,7 +322,7 @@ rev_concentration = sgd_cust_rev.head(top20_n).sum() / sgd_cust_rev.sum()
 scorecard = [
     ("Overall Repeat Rate",           f"{repeat_rate:.1%}",      repeat_rate >= 0.35, "Target: >35%"),
     ("YoY Retention (latest yr)",     f"{yoy_retention:.1%}",    yoy_retention >= 0.40, "Target: >40%"),
-    ("Avg 90-Day Cohort Retention",   f"{avg_90d:.1%}",          avg_90d >= 0.25, "Target: >25%"),
+    ("Avg 60-Day Cohort Retention",   f"{avg_90d:.1%}",          avg_90d >= 0.20, "Target: >20%"),
     ("Acquisition Dependency",        f"{acq_dep:.1%}",          acq_dep <= 0.50, "Target: <50% (lower=better)"),
     ("Top 20% Revenue Concentration", f"{rev_concentration:.1%}", rev_concentration < 0.80, "Healthy if <80%"),
 ]

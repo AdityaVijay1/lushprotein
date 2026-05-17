@@ -12,7 +12,7 @@ Analyses
 A. Cohort quality comparison at Age 0 (acquisition year): size, avg AOV, avg spend
 B. Year 1 repeat rate comparison — did a higher or lower % return within 12 months?
 C. Year 1 Revenue per cohort member — is each cohort worth more or less at same age?
-D. 90-day and 180-day retention by acquisition cohort (quality drift over time)
+D. 60-day and 180-day retention by acquisition cohort (quality drift over time)
 E. Channel mix shift by cohort — are we acquiring a different type of customer?
 F. Discount intensity by cohort — has discounting depth increased over time?
 G. Acquisition quality summary: composite quality score per cohort
@@ -147,7 +147,7 @@ print("-" * 65)
 # (Only cohorts with enough follow-up time are valid)
 sgd_sorted = sgd.sort_values(["customer_id","order_date"])
 year1_rows = []
-print(f"  {'Cohort':>7}  {'Customers':>10}  {'Repeat 90d':>11}  {'Repeat 180d':>12}  {'Repeat 365d':>12}  {'Avg Y1 Rev':>11}  {'Note':>10}")
+print(f"  {'Cohort':>7}  {'Customers':>10}  {'Repeat 60d':>11}  {'Repeat 180d':>12}  {'Repeat 365d':>12}  {'Avg Y1 Rev':>11}  {'Note':>10}")
 print(f"  {'-'*80}")
 
 for yr in COHORT_YEARS:
@@ -155,7 +155,7 @@ for yr in COHORT_YEARS:
     cohort_first = first_purchase[first_purchase["acq_year"] == yr].set_index("customer_id")
 
     n = len(cohort_cids)
-    repeat_90  = 0
+    repeat_60  = 0
     repeat_180 = 0
     repeat_365 = 0
     total_y1_rev = 0
@@ -167,7 +167,7 @@ for yr in COHORT_YEARS:
         if len(after_first) == 0:
             continue
         days_to_second = (after_first.iloc[0]["order_date"] - first_dt).days
-        if days_to_second <= 90:   repeat_90  += 1
+        if days_to_second <= 60:   repeat_60  += 1
         if days_to_second <= 180:  repeat_180 += 1
         if days_to_second <= 365:  repeat_365 += 1
 
@@ -185,13 +185,13 @@ for yr in COHORT_YEARS:
     note = "Full data" if (2026 - yr) >= 2 else "Partial"
     year1_rows.append({
         "cohort_year": yr, "n_customers": n,
-        "pct_repeat_90d":  round(repeat_90/n if n > 0 else 0, 4),
+        "pct_repeat_60d":  round(repeat_60/n if n > 0 else 0, 4),
         "pct_repeat_180d": round(repeat_180/n if n > 0 else 0, 4),
         "pct_repeat_365d": round(repeat_365/n if n > 0 else 0, 4),
         "avg_y1_rev_sgd":  round(avg_y1_rev, 2),
         "note": note,
     })
-    print(f"  {yr:>7}  {n:>10,}  {repeat_90/n if n>0 else 0:>10.1%}  {repeat_180/n if n>0 else 0:>11.1%}  "
+    print(f"  {yr:>7}  {n:>10,}  {repeat_60/n if n>0 else 0:>10.1%}  {repeat_180/n if n>0 else 0:>11.1%}  "
           f"{repeat_365/n if n>0 else 0:>11.1%}  S${avg_y1_rev:>9.0f}  {note:>10}")
 
 year1_df = pd.DataFrame(year1_rows)
@@ -312,7 +312,7 @@ print("""
      If recent cohorts have more discounted first orders, expect:
      - Lower repeat rates
      - Lower LTV
-     - Higher churn in first 90 days
+     - Higher churn in first 60 days
      This is consistent with the Discount Sensitivity findings (Lens 1 / existing EDA).
 
   4. CHANNEL MIX SHIFT IS A HIDDEN DRIVER.

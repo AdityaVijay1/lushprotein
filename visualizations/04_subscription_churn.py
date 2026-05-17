@@ -63,9 +63,9 @@ ax2.set_ylabel("Cumulative Cancellations", color=NAVY, fontsize=11)
 ax2.spines["right"].set_visible(True); ax2.spines["right"].set_color(NAVY)
 ax2.tick_params(axis="y", colors=NAVY)
 
-# Shade 30-90 day danger zone
-ax1.axvspan(0.5, 2.5, alpha=0.08, color=RED)
-ax1.text(1.5, 125, "Cycles 1-2: 57% of total churn\nhappens here (30-90 days)", ha="center",
+# Shade 30-60 day danger zone
+ax1.axvspan(0.5, 1.5, alpha=0.08, color=RED)
+ax1.text(1.0, 125, "Cycle 1: peak churn window\n(30-60 days)", ha="center",
          fontsize=9, color=RED, fontweight="bold",
          bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor=RED, alpha=0.8))
 
@@ -125,7 +125,7 @@ for bar, v, n in zip(bars, tenure_pct, tenure_n):
 ax.set_ylim(0, 34)
 
 cum_first3 = sum(tenure_pct[:3])
-ax.annotate(f"First 90 days:\n{cum_first3:.0f}% of all cancellations",
+ax.annotate(f"First 60 days:\n{sum(tenure_pct[:2]):.0f}% of all cancellations",
             xy=(1, 21.7), xytext=(3, 28),
             arrowprops=dict(arrowstyle="->", color=RED, lw=1.5),
             color=RED, fontsize=9, fontweight="bold")

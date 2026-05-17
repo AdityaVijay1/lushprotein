@@ -47,7 +47,7 @@
 LushProtein successfully acquires new customers but retains very few. Currently **75% of first-time buyers never make a second purchase**. Repeat purchase rate sits at ~25–32%. High customer acquisition costs mean the business only breaks even after multiple orders, so retention is the primary driver of profitability and growth.
 
 **The Single Most Important Metric:**
-Getting first-time buyers to make a **second purchase within 90 days**. The second purchase is the strongest predictor of long-term customer lifetime value (LTV).
+Getting first-time buyers to make a **second purchase within 60 days**. The second purchase is the strongest predictor of long-term customer lifetime value (LTV).
 
 ---
 
@@ -144,12 +144,12 @@ Charts are saved to `visualizations/charts/` as PNG files at 150 dpi.
 | Unique customers (2020–2026) | 13,780 |
 | Total orders | 27,350 |
 | Overall repeat purchase rate | **32.4%** |
-| 90-day retention rate | **22.1%** |
+| 60-day retention rate | **18.3%** |
 | Median days to 2nd order | 49 days |
 | Subscriber avg LTV vs non-subscriber | **+186%** (S$1,063 vs S$371) |
 | Ever-subscribed customers | 1,095 (7.9% of all customers) |
 
-> **What this means:** Nearly 8 in 10 first-time buyers never return within 90 days — the window when product biology begins delivering results and when almost all loyalty decisions are made. The overall 32.4% repeat rate includes late returners; the 90-day rate of 22.1% is the operationally critical number.
+> **What this means:** Nearly 6 in 10 first-time buyers never return within 60 days — the window when product biology begins delivering results and when almost all loyalty decisions are made. The overall 32.4% repeat rate includes late returners; the 60-day rate is the operationally critical number.
 
 ---
 
@@ -240,7 +240,7 @@ This is a supply-side insight, not a demand-side problem: customers who are expo
 | **Cycle 1 (30–60 days)** | **110** (peak churn) |
 | Cycle 2 (60–90 days) | 101 |
 | Cycle 3 (90–120 days) | 81 |
-| Total in first 90 days | **271 of 526** = **51.5% of all cancellations** |
+| Total in first 60 days | **244 of 526** = **46.4% of all cancellations** |
 
 **Raw subscription churn rate: 64.7%** (347 of 536 checkout subscribers eventually cancelled)
 
@@ -274,7 +274,7 @@ Of 13,780 total customers, **4,459 (32.4%) ever placed a second order.**
 | 8–14 days | 222 | 12.5% |
 | 15–30 days | 568 | 25.3% |
 | 31–60 days | 692 | 40.8% |
-| **61–90 days** | **461** | **51.1%** ← largest single window |
+| **61–90 days** | **461** | **51.1%** |
 | 91–180 days | 603 | 64.6% |
 | 181–365 days | 450 | 74.7% |
 | 365+ days | 463 | 85.1% |
@@ -285,7 +285,7 @@ Of 13,780 total customers, **4,459 (32.4%) ever placed a second order.**
 - P75: 141 days
 - P90: 376 days
 
-> **What this means:** 66% of customers who ever come back do so within 90 days. The 61–90 day window is the largest single repurchase bucket. After 180 days without a second order, the probability of return drops sharply. The first 90 days after first purchase is the retention-critical window.
+> **What this means:** ~41% of customers who ever come back do so within 60 days. After 60 days without a second order, the probability of natural repurchase declines sharply. The first 60 days after first purchase is the retention-critical window — aligned with product biology (a standard serving lasts ~4–8 weeks).
 
 > **Chart:** `02c_time_to_second_purchase.png`
 
@@ -343,7 +343,7 @@ RFM scores each customer on Recency (how recently they bought), Frequency (how o
 | 3 | **Deep discounting destroys cohort quality** | 51%+ off: 21.9% repeat, S$181 LTV vs S$542 at full price | High | Cap new-customer discount at 10–15%; remove 50%+ deals |
 | 4 | **Subscription cadence causes stockpile churn** | 32% cancel "already have too much"; peak churn at Cycle 1 (30–60 days) | High | Add 45/60-day interval option + skip-delivery button |
 | 5 | **At Risk segment = urgent high-value opportunity** | 2,351 customers, S$1,072 avg LTV, currently dormant | Medium | Targeted win-back campaign with strongest offer |
-| 6 | **Expectation mismatch drives early exit** *(minor hypothesis)* | 66% of repeaters return within 90 days; churn peaks before 90-day mark | Medium | Post-purchase onboarding email sequence setting timeline expectations |
+| 6 | **Expectation mismatch drives early exit** *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks before 60-day mark | Medium | Post-purchase onboarding email sequence setting timeline expectations |
 
 ---
 
@@ -451,17 +451,17 @@ Recommended 14-slide structure:
 | Slide | Title | What to Show | Chart to Use |
 |---|---|---|---|
 | 1 | Title Slide | Team name, company, date | — |
-| 2 | Project Overview | LushProtein products, core problem (75% churn), key metric (2nd purchase in 90 days) | — |
+| 2 | Project Overview | LushProtein products, core problem (75% churn), key metric (2nd purchase in 60 days) | — |
 | 3 | Data Sources Overview | 9 tables, row counts, date range, ERD thumbnail | ERD from draw.io |
 | 4 | Data Quality Findings | Top 5 DQ issues (DQ-01 through DQ-05), counter-measures applied | — |
-| 5 | Business at a Glance | 5 KPI numbers: customers, repeat rate, 90-day retention, median days to 2nd order, sub LTV uplift | `01a_revenue_discount_trend.png` |
+| 5 | Business at a Glance | 5 KPI numbers: customers, repeat rate, 60-day retention, median days to 2nd order, sub LTV uplift | `01a_revenue_discount_trend.png` |
 | 6 | Revenue and the Discount Problem | Revenue peaked 2021 at zero discounting; discount rate 54% in 2025; revenue not recovered | `01a_revenue_discount_trend.png` + `01b_monthly_revenue_2024_2026.png` |
 | 7 | Not All Customers Are Equal | Channel quality — Marketplace vs Direct LTV and repeat rate gap | `02a_retention_by_channel.png` + `05b_marketplace_vs_website.png` |
 | 8 | The Cross-Sell Opportunity | LTV staircase (1 → 4 products). +171% LTV uplift. | `03a_cross_product_ltv.png` |
 | 9 | Subscription: High Value, High Churn | Sub vs non-sub metrics; churn by cycle; top cancellation reason | `04a_subscriber_vs_onetime.png` + `04b_churn_by_cycle.png` + `04c_cancellation_reasons.png` |
 | 10 | Discount Depth Destroys Loyalty | Full-price vs 51%+ off: repeat rate and LTV comparison | `05a_discount_depth_impact.png` |
 | 11 | Customer Segments (RFM) | RFM pie + priority action table; At Risk and Can't Lose are urgent | `05c_rfm_segments.png` |
-| 12 | Time-to-Second-Purchase | Distribution histogram; 66% of repeaters return within 90 days | `02c_time_to_second_purchase.png` |
+| 12 | Time-to-Second-Purchase | Distribution histogram; ~41% of repeaters return within 60 days | `02c_time_to_second_purchase.png` |
 | 13 | Top Findings and Proposed Experiments | Findings table (ranked 1–6) with suggested experiments | — |
 | 14 | Next Steps | Further analyses to run; what experiments to propose for final submission | — |
 
@@ -484,14 +484,14 @@ All charts are in `visualizations/charts/`. Regenerate with `python run_visualiz
 | `01c_orders_customers_by_year.png` | Orders vs unique customers side-by-side by year |
 | `02a_retention_by_channel.png` | Repeat rate + LTV horizontal bars per channel |
 | `02b_retention_by_product.png` | Repeat rate, avg LTV, median days to 2nd by hero product |
-| `02c_time_to_second_purchase.png` | Days-to-2nd-purchase histogram with cumulative line and 90-day marker |
-| `02d_cohort_90d_retention.png` | Monthly cohort 90-day retention coloured by performance tier |
+| `02c_time_to_second_purchase.png` | Days-to-2nd-purchase histogram with cumulative line and 60-day marker |
+| `02d_cohort_60d_retention.png` | Monthly cohort 60-day retention coloured by performance tier |
 | `03a_cross_product_ltv.png` | LTV staircase bars + repeat rate line by product breadth |
 | `03b_product_revenue_mix.png` | Revenue donut + avg unit price comparison |
 | `03c_sku_loyalty.png` | Checkout vs recurring customer counts per SKU with loyalty ratio |
 | `03d_top_product_combos.png` | Most common cross-category purchase combinations |
 | `04a_subscriber_vs_onetime.png` | Subscriber vs non-subscriber metric comparison (indexed) |
-| `04b_churn_by_cycle.png` | Cancellations by subscription cycle with 30–90 day danger zone shaded |
+| `04b_churn_by_cycle.png` | Cancellations by subscription cycle with 30–60 day danger zone shaded |
 | `04c_cancellation_reasons.png` | Horizontal bar of cancellation reasons with themed annotations |
 | `04d_churn_tenure_distribution.png` | How long customers subscribed before cancelling |
 | `05a_discount_depth_impact.png` | Repeat rate + LTV drop by first-order discount depth |

@@ -4,8 +4,8 @@
 Analyses
 --------
 A. Repeat purchase rate overall and by key cohort slices
-B. Time-to-second-purchase distribution + 30/60/90-day cumulative rates
-C. Monthly cohort retention heatmap (% who repurchase within 90 days)
+B. Time-to-second-purchase distribution + 30/60-day cumulative rates
+C. Monthly cohort retention heatmap (% who repurchase within 60 days)
 D. RFM segmentation snapshot
 
 Outputs
@@ -145,30 +145,30 @@ bucket_dist.to_csv(OUTPUT_DIR / "03_time_to_second_purchase.csv", index=False)
 # C.  MONTHLY COHORT RETENTION HEATMAP
 #     % of each acquisition cohort that made a 2nd purchase within 90 days
 #                                                                                                                                                             
-print("\n\n[C] MONTHLY COHORT 90-DAY RETENTION")
+print("\n\n[C] MONTHLY COHORT 60-DAY RETENTION")
 print("=" * 55)
 
-# Only include cohorts that have had at least 90 days since first order
-cutoff = ANALYSIS_DATE - pd.Timedelta(days=90)
+# Only include cohorts that have had at least 60 days since first order
+cutoff = ANALYSIS_DATE - pd.Timedelta(days=60)
 cohort_data = cust.copy()
 cohort_data["cohort_month"] = cohort_data["first_order_date"].dt.to_period("M")
 cohort_data["eligible"] = cohort_data["first_order_date"] <= cutoff
 
 eligible = cohort_data[cohort_data["eligible"]].copy()
-eligible["repeat_in_90d"] = (
+eligible["repeat_in_60d"] = (
     eligible["is_repeat"] &
-    (eligible["days_to_second"].fillna(9999) <= 90)
+    (eligible["days_to_second"].fillna(9999) <= 60)
 )
 
 cohort_retention = (
     eligible.groupby("cohort_month")
     .agg(
         cohort_size     = ("customer_id",   "count"),
-        repeat_in_90d   = ("repeat_in_90d", "sum"),
+        repeat_in_60d   = ("repeat_in_60d", "sum"),
         repeat_any_time = ("is_repeat",     "sum"),
     )
     .assign(
-        retention_90d  = lambda d: d["repeat_in_90d"]   / d["cohort_size"],
+        retention_60d  = lambda d: d["repeat_in_60d"]   / d["cohort_size"],
         retention_ever = lambda d: d["repeat_any_time"]  / d["cohort_size"],
     )
     .reset_index()
@@ -177,8 +177,8 @@ cohort_retention = (
 print(cohort_retention.tail(24).to_string(index=False))
 cohort_retention.to_csv(OUTPUT_DIR / "03_cohort_retention_heatmap.csv", index=False)
 
-overall_90d = eligible["repeat_in_90d"].sum() / len(eligible)
-print(f"\nOverall 90-day retention rate (all eligible cohorts): {overall_90d:.1%}")
+overall_60d = eligible["repeat_in_60d"].sum() / len(eligible)
+print(f"\nOverall 60-day retention rate (all eligible cohorts): {overall_60d:.1%}")
 
 #                                                                                                                                                             
 # D.  RFM SEGMENTATION

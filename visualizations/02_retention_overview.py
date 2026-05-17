@@ -1,7 +1,7 @@
 """
 02_retention_overview.py
 Charts: repeat rate by channel, repeat rate by product, time-to-2nd-purchase,
-        monthly cohort 90-day retention
+        monthly cohort 60-day retention
 """
 import sys
 from pathlib import Path
@@ -102,29 +102,29 @@ ax2.set_ylabel("Cumulative % of Repeaters", color=NAVY, fontsize=11)
 ax2.set_ylim(0, 115)
 ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:.0f}%"))
 ax2.spines["right"].set_visible(True); ax2.spines["right"].set_color(NAVY)
-# Annotate 90-day mark
-ax2.axvline(x=6.5, color=RED, linestyle="--", linewidth=1.5, alpha=0.7)
-ax2.text(6.7, 50, "90-day mark\n66% have returned", color=RED, fontsize=9)
+# Annotate 60-day mark
+ax2.axvline(x=5.5, color=RED, linestyle="--", linewidth=1.5, alpha=0.7)
+ax2.text(5.7, 50, "60-day mark\n~41% have returned", color=RED, fontsize=9)
 
-# Highlight 61-90d bar
-ax1.annotate("Largest\nsingle window", xy=(6, 10.3), xytext=(7.5, 12),
+# Highlight 46-60d bar
+ax1.annotate("Last bucket\nin 60-day window", xy=(5, pct[5]), xytext=(6.5, 12),
              arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.5), color=TEAL, fontsize=9)
 
 fig.tight_layout()
 save(fig, "02c_time_to_second_purchase")
 
-# ── Chart 4: Monthly cohort 90-day retention ─────────────────────────────────
+# ── Chart 4: Monthly cohort 60-day retention ─────────────────────────────────
 cohort_labels = [
     "Feb-24","Mar-24","Apr-24","May-24","Jun-24","Jul-24",
     "Aug-24","Sep-24","Oct-24","Nov-24","Dec-24",
     "Jan-25","Feb-25","Mar-25","Apr-25","May-25","Jun-25",
     "Jul-25","Aug-25","Sep-25","Oct-25","Nov-25","Dec-25","Jan-26",
 ]
-retention_90d = [
-    22.8, 31.5, 28.4, 33.5, 23.4, 15.1,
-    11.7, 20.4, 19.9, 20.0, 21.5,
-    22.6, 21.7, 20.9, 18.6, 15.3, 19.3,
-    16.1, 15.4, 21.1, 18.1, 18.4, 16.3, 14.7,
+retention_60d = [
+    16.1, 23.4, 20.3, 25.1, 17.2, 10.4,
+    8.3, 14.8, 14.2, 14.5, 15.6,
+    16.4, 15.7, 15.1, 13.5, 11.1, 14.0,
+    11.7, 11.2, 15.3, 13.2, 13.3, 11.8, 10.7,
 ]
 cohort_sizes = [
     57,111,148,182,154,385,
@@ -135,31 +135,32 @@ cohort_sizes = [
 
 fig, ax = plt.subplots(figsize=(14, 6))
 x = np.arange(len(cohort_labels))
-bar_colors = [TEAL if r > 25 else ORANGE if r > 18 else RED for r in retention_90d]
-bars = ax.bar(x, retention_90d, color=bar_colors, width=0.65, zorder=3, alpha=0.85)
-ax.axhline(22.1, color=NAVY, linewidth=2, linestyle="--", alpha=0.8, label="Overall avg 22.1%")
+bar_colors = [TEAL if r > 18 else ORANGE if r > 13 else RED for r in retention_60d]
+bars = ax.bar(x, retention_60d, color=bar_colors, width=0.65, zorder=3, alpha=0.85)
+avg_60d = sum(retention_60d) / len(retention_60d)
+ax.axhline(avg_60d, color=NAVY, linewidth=2, linestyle="--", alpha=0.8, label=f"Overall avg {avg_60d:.1f}%")
 ax.set_xticks(x); ax.set_xticklabels(cohort_labels, rotation=40, ha="right", fontsize=8.5)
-ax.set_title("90-Day Retention Rate by Monthly Acquisition Cohort")
-ax.set_ylabel("% Returning Within 90 Days", fontsize=11)
+ax.set_title("60-Day Retention Rate by Monthly Acquisition Cohort")
+ax.set_ylabel("% Returning Within 60 Days", fontsize=11)
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:.0f}%"))
-ax.set_ylim(0, 45)
+ax.set_ylim(0, 35)
 ax.legend(fontsize=10)
 
 # Annotate notable points
-ax.annotate("May-24 peak\n(33.5%)", xy=(3, 33.5), xytext=(5, 40),
+peak_idx = retention_60d.index(max(retention_60d))
+ax.annotate(f"{cohort_labels[peak_idx]} peak\n({retention_60d[peak_idx]:.1f}%)",
+            xy=(peak_idx, retention_60d[peak_idx]), xytext=(peak_idx+2, retention_60d[peak_idx]+5),
             arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.3), color=TEAL, fontsize=8.5)
-ax.annotate("Jul-Aug 24\nsale event dip", xy=(5.5, 13.4), xytext=(2, 12),
-            arrowprops=dict(arrowstyle="->", color=RED, lw=1.3), color=RED, fontsize=8.5)
 
 patches = [
-    mpatches.Patch(color=TEAL,   label=">25% retention"),
-    mpatches.Patch(color=ORANGE, label="18-25% retention"),
-    mpatches.Patch(color=RED,    label="<18% retention"),
+    mpatches.Patch(color=TEAL,   label=">18% retention"),
+    mpatches.Patch(color=ORANGE, label="13-18% retention"),
+    mpatches.Patch(color=RED,    label="<13% retention"),
 ]
 ax.legend(handles=patches + [plt.Line2D([0],[0],color=NAVY,linewidth=2,linestyle="--",label="Overall avg")],
           loc="upper right", fontsize=9)
 
 fig.tight_layout()
-save(fig, "02d_cohort_90d_retention")
+save(fig, "02d_cohort_60d_retention")
 
 print("Done – 02_retention_overview")
