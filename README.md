@@ -172,7 +172,7 @@ The 2023 revenue collapse coincides with the first aggressive discounting. The b
 
 ---
 
-### 5.3 Channel Quality
+### 5.3 Channel Quality - Double check the marketplace details and % subscribed (cannot be tracked from shopee or lazada)
 
 | Channel | Customers | Repeat Rate | Avg LTV (SGD) | % Ever Subscribed |
 |---|---|---|---|---|
@@ -189,6 +189,7 @@ The 2023 revenue collapse coincides with the first aggressive discounting. The b
 - **Zero subscription conversion** — not a single marketplace customer ever subscribed
 
 Marketplace channels drive order volume and make headline customer numbers look better than they are. The underlying customer quality is far below own-website acquisition.
+
 
 > **Charts:** `02a_retention_by_channel.png`, `05b_marketplace_vs_website.png`
 
