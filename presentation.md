@@ -212,9 +212,9 @@ print(summary)
 Source: `EDA/outputs/05_channel_quality.csv`
 Script: `EDA/05_discount_channel.py`
 
-### ⚠️ Critical Caveat: Marketplace Subscription Tracking
+###  Critical Caveat: Marketplace Subscription Tracking
 
-The user correctly identified a data limitation. **Marketplace customers show 0% subscription rate because Shopify cannot track subscriptions originated on Shopee or Lazada.**
+Data limitation. **Marketplace customers show 0% subscription rate because Shopify cannot track subscriptions originated on Shopee or Lazada.**
 
 - Marketplace platforms (Shopee, Lazada) have their own subscription/auto-delivery systems
 - Orders placed through those platforms do not appear as `is_subscription = True` in Shopify data
