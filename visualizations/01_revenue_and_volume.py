@@ -12,10 +12,12 @@ import matplotlib.ticker as mticker
 from style import save, CAT_COLORS, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, bar_label
 
 # ── Data ──────────────────────────────────────────────────────────────────────
+# All figures in SGD (FX-converted: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, fixed April 2026)
+# Combined SG + MY + HK markets
 years        = ["2020","2021","2022","2023","2024","2025"]
-revenue      = [849726, 1862280, 1581361, 368113, 594696, 432896]
+revenue      = [456952, 847930, 747587, 182038, 284971, 409152]
 orders       = [2847, 6259, 3710, 2253, 4261, 6407]
-disc_rate    = [0.0, 0.0, 3.7, 17.1, 42.4, 54.3]
+disc_rate    = [0.0, 0.0, 15.2, 59.3, 69.2, 49.6]  # % of orders with any discount
 
 monthly_labels = [
     "Jan-24","Feb-24","Mar-24","Apr-24","May-24","Jun-24",
@@ -46,7 +48,7 @@ for bar, r in zip(bars, revenue):
 
 ax2 = ax1.twinx()
 ax2.plot(x, disc_rate, color=RED, marker="o", linewidth=2.5, markersize=7, zorder=4, label="Discount rate")
-ax2.set_ylabel("Discount Rate (%)", color=RED, fontsize=11)
+ax2.set_ylabel("% Orders With Discount", color=RED, fontsize=11)
 ax2.set_ylim(0, 70)
 ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:.0f}%"))
 ax2.spines["right"].set_visible(True); ax2.spines["right"].set_color(RED)
@@ -56,8 +58,8 @@ for xi, dr in zip(x, disc_rate):
         ax2.annotate(f"{dr:.0f}%", xy=(xi, dr), xytext=(5, 5), textcoords="offset points",
                      fontsize=9, color=RED)
 
-ax1.annotate("Discount rate\nrises from 0% → 54%", xy=(4, 594), xycoords="data",
-             xytext=(3.2, 1100), textcoords="data",
+ax1.annotate("Discounted orders\nrise: 0% to 69%", xy=(4, 284), xycoords="data",
+             xytext=(2.8, 550), textcoords="data",
              arrowprops=dict(arrowstyle="->", color=RED, lw=1.5), color=RED, fontsize=9)
 
 fig.tight_layout()
@@ -81,7 +83,7 @@ fig.tight_layout()
 save(fig, "01b_monthly_revenue_2024_2026")
 
 # ── Chart 3: Orders and unique customers by year ─────────────────────────────
-customers = [1696, 3815, 2299, 1399, 2621, 4107]
+customers = [1696, 3815, 2299, 1399, 2621, 4107]  # all markets combined
 fig, ax = plt.subplots(figsize=(11, 5))
 x = np.arange(len(years)); w = 0.38
 b1 = ax.bar(x-w/2, orders, width=w, color=TEAL, label="Orders", zorder=3)

@@ -39,6 +39,7 @@ OUTPUT_DIR       = cfg.OUTPUT_DIR
 classify_product = cfg.classify_product
 classify_channel = cfg.classify_channel
 ANALYSIS_DATE    = cfg.ANALYSIS_DATE
+FX_RATES_TO_SGD  = cfg.FX_RATES_TO_SGD
 
 # ── 1. Load all Shopify order files ───────────────────────────────────────────
 print("Loading Shopify order files...")
@@ -98,6 +99,21 @@ if "Payment: Status" in orders_df.columns:
     ]
 orders_df = orders_df[orders_df["Order Fulfillment Status"].fillna("") != "restocked"]
 
+# ── FX conversion: convert all revenue columns to SGD ─────────────────────────
+print("Applying FX conversion (all revenue -> SGD)...")
+print(f"  Assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed, April 2026)")
+orders_df["_fx"] = orders_df["store"].map(FX_RATES_TO_SGD).fillna(1.0)
+for col in ["Price: Total", "Price: Total Discount", "Price: Total Shipping", "Line: Price"]:
+    if col in orders_df.columns:
+        orders_df[col] = pd.to_numeric(orders_df[col], errors="coerce").fillna(0) * orders_df["_fx"]
+orders_df.drop(columns=["_fx"], inplace=True)
+# Mark all orders as SGD so downstream Currency-based filters include all stores
+orders_df["Currency"] = "SGD"
+n_my = (orders_df["store"] == "MY").sum()
+n_hk = (orders_df["store"] == "HK").sum()
+print(f"  Converted {n_my:,} MY (MYR) and {n_hk:,} HK (HKD) orders to SGD equivalents")
+print(f"  All {len(orders_df):,} orders now denominated in SGD\n")
+
 # Channel label
 orders_df["channel"] = orders_df.apply(classify_channel, axis=1)
 # Product category of first line item
@@ -127,6 +143,12 @@ lines_df = raw[raw["Line: Type"] == "Line Item"][existing_line_cols].copy()
 lines_df = lines_df.rename(columns={"ID": "order_id", "Customer: ID": "customer_id"})
 lines_df = lines_df.dropna(subset=["customer_id", "order_date"])
 lines_df["product_category"] = lines_df["Line: Product Handle"].apply(classify_product)
+# Apply FX to line-item prices
+lines_df["_fx"] = lines_df["store"].map(FX_RATES_TO_SGD).fillna(1.0)
+for col in ["Line: Price", "Line: Discount", "Line: Total"]:
+    if col in lines_df.columns:
+        lines_df[col] = pd.to_numeric(lines_df[col], errors="coerce").fillna(0) * lines_df["_fx"]
+lines_df.drop(columns=["_fx"], inplace=True)
 
 print(f"  Line-item rows: {len(lines_df):,}\n")
 

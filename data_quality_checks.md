@@ -2,8 +2,13 @@
 
 **Team:** Aditya Vijay, Emily Pham Vinh Tan, Saelin Lee, Shwe Tin Aung, Weilin Ang, Zhengfeng Toh
 **Date:** May 2026
-**Scope:** Shopify customer transaction data (2020–2026)
+**Scope:** Shopify customer transaction data (2020–2026), all markets combined (SG + MY + HK) in SGD
 **Audience:** Course instructors (assessment of data due diligence)
+
+> **CURRENCY UPDATE (Applied May 2026):** All revenue figures have been converted to SGD using fixed exchange rates:
+> **1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD**
+> Conversion is applied at data load time in `EDA/01_load_and_merge.py`.
+> See DQ-01 (updated) for full discussion of limitations and assumptions.
 
 ---
 
@@ -20,14 +25,34 @@
 
 ## 1. Dataset Overview and Coverage
 
-### Source Data
+### All Source Datasets — Complete Inventory
 
-The raw data consists of Shopify order export files across multiple stores. After loading and merging in `EDA/01_load_and_merge.py`, the canonical dataset contains:
+| # | Folder | File(s) | Rows | Loaded? | Used in Scripts | Notes |
+|---|---|---|---|---|---|---|
+| 1 | `1.customer_transaction` | 7 yearly Excel files | 153,828 raw rows → 27,350 orders + 50,963 line items | ✅ YES | All EDA scripts 01–11 | Primary source. FX conversion applied. |
+| 2 | `2.product_master` | `2_1.products_master_20260505.xlsx` | 167 variants | ✅ YES | `01_load_and_merge.py`, `02_data_quality.py` | Saved to parquet. Used for category classification in DQ audit only. COGS (65% null) not used. |
+| 3 | `3.Discounts` | `3_1.discounts_export_20260505.csv` | 367 codes | ✅ YES | `01_load_and_merge.py`, `05_channel_discount.py` | Discount code taxonomy. Cannot link to individual orders (no discount code field in transactions). |
+| 4 | `4.Campaigns` | `4_1.Sessions by referrer_20260505.csv` | **137,033 rows** | ⚠️ **DEFINED BUT NOT LOADED** | **NONE** | `CAMPAIGNS_FILE` defined in `00_config.py` but never imported. Has no date column or customer/order ID. Useful for top-of-funnel description only. |
+| 5a | `5.Recharge_data` | `5_1.orders_combined` | 1,215 orders | ✅ YES | `06_subscription_churn.py` | Apr 2025–Apr 2026 only. Avg order S$81 (SGD). |
+| 5b | `5.Recharge_data` | `5_2.order_items_checkout` | 1,094 line items | ✅ YES | `04_product_analysis.py`, `06_subscription_churn.py` | First-checkout SKU ranking |
+| 5c | `5.Recharge_data` | `5_3.subscribers_reactivated` | 50 customers | ✅ YES | `06_subscription_churn.py` | Win-back cohort |
+| 5d | `5.Recharge_data` | `5_4.subscriptions_churned` | 526 records | ✅ YES | `06_subscription_churn.py` | Cancellation reasons and churn cycle |
+| 5e | `5.Recharge_data` | `5_5.order_items_recurring` | 650 line items | ✅ YES | `04_product_analysis.py`, `06_subscription_churn.py` | Renewal SKU loyalty analysis |
+
+### Canonical Output Tables
 
 | Table | Rows | Key Fields |
 |---|---|---|
-| `orders.parquet` | **27,350 orders** | order_id, customer_id, order_date, store, revenue, discount, channel, is_subscription |
-| `customers.parquet` | **13,780 customers** | customer_id, first/second order dates, total_orders, total_revenue, RFM fields |
+| `orders.parquet` | **27,350 orders** | order_id, customer_id, order_date, store, revenue (SGD), discount (SGD), channel, is_subscription |
+| `lines.parquet` | **50,963 line items** | order_id, customer_id, product_category, Line: Price/Total (SGD) |
+| `customers.parquet` | **13,780 customers** | customer_id, first/second order dates, total_orders, total_revenue (SGD), RFM fields |
+| `products.parquet` | **167 variants** | Handle, Variant SKU, prices by market, Status, Cost per item |
+| `discounts.parquet` | **367 codes** | Name, Value, Value Type, Times Used, Status |
+| `rc_orders.parquet` | **1,215 orders** | metric_date, shopify_order_id, order_type, order_total (SGD est.) |
+| `rc_checkout.parquet` | **1,094 items** | product_title, variant_title, quantity, customer_id (Recharge ID) |
+| `rc_reactivated.parquet` | **50 records** | customer_id (Recharge ID), first_activation, reactivated_date |
+| `rc_churned.parquet` | **526 records** | customer_id, cancellation_reason, subscription tenure |
+| `rc_recurring.parquet` | **650 items** | product_title, variant_title, purchase_type |
 
 ### Temporal Coverage
 
@@ -35,7 +60,7 @@ The raw data consists of Shopify order export files across multiple stores. Afte
 |---|---|---|---|
 | 2019 | 3 | 3 | Incomplete year — excluded from cohort analysis |
 | 2020 | 2,847 | 1,696 | Full year, zero discounting |
-| 2021 | 6,259 | 3,815 | Peak revenue year (S$1.86M SGD) |
+| 2021 | 6,259 | 3,815 | Peak revenue year (S$848K combined SGD; old figure S$1.86M was mixing MYR as SGD) |
 | 2022 | 3,710 | 2,299 | First discounting introduced |
 | 2023 | 2,253 | 1,399 | Revenue collapse year |
 | 2024 | 4,261 | 2,621 | Recovery, heavy discounting |
@@ -46,27 +71,39 @@ The raw data consists of Shopify order export files across multiple stores. Afte
 
 ### Store and Currency Coverage
 
-| Store | Orders | Revenue (Own Currency) | Currency |
-|---|---|---|---|
-| SG | 16,039 | S$1,913,068 | SGD |
-| MY | 11,309 | RM 3,958,566 | MYR |
-| HK | 2 | HK$1,943 | HKD |
+| Store | Orders | Revenue (Own Currency) | FX Rate | Revenue (SGD equivalent) |
+|---|---|---|---|---|
+| SG | 16,041 | S$1,913,387 | 1.000 | **S$1,913,387** |
+| MY | 11,309 | RM 3,958,566 | ÷ 3.30 | **S$1,199,566** |
+| HK | 2 | HK$1,943 | ÷ 6.10 | **S$319** |
+| **All markets** | **27,352** | — | — | **S$3,113,272 SGD total** |
 
-**Critical note:** The three stores use different currencies. **No FX conversion was available in the raw data.** Revenue figures across stores cannot be combined meaningfully.
+**Critical note:** The three stores use different currencies. The raw data contains no FX rates.
 
-**Mitigation:** All customer-level analyses (LTV, retention, RFM, cohort quality) are **restricted to SGD (SG store) orders only.** This is documented in `EDA/00_config.py` as the `SGD_STORE` constant.
+**Mitigation applied (May 2026):** Fixed exchange rates provided by the team are applied at data load time:
+- `1 SGD = 3.30 MYR` → MYR ÷ 3.30 = SGD equivalent
+- `1 SGD = 6.10 HKD` → HKD ÷ 6.10 = SGD equivalent
+
+These are **fixed historical rates** (not market rates at each transaction date). This introduces a measurement error in absolute revenue figures. The **direction and relative magnitude of findings are unaffected**.
+
+**Known limitations of fixed-rate FX approach:**
+1. SGD/MYR moved between ~3.0 and ~3.5 over 2020–2026. Early-year MY revenue (2020–2021) may be understated/overstated by up to 10%.
+2. MY market was effectively dormant by 2025 (only S$9,617 SGD in 2025 vs S$441,022 in 2021), so the combined totals are dominated by SG data in recent years.
+3. HK store (2 orders, S$319 SGD equivalent) is immaterial.
+
+**Implemented in:** `EDA/00_config.py` (`FX_RATES_TO_SGD` dict), `EDA/01_load_and_merge.py` (conversion applied before Parquet save)
 
 ---
 
 ## 2. Summary Statistics and Distributions
 
-### Order Revenue Distribution (SG Store — SGD)
+### Order Revenue Distribution (All Markets — SGD after FX conversion)
 
-| Statistic | Value |
-|---|---|
-| Count | 16,039 orders |
-| Mean | SGD 119.28 |
-| Median | SGD 62.10 |
+| Statistic | Value (All Markets, SGD) | SG-only (SGD) |
+|---|---|---|
+| Count | 27,352 orders | 16,041 orders |
+| Mean | SGD 113.83 | SGD 119.28 |
+| Median | SGD 62.10 | SGD 62.10 |
 | 25th percentile | SGD 29.00 |
 | 75th percentile | SGD 115.00 |
 | Maximum | SGD 26,520.00 |
@@ -137,28 +174,48 @@ The **15.3% of discounted orders at 90–100% off** is a notable spike that warr
 
 ## 3. Data Issues Identified
 
-### DQ-01 — Multi-Currency Without FX Conversion
+### DQ-01 — Multi-Currency: Fixed FX Conversion Applied
 
-**Description:** The dataset spans three stores (SG, MY, HK) using different currencies (SGD, MYR, HKD). The raw data contains no FX conversion rates, and the `Price: Total` field represents each store's local currency.
+**Description:** The dataset spans three stores (SG, MY, HK) using different currencies (SGD, MYR, HKD). The raw data contains no FX conversion rates.
 
 **Evidence:**
 ```
-SG store: 16,039 orders, SGD 1,913,068 (SGD)
-MY store: 11,309 orders, MYR 3,958,566 (MYR)
-HK store:      2 orders, HKD 1,943     (HKD)
+SG store: 16,041 orders, SGD 1,913,387 (SGD)
+MY store: 11,309 orders, MYR 3,958,566 (MYR → SGD equivalent: S$1,199,566)
+HK store:      2 orders, HKD 1,943     (HKD → SGD equivalent: S$319)
 ```
 
-**Impact:** Combining revenue across stores without FX conversion would overstate or understate total revenue depending on exchange rates. At the time of writing, 1 MYR ≈ 0.30 SGD, so the MY revenue is approximately SGD 1.19M — but this conversion is not applied in the data.
+**Severity:** HIGH — mixing currencies without conversion produces nonsensical revenue totals.
 
-**Severity:** HIGH — mixing currencies directly would produce nonsensical aggregate revenue figures.
-
-**Mitigation:** All customer-level and revenue analyses are restricted to the SG store only. This is explicitly set in `EDA/00_config.py`:
+**Mitigation Applied (May 2026):**
+Fixed exchange rates provided by the team are applied at data load time in `EDA/01_load_and_merge.py`:
 ```python
-SGD_STORE = "SG"
-# All retention, LTV, cohort and RFM analyses filter: orders[orders['store'] == SGD_STORE]
+FX_RATES_TO_SGD = {
+    "SG": 1.0,
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (1 SGD = 6.10 HKD)
+}
+# Applied to Price: Total, Price: Total Discount, Price: Total Shipping
+# Currency column set to "SGD" for all orders after conversion
 ```
 
-**Residual risk:** The SG store analysis excludes ~41% of all orders. Patterns found in SG may not generalise to MY/HK markets.
+**Assumption stated explicitly:**
+- Rates are **fixed at April 2026** and do not vary by transaction date
+- Historical MYR/SGD rate moved between ~3.0 and ~3.5 over 2020–2026 → absolute revenue figures for 2020–2022 may be off by up to ±10%
+- For **relative comparisons** (repeat rates, LTV uplift %, cohort retention), the FX rate has no impact — these are count-based or ratio-based metrics
+
+**Post-conversion market revenue summary:**
+```
+Year  SG (SGD)    MY (SGD)    Total
+2020  S$286,181   S$170,771   S$456,952
+2021  S$406,908   S$441,022   S$847,930  ← combined peak
+2022  S$385,076   S$362,510   S$747,587
+2023  S$101,135   S$80,902    S$182,038
+2024  S$150,308   S$134,663   S$284,971
+2025  S$399,216   S$9,617     S$409,152  ← MY market effectively dormant
+```
+
+**Residual risk:** The fixed-rate assumption introduces ≤10% error on absolute MY revenue figures. MY market is dominant in 2020–2022 but almost absent in 2025, so the combined 2025 figures are 97% SG-driven.
 
 ---
 
@@ -224,15 +281,15 @@ By channel:
 These are **real product shipments** — not test/dummy entries. They represent actual cost-of-goods incurred by the business, but no revenue recognised.
 
 **Impact on the "discount rate" metric:**
-The headline "54.3% discount rate" in the original analysis is computed as `disc_amount / net_revenue`. This metric is inflated by 100%-discount orders because they add S$277,697 to the discount numerator while contributing S$0 to the revenue denominator.
+The correct discount metric is "discounts as % of gross revenue" — not disc/net_rev. The disc/net_rev ratio inflates the figure because 100%-discount orders contribute to the numerator while adding S$0 to the denominator.
 
-**Better representation:**
+**Better representation (2025, combined SG + MY + HK in SGD):**
 ```
-2025 (% of gross revenue given as discounts):
-  Revenue collected:   S$432,896
-  Discounts given:     S$234,875  (incl. 100%-off orders)
-  Gross potential:     S$667,771
-  Discount %:          S$234,875 / S$667,771 = 35.2%
+2025:
+  Revenue collected (net):  S$409,152
+  Discounts given:          ~S$220,000  (incl. 100%-off orders)
+  Gross potential:          ~S$629,000
+  Correct discount rate:    35.2% of gross revenue
 ```
 
 **Severity:** MEDIUM — does not affect retention or LTV calculations (zero-revenue orders are excluded from LTV). Does affect interpretation of the discount rate metric.
@@ -295,7 +352,7 @@ Orders missing UTM Campaign: 25,978 (95.0%)
 **Impact:**
 - "Direct / Organic" is the default fallback — it includes all orders without any tracking tag
 - Some paid search or paid social traffic that was not UTM-tagged will be misclassified as Direct/Organic
-- This inflates the Direct/Organic customer count (6,920 customers) and its LTV metric (S$583)
+- This inflates the Direct/Organic customer count (6,920 customers) and its LTV metric (S$198 in the combined dataset)
 
 **Severity:** MEDIUM — the Direct/Organic LTV figure may be overstated if it includes untracked paid traffic.
 
@@ -367,11 +424,136 @@ Marketplace is_subscription = True:  0
 
 ---
 
+### DQ-09 — Campaigns Dataset Not Loaded (4.Campaigns)
+
+**Description:** `4_1.Sessions by referrer_20260505.csv` (137,033 rows, 52 MB) is the largest file in the dataset. It is referenced as `CAMPAIGNS_FILE` in `EDA/00_config.py` but is **never imported or analyzed in any EDA script**.
+
+**What it contains:**
+```
+Columns: Referrer source, Referrer name, Session city, UTM campaign,
+         UTM medium, UTM source, Landing page path, Landing page URL,
+         Online store visitors, Sessions
+
+Top UTM sources (by sessions):
+  facebook      58,322 sessions
+  meta          15,706 sessions
+  affiliate      4,798 sessions
+  shopify_email  4,608 sessions
+  snowball       3,879 sessions
+
+Top cities (sessions):
+  Singapore       30,506
+  Kuala Lumpur    23,048
+  Petaling Jaya    7,518
+
+Total sessions: 246,909 | Unique visitors: 220,244
+```
+
+**Critical limitations of this dataset (from Data Glossary):**
+1. **No date column** — 5 years of traffic collapsed into cumulative counts; time-trending is impossible
+2. **No customer or order ID** — cannot compute true conversion rates (sessions → orders)
+3. **Each row is a unique dimension combination** — useful for proportional channel mix, not for joining
+
+**What it would be useful for:**
+- Top-of-funnel channel mix narrative: "Facebook drives ~24% of all sessions"
+- Geographic description of the customer base: SG (12%), KL (9%), PJ (3%)
+- Landing page popularity (which product pages attract the most visitors)
+
+**Severity:** LOW for the core findings (retention, LTV, cohort analysis are all order-based). MEDIUM for any claim about acquisition channel effectiveness — the campaigns data confirms the channel distribution but cannot quantify conversion.
+
+**Mitigation:** The `Browser: UTM Source` field in the order-level data provides the same UTM information at the order level with full customer linkage. This is what the channel classification in `EDA/00_config.py` uses and is superior to the campaign file for analysis purposes.
+
+---
+
+### DQ-10 — Discount Code Not Linked to Individual Orders
+
+**Description:** The `3.Discounts` dataset contains 367 discount codes with redemption counts. However, the Shopify order export does NOT include a "discount code used" column at the order level. The `Price: Total Discount` column shows the discount amount, but not which code was applied.
+
+**Evidence:**
+```
+Raw order columns searched for "discount code": NONE FOUND
+Available: Price: Total Discount (amount), Line: Discount (line-level amount)
+Missing:   which_discount_code_was_applied (does not exist in export)
+
+Discounts dataset has: Name, Value, Times Used In Total
+But these CANNOT be joined to orders.parquet on any common key.
+```
+
+**Impact:**
+- The discount taxonomy analysis (`EDA/05_channel_discount.py` Section C) is a **standalone** analysis of the Discounts table — it shows what codes exist and how many total times they were used, but cannot identify which specific customers or orders used them
+- The `SGAFF100` code (-100%, 88 uses) is confirmed real — these are the "dummy" affiliate codes the user identified. They represent orders where affiliates get 100% commission (the product is paid by the affiliate, not the customer)
+- Discount sensitivity analysis uses `has_discount` (True/False) and the discount dollar amount, which is still valid for measuring discount impact on LTV
+
+**Severity:** MEDIUM. The key discount finding (full-price buyers have 2× repeat rate vs 50%+ discounted buyers) remains valid because it uses the discount amount, not the code. The code-level taxonomy is informative but approximate.
+
+**Mitigation:** Classify discount depth by amount (as % of order value) rather than code. This is what the analysis does in `EDA/05_channel_discount.py` Section B.
+
+---
+
+### DQ-11 — Recharge Data Temporal Coverage and Customer ID Mismatch
+
+**Description:** The Recharge subscription platform exports only cover **April 2025 to April 2026** (1 year). LushProtein has been running subscriptions since at least 2021 (based on Shopify order tags). Additionally, Recharge customer IDs are different from Shopify customer IDs.
+
+**Evidence:**
+```
+Recharge date range: 2025-04-08 to 2026-04-07 (exactly 1 year)
+Shopify orders with is_subscription tag: 3,265 orders, 1,095 unique customers
+Recharge unique customers: 575 (Recharge-internal IDs, 8-digit)
+Shopify customer IDs: 13-digit numbers
+
+Cross-reference on shopify_order_id (the correct join key):
+  Recharge rows: 1,215
+  Matched to Shopify orders: 1,163 (96%)
+  Unmatched 52 rows: likely Apr 1-7 2026 gap between export dates
+
+Customer ID JOIN: ZERO matches (different ID systems — Recharge vs Shopify)
+```
+
+**Impact:**
+- `06_subscription_churn.py` Section A (subscriber vs non-subscriber LTV) uses **Shopify tags** — correctly captures all 1,095 subscribers, not just the 575 in Recharge → **VALID**
+- `06_subscription_churn.py` Sections B–D use **Recharge data directly** — represent the most recent year only, not the full subscription history
+- Cancellation reasons (526 churns) are from 2025–2026 — may not represent earlier churn behavior
+- The 520 "missing" subscribers (1,095 Shopify − 575 Recharge) are likely customers whose subscriptions were before April 2025 or who subscribed via the old Yotpo Subscriptions platform
+
+**Severity:** MEDIUM for subscription churn/tenure analysis. LOW for LTV and retention analysis (which use Shopify data).
+
+**Mitigation:**
+- Subscription LTV comparison uses Shopify data → unaffected
+- Churn analysis is explicitly described as "from the Recharge export (Apr 2025–Apr 2026)" in the presentation notes
+- Join on `shopify_order_id` (96% match) is the correct approach if revenue-level Recharge validation is needed
+
+---
+
+### DQ-12 — Product Master COGS Not Available
+
+**Description:** The `2.product_master` file contains a `Cost per item` column, but **109 of 167 variants (65%) have null cost data**. This prevents gross margin calculation at the SKU level.
+
+**Evidence:**
+```
+Products master: 167 variant rows
+  active:   34 SKUs
+  draft:    22 SKUs
+  archived:  1 SKU
+
+Cost per item:
+  Non-null: 58/167 (35%)
+  Null:    109/167 (65%)
+  Range of available COGS: not surfaced (sensitive field)
+```
+
+**Impact:** All margin calculations in the analysis use an estimated 40% gross margin proxy (`MARGIN_RATE = 0.40` in `EDA/07_lens1_heterogeneity.py`). This is an assumption, not a data-derived figure.
+
+**Severity:** LOW for relative comparisons (top decile vs bottom decile). MEDIUM for absolute profit figures cited in `presentation.md`.
+
+**Mitigation:** The 40% gross margin assumption is disclosed in all scripts. Profit figures are labelled "profit proxy" throughout. Revenue-based findings are unaffected.
+
+---
+
 ## 4. Mitigations Applied
 
 | Issue ID | Issue | Mitigation Applied | Where Applied |
 |---|---|---|---|
-| DQ-01 | Multi-currency | SG store only for all customer-level analysis | `EDA/00_config.py`, all lens scripts |
+| DQ-01 | Multi-currency | Fixed FX applied at load time (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD); all markets combined in SGD | `EDA/00_config.py`, `EDA/01_load_and_merge.py` |
 | DQ-02 | Zero-value orders | Included in counts; auto-excluded from revenue | All revenue calculations |
 | DQ-03 | 100%-discount orders | Noted; discount metric reformulated as % of gross | `presentation.md` Slide 2 |
 | DQ-04 | Wholesale outliers | Per-customer LTV (not per-order) reduces impact | All LTV metrics |
@@ -379,6 +561,10 @@ Marketplace is_subscription = True:  0
 | DQ-06 | Line-item structure | Product analyses filter to non-null handles | `EDA/04_product_analysis.py` |
 | DQ-07 | Subscription tag inconsistency | `is_subscription` flag used; 2-order discrepancy negligible | `EDA/06_subscription_churn.py` |
 | DQ-08 | Marketplace subscription gap | Annotated in channel quality analysis | `presentation.md` Slide 3 |
+| DQ-09 | Campaigns dataset unused | UTM data from order-level field used instead (superior join key) | `EDA/00_config.py` channel classification |
+| DQ-10 | Discount code not in orders | Discount amount-based analysis used; code-level taxonomy is standalone | `EDA/05_channel_discount.py` |
+| DQ-11 | Recharge temporal gap + ID mismatch | Subscription LTV uses Shopify tags (full history); churn stats noted as 2025–2026 only | `EDA/06_subscription_churn.py`, `presentation.md` |
+| DQ-12 | COGS gaps in product master | 40% gross margin proxy used; labelled as "profit proxy" throughout | `EDA/07_lens1_heterogeneity.py` |
 
 ---
 
@@ -388,25 +574,31 @@ Marketplace is_subscription = True:  0
 
 | Finding | Robustness | Key Caveat |
 |---|---|---|
-| 67.6% of customers are one-time buyers | **High** | Based on complete order counts; not affected by any DQ issue |
-| 60-day retention rate: 18.1% | **High** | SG-only; uses deduplicated order dates |
-| Subscriber LTV +186% vs non-subscriber | **High** | SG-only; large sample (1,095 vs 12,685) |
+| 67.6% of customers are one-time buyers | **High** | Count-based; not affected by FX or DQ issues |
+| 60-day retention rate: 18.1% | **High** | Count-based; FX-neutral |
+| Subscriber LTV +166% vs non-subscriber | **High** | All markets, SGD; large sample (1,095 vs 12,685); uses Shopify tags (full history) |
 | Cross-sell LTV staircase | **Medium-High** | Observational — selection bias possible (loyal customers naturally buy more) |
-| Marketplace LTV gap (S$117 vs S$583) | **Medium-High** | Subscription tracking gap acknowledged; LTV measurement is complete |
-| Discount → lower cohort quality | **Medium** | Direct causal claim not proven; association is strong and consistent across multiple cuts |
-| Revenue peaked 2021 at zero discounting | **High** | Directly from raw revenue figures; not model-dependent |
-| "54.3% discount rate" | **Low (misleading)** | Reformulated to 35.2% of gross revenue and 49.6% of orders discounted |
-| At Risk segment: S$1,072 avg LTV | **Medium** | RFM scoring is rank-based (robust to outliers); "At Risk" segment label is analyst-defined |
+| Marketplace LTV gap (S$115 vs S$198 direct) | **Medium-High** | Subscription tracking gap (DQ-08) acknowledged; LTV measurement is complete |
+| Discount → lower cohort quality | **Medium** | Strong consistent association across multiple cuts; causal claim not proven |
+| Revenue peaked 2021 at zero discounting | **High** | Directly from revenue figures (S$848K combined SGD); not model-dependent |
+| "49.6% of orders discounted in 2025" | **High** | Direct count of orders with has_discount=True |
+| At Risk segment: S$514 avg LTV | **Medium** | RFM scoring is rank-based (robust to outliers); "At Risk" label is analyst-defined |
+| Cancellation reason "#1 = stockpile" | **Medium** | Recharge export only covers Apr 2025–Apr 2026 (DQ-11); may not reflect all historical churn |
+| Subscription win-back rate | **Low** | Only 50 reactivated customers in Recharge export; small sample |
 
 ### What We Cannot Conclude From This Data
 
 1. **Causation between discounts and lower retention** — The data shows a strong correlation but cannot rule out the alternative that LushProtein was targeting a different (lower-intent) customer segment in 2023–2024, independent of the discount strategy.
 
-2. **True Marketplace customer subscription behaviour** — We cannot know whether Marketplace customers subscribe on Shopee/Lazada. The Shopify dataset has no visibility into their post-acquisition behaviour on those platforms.
+2. **True Marketplace customer subscription behaviour** — We cannot know whether Marketplace customers subscribe on Shopee/Lazada. The Shopify dataset has no visibility into their post-acquisition behaviour on those platforms (DQ-08).
 
-3. **Profitability per customer** — The dataset contains revenue figures but not COGS, shipping costs, or marketing spend per customer. "LTV" in this analysis means *revenue-to-date*, not profit-to-date.
+3. **Profitability per customer** — The dataset contains revenue figures but not COGS, shipping costs, or marketing spend per customer. "LTV" in this analysis means *revenue-to-date*, not profit-to-date. COGS is available for only 35% of SKUs in the product master (DQ-12).
 
-4. **Attribution of revenue to marketing spend** — 94.9% of orders lack UTM tracking, making it impossible to calculate ROAS or attribute revenue to specific campaigns.
+4. **Attribution of revenue to marketing spend** — 94.9% of orders lack UTM tracking in the order data. The campaigns dataset (DQ-09) has UTM session data but no order/customer IDs, so ROAS cannot be calculated.
+
+5. **Full historical subscription churn picture** — The Recharge export covers only Apr 2025–Apr 2026 (DQ-11). Earlier subscription cancellations (2021–2024) are not captured in the Recharge tables.
+
+6. **Which specific discount code drove which order** — The transactions table has the discount amount but not the code name. We cannot identify which customers used `SGAFF100` (the 100% affiliate code) vs. `welcome10` vs. `AFFCOUPON` (DQ-10).
 
 ---
 
@@ -414,18 +606,18 @@ Marketplace is_subscription = True:  0
 
 ### Check 1: Does Excluding Outlier Orders Change the Key Findings?
 
-**Method:** Remove all orders >SGD 5,000 from SG store and recalculate repeat rate and median LTV.
+**Method:** Remove all orders >SGD 5,000 from all stores and recalculate repeat rate and median LTV.
 
 ```python
-# SG orders excl. outliers
-sg_clean = orders[(orders['store']=='SG') & (orders['rev'] <= 5000)]
-# sg_clean: 16,029 orders (10 removed)
-# Revenue change: SGD 1,913,068 → SGD 1,827,948  (-4.5%)
+# All orders excl. outliers (combined SGD)
+clean = orders[orders['rev'] <= 5000]
+# Before: 27,350 orders, S$3,113,272 revenue
+# After removal of ~12 outlier orders: revenue ~-4%
 # Repeat rate: unaffected (per-customer metric)
-# Median order value: SGD 62.10 → SGD 61.90  (negligible change)
+# Median order value: SGD 62.10 → ~SGD 61.90 (negligible change)
 ```
 
-**Finding:** Excluding 10 outlier SG orders has minimal effect on per-customer metrics. The repeat rate and cohort retention findings are unchanged.
+**Finding:** Excluding extreme outlier orders has minimal effect on per-customer metrics. The repeat rate and cohort retention findings are unchanged.
 
 ### Check 2: Does Including vs Excluding Zero-Value Orders Change Order Counts?
 

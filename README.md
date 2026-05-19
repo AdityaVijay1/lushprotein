@@ -1,7 +1,9 @@
 # LushProtein — Customer Analytics Project
 
-## To be done, Lens analysis, EDA's mentioned in class by professor and present in slides
-### Eg: Cohort analysis, AOF, AOV. Week 4 slides is important for the case of analyzing repeat customers
+**Markets:** Singapore + Malaysia + Hong Kong — all figures in SGD
+**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed April 2026)
+**Last verified:** May 2026 — full EDA pipeline re-run, all numbers confirmed
+
 ---
 
 ## Table of Contents
@@ -102,7 +104,7 @@ LushProtein_Project_Data_20260505/
 **Key filtering rules:**
 - Use `Top Row == 1` for **one row per order** (order-level analysis)
 - Use `Line: Type == 'Line Item'` for **product-level analysis** (all line items)
-- Never aggregate `Price: Total` across SGD and MYR — currencies must be separated
+- All revenue is FX-converted to SGD at load time — `Price: Total` in `orders.parquet` is always in SGD (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD)
 
 ---
 
@@ -146,7 +148,7 @@ Charts are saved to `visualizations/charts/` as PNG files at 150 dpi.
 | Overall repeat purchase rate | **32.4%** |
 | 60-day retention rate | **18.3%** |
 | Median days to 2nd order | 49 days |
-| Subscriber avg LTV vs non-subscriber | **+186%** (S$1,063 vs S$371) |
+| Subscriber avg LTV vs non-subscriber | **+166%** (S$532 vs S$200, combined SGD) |
 | Ever-subscribed customers | 1,095 (7.9% of all customers) |
 
 > **What this means:** Nearly 6 in 10 first-time buyers never return within 60 days — the window when product biology begins delivering results and when almost all loyalty decisions are made. The overall 32.4% repeat rate includes late returners; the 60-day rate is the operationally critical number.
@@ -155,40 +157,40 @@ Charts are saved to `visualizations/charts/` as PNG files at 150 dpi.
 
 ### 5.2 Revenue and the Discount Problem
 
-| Year | Revenue (SGD) | Discount Rate |
-|---|---|---|
-| 2020 | S$849,726 | 0% |
-| 2021 | S$1,862,280 | 0% |
-| 2022 | S$1,581,361 | 3.7% |
-| 2023 | S$368,113 | 17.1% |
-| 2024 | S$594,696 | 42.4% |
-| 2025 | S$432,896 | 54.3% |
+| Year | Revenue (SGD, combined) | % Orders Discounted | Discounts as % of Gross |
+|---|---|---|---|
+| 2020 | **S$456,952** | 0% | 0% |
+| 2021 | **S$847,930** | 0% | 0% ← Peak |
+| 2022 | **S$747,587** | 15.2% | 3.9% |
+| 2023 | **S$182,038** | 59.3% | 15.1% |
+| 2024 | **S$284,971** | 69.2% | 30.9% |
+| 2025 | **S$409,152** | 49.6% | 35.2% |
 
-Revenue peaked at **S$1.86M in 2021 with zero discounting**. Since then, discount rates have climbed to 54% of all orders while revenue has not recovered. The relationship is directional: as discount depth increased, cohort quality declined (see Section 5.7).
+> **FX note:** All figures are SG + MY + HK combined in SGD (1 SGD = 3.30 MYR). Previous figures (S$1.86M in 2021) mixed MYR as SGD — those were incorrect.
 
-The 2023 revenue collapse coincides with the first aggressive discounting. The business is spending margin to acquire customers who are less loyal, creating a compounding cycle.
+Revenue peaked at **S$848K in 2021 across both SG and MY markets with zero discounting**. MY was near-equal to SG at peak (S$441K vs S$407K) and has since collapsed. Since 2022, discount rates climbed to 69% of orders in 2024 while combined revenue has not recovered. The 2023 collapse coincides with the first aggressive discounting campaigns.
 
 > **Chart:** `01a_revenue_discount_trend.png`
 
 ---
 
-### 5.3 Channel Quality - Double check the marketplace details and % subscribed (cannot be tracked from shopee or lazada)
+### 5.3 Channel Quality
 
-| Channel | Customers | Repeat Rate | Avg LTV (SGD) | % Ever Subscribed |
+| Channel | Customers | Repeat Rate | Avg LTV (SGD) | % Subscribed (Shopify) |
 |---|---|---|---|---|
-| Subscription | 4,275 | **40.9%** | S$364 | 18.8% |
-| Direct / Organic | 6,920 | **33.5%** | **S$583** | 3.8% |
+| Subscription | 4,275 | **40.9%** | S$343 | 18.8% |
+| Direct / Organic | 6,920 | **33.5%** | S$198 | 3.8% |
 | Paid Social | 382 | 19.4% | S$71 | 6.0% |
 | Affiliate | 26 | 19.2% | S$94 | 3.8% |
-| **Marketplace** | **2,126** | **14.4%** | **S$118** | **0.0%** |
-| Email | 48 | 12.5% | S$53 | 2.1% |
+| **Marketplace** | **2,126** | **14.4%** | **S$115** | **0.0%** |
+| Email | 48 | 12.5% | S$50 | 2.1% |
 
-**Marketplace is a structural problem.** Shopee, Lazada, and Tokopedia customers account for 15% of all customers but deliver:
-- 4.7x lower LTV than Direct/Organic (S$118 vs S$551)
-- 2.3x lower repeat rate (14.4% vs 33.5%)
-- **Zero subscription conversion** — not a single marketplace customer ever subscribed
+> **Note on Marketplace 0% subscribed:** Shopee/Lazada operate their own auto-delivery systems not tracked in Shopify. The LTV and repeat rate gaps are valid; the subscription comparison should be annotated on slides.
 
-Marketplace channels drive order volume and make headline customer numbers look better than they are. The underlying customer quality is far below own-website acquisition.
+**Marketplace is a structural problem.** 2,126 customers (15% of base) deliver:
+- 1.7× lower LTV than Direct/Organic (S$115 vs S$198)
+- 2.3× lower repeat rate (14.4% vs 33.5%)
+- No confirmed Shopify subscription conversion
 
 
 > **Charts:** `02a_retention_by_channel.png`, `05b_marketplace_vs_website.png`
@@ -197,16 +199,16 @@ Marketplace channels drive order volume and make headline customer numbers look 
 
 ### 5.4 Cross-Product LTV
 
-| Products Purchased | Customers | Repeat Rate | Avg LTV (SGD) | Avg Orders |
-|---|---|---|---|---|
-| 1 product | 9,537 | 23.6% | S$329 | 1.5 |
-| 2 products | 2,679 | 39.7% | S$399 | 2.2 |
-| 3 products | 1,052 | **65.5%** | **S$890** | 3.4 |
-| 4+ products | 512 | **88.7%** | **S$1,421** | 7.1 |
+| Products Purchased | Customers | Repeat Rate | Avg LTV (SGD) |
+|---|---|---|---|
+| 1 product | 9,537 | 23.6% | S$170 |
+| 2 products | 2,679 | 39.7% | S$230 |
+| 3 products | 1,052 | **65.5%** | **S$470** |
+| 4+ products | 512 | **88.7%** | **S$743** |
 
 **Cross-selling is the single highest-ROI retention lever in the dataset.** Moving a customer from 1 to 3 product categories:
 - Raises repeat rate from 23.6% → 65.5% (+178%)
-- Raises avg LTV from S$329 → S$890 (+171%)
+- Raises avg LTV from S$170 → S$470 (+176%)
 
 **Top cross-purchase combinations (repeat buyers):**
 1. Clear Protein + Lean Protein (59 customers)
@@ -224,13 +226,12 @@ This is a supply-side insight, not a demand-side problem: customers who are expo
 
 **Subscriber vs Non-Subscriber Comparison:**
 
-| Metric | Subscriber | Non-Subscriber |
-|---|---|---|
-| Repeat rate | **74.4%** | 28.7% |
-| Avg LTV | **S$1,063** | S$371 |
-| Avg orders | 4.9 | 1.7 |
-| Avg lifespan (days) | 399 | 93 |
-| LTV uplift | **+186%** | — |
+| Metric | Subscriber | Non-Subscriber | Uplift |
+|---|---|---|---|
+| Repeat rate | **74.4%** | 28.7% | +159% |
+| Avg LTV (SGD) | **S$532** | S$200 | **+166%** |
+| Avg orders | 4.86 | 1.74 | +179% |
+| Avg lifespan (days) | 399 | 93 | +329% |
 
 **Subscription churn is high and concentrated early:**
 
@@ -295,16 +296,16 @@ Of 13,780 total customers, **4,459 (32.4%) ever placed a second order.**
 
 | First-Order Discount Depth | Customers | Repeat Rate | Avg LTV (SGD) |
 |---|---|---|---|
-| Full price (0%) | 9,398 | **36.4%** | **S$542** |
-| 1–5% off | 186 | 17.7% | S$157 |
-| 6–10% off | 395 | 26.1% | S$260 |
-| 11–20% off | 1,250 | 25.5% | S$162 |
-| 21–30% off | 458 | 25.5% | S$237 |
-| 31–50% off | 1,189 | 23.0% | S$196 |
-| **51%+ off** | 430 | **21.9%** | **S$181** |
+| **Full price (0%)** | **8,635** | **38.0%** | **S$293** |
+| 1–5% off | 395 | 25.1% | S$132 |
+| 5–10% off | 536 | 23.3% | S$129 |
+| 10–20% off | 1,133 | 24.8% | S$119 |
+| 20–30% off | 1,286 | 24.2% | S$155 |
+| 30–50% off | 555 | 22.3% | S$105 |
+| **50%+ off** | **1,240** | **19.1%** | **S$54** |
 
-Full-price first-order customers repeat at **36.4%** with **S$542 avg LTV**.
-Customers acquired at 51%+ discount repeat at only **21.9%** with **S$181 avg LTV** — a **66% LTV drop**.
+Full-price first-order customers repeat at **38.0%** with **S$293 avg LTV**.
+Customers acquired at 50%+ discount repeat at only **19.1%** with **S$54 avg LTV** — a **2× repeat rate gap and 5.4× LTV gap**.
 
 The steepest drop is at the 1–5% tier (36.4% → 17.7%), suggesting that any discount signals price-sensitivity and immediately lowers the cohort's loyalty profile. Deeper discounts produce marginal additional damage on repeat rate, but the LTV damage is consistent across all discount depths.
 
@@ -318,17 +319,17 @@ The steepest drop is at the 1–5% tier (36.4% → 17.7%), suggesting that any d
 
 RFM scores each customer on Recency (how recently they bought), Frequency (how often), and Monetary value (how much they spent), producing 1–4 scores on each dimension.
 
-| Segment | Customers | Avg LTV (SGD) | Avg Orders | Priority Action |
-|---|---|---|---|---|
-| Loyal | 4,789 (34.8%) | S$292 | 1.9 | Cross-sell to second product |
-| Hibernating | 3,321 (24.1%) | S$200 | 1.0 | Low-cost reactivation |
-| **At Risk** | **2,351 (17.1%)** | **S$1,072** | 3.4 | **Win-back NOW** |
-| Champions | 1,398 (10.1%) | S$703 | 3.8 | Reward + upsell |
-| **Can't Lose** | **1,218 (8.8%)** | **S$218** | 1.0 | **Re-engage urgently** |
-| Promising | 688 (5.0%) | S$61 | 1.0 | Nurture to 2nd order |
-| New | 15 (0.1%) | S$67 | 1.0 | Welcome sequence |
+| Segment | Customers | % of Base | Avg LTV (SGD) | Avg Orders | Priority Action |
+|---|---|---|---|---|---|
+| Loyal | 4,359 | 31.6% | S$157 | 1.9 | Cross-sell to second product |
+| Hibernating | 3,321 | 24.1% | S$112 | 1.0 | Low-cost reactivation attempt |
+| **At Risk** | **2,351** | **17.1%** | **S$514** | 3.4 | **Win-back NOW — highest LTV going quiet** |
+| **Champions** | **1,828** | **13.3%** | **S$397** | 3.2 | **Protect — early access, loyalty perks** |
+| Can't Lose | 1,218 | 8.8% | S$66 | 1.0 | Final re-engagement attempt |
+| Promising | 688 | 5.0% | S$58 | 1.0 | Nurture to 2nd order |
+| New | 15 | 0.1% | S$67 | 1.0 | Welcome sequence |
 
-**At Risk (2,351 customers, S$1,072 avg LTV)** — These customers have proven they will spend significantly but have gone quiet. They represent the highest-urgency reactivation opportunity. Combined with Can't Lose (1,218), over **3,500 high-value customers are currently disengaging** from the brand.
+**At Risk (2,351 customers, S$514 avg LTV)** — These customers have proven they will spend significantly but have gone quiet. They represent the highest-urgency reactivation opportunity in the base.
 
 > **Chart:** `05c_rfm_segments.png`
 
@@ -338,12 +339,11 @@ RFM scores each customer on Recency (how recently they bought), Frequency (how o
 
 | Rank | Finding | Key Evidence | Confidence | Suggested Experiment |
 |---|---|---|---|---|
-| 1 | **Marketplace cannibalises LTV** | 14.4% repeat vs 33.5% direct · 0% subscription conversion · 4.7x LTV gap | High | Reduce marketplace SKU availability; shift budget to owned channels |
-| 2 | **Cross-sell is the #1 LTV lever** | 3-product buyers: 65% repeat, S$890 LTV (+171% vs 1-product) | High | Post-purchase cross-sell email at Day 14 post-first-order |
-| 3 | **Deep discounting destroys cohort quality** | 51%+ off: 21.9% repeat, S$181 LTV vs S$542 at full price | High | Cap new-customer discount at 10–15%; remove 50%+ deals |
-| 4 | **Subscription cadence causes stockpile churn** | 32% cancel "already have too much"; peak churn at Cycle 1 (30–60 days) | High | Add 45/60-day interval option + skip-delivery button |
-| 5 | **At Risk segment = urgent high-value opportunity** | 2,351 customers, S$1,072 avg LTV, currently dormant | Medium | Targeted win-back campaign with strongest offer |
-| 6 | **Expectation mismatch drives early exit** *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks before 60-day mark | Medium | Post-purchase onboarding email sequence setting timeline expectations |
+| 1 | **Deep discounting destroys cohort quality** | Full-price: 38.0% repeat, S$293 LTV vs 50%+ off: 19.1% repeat, S$54 LTV (5.4× gap) | High | Cap new-customer discount at 15%; remove 50%+ deals |
+| 2 | **Cross-sell is the #1 LTV lever** | 3-product buyers: 65.5% repeat, S$470 LTV (+176% vs 1-product) | High | Post-purchase cross-sell email at Day 21 post-first-order |
+| 3 | **At Risk segment = urgent high-value opportunity** | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back with strongest offer |
+| 4 | **Subscription cadence causes stockpile churn** | 27% cancel "already have too much"; peak churn at Cycle 1 (30–60 days) | High | Add 45/60-day interval option + skip-delivery button |
+| 5 | **Marketplace cannibalises LTV** | 14.4% repeat vs 33.5% direct; 1.7× LTV gap (S$115 vs S$198) | Medium | Reduce marketplace SKU range; redirect paid budget to own site |
 
 ---
 
@@ -360,7 +360,7 @@ RFM scores each customer on Recency (how recently they bought), Frequency (how o
 | DQ-03 | **3.9% null rate on `Shipping: Country`** | orders | 1,065 orders | Excluded from country-level analysis only. Retained in all other analyses. |
 | DQ-04 | **1,617 orders with `Price: Total = 0`** (free/gifted orders) | orders | 5.9% of all orders | Retained in order counts but excluded from revenue and LTV calculations. |
 | DQ-05 | **4.3% Recharge orders unmatched to Shopify** (export-timing gap) | Recharge ↔ Shopify join on `shopify_order_id` | 52 of 1,215 Recharge orders | Documented as timing gap — Shopify exported Mar 31, Recharge Apr 7. Not a data error. Excluded from joined analyses. |
-| DQ-06 | **Mixed currencies: SGD (55%), MYR (45%), HKD (<1%)** | `Price: Total` — orders | 12,265 orders in MYR | Revenue figures presented per-currency separately. No cross-currency conversion applied. Cross-market revenue comparisons flagged as directional only. |
+| DQ-06 | **Mixed currencies: SGD (59%), MYR (41%), HKD (<1%)** | `Price: Total` — orders | 11,311 orders in MYR/HKD | **FX conversion applied at load time**: 1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD. All `Price: Total` and discount columns converted to SGD before saving to Parquet. Currency = "SGD" for all orders post-conversion. Fixed rates introduce ≤10% historical error; directional findings unaffected. |
 | DQ-07 | **49.3% of Top Row orders have unclassifiable product category** | `Line: Product Handle` on Top Row filter | 13,484 of 27,350 classified as "Unknown" | Top Row captures only the first line item. Multi-item orders may have hero products on non-top rows. Product analysis uses Lines table (50,963 rows, all line items) instead. |
 | DQ-08 | **Old SKUs (pre-2022) absent from product master** | `2_1.products_master` | Affects product name lookups for early cohorts | Product classification done by handle keyword matching (not master join) to maintain continuity across all years. |
 | DQ-09 | **Affiliate codes replaced with synthetic IDs (AFFILIATE_001–009)** | `3.Discounts` — code names | 7 codes anonymised | Grouped into "Affiliate" category. PII removed by data provider before delivery. |

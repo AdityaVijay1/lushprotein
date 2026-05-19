@@ -1,6 +1,6 @@
 metric,n,mean,median,mean_to_median_ratio,pct_below_mean,p90
-Total Transactions (orders),8182,1.84,1.0,1.84,0.716,3.0
-Total Spend (SGD),8182,218.43,63.81,3.42,0.841,349.5
-Profit Proxy (SGD),8182,87.37,25.52,3.42,0.841,139.8
-AOV (SGD per order),8182,90.69,53.91,1.68,0.727,151.92
-Lifespan (days),8182,124.21,0.0,,0.821,400.0
+Total Transactions (orders),13780,1.98,1.0,1.98,0.676,4.0
+Total Spend (SGD),13780,225.9,66.86,3.38,0.827,407.88
+Profit Proxy (SGD),13780,90.36,26.74,3.38,0.827,163.15
+AOV (SGD per order),13780,92.39,53.62,1.72,0.739,162.92
+Lifespan (days),13780,117.08,0.0,,0.817,395.0

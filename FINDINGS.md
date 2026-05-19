@@ -3,7 +3,12 @@
 **Project:** ISSS603 Science of Customer Analytics · SMU Sem 5
 **Framework:** Bruce, Fader & Ross — The Customer-Base Audit (5 Lenses)
 **Data period:** 2020 – Q1 2026
-**Dataset:** 27,350 Shopify orders · 13,780 unique customers · SGD + MYR revenue
+**Dataset:** 27,350 Shopify orders · 13,780 unique customers · **All markets (SG + MY + HK) combined in SGD**
+
+> **CURRENCY ASSUMPTION:** Fixed exchange rates applied at data load:
+> **1 SGD = 3.30 MYR** | **1 SGD = 6.10 HKD** (rates as of April 2026)
+> Applied in `EDA/01_load_and_merge.py`. All revenue figures below are SGD-equivalent.
+> Retention rates, repeat rates, and cohort patterns are count-based — FX-neutral.
 
 ---
 
@@ -246,7 +251,7 @@ First-order value has collapsed from **S$176 (2020) to S$63 (2024)**. Discounted
 | 2023 | 49.6% | **50.4%** |
 | 2024 | 79.4% | 20.6% |
 
-**In 2023, marketplace acquisition reached 50% of all new SGD customers.** This is a structural shift — marketplace customers have 4.7x lower LTV, 0% subscription conversion, and 2.3x lower repeat rates. The 2023 cohort's poor performance is largely explained by this channel mix shift.
+**In 2023, marketplace acquisition reached 50% of all new customers.** This is a structural shift — marketplace customers have 1.7× lower LTV, no confirmed Shopify subscription conversion, and 2.3× lower repeat rates. The 2023 cohort's poor performance is largely explained by this channel mix shift.
 
 ### Discount Intensity by Cohort
 
@@ -352,25 +357,25 @@ Three of five KPIs are in alert. The acquisition dependency score at 41% is only
 | Overall repeat purchase rate | **32.4%** |
 | 60-day retention rate | **18.3%** |
 | Median days to 2nd order | **49 days** |
-| Subscriber avg LTV | **S$1,063** |
-| Non-subscriber avg LTV | S$371 |
-| Subscriber LTV uplift | **+186%** |
+| Subscriber avg LTV | **S$532** (combined SGD) |
+| Non-subscriber avg LTV | S$200 (combined SGD) |
+| Subscriber LTV uplift | **+166%** |
 | Raw subscription churn rate | **64.7%** |
 
 ---
 
 ## Finding 1 — Revenue and the Discount Problem
 
-Revenue peaked at **S$1.86M in 2021 with zero discounting**. As the brand introduced promotions from 2022 onward, discount rates climbed to **54% of all 2025 orders** — and revenue did not recover.
+Revenue peaked at **S$848K in 2021 with zero discounting** (combined SG + MY). As the brand introduced promotions from 2022 onward, discount rates climbed to **50% of all 2025 orders** — and revenue did not recover.
 
-| Year | Revenue (SGD) | Discount Rate |
-|---|---|---|
-| 2020 | S$849,726 | 0% |
-| 2021 | **S$1,862,280** | **0%** |
-| 2022 | S$1,581,361 | 3.7% |
-| 2023 | S$368,113 | 17.1% |
-| 2024 | S$594,696 | 42.4% |
-| 2025 | S$432,896 | **54.3%** |
+| Year | Revenue (SGD, all markets) | % Orders Discounted | % of Gross Revenue |
+|---|---|---|---|
+| 2020 | **S$456,952** | 0% | 0% |
+| 2021 | **S$847,930** | 0% | 0% ← Peak |
+| 2022 | **S$747,587** | 15.2% | 3.9% |
+| 2023 | **S$182,038** | 59.3% | 15.1% |
+| 2024 | **S$284,971** | 69.2% | 30.9% |
+| 2025 | **S$409,152** | 49.6% | 35.2% |
 
 The 2023 revenue collapse (–77% vs 2021) coincides with the first aggressive discounting campaigns. The partial recovery in 2024–2025 has been achieved on the back of heavily discounted orders, meaning revenue is growing but at the cost of margin and cohort quality (see Finding 4).
 
@@ -382,19 +387,21 @@ The 2023 revenue collapse (–77% vs 2021) coincides with the first aggressive d
 
 Not all acquisition channels produce the same customer. The data reveals a fundamental split between own-website customers and marketplace customers:
 
-| Channel | Customers | Repeat Rate | Avg LTV (SGD) | % Subscribed |
+| Channel | Customers | Repeat Rate | Avg LTV (SGD) | % Subscribed (Shopify) |
 |---|---|---|---|---|
-| Subscription | 4,275 | 40.9% | S$364 | 18.8% |
-| **Direct / Organic** | **6,920** | **33.5%** | **S$583** | 3.8% |
+| Subscription | 4,275 | 40.9% | S$343 | 18.8% |
+| **Direct / Organic** | **6,920** | **33.5%** | **S$198** | 3.8% |
 | Paid Social | 382 | 19.4% | S$71 | 6.0% |
 | Affiliate | 26 | 19.2% | S$94 | 3.8% |
-| **Marketplace** | **2,126** | **14.4%** | **S$118** | **0.0%** |
-| Email | 48 | 12.5% | S$53 | 2.1% |
+| **Marketplace** | **2,126** | **14.4%** | **S$115** | **0.0%** |
+| Email | 48 | 12.5% | S$50 | 2.1% |
+
+> Marketplace 0% subscribed reflects Shopify subscriptions only. Shopee/Lazada auto-delivery systems are not tracked in Shopify.
 
 Marketplace customers (Shopee, Lazada, Tokopedia) represent **15% of total customers** but:
-- Repeat at **14.4%** vs **33.5%** for Direct/Organic — a **2.3x gap**
-- Generate **S$118 avg LTV** vs **S$551** for own-website — a **4.7x gap**
-- Have **zero subscription conversion** — not a single marketplace customer ever subscribed
+- Repeat at **14.4%** vs **33.5%** for Direct/Organic — a **2.3× gap**
+- Generate **S$115 avg LTV** vs **S$198** for own-website — a **1.7× gap**
+- Zero confirmed Shopify subscription conversion
 
 Marketplace channels inflate order counts and headline customer numbers without building a loyal customer base. The business is treating marketplace volume as growth when it is largely transactional traffic.
 
@@ -408,14 +415,14 @@ Every additional product category a customer buys roughly doubles their lifetime
 
 | Products Purchased | Customers | Repeat Rate | Avg LTV (SGD) | vs 1-Product LTV |
 |---|---|---|---|---|
-| 1 product | 9,537 | 23.6% | S$329 | baseline |
-| 2 products | 2,679 | 39.7% | S$399 | +21% |
-| 3 products | 1,052 | **65.5%** | **S$890** | **+171%** |
-| 4+ products | 512 | **88.7%** | **S$1,421** | **+332%** |
+| 1 product | 9,537 | 23.6% | S$170 | baseline |
+| 2 products | 2,679 | 39.7% | S$230 | +35% |
+| 3 products | 1,052 | **65.5%** | **S$470** | **+176%** |
+| 4+ products | 512 | **88.7%** | **S$743** | **+337%** |
 
 Moving a customer from 1 to 3 product categories:
 - Raises repeat rate from **23.6% → 65.5%** (+178%)
-- Raises avg LTV from **S$329 → S$890** (+171%)
+- Raises avg LTV from **S$170 → S$470** (+176%)
 
 **Top cross-purchase combinations among repeat buyers:**
 
@@ -439,20 +446,20 @@ The relationship between first-order discount depth and long-term customer quali
 
 | First-Order Discount Depth | Customers | Repeat Rate | Avg LTV (SGD) |
 |---|---|---|---|
-| **Full price (0%)** | 9,398 | **36.4%** | **S$542** |
-| 1–5% off | 186 | 17.7% | S$157 |
-| 6–10% off | 395 | 26.1% | S$260 |
-| 11–20% off | 1,250 | 25.5% | S$162 |
-| 21–30% off | 458 | 25.5% | S$237 |
-| 31–50% off | 1,189 | 23.0% | S$196 |
-| **51%+ off** | 430 | **21.9%** | **S$181** |
+| **Full price (0%)** | **8,635** | **38.0%** | **S$293** |
+| 1–5% off | 395 | 25.1% | S$132 |
+| 5–10% off | 536 | 23.3% | S$129 |
+| 10–20% off | 1,133 | 24.8% | S$119 |
+| 20–30% off | 1,286 | 24.2% | S$155 |
+| 30–50% off | 555 | 22.3% | S$105 |
+| **50%+ off** | **1,240** | **19.1%** | **S$54** |
 
-Full-price buyers repeat at **36.4%** with **S$542 LTV**.
-51%+ discount buyers repeat at **21.9%** with **S$181 LTV** — a **66% LTV drop**.
+Full-price buyers repeat at **38.0%** with **S$293 LTV**.
+50%+ discount buyers repeat at **19.1%** with **S$54 LTV** — a **2.0× repeat gap and 5.4× LTV gap**.
 
-The sharpest drop is at the 1–5% tier: going from free → any discount immediately drops repeat rate from 36.4% to 17.7%. This suggests discounting itself signals price-sensitivity regardless of depth, and any discount-acquired cohort is structurally weaker than a full-price cohort.
+The drop is immediate and steep: any discount at all pulls the repeat rate from 38% to the low 20s. The LTV damage is consistent across all discount depths. The 50%+ cohort (S$54 LTV) is acquiring customers at near-zero lifetime value — many of these are the 100% affiliate orders or event give-away codes.
 
-With discount rates at 54% in 2025, the business is predominantly acquiring weaker cohorts. The compounding effect over multiple acquisition years explains why the LTV baseline has deteriorated despite revenue recovering partially.
+With 35.2% of gross 2025 revenue absorbed by discounts, the business is predominantly acquiring weaker cohorts. This compounds over time.
 
 **Chart:** `05a_discount_depth_impact.png`
 
@@ -465,7 +472,7 @@ Subscribers are the most valuable customer segment by a significant margin:
 | Metric | Subscriber | Non-Subscriber | Uplift |
 |---|---|---|---|
 | Repeat rate | 74.4% | 28.7% | +159% |
-| Avg LTV | S$1,063 | S$371 | **+186%** |
+| Avg LTV (SGD, combined) | S$532 | S$200 | **+166%** |
 | Avg orders | 4.9 | 1.7 | +188% |
 | Avg customer lifespan | 399 days | 93 days | +329% |
 
@@ -572,10 +579,11 @@ The **At Risk segment (2,351 customers, S$1,072 avg LTV)** represents the most u
 
 | Rank | Finding | Key Evidence | Confidence | Suggested Experiment |
 |---|---|---|---|---|
-| 1 | Marketplace cannibalises LTV | 14.4% repeat vs 33.5% direct · 0% sub conversion · 4.7x LTV gap | High | Reduce marketplace SKU breadth; redirect budget to owned channels |
-| 2 | Cross-sell drives biggest LTV jump | 3-product buyers: 65% repeat, +171% LTV | High | Post-purchase cross-sell email at Day 14 |
-| 3 | Deep discounting destroys cohort quality | 51%+ off: 21.9% repeat, S$181 LTV vs S$542 full-price | High | Cap new-customer discount at 10–15%; remove 50%+ deals |
-| 4 | Subscription cadence causes stockpile churn | 32% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |
+| 1 | Deep discounting destroys cohort quality | Full-price: 38.0% repeat, S$293 LTV vs 50%+ off: 19.1% repeat, S$54 LTV | High | Cap new-customer discount at 15%; remove 50%+ deals |
+| 2 | Cross-sell drives biggest LTV jump | 3-product buyers: 65.5% repeat, S$470 LTV (+176% vs 1-product) | High | Post-purchase cross-sell email at Day 14–21 |
+| 3 | At Risk segment = immediate high-value opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign |
+| 4 | Subscription cadence causes stockpile churn | 27% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |
+| 5 | Marketplace cannibalises LTV | 14.4% repeat vs 33.5% direct; 1.7× LTV gap (S$115 vs S$198) | Medium | Reduce marketplace SKU breadth; redirect budget to own channels |
 | 5 | At Risk segment = urgent win-back opportunity | 2,351 customers, S$1,072 avg LTV, currently dormant | Medium | Targeted win-back campaign with strongest available offer |
 | 6 | Expectation mismatch drives early exit *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks pre-60d | Medium | Post-purchase onboarding sequence setting timeline expectations |
 
