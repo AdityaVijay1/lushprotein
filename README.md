@@ -1,8 +1,7 @@
 # LushProtein — Customer Analytics Project
 
 **Markets:** Singapore + Malaysia + Hong Kong — all figures in SGD
-**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed April 2026)
-**Last verified:** May 2026 — full EDA pipeline re-run, all numbers confirmed
+**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD
 
 ---
 
