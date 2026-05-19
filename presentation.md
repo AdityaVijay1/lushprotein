@@ -6,7 +6,7 @@
 
 > ⚠️ **MARKET SCOPE — IMPORTANT ASSUMPTION**
 > All figures in this document cover **SG + MY + HK combined**, converted to SGD using fixed rates:
-> **1 SGD = 3.30 MYR · 1 SGD = 6.10 HKD** (rates fixed at April 2026; historical FX movements not applied).
+> **1 SGD = 3.30 MYR · 1 SGD = 6.10 HKD** (average rate estimate over 5 years).
 > Previous SG-only figures are shown in parentheses where materially different.
 > Retention rates, repeat rates, and cohort patterns are not affected by the FX conversion — they are count-based.
 > Revenue and LTV figures change because the MY market (which was previously excluded) is now included.
