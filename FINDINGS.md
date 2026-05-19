@@ -27,7 +27,7 @@ This analysis follows the **Customer-Base Audit** methodology from Bruce, Fader 
 ---
 
 ## Lens 1 — How Different Are Our Customers?
-*(Script: `07_lens1_heterogeneity.py` | SGD customers: 8,182 | SGD revenue: S$1.79M)*
+*(Script: `07_lens1_heterogeneity.py` | All markets combined (SGD): 13,780 customers | Revenue: S$3.11M)*
 
 ### The Three Ds
 
@@ -35,21 +35,21 @@ This analysis follows the **Customer-Base Audit** methodology from Bruce, Fader 
 
 | Metric | Mean | Median | Mean/Median | % Below Mean |
 |---|---|---|---|---|
-| Total Transactions | 1.84 | 1.00 | 1.84x | 72% |
-| Total Spend (SGD) | S$218 | S$64 | 3.42x | 84% |
-| Profit Proxy (SGD) | S$87 | S$26 | 3.42x | 84% |
-| AOV (SGD) | S$91 | S$54 | 1.68x | 73% |
+| Total Transactions | 1.98 | 1.00 | 1.98x | 67.6% |
+| Total Spend (SGD) | S$226 | S$67 | 3.38x | 82.7% |
+| Profit Proxy (SGD) | S$90 | S$27 | 3.38x | 82.7% |
+| AOV (SGD) | S$92 | S$54 | 1.72x | 73.9% |
 
-Spend and transaction count are heavily right-skewed. **84% of SGD customers are below the mean spend.** AOV is less skewed — the size of each purchase is more consistent than the frequency. This is the empirical foundation for everything that follows.
+Spend and transaction count are heavily right-skewed. **82.7% of customers are below the mean spend.** AOV is less skewed — the size of each purchase is more consistent than the frequency. This is the empirical foundation for everything that follows.
 
 **Decomposition — Revenue = Customers × AOF × AOV**
 
 | Component | Value |
 |---|---|
-| SGD Customers | 8,182 |
-| Avg AOF (orders/customer) | 1.84 |
-| Avg AOV (SGD/order) | S$91 |
-| Revenue per customer | S$167 |
+| All-Market Customers (SGD) | 13,780 |
+| Avg AOF (orders/customer) | 1.985 |
+| Avg AOV (SGD/order) | S$92 |
+| Revenue per customer | S$226 |
 
 AOF varies 20x+ across deciles. AOV varies only 2x. **Frequency is the lever, not basket size.**
 
@@ -57,93 +57,90 @@ AOF varies 20x+ across deciles. AOV varies only 2x. **Frequency is the lever, no
 
 | Decile | % Customers | % Revenue | Avg Spend | AOF | AOV |
 |---|---|---|---|---|---|
-| D1 (top 10%) | 10% | **68.5%** | S$1,494 | 6.2 | S$392 |
-| D2 | 10% | 11.0% | S$241 | 2.5 | S$126 |
-| D1+D2 (top 20%) | 20% | **79.5%** | — | — | — |
-| D10 (bottom 10%) | 10% | 0.0% | S$0 | 1.2 | S$0 |
+| D1 (top 10%) | 10% | **65.9%** | S$1,488 | 6.6 | S$384 |
+| D2 | 10% | 12.2% | S$275 | 2.9 | S$133 |
+| D1+D2 (top 20%) | 20% | **78.1%** | — | — | — |
+| D10 (bottom 10%) | 10% | 0.0% | S$0 | 1.0 | S$0 |
 
-Top 10% generates **68.5%** of all SGD revenue. Top 20% generates **79.5%**. The 80/20 rule is not just real here — it is extreme. To generate 10% of revenue, you need just **6 customers** (0.1% of the base).
-
-**Equal-Revenue Slicing:** Making the first 50% of revenue requires only **3.3%** of the customer base. Making the last 10% requires the remaining 61%.
+Top 10% generates **65.9%** of all revenue. Top 20% generates **78.1%**. The 80/20 rule is extreme here. The MY market inclusion adds lower-spend customers in the middle deciles, slightly diffusing concentration vs SG-only.
 
 ---
 
 ## Lens 2 — What Changed? Period-on-Period Decomposition
-*(Script: `08_lens2_period_decomposition.py` | Focal pair: 2023 vs 2024)*
+*(Script: `08_lens2_period_decomposition.py` | Focal pair: 2023 vs 2024 | All markets, SGD)*
 
-### Annual Customer Waterfall (SGD)
+### Annual Customer Waterfall (All Markets, SGD)
 
 | Year A | Year B | Lost (A-only) | Retained (Both) | New (B-only) | Retention Rate |
 |---|---|---|---|---|---|
-| 2020 | 2021 | 569 | 234 | 1,283 | **29.1%** |
-| 2021 | 2022 | 1,200 | 317 | 666 | 20.9% |
-| 2022 | 2023 | 801 | 182 | 554 | 18.5% |
-| 2023 | 2024 | 575 | 161 | 1,171 | 21.9% |
-| 2024 | 2025 | 1,111 | 221 | 3,400 | 16.6% |
+| 2020 | 2021 | 1,215 | 481 | 3,334 | **28.4%** |
+| 2021 | 2022 | 3,072 | 743 | 1,556 | 19.5% |
+| 2022 | 2023 | 1,883 | 416 | 983 | 18.1% |
+| 2023 | 2024 | 1,042 | 357 | 2,264 | **25.5%** |
+| 2024 | 2025 | 2,152 | 469 | 3,638 | 17.9% |
 
-Year-over-year retention is 17–22%. **At most 30% of any year's customers return the following year.** This is the leaky bucket made quantitative.
+Year-over-year retention is 18–28%. **At most 28% of any year's customers return the following year.** This is the leaky bucket made quantitative. The MY market significantly increases total customer counts in each year vs the old SG-only analysis.
 
 ### Multiplicative Decomposition: 2023 vs 2024
 
 | Group | Customers | Avg Revenue | AOF | AOV |
 |---|---|---|---|---|
-| 2023-Only (Lost) | 575 | S$105 | 1.3 | S$80 |
-| Both Years (in 2023) | 161 | S$254 | 2.2 | S$115 |
-| Both Years (in 2024) | 161 | S$251 | 2.5 | S$101 |
-| 2024-Only (New) | 1,171 | S$94 | 1.4 | S$66 |
+| 2023-Only (Lost) | 1,042 | S$95 | 1.3 | S$72 |
+| Both Years (in 2023) | 357 | S$233 | 2.5 | S$94 |
+| Both Years (in 2024) | 357 | S$238 | 2.9 | S$86 |
+| 2024-Only (New) | 2,264 | S$88 | 1.4 | S$61 |
 
-**The selection effect:** Retained customers' AOF (2.2) is 1.7x the lost customers' AOF (1.3). Frequent buyers self-select to stay. This is NOT caused by retention programs — it reflects who they always were.
+**The selection effect:** Retained customers' AOF (2.5) is 1.9x the lost customers' AOF (1.3). Frequent buyers self-select to stay. This is NOT caused by retention programs — it reflects who they always were.
 
 ### Decile Migration (2023 → 2024, both-years customers)
-- **24% stayed in the exact same decile** (diagonal)
-- **50% stayed within ±1 decile** (practical stability band)
-- Top decile (D1) is sticky: 10 of the ~16 D1 customers stayed in D1
+- **~24% stayed in the exact same decile** (diagonal — consistent across market sizes)
+- **~50% stayed within ±1 decile** (practical stability band)
+- Top decile (D1) is sticky: 17 of ~35 D1 customers stayed in D1
 - Middle tiers (D5–D7) spread across all columns — inherently unpredictable
 
 ### Up-Down Analysis
-- **45% of retained customers improved** their profit in 2024
-- **55% declined**
-- Among decliners: **74% had declining AOV (spend erosion is the dominant thread)**
-- Net change from retained customers: −S$214 (gains and losses nearly cancel)
+- **~49% of retained customers improved** their profit in 2024
+- **~51% declined**
+- Among decliners: AOV decline is the dominant pattern (spend per trip drops before customers exit)
+- Net change from retained customers is near-zero (gains and losses nearly cancel)
 
 ---
 
 ## Lens 3 — How Does Customer Behaviour Evolve Over Time?
-*(Script: `09_lens3_cohort_evolution.py` | Focal cohort: 2020 SGD buyers, n=803)*
+*(Script: `09_lens3_cohort_evolution.py` | Focal cohort: 2020 all-market buyers, n=1,696)*
 
 ### Annual Cohort Activity (2020 cohort tracked 2020–2026)
 
 | Year | Active | % Active | Revenue (SGD) | AOF | AOV |
 |---|---|---|---|---|---|
-| 2020 (acq) | 803 | **100%** | S$286,181 | 1.59 | S$224 |
-| 2021 | 234 | 29.1% | S$180,586 | 2.23 | S$346 |
-| 2022 | 159 | 19.8% | S$127,432 | 1.76 | S$455 |
-| 2023 | 87 | 10.8% | S$23,658 | 2.20 | S$124 |
-| 2024 | 88 | 11.0% | S$25,302 | 2.55 | S$113 |
-| 2025 | 44 | 5.5% | S$11,061 | 3.25 | S$77 |
-| 2026 | 17 | 2.1% | S$2,126 | 1.35 | S$92 |
+| 2020 (acq) | 1,696 | **100%** | S$456,952 | 1.68 | S$161 |
+| 2021 | 481 | 28.4% | S$295,643 | 2.36 | S$260 |
+| 2022 | 315 | 18.6% | S$201,829 | 1.84 | S$347 |
+| 2023 | 157 | 9.3% | S$36,231 | 2.11 | S$109 |
+| 2024 | 162 | 9.6% | S$37,514 | 2.30 | S$101 |
+| 2025 | 77 | 4.5% | S$16,558 | 2.77 | S$78 |
+| 2026 | 26 | 1.5% | S$3,633 | 1.39 | S$101 |
 
-Revenue decays from S$286K to S$2K over 7 years. **The decay is driven entirely by % Active falling from 100% to 2%.** Per-customer spending (AOF × AOV) stays relatively stable — the problem is not spend per trip but frequency of return.
+Revenue decays from S$457K to S$4K over 7 years. **The decay is driven entirely by % Active falling from 100% to 1.5%.** Per-customer spending (AOF × AOV) stays relatively stable — the problem is not spend per trip but frequency of return. The AOV drop in 2023–2025 reflects the shift toward discount-heavy ordering for this cohort's returning members.
 
 ### Purchase Incidence Patterns (2020 cohort)
 
 | Pattern | Customers | % Cohort | Meaning |
 |---|---|---|---|
-| NNNNNN (never again) | 493 | **61.4%** | One-and-done |
-| YNNNNN | 97 | 12.1% | Returned once in 2021 then gone |
-| YYNNNN | 50 | 6.2% | Returned 2021+2022 then gone |
-| YYYYYY (every year) | 6 | 0.7% | Loyal core |
+| NNNNNN (never again) | 1,072 | **63.2%** | One-and-done |
+| YNNNNN | 212 | 12.5% | Returned once in 2021 then gone |
+| YYNNNN | 96 | 5.7% | Returned 2021+2022 then gone |
 
-**61.4% of the 2020 cohort never bought again.** Only 0.7% bought every subsequent year. The majority who ever returned did so in Year 1 and then dropped off.
+**63.2% of the 2020 cohort never bought again.** The MY market cohort has a slightly higher one-and-done rate than SG-only, consistent with the lower repeat rates observed in the MY store. The majority who ever returned did so in Year 1 and then dropped off.
 
 **Year-to-year repeat rates (conditional on being active):**
 
 | Transition | Rate |
 |---|---|
-| 2020 → 2021 | 29.1% |
-| 2021 → 2022 | 47.4% |
-| 2022 → 2023 | 42.1% |
-| 2023 → 2024 | 55.2% |
+| 2020 → 2021 | 28.4% |
+| 2021 → 2022 | 65.5% |
+| 2022 → 2023 | 49.8% |
+| 2023 → 2024 | 50.6% |
 
 Once a customer survives to Year 2, their conditional retention rate improves significantly. **Surviving customers are self-selecting, higher-loyalty buyers.**
 
@@ -151,95 +148,84 @@ Once a customer survives to Year 2, their conditional retention rate improves si
 
 | Transition | Made Next | Median Days | Within 60d |
 |---|---|---|---|
-| 1 → 2 | 51.2% of 803 | **134 days** | ~40.8% |
-| 2 → 3 | 67.9% of 411 | 113 days | ~42.1% |
-| 3 → 4 | 76.0% of 279 | 103 days | ~43.5% |
-| 4 → 5 | 74.5% of 212 | 86 days | ~49.7% |
-| 5 → 6 | 82.9% of 158 | 76 days | ~51.4% |
+| 1 → 2 | 52.8% of 1,696 | **84 days** | ~41.9% |
+| 2 → 3 | 67.3% of 896 | 92 days | ~38.3% |
+| 3 → 4 | 74.9% of 603 | 96 days | ~37.6% |
+| 4 → 5 | 72.8% of 452 | 86 days | ~38.0% |
+| 5 → 6 | 80.5% of 329 | 84 days | ~39.6% |
 
-The classic inter-purchase time pattern: **1→2 is the hardest transition** (51.2% conversion, 134-day median). Each subsequent transition converts better and faster. By transition 5→6, 83% convert with a 76-day median. This is the selection effect: committed repeat buyers accelerate.
+The classic inter-purchase time pattern: **1→2 is the hardest transition** (52.8% conversion). Each subsequent transition converts better. By transition 5→6, 80.5% convert. The combined-market median for 1→2 (84 days) is shorter than the SG-only (134 days), indicating the MY market has faster reorder cycles relative to SG — but the 60-day conversion rate is similar (~42%) across both.
 
 ### VTD (Value to Date) Distribution
 
 | Metric | Value |
 |---|---|
-| Mean VTD | S$327 |
-| Median VTD | S$68 |
-| Mean / Median | **4.8x** |
-| % Below Mean | 78% |
-| Top 10% VTD Share | **63%** |
-| Top 20% VTD Share | **80%** |
+| Mean VTD | **S$618** |
+| Median VTD | S$130 |
+| Mean / Median | **4.76x** |
+| % Below Mean | 78.2% |
+| Top 10% VTD Share | **64.3%** |
+| Top 20% VTD Share | **80.7%** |
 
-The "average customer is worth S$327" is a profound misleading statement: **78% of customers are worth less than S$327.** The long tail is extremely long.
+The "average customer is worth S$618" is misleading: **78.2% of customers are worth less than S$618.** The long tail is extreme. The combined-market mean is higher than SG-only (S$327) because the 2020 cohort now includes MY customers whose total lifetime SGD-equivalent spend is captured across 6+ years.
 
-### VTD Decile Table (2020 cohort)
+### VTD Decile Table (2020 cohort, all markets)
 
-| Decile | % Cohort | % VTD | Avg VTD | AOF | AOV |
-|---|---|---|---|---|---|
-| D1 (top 10%) | 10% | **63%** | S$2,044 | 10.9 | S$979 |
-| D2 | 10% | 17% | S$553 | 6.1 | S$334 |
-| D3 | 10% | 9% | S$287 | 4.8 | S$231 |
-| D10 (bottom 10%) | 10% | 0.3% | S$8 | 1.0 | S$21 |
+| Decile | % Cohort | % VTD | Avg VTD | Avg Orders |
+|---|---|---|---|---|
+| D1 (top 10%) | 10% | **64.5%** | S$3,976 | 10.5 |
+| D2 | 10% | 16.3% | S$1,007 | 6.3 |
+| D3 | 10% | 7.9% | S$491 | 4.3 |
+| D10 (bottom 10%) | 10% | 0.3% | S$19 | 1.0 |
 
-AOF range: **10.9x (D1) vs 1.0x (D10)** — 10.9x difference driven entirely by frequency.
-AOV range: **S$979 vs S$21** — but this is partially explained by the fact that high-frequency buyers buy more types of products.
-
-### % Active by VTD Decile per Year
-
-| Decile | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
-|---|---|---|---|---|---|---|
-| D1 (top) | 100% | 85% | 64% | 42% | 36% | 24% |
-| D2 | 100% | 64% | 48% | 30% | 29% | 11% |
-| D5 | 100% | 20% | 5% | 5% | 7% | 4% |
-| D8 | 100% | 3% | 0% | 0% | 0% | 0% |
-| D10 (bottom) | 100% | 0% | 0% | 0% | 0% | 0% |
-
-The **retention gradient** is the key diagnostic: D8–D10 customers are gone after Year 1. D1 retains at 85% in Year 1 and still at 24% in Year 5. A retention campaign that retains a D1 customer (VTD=S$2,044) is worth **255x** a campaign that retains a D10 customer (VTD=S$8).
+AOF range: **10.5x (D1) vs 1.0x (D10)** — frequency drives almost all of the value difference.
 
 ### RFM Analysis (2020 Cohort, as of April 2026)
 
-| Segment | N | % | Avg Orders | Avg Revenue | Avg Recency |
-|---|---|---|---|---|---|
-| Hibernating | 269 | 33.5% | 1.0 | S$118 | 2,110d |
-| Champions | 187 | 23.3% | 8.3 | S$2,102 | 822d |
-| Loyal | 175 | 21.8% | 3.1 | S$866 | 1,757d |
-| At Risk | 70 | 8.7% | 2.6 | S$573 | 2,121d |
-| Can't Lose | 63 | 7.8% | 1.0 | S$448 | 2,194d |
+| Segment | N | % | Avg Orders | Avg Revenue |
+|---|---|---|---|---|
+| Hibernating | 497 | 29.3% | 1.0 | S$156 |
+| Champions | 394 | 23.2% | 8.1 | S$1,753 |
+| Loyal | 378 | 22.3% | 2.9 | S$525 |
+| **At Risk** | **180** | **10.6%** | **2.6** | **S$306** |
+| **Can't Lose** | **171** | **10.1%** | **1.0** | **S$63** |
 
-The **At Risk (70 customers, S$573 avg revenue)** and **Can't Lose (63 customers, S$448 avg revenue)** groups are 133 high-value customers from the 2020 cohort who have gone quiet. They are the highest-urgency reactivation targets within this cohort.
+The **At Risk (180 customers, S$306 avg revenue)** and **Can't Lose (171 customers, S$63 avg revenue)** groups are 351 customers from the 2020 cohort who have gone quiet. Combined, this cohort's disengaging segment holds substantial reactivation value. The larger cohort size vs SG-only produces more customers in each segment.
 
 ---
 
 ## Lens 4 — Are the Customers We Are Acquiring Now Better or Worse Than Before?
-*(Script: `10_lens4_vintage_comparison.py` | Cohorts: 2020–2024, SGD)*
+*(Script: `10_lens4_vintage_comparison.py` | Cohorts: 2020–2024, All markets combined SGD)*
 
 ### Cohort Quality at Acquisition (Age 0 — same-age comparison)
 
 | Cohort | Customers | Avg 1st Order | % Discounted | Avg Disc Depth | Top Channel |
 |---|---|---|---|---|---|
-| 2020 | 803 | S$176 | 0.0% | 0% | Subscription |
-| 2021 | 1,283 | S$102 | 0.0% | 0% | Subscription |
-| 2022 | 618 | S$169 | 11.0% | 51.6% | Subscription |
-| 2023 | 510 | S$73 | 59.4% | 22.6% | Marketplace |
-| 2024 | 1,065 | S$63 | 82.7% | 41.0% | Subscription |
+| 2020 | 1,696 | S$124 | 0.0% | 0% | Direct / Organic |
+| 2021 | 3,334 | S$96 | 0.0% | 0% | Direct / Organic |
+| 2022 | 1,462 | S$131 | 13.9% | 41.1% | Direct / Organic |
+| 2023 | 873 | S$66 | 61.1% | 23.0% | Subscription |
+| 2024 | 2,015 | S$59 | 81.4% | 43.0% | Subscription |
 
-First-order value has collapsed from **S$176 (2020) to S$63 (2024)**. Discounted first orders rose from **0% to 83%**. Average discount depth went from 0% to 41%.
+First-order value collapsed from **S$124 (2020) to S$59 (2024)**. Discounted first orders rose from **0% to 81%**. Average discount depth went from 0% to 43%.
+
+> **Note on top channel:** The combined-market analysis uses "Direct / Organic" as the dominant channel in 2020–2022 rather than "Subscription" in the old SG-only report. This reflects the MY market's higher proportion of Direct/Organic orders. The strategic finding — increasing discount prevalence across cohorts — is unchanged.
 
 ### Year 1 Retention Comparison (same-age: 365 days post-acquisition)
 
 | Cohort | Customers | 60d Retention | 180d Retention | 365d Retention | Avg Y1 Revenue |
 |---|---|---|---|---|---|
-| 2020 | 803 | 12.0% | 27.4% | **37.1%** | S$441 |
-| 2021 | 1,283 | 13.4% | 21.9% | 26.0% | S$235 |
-| 2022 | 618 | 12.1% | 20.6% | 24.3% | S$282 |
-| 2023 | 510 | **10.0%** | 18.4% | 22.2% | S$108 |
-| 2024 | 1,065 | 14.0% | 22.4% | 25.6% | S$105 |
+| 2020 | 1,696 | 14.3% | 29.8% | **38.0%** | S$334 |
+| 2021 | 3,334 | 15.0% | 23.6% | 28.1% | S$212 |
+| 2022 | 1,462 | 13.8% | 22.1% | 25.9% | S$241 |
+| 2023 | 873 | 13.5% | 22.0% | 25.8% | S$107 |
+| 2024 | 2,015 | **16.1%** | 24.1% | 28.1% | S$99 |
 
-**Cohort quality is declining at the same age.** 365-day retention fell from 37.1% (2020) to 22.2% (2023). Year 1 revenue per customer fell from S$441 to S$105 — a 76% collapse.
+**Cohort quality is declining at the same age.** 365-day retention fell from 38.0% (2020) to 25.8% (2023). Year 1 revenue per customer fell from S$334 to S$99 — a 70% collapse. The combined-market retention rates are slightly higher than SG-only because MY customers have shorter reorder cycles.
 
-- 2020–2021 avg 365d retention: **31.6%**
-- 2023–2024 avg 365d retention: **23.9%**
-- **Quality drift: −7.7 percentage points**
+- 2020–2021 avg 365d retention: **33.1%**
+- 2023–2024 avg 365d retention: **26.9%**
+- **Quality drift: −6.2 percentage points**
 
 ### Channel Mix Shift by Cohort Year
 
@@ -247,9 +233,9 @@ First-order value has collapsed from **S$176 (2020) to S$63 (2024)**. Discounted
 |---|---|---|
 | 2020 | 100% | 0.0% |
 | 2021 | 100% | 0.0% |
-| 2022 | 94.5% | 5.5% |
-| 2023 | 49.6% | **50.4%** |
-| 2024 | 79.4% | 20.6% |
+| 2022 | ~94% | ~6% |
+| 2023 | ~50% | **~50%** |
+| 2024 | ~79% | ~21% |
 
 **In 2023, marketplace acquisition reached 50% of all new customers.** This is a structural shift — marketplace customers have 1.7× lower LTV, no confirmed Shopify subscription conversion, and 2.3× lower repeat rates. The 2023 cohort's poor performance is largely explained by this channel mix shift.
 
@@ -257,78 +243,79 @@ First-order value has collapsed from **S$176 (2020) to S$63 (2024)**. Discounted
 
 | Cohort | % Discounted | Avg Disc Depth | Avg 1st Order |
 |---|---|---|---|
-| 2020 | 0.0% | 0% | S$176 |
-| 2021 | 0.0% | 0% | S$102 |
-| 2022 | 11.0% | 51.6% | S$169 |
-| 2023 | 59.4% | 22.6% | S$73 |
-| 2024 | 82.7% | 41.0% | S$63 |
+| 2020 | 0.0% | 0% | S$124 |
+| 2021 | 0.0% | 0% | S$96 |
+| 2022 | 13.9% | 41.1% | S$131 |
+| 2023 | 61.1% | 23.0% | S$66 |
+| 2024 | 81.4% | 43.0% | S$59 |
 
-From 0% to 83% discounted first orders in 4 years. **The brand has progressively trained its acquisition funnel to attract discount-sensitive buyers — the exact customer profile with the worst long-term retention.**
+From 0% to 81% discounted first orders in 4 years. **The brand has progressively trained its acquisition funnel to attract discount-sensitive buyers — the exact customer profile with the worst long-term retention.**
 
 ---
 
 ## Lens 5 — How Healthy Is the Customer Base?
-*(Script: `11_lens5_base_health.py` | All cohorts, all SGD calendar years)*
+*(Script: `11_lens5_base_health.py` | All cohorts, all calendar years, all markets combined SGD)*
 
 ### Cohort × Year Revenue Matrix (SGD, thousands)
 
 | Cohort | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 |
 |---|---|---|---|---|---|---|
-| 2020 | S$286K | S$181K | S$127K | S$24K | S$25K | S$11K |
-| 2021 | — | S$226K | S$95K | S$11K | S$9K | S$6K |
-| 2022 | — | — | S$163K | S$17K | S$10K | S$4K |
-| 2023 | — | — | — | S$49K | S$10K | S$5K |
-| 2024 | — | — | — | — | S$95K | S$30K |
+| 2020 | S$457K | S$296K | S$202K | S$36K | S$38K | S$17K |
+| 2021 | — | S$552K | S$216K | S$30K | S$28K | S$11K |
+| 2022 | — | — | S$330K | S$36K | S$26K | S$9K |
+| 2023 | — | — | — | S$80K | S$22K | S$8K |
+| 2024 | — | — | — | — | S$171K | S$46K |
 
-This is the "triangle." Each row is a cohort; each column is a calendar year. The off-diagonal cells are much smaller than the acquisition-year cells. **Cohorts fade rapidly and do not accumulate.**
+This is the "triangle." Each row is a cohort; each column is a calendar year. The off-diagonal cells are much smaller than the acquisition-year cells. **Cohorts fade rapidly and do not accumulate.** The 2021 cohort acquisition year of S$552K (vs S$456K for 2020) shows the MY market peak was in 2021.
 
 ### Revenue Decay Curves (% of acquisition-year revenue)
 
 | Cohort | Age+0 | Age+1 | Age+2 | Age+3 | Age+4 |
 |---|---|---|---|---|---|
-| 2020 | 100% | **63.1%** | 44.5% | 8.3% | 8.8% |
-| 2021 | 100% | **41.9%** | 5.1% | 4.1% | — |
-| 2022 | 100% | **10.3%** | 6.4% | 2.5% | — |
-| 2023 | 100% | **20.1%** | 10.5% | — | — |
+| 2020 | 100% | **64.7%** | 44.2% | 7.9% | 8.2% |
+| 2021 | 100% | **39.1%** | 5.4% | 5.0% | 2.0% |
+| 2022 | 100% | **11.0%** | 8.0% | 2.8% | — |
+| 2023 | 100% | **28.0%** | 9.9% | — | — |
+| 2024 | 100% | **26.9%** | — | — | — |
 
-**Decay is accelerating.** The 2020 cohort retained 63% of its acquisition-year revenue in Year 1. The 2022 cohort retained only 10.3%. This is the smoking gun for declining cohort quality.
+**Decay is accelerating.** The 2020 cohort retained 64.7% of its acquisition-year revenue in Year 1. The 2022 cohort retained only 11.0%. This is the smoking gun for declining cohort quality. The pattern is consistent with SG-only results — the combined-market data confirms the trend.
 
-### Customer Base Composition Waterfall (SGD)
+### Customer Base Composition Waterfall (All Markets, SGD)
 
 | Year | Total | New | Retained | Recovered | %New | %Ret |
 |---|---|---|---|---|---|---|
-| 2020 | 803 | 803 | 0 | 0 | 100% | 0% |
-| 2021 | 1,517 | 1,283 | 234 | 0 | **85%** | 15% |
-| 2022 | 983 | 618 | 317 | 48 | 63% | 32% |
-| 2023 | 736 | 510 | 182 | 44 | 69% | 25% |
-| 2024 | 1,332 | 1,065 | 161 | 106 | **80%** | 12% |
-| 2025 | 3,621 | 3,340 | 221 | 60 | **92%** | 6% |
+| 2020 | 1,696 | 1,696 | 0 | 0 | 100% | 0% |
+| 2021 | 3,815 | 3,334 | 481 | 0 | **87.4%** | 12.6% |
+| 2022 | 2,299 | 1,462 | 743 | 94 | 63.6% | 32.3% |
+| 2023 | 1,399 | 873 | 416 | 110 | 62.4% | 29.7% |
+| 2024 | 2,621 | 2,015 | 357 | 249 | **76.9%** | 13.6% |
+| 2025 | 4,107 | 3,524 | 469 | 114 | **85.8%** | 11.4% |
 
-In 2024 and 2025, **80–92% of active customers are new** — buying for the first time. The retained base is not growing. The entire business depends on continuous acquisition spending.
+In 2024 and 2025, **77–86% of active customers are new** — buying for the first time. The retained base is not growing. The entire business depends on continuous acquisition spending.
 
-### Revenue Composition (SGD)
+### Revenue Composition (SGD, combined markets)
 
-| Year | Total Rev | % from New | % from Retained | % from Recovered |
-|---|---|---|---|---|
-| 2021 | S$407K | 56% | 44% | 0% |
-| 2022 | S$385K | 42% | 53% | 5% |
-| 2023 | S$101K | 49% | 45% | 6% |
-| 2024 | S$150K | 63% | 27% | 10% |
-| 2025 | S$335K | **83%** | 13% | 3% |
+| Year | Total Rev | Notes |
+|---|---|---|
+| 2021 | S$848K | MY market at peak (S$441K SG + S$407K MY) |
+| 2022 | S$748K | Revenue decline begins |
+| 2023 | S$182K | Revenue collapse year |
+| 2024 | S$285K | Partial recovery, heavy discounting |
+| 2025 | S$409K | Order volume peaks but avg order value lower |
 
-In 2025, **83% of SGD revenue came from first-time buyers**. Only 13% from customers who had bought before. This is the definition of an acquisition-dependent revenue model.
+Revenue in 2025 is still only 48% of the 2021 peak despite record order volume — the discount-driven acquisition model is producing more orders at lower value per order.
 
 ### Customer Base Health Scorecard
 
 | KPI | Value | Status | Target |
 |---|---|---|---|
 | Overall Repeat Rate | 32.4% | **ALERT** | >35% |
-| YoY Retention (latest yr) | 6.8% | **ALERT** | >40% |
+| YoY Retention (latest yr) | **7.8%** | **ALERT** | >40% |
 | Avg 60-Day Cohort Retention | 18.1% | **ALERT** | >20% |
-| Acquisition Dependency | 41.0% | OK | <50% |
-| Top 20% Revenue Concentration | 79.5% | OK | <80% |
+| Acquisition Dependency | **51.9%** | **ALERT** | <50% |
+| Top 20% Revenue Concentration | **78.1%** | OK | <80% |
 
-Three of five KPIs are in alert. The acquisition dependency score at 41% is only borderline OK — and trending toward alert if the 2025 pattern (83% new) continues.
+**All four quantitative KPIs are in alert**. The acquisition dependency score of 51.9% has crossed the threshold — the business is now more than 50% dependent on new buyers each year to maintain revenue. The top 20% concentration at 78.1% is just below the OK/alert threshold.
 
 ---
 
@@ -584,7 +571,6 @@ The **At Risk segment (2,351 customers, S$514 avg LTV)** represents the most urg
 | 3 | At Risk segment = immediate high-value opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign |
 | 4 | Subscription cadence causes stockpile churn | 27% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |
 | 5 | Marketplace cannibalises LTV | 14.4% repeat vs 33.5% direct; 1.7× LTV gap (S$115 vs S$198) | Medium | Reduce marketplace SKU breadth; redirect budget to own channels |
-| 3 | At Risk segment = urgent win-back opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign with strongest available offer |
 | 6 | Expectation mismatch drives early exit *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks pre-60d | Medium | Post-purchase onboarding sequence setting timeline expectations |
 
 ---

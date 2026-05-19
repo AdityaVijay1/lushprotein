@@ -147,7 +147,7 @@ This ratio compares discount dollars to already-reduced revenue. It can exceed 1
 | 2025 | 49.6% | 35.2% | 35 cents of every potential dollar given away |
 
 **Recommended slide text:**
-> *"In 2025, half of all orders included a discount. The total value of discounts given — S$234,875 — amounted to 35% of potential gross revenue. In 2020 and 2021, the discount bill was zero."*
+> *"In 2025, half of all orders included a discount. The total value of discounts given — S$222,033 — amounted to 35% of potential gross revenue. In 2020 and 2021, the discount bill was zero."*
 
 ### 100%-Off Orders (Data Quality Note)
 

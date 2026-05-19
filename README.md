@@ -307,7 +307,7 @@ Of 13,780 total customers, **4,459 (32.4%) ever placed a second order.**
 Full-price first-order customers repeat at **38.0%** with **S$293 avg LTV**.
 Customers acquired at 50%+ discount repeat at only **19.1%** with **S$54 avg LTV** — a **2× repeat rate gap and 5.4× LTV gap**.
 
-The steepest drop is at the 1–5% tier (36.4% → 17.7%), suggesting that any discount signals price-sensitivity and immediately lowers the cohort's loyalty profile. Deeper discounts produce marginal additional damage on repeat rate, but the LTV damage is consistent across all discount depths.
+The steepest drop is at the 1–5% tier — from **38.0% (full price) → 25.1% (any discount)** — suggesting that any discount signals price-sensitivity and immediately lowers the cohort's loyalty profile. Deeper discounts produce marginal additional damage on repeat rate, but the LTV damage is consistent and extreme: from S$293 (full price) down to S$54 (50%+).
 
 > **Bottom line:** Every promotional campaign that uses deep discounts (>20% off) is acquiring cohorts that are materially less loyal and less profitable over time. The brand is spending margin to attract weaker customers.
 
@@ -455,7 +455,7 @@ Recommended 14-slide structure:
 | 3 | Data Sources Overview | 9 tables, row counts, date range, ERD thumbnail | ERD from draw.io |
 | 4 | Data Quality Findings | Top 5 DQ issues (DQ-01 through DQ-05), counter-measures applied | — |
 | 5 | Business at a Glance | 5 KPI numbers: customers, repeat rate, 60-day retention, median days to 2nd order, sub LTV uplift | `01a_revenue_discount_trend.png` |
-| 6 | Revenue and the Discount Problem | Revenue peaked 2021 at zero discounting; discount rate 54% in 2025; revenue not recovered | `01a_revenue_discount_trend.png` + `01b_monthly_revenue_2024_2026.png` |
+| 6 | Revenue and the Discount Problem | Revenue peaked 2021 at zero discounting; 49.6% of orders discounted in 2025 (35.2% of gross revenue); revenue not recovered | `01a_revenue_discount_trend.png` + `01b_monthly_revenue_2024_2026.png` |
 | 7 | Not All Customers Are Equal | Channel quality — Marketplace vs Direct LTV and repeat rate gap | `02a_retention_by_channel.png` + `05b_marketplace_vs_website.png` |
 | 8 | The Cross-Sell Opportunity | LTV staircase (1 → 4 products). +171% LTV uplift. | `03a_cross_product_ltv.png` |
 | 9 | Subscription: High Value, High Churn | Sub vs non-sub metrics; churn by cycle; top cancellation reason | `04a_subscriber_vs_onetime.png` + `04b_churn_by_cycle.png` + `04c_cancellation_reasons.png` |
