@@ -131,10 +131,11 @@ print('60d retention avg:', cohort['retention_60d'].mean())
 
 The original chart showed "54% discount rate" for 2025. **This is a misleading metric.** Here is why:
 
-**What the chart calculated:**
+**What the chart calculated (old SG-only approach):**
 ```
 disc_rate = total_discounts / net_revenue
-2025: S$234,875 / S$432,896 = 54.2%
+2025 (SG-only): S$234,875 / S$432,896 = 54.2%  ← old, incorrect
+2025 (combined SGD): discounts / S$409,152 → 35.2% of gross
 ```
 This ratio compares discount dollars to already-reduced revenue. It can exceed 100% and is hard to interpret.
 
@@ -162,10 +163,10 @@ This ratio compares discount dollars to already-reduced revenue. It can exceed 1
 These are **legitimate fulfillments** (products were shipped) but no revenue was recognised. They inflate the "discount amount" figures. A conservative approach is to exclude them from the discount-to-revenue ratio:
 
 ```
-2025 excl. 100%-off orders:
-  Revenue:   S$432,896  (unchanged — 100%-off orders had rev=0 anyway)
-  Discounts: S$234,875 - S$0 (rev=0 orders contribute disc but no rev)
-  Net discount on paying orders: lower than headline number
+2025 (combined SGD, excl. 100%-off orders):
+  Revenue:   S$409,152  (combined SG + MY + HK in SGD)
+  Discounts: ~S$220,000 (excl. 100%-off zero-revenue orders)
+  Discount as % of gross: 35.2%
 ```
 
 **Impact on finding:** The discount escalation trend is real and directionally correct regardless of how 100%-off orders are handled. The finding stands.

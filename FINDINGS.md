@@ -561,15 +561,15 @@ Collagen Glow leads on repeat rate (31.2%) and has the highest subscription loya
 
 | Segment | Customers | % of Base | Avg LTV | Avg Orders | Priority Action |
 |---|---|---|---|---|---|
-| Loyal | 4,789 | 34.8% | S$292 | 1.9 | Cross-sell to 2nd product |
-| Hibernating | 3,321 | 24.1% | S$200 | 1.0 | Low-cost reactivation |
-| **At Risk** | **2,351** | **17.1%** | **S$1,072** | 3.4 | **Win-back urgently** |
-| Champions | 1,398 | 10.1% | S$703 | 3.8 | Reward + upsell |
-| **Can't Lose** | **1,218** | **8.8%** | **S$218** | 1.0 | **Re-engage now** |
+| Loyal | 4,359 | 31.6% | S$157 | 1.9 | Cross-sell to 2nd product |
+| Hibernating | 3,321 | 24.1% | S$112 | 1.0 | Low-cost reactivation |
+| **At Risk** | **2,351** | **17.1%** | **S$514** | 3.4 | **Win-back urgently** |
+| Champions | 1,828 | 13.3% | S$397 | 3.2 | Reward + upsell |
+| **Can't Lose** | **1,218** | **8.8%** | **S$66** | 1.0 | **Re-engage now** |
 | Promising | 688 | 5.0% | S$61 | 1.0 | Nurture to 2nd order |
 | New | 15 | 0.1% | S$67 | 1.0 | Welcome sequence |
 
-The **At Risk segment (2,351 customers, S$1,072 avg LTV)** represents the most urgent reactivation opportunity. These customers have demonstrated a willingness to spend significantly but have gone quiet. Combined with Can't Lose (1,218 customers), **over 3,500 proven-spenders are currently disengaging** from the brand.
+The **At Risk segment (2,351 customers, S$514 avg LTV)** represents the most urgent reactivation opportunity. These customers have demonstrated a willingness to spend significantly but have gone quiet. Combined with Can't Lose (1,218 customers), **over 3,500 proven-spenders are currently disengaging** from the brand.
 
 **Chart:** `05c_rfm_segments.png`
 
@@ -584,7 +584,7 @@ The **At Risk segment (2,351 customers, S$1,072 avg LTV)** represents the most u
 | 3 | At Risk segment = immediate high-value opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign |
 | 4 | Subscription cadence causes stockpile churn | 27% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |
 | 5 | Marketplace cannibalises LTV | 14.4% repeat vs 33.5% direct; 1.7× LTV gap (S$115 vs S$198) | Medium | Reduce marketplace SKU breadth; redirect budget to own channels |
-| 5 | At Risk segment = urgent win-back opportunity | 2,351 customers, S$1,072 avg LTV, currently dormant | Medium | Targeted win-back campaign with strongest available offer |
+| 3 | At Risk segment = urgent win-back opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign with strongest available offer |
 | 6 | Expectation mismatch drives early exit *(minor hypothesis)* | ~41% of repeaters return within 60 days; churn peaks pre-60d | Medium | Post-purchase onboarding sequence setting timeline expectations |
 
 ---

@@ -16,7 +16,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC, b
 # ── Chart 1: Repeat rate + avg LTV by channel (side-by-side horizontal) ──────
 channels      = ["Subscription","Direct/Organic","Paid Social","Affiliate","Marketplace","Email"]
 repeat_rates  = [40.9, 33.5, 19.4, 19.2, 14.4, 12.5]
-avg_ltv       = [364, 583, 71, 94, 118, 53]
+avg_ltv       = [343, 198, 71, 94, 115, 50]
 n_customers   = [4275, 6920, 382, 26, 2126, 48]
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
@@ -43,7 +43,7 @@ axes[1].set_xlabel("Avg Customer LTV (SGD)", fontsize=10)
 axes[1].xaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:.0f}"))
 for i, v in enumerate(avg_ltv[::-1]):
     axes[1].text(v+5, i, f"S${v:,}", va="center", fontsize=9, color=NAVY)
-axes[1].set_xlim(0, 700)
+axes[1].set_xlim(0, 420)
 axes[1].spines["left"].set_visible(False); axes[1].tick_params(left=False)
 
 for ax in axes:

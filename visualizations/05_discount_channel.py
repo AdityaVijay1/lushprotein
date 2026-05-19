@@ -14,10 +14,10 @@ import matplotlib.patches as mpatches
 from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 # ── Chart 1: Discount depth — repeat rate and LTV ────────────────────────────
-disc_bins   = ["Full price", "1-5% off", "6-10% off", "11-20% off", "21-30% off", "31-50% off", "51%+ off"]
-rr_vals     = [36.4, 17.7, 26.1, 25.5, 25.5, 23.0, 21.9]
-ltv_vals    = [542,  157,  260,  162,  237,  196,  181]
-n_custs     = [9398, 186, 395, 1250, 458, 1189, 430]
+disc_bins   = ["Full price", "1-5% off", "5-10% off", "10-20% off", "20-30% off", "30-50% off", "50%+ off"]
+rr_vals     = [38.0, 25.1, 23.3, 24.8, 24.2, 22.3, 19.1]
+ltv_vals    = [293,  132,  129,  119,  155,  105,   54]
+n_custs     = [8635, 395, 536, 1133, 1286, 555, 1240]
 
 fig, ax1 = plt.subplots(figsize=(13, 6))
 x = np.arange(len(disc_bins))
@@ -38,17 +38,17 @@ for bar, v, n in zip(bars, rr_vals, n_custs):
 ax2 = ax1.twinx()
 ax2.plot(x, ltv_vals, color=RED, marker="D", linewidth=2.5, markersize=8, zorder=4, label="Avg LTV")
 ax2.set_ylabel("Average LTV (SGD)", color=RED, fontsize=11)
-ax2.set_ylim(0, 700)
+ax2.set_ylim(0, 400)
 ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:.0f}"))
 ax2.spines["right"].set_visible(True); ax2.spines["right"].set_color(RED)
 ax2.tick_params(axis="y", colors=RED)
 for xi, v in enumerate(ltv_vals):
     ax2.text(xi, v+15, f"S${v}", ha="center", fontsize=9, color=RED)
 
-# Arrow from full price to 51%+
-ax1.annotate("", xy=(6, 21.9), xytext=(0, 36.4),
+# Arrow from full price to 50%+
+ax1.annotate("", xy=(6, 19.1), xytext=(0, 38.0),
              arrowprops=dict(arrowstyle="->", color=RED, lw=2))
-ax1.text(3, 38, "-40% repeat rate drop\nfull price → 51%+ off", ha="center",
+ax1.text(3, 40, "-50% repeat rate drop\nfull price → 50%+ off", ha="center",
          fontsize=9, color=RED, fontweight="bold")
 
 fig.tight_layout()
@@ -59,13 +59,13 @@ fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
 groups    = ["Marketplace", "Own Website\n(Direct+Paid+Email)"]
 rr        = [14.4, 32.6]
-ltv       = [118, 551]
+ltv       = [115, 198]
 avg_orders= [1.54, 1.95]
 pct_sub   = [0.0, 3.9]
 
-metrics_labels = ["Repeat Rate (%)", "Avg LTV (SGD)", "Avg Orders", "% Subscribed"]
-mkt_vals  = [14.4, 118, 1.54, 0.0]
-web_vals  = [32.6, 551, 1.95, 3.9]
+metrics_labels = ["Repeat Rate (%)", "Avg LTV (SGD)", "Avg Orders", "% Subscribed*"]
+mkt_vals  = [14.4, 115, 1.54, 0.0]
+web_vals  = [32.6, 198, 1.95, 3.9]
 
 # Normalise to % of web value for visual comparison
 mkt_norm  = [m/w*100 if w > 0 else 0 for m, w in zip(mkt_vals, web_vals)]
@@ -75,13 +75,13 @@ x = np.arange(len(metrics_labels)); w = 0.38
 b1 = axes[0].bar(x-w/2, web_norm,  width=w, color=TEAL, label="Own Website", zorder=3)
 b2 = axes[0].bar(x+w/2, mkt_norm,  width=w, color=RED,  label="Marketplace",  zorder=3)
 axes[0].set_xticks(x); axes[0].set_xticklabels(metrics_labels, fontsize=9.5, rotation=10)
-axes[0].set_title("Marketplace vs Own Website\n(Indexed to Website = 100)", fontsize=11, fontweight="bold")
+axes[0].set_title("Marketplace vs Own Website\n(Indexed: Website = 100 | *Shopify subscriptions only)", fontsize=10, fontweight="bold")
 axes[0].set_ylabel("Index (Website = 100)", fontsize=10)
 axes[0].legend()
 axes[0].axhline(100, color=SLATE, linewidth=1, linestyle="--", alpha=0.5)
 
-actual_web  = ["32.6%", "S$551", "1.95", "3.9%"]
-actual_mkt  = ["14.4%", "S$118", "1.54", "0.0%"]
+actual_web  = ["32.6%", "S$198", "1.95", "3.9%"]
+actual_mkt  = ["14.4%", "S$115", "1.54", "0.0%*"]
 for bar, lbl in zip(b1, actual_web):
     axes[0].text(bar.get_x()+bar.get_width()/2, 103, lbl, ha="center", fontsize=8, color=TEAL)
 for bar, lbl in zip(b2, actual_mkt):
@@ -118,8 +118,8 @@ save(fig, "05b_marketplace_vs_website")
 
 # ── Chart 3: RFM segment breakdown ───────────────────────────────────────────
 segments     = ["Loyal","Hibernating","At Risk","Champions","Can't Lose","Promising","New"]
-seg_counts   = [4789, 3321, 2351, 1398, 1218, 688, 15]
-seg_ltv      = [292, 200, 1072, 703, 218, 61, 67]
+seg_counts   = [4359, 3321, 2351, 1828, 1218, 688, 15]
+seg_ltv      = [157, 112, 514, 397, 66, 58, 67]
 seg_colors   = [TEAL, SLATE, ORANGE, NAVY, RED, GOLD, LILAC]
 seg_priority = ["Cross-sell","Reactivate low-cost","Win-back NOW","Reward & upsell",
                 "Re-engage urgently","Nurture to 2nd order","Welcome"]
@@ -148,7 +148,7 @@ axes[1].set_title("RFM Segment Size & Priority Actions", fontsize=12, fontweight
 axes[1].set_xlabel("Number of Customers", fontsize=10)
 for i, v in enumerate(seg_counts):
     axes[1].text(v+30, i, f"{v:,}  (avg S${seg_ltv[i]:,})", va="center", fontsize=8.5, color=NAVY)
-axes[1].set_xlim(0, 6500)
+axes[1].set_xlim(0, 6000)
 axes[1].grid(axis="x"); axes[1].grid(axis="y", visible=False)
 axes[1].spines["left"].set_visible(False); axes[1].tick_params(left=False)
 

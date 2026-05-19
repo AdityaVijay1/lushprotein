@@ -15,19 +15,19 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 # ── Chart 1: Subscriber vs one-time LTV metrics ────────────────────────────────
 metrics    = ["Repeat Rate","Avg LTV","Avg Orders\n(×10 SGD scale)","Median Days\nto 2nd Order (÷10)"]
-sub_vals   = [74.4, 1063, 48.6, 4.8]
-nonsub_vals= [28.7, 371,  17.4, 4.9]
+sub_vals   = [74.4, 532, 48.6, 4.8]
+nonsub_vals= [28.7, 200, 17.4, 4.9]
 
 fig, ax = plt.subplots(figsize=(11, 6))
 x = np.arange(4); w = 0.35
 b1 = ax.bar(x-w/2, sub_vals,   width=w, color=TEAL, label="Subscriber",     zorder=3)
 b2 = ax.bar(x+w/2, nonsub_vals,width=w, color=SLATE, label="Non-subscriber", zorder=3)
 ax.set_xticks(x); ax.set_xticklabels(["Repeat Rate (%)", "Avg LTV (SGD)", "Avg Orders", "Median Days to 2nd"], fontsize=10)
-ax.set_title("Subscriber vs Non-Subscriber: Key Metrics")
+ax.set_title("Subscriber vs Non-Subscriber: Key Metrics (Combined SG+MY+HK in SGD)")
 ax.legend()
 
-labels_sub   = ["74.4%", "S$1,063", "4.9 orders", "48 days"]
-labels_non   = ["28.7%", "S$371",   "1.7 orders", "49 days"]
+labels_sub   = ["74.4%", "S$532", "4.86 orders", "49 days"]
+labels_non   = ["28.7%", "S$200", "1.74 orders", "49 days"]
 for bar, lbl in zip(b1, labels_sub):
     ax.text(bar.get_x()+bar.get_width()/2, bar.get_height()+10,
             lbl, ha="center", va="bottom", fontsize=9, color=TEAL, fontweight="bold")
@@ -35,7 +35,7 @@ for bar, lbl in zip(b2, labels_non):
     ax.text(bar.get_x()+bar.get_width()/2, bar.get_height()+10,
             lbl, ha="center", va="bottom", fontsize=9, color=SLATE, fontweight="bold")
 
-ax.annotate("+186%\nLTV uplift", xy=(-0.17, 900), xytext=(0.5, 1050),
+ax.annotate("+166%\nLTV uplift", xy=(-0.17, 450), xytext=(0.5, 550),
             arrowprops=dict(arrowstyle="->", color=RED, lw=1.5), fontsize=9, color=RED, fontweight="bold")
 fig.tight_layout()
 save(fig, "04a_subscriber_vs_onetime")

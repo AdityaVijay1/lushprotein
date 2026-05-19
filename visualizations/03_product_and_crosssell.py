@@ -15,7 +15,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 # ── Chart 1: Cross-product LTV staircase ─────────────────────────────────────
 labels        = ["1 product","2 products","3 products","4+ products"]
-ltv           = [329, 399, 890, 1421]
+ltv           = [170, 230, 470, 743]
 repeat_rate   = [23.6, 39.7, 65.5, 88.7]
 n_custs       = [9537, 2679, 1052, 512]
 
@@ -25,7 +25,7 @@ bars = ax1.bar(labels, ltv, color=colors, width=0.5, zorder=3)
 ax1.set_title("Cross-Product Purchasing: LTV Uplift by Breadth")
 ax1.set_ylabel("Average LTV (SGD)", fontsize=11, color=NAVY)
 ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:,.0f}"))
-ax1.set_ylim(0, 1700)
+ax1.set_ylim(0, 950)
 
 for bar, v, n in zip(bars, ltv, n_custs):
     ax1.text(bar.get_x()+bar.get_width()/2, bar.get_height()+20,

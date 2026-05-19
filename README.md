@@ -459,7 +459,7 @@ Recommended 14-slide structure:
 | 7 | Not All Customers Are Equal | Channel quality — Marketplace vs Direct LTV and repeat rate gap | `02a_retention_by_channel.png` + `05b_marketplace_vs_website.png` |
 | 8 | The Cross-Sell Opportunity | LTV staircase (1 → 4 products). +171% LTV uplift. | `03a_cross_product_ltv.png` |
 | 9 | Subscription: High Value, High Churn | Sub vs non-sub metrics; churn by cycle; top cancellation reason | `04a_subscriber_vs_onetime.png` + `04b_churn_by_cycle.png` + `04c_cancellation_reasons.png` |
-| 10 | Discount Depth Destroys Loyalty | Full-price vs 51%+ off: repeat rate and LTV comparison | `05a_discount_depth_impact.png` |
+| 10 | Discount Depth Destroys Loyalty | Full-price vs 50%+ off: repeat rate and LTV comparison (S$293 → S$54 LTV) | `05a_discount_depth_impact.png` |
 | 11 | Customer Segments (RFM) | RFM pie + priority action table; At Risk and Can't Lose are urgent | `05c_rfm_segments.png` |
 | 12 | Time-to-Second-Purchase | Distribution histogram; ~41% of repeaters return within 60 days | `02c_time_to_second_purchase.png` |
 | 13 | Top Findings and Proposed Experiments | Findings table (ranked 1–6) with suggested experiments | — |
