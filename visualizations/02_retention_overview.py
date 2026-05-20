@@ -3,8 +3,8 @@
 Charts: repeat rate by channel, repeat rate by product, time-to-2nd-purchase,
         monthly cohort 60-day retention
 
-All data read from EDA/outputs CSVs — no hardcoded values.
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020–2026).
+All data read from EDA/outputs CSVs -- no hardcoded values.
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020-2026).
 """
 import sys
 from pathlib import Path
@@ -19,7 +19,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC, b
 
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 
-# ── Chart 1: Repeat rate + avg LTV by channel ─────────────────────────────────
+# -- Chart 1: Repeat rate + avg LTV by channel ---------------------------------
 # Source: EDA/outputs/05_channel_quality.csv
 _cq = pd.read_csv(_outputs / "05_channel_quality.csv")
 _cq["first_channel"] = _cq["first_channel"].str.replace(" / ", "/", regex=False)
@@ -63,7 +63,7 @@ for ax in axes:
 fig.tight_layout(pad=2)
 save(fig, "02a_retention_by_channel")
 
-# ── Chart 2: Repeat rate by first product ─────────────────────────────────────
+# -- Chart 2: Repeat rate by first product -------------------------------------
 # Source: EDA/outputs/04_repeat_by_first_product.csv
 _pp = pd.read_csv(_outputs / "04_repeat_by_first_product.csv")
 _hero_cats = ["Collagen Glow", "Lean Protein", "Clear Protein", "Accessories", "Soy Protein"]
@@ -97,11 +97,11 @@ for ax, vals, title, fmt in [
 axes[0].set_ylim(0, max(prod_rr)*1.3)
 axes[1].set_ylim(0, max(prod_ltv)*1.3)
 axes[2].set_ylim(0, max(prod_days)*1.3)
-fig.suptitle("Hero Product Comparison — Retention Metrics", fontsize=14, fontweight="bold", y=1.02)
+fig.suptitle("Hero Product Comparison -- Retention Metrics", fontsize=14, fontweight="bold", y=1.02)
 fig.tight_layout()
 save(fig, "02b_retention_by_product")
 
-# ── Chart 3: Time-to-second-purchase histogram ────────────────────────────────
+# -- Chart 3: Time-to-second-purchase histogram --------------------------------
 # Source: EDA/outputs/03_time_to_second_purchase.csv
 _t2 = pd.read_csv(_outputs / "03_time_to_second_purchase.csv")
 buckets    = _t2["bucket"].tolist()
@@ -114,7 +114,7 @@ _60d_cum = round((_t2[_t2["bucket"].isin(["0-7d","8-14d","15-21d","22-30d","31-4
 fig, ax1 = plt.subplots(figsize=(13, 6))
 bar_colors = [TEAL if i == 6 else (ORANGE if i < 4 else SLATE) for i in range(len(buckets))]
 bars = ax1.bar(buckets, pct, color=bar_colors, width=0.65, zorder=3)
-ax1.set_title("Time to Second Purchase — Distribution of Repeating Customers")
+ax1.set_title("Time to Second Purchase -- Distribution of Repeating Customers")
 ax1.set_ylabel("% of Repeaters in Window", fontsize=11)
 ax1.set_xlabel("Days Since First Order", fontsize=11)
 for bar, v in zip(bars, pct):
@@ -135,7 +135,7 @@ ax1.annotate("Last bucket\nin 60-day window", xy=(5, pct[5]), xytext=(6.5, 12),
 fig.tight_layout()
 save(fig, "02c_time_to_second_purchase")
 
-# ── Chart 4: Monthly cohort 60-day retention ─────────────────────────────────
+# -- Chart 4: Monthly cohort 60-day retention ---------------------------------
 # Source: EDA/outputs/03_cohort_retention_heatmap.csv
 _cr = pd.read_csv(_outputs / "03_cohort_retention_heatmap.csv")
 _cr["cohort_month"] = _cr["cohort_month"].astype(str)
@@ -174,4 +174,4 @@ ax.legend(handles=patches + [plt.Line2D([0],[0],color=NAVY,linewidth=2,linestyle
 fig.tight_layout()
 save(fig, "02d_cohort_60d_retention")
 
-print("Done – 02_retention_overview")
+print("Done - 02_retention_overview")

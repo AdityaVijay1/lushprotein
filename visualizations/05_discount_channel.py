@@ -3,8 +3,8 @@
 Charts: discount depth vs repeat rate + LTV, marketplace vs website comparison,
         RFM segments, country mix
 
-All data read from EDA/outputs CSVs — no hardcoded values.
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020–2026).
+All data read from EDA/outputs CSVs -- no hardcoded values.
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020-2026).
 """
 import sys
 from pathlib import Path
@@ -19,7 +19,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 
-# ── Chart 1: Discount depth — repeat rate and LTV ────────────────────────────
+# -- Chart 1: Discount depth -- repeat rate and LTV ----------------------------
 # Source: EDA/outputs/05_discount_depth_bins.csv
 _dd = pd.read_csv(_outputs / "05_discount_depth_bins.csv")
 _bin_order = ["0% (full price)", "1-5%", "6-10%", "11-20%", "21-30%", "31-50%", "51%+"]
@@ -36,7 +36,7 @@ x = np.arange(len(disc_bins))
 bar_colors = [TEAL] + [ORANGE if r > 24 else RED for r in rr_vals[1:]]
 bars = ax1.bar(x, rr_vals, color=bar_colors, width=0.55, zorder=3, alpha=0.9)
 ax1.set_xticks(x); ax1.set_xticklabels(disc_bins, fontsize=10.5)
-ax1.set_title("Discount Depth vs Repeat Rate and LTV — First Order")
+ax1.set_title("Discount Depth vs Repeat Rate and LTV -- First Order")
 ax1.set_ylabel("Repeat Purchase Rate (%)", fontsize=11, color=NAVY)
 ax1.set_ylim(0, max(rr_vals) * 1.5)
 ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:.0f}%"))
@@ -61,13 +61,13 @@ drop_pct = round((rr_vals[-1] - rr_vals[0]) / rr_vals[0] * 100, 0)
 ax1.annotate("", xy=(len(disc_bins)-1, rr_vals[-1]), xytext=(0, rr_vals[0]),
              arrowprops=dict(arrowstyle="->", color=RED, lw=2))
 ax1.text(len(disc_bins)//2, max(rr_vals)*1.2,
-         f"{drop_pct:.0f}% repeat rate drop\nfull price → 51%+ off",
+         f"{drop_pct:.0f}% repeat rate drop\nfull price -> 51%+ off",
          ha="center", fontsize=9, color=RED, fontweight="bold")
 
 fig.tight_layout()
 save(fig, "05a_discount_depth_impact")
 
-# ── Chart 2: Marketplace vs website spider/bar comparison ─────────────────────
+# -- Chart 2: Marketplace vs website spider/bar comparison ---------------------
 # Source: EDA/outputs/05_channel_quality.csv
 _cq = pd.read_csv(_outputs / "05_channel_quality.csv")
 _cq["first_channel"] = _cq["first_channel"].str.replace(" / ", "/", regex=False)
@@ -110,7 +110,7 @@ for bar, lbl in zip(b1, actual_web):
 for i, (bar, lbl, mn) in enumerate(zip(b2, actual_mkt, mkt_norm)):
     axes[0].text(bar.get_x()+bar.get_width()/2, mn+2, lbl, ha="center", fontsize=8, color=RED)
 
-# Country mix — order counts from 02_orders_by_country.csv
+# Country mix -- order counts from 02_orders_by_country.csv
 _ctry = pd.read_csv(_outputs / "02_orders_by_country.csv")
 _ctry = _ctry.sort_values("orders", ascending=False).reset_index(drop=True)
 _top5 = _ctry.head(5)
@@ -136,7 +136,7 @@ axes[1].set_title("Order Volume by Country", fontsize=11, fontweight="bold")
 fig.tight_layout()
 save(fig, "05b_marketplace_vs_website")
 
-# ── Chart 3: RFM segment breakdown ───────────────────────────────────────────
+# -- Chart 3: RFM segment breakdown -------------------------------------------
 # Source: EDA/outputs/03_rfm_segments.csv
 _rfm_full = pd.read_csv(_outputs / "03_rfm_segments.csv")
 _rfm_seg = (
@@ -164,7 +164,7 @@ for i, (s, c, l, col) in enumerate(zip(segments, seg_counts, seg_ltv, seg_colors
                 fontsize=9, color=col, fontweight="bold")
 ax.set_xlabel("Average LTV (SGD)", fontsize=11)
 ax.set_ylabel("Number of Customers", fontsize=11)
-ax.set_title("RFM Segments — Customers vs LTV\n(Bubble size = customer count)", fontsize=12, fontweight="bold")
+ax.set_title("RFM Segments -- Customers vs LTV\n(Bubble size = customer count)", fontsize=12, fontweight="bold")
 ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:,.0f}"))
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:,}"))
 ax.grid(True, alpha=0.4)
@@ -184,7 +184,7 @@ axes[1].spines["left"].set_visible(False); axes[1].tick_params(left=False)
 fig.tight_layout()
 save(fig, "05c_rfm_segments")
 
-# ── Chart 4: Discount code taxonomy ──────────────────────────────────────────
+# -- Chart 4: Discount code taxonomy ------------------------------------------
 # Source: EDA/outputs/05_discount_code_taxonomy.csv
 _dt = pd.read_csv(_outputs / "05_discount_code_taxonomy.csv")
 _dt = _dt.sort_values("total_redemptions", ascending=False).reset_index(drop=True)
@@ -210,4 +210,4 @@ ax.set_title(f"Discount Code Redemptions by Type\n({total_redemptions:,} total r
 fig.tight_layout()
 save(fig, "05d_discount_code_taxonomy")
 
-print("Done – 05_discount_channel")
+print("Done - 05_discount_channel")

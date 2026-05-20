@@ -76,15 +76,15 @@
 | SG | 16,041 | S$1,913,387 | 1.000 | **S$1,913,387** |
 | MY | 11,309 | RM 3,958,566 | ÷ 3.30 | **S$1,199,566** |
 | HK | 2 | HK$1,943 | ÷ 6.10 | **S$319** |
-| **All markets** | **27,352** | — | — | **S$3,113,272 SGD total** |
+| **All markets** | **27,350** | — | — | **S$3,112,952 SGD total** |
 
 **Critical note:** The three stores use different currencies. The raw data contains no FX rates.
 
-**Mitigation applied (May 2026):** Fixed exchange rates provided by the team are applied at data load time:
+**Mitigation applied (May 2026):** 5-year average exchange rates (2020–2026) applied at data load time:
 - `1 SGD = 3.30 MYR` → MYR ÷ 3.30 = SGD equivalent
 - `1 SGD = 6.10 HKD` → HKD ÷ 6.10 = SGD equivalent
 
-These are **fixed historical rates** (not market rates at each transaction date). This introduces a measurement error in absolute revenue figures. The **direction and relative magnitude of findings are unaffected**.
+These are **5-year average rates** (not spot rates at each transaction date). This introduces a measurement error in absolute revenue figures of up to ±10%. The **direction and relative magnitude of all findings are unaffected** — retention, repeat rates, and channel comparisons are count-based and FX-neutral.
 
 **Known limitations of fixed-rate FX approach:**
 1. SGD/MYR moved between ~3.0 and ~3.5 over 2020–2026. Early-year MY revenue (2020–2021) may be understated/overstated by up to 10%.
@@ -101,7 +101,7 @@ These are **fixed historical rates** (not market rates at each transaction date)
 
 | Statistic | Value (All Markets, SGD) | SG-only (SGD) |
 |---|---|---|
-| Count | 27,352 orders | 16,041 orders |
+| Count | 27,350 orders | 16,041 orders |
 | Mean | SGD 113.83 | SGD 119.28 |
 | Median | SGD 62.10 | SGD 62.10 |
 | 25th percentile | SGD 29.00 |

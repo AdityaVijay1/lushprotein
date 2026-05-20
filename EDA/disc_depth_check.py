@@ -8,7 +8,7 @@ dd['ltv_sgd'] = dd['avg_ltv'].round(0).astype(int)
 total = dd['customers'].sum()
 dd['cust_pct'] = (dd['customers'] / total * 100).round(1)
 
-print("05_discount_depth_bins.csv — full detail")
+print("05_discount_depth_bins.csv -- full detail")
 print(f"{'Bin':<18} {'Customers':>10} {'Cust%':>7} {'Repeat Rate':>12} {'Avg LTV':>9}")
 print("-" * 62)
 for _, r in dd.iterrows():

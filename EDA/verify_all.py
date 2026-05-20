@@ -1,5 +1,5 @@
 """
-verify_all.py  —  Comprehensive verification of all data, CSVs, and numbers.
+verify_all.py  --  Comprehensive verification of all data, CSVs, and numbers.
 Run from any directory. Prints a full report with PASS/FAIL/WARN tags.
 """
 import warnings
@@ -20,12 +20,12 @@ def chk(label, condition, detail=""):
     print(f"  [{status}] {label}" + (f"  >> {detail}" if detail else ""))
 
 print("="*70)
-print("LUSHPROTEIN — FULL VERIFICATION REPORT")
+print("LUSHPROTEIN -- FULL VERIFICATION REPORT")
 print("="*70)
 
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 # 1. PARQUET FILES
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 print("\n[1] PARQUET FILES")
 orders = pd.read_parquet(OUT / "orders.parquet")
 lines  = pd.read_parquet(OUT / "lines.parquet")
@@ -63,9 +63,9 @@ print(f"\n  Total combined revenue: S${total_rev:,.0f}")
 print(f"  Stores: {orders.groupby('store')['order_id'].count().to_dict()}")
 print(f"  Overall repeat rate: {overall_rr:.1%}  ({cust['is_repeat'].sum():,} / {len(cust):,})")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 2. CSV OUTPUTS — verify each one exists and spot-check key numbers
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
+# 2. CSV OUTPUTS -- verify each one exists and spot-check key numbers
+# -----------------------------------------------------------------------------
 print("\n[2] CSV OUTPUT FILES")
 
 csv_files = [
@@ -85,9 +85,9 @@ for f in csv_files:
     p = OUT / f
     chk(f, p.exists() and p.stat().st_size > 100, "exists & non-empty" if p.exists() else "MISSING")
 
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 # 3. KEY METRIC SPOT-CHECKS (CSV vs recomputed from parquet)
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 print("\n[3] KEY METRIC SPOT-CHECKS (CSV vs live parquet recompute)")
 
 # 3a. Overall repeat rate matches
@@ -147,7 +147,7 @@ rfm = pd.read_csv(OUT / "03_rfm_segments.csv")
 chk("RFM segment rows = all customers", len(rfm) == len(cust),
     f"RFM rows {len(rfm):,} vs customers {len(cust):,}")
 
-# 3i. Revenue by country — MY + SG dominate
+# 3i. Revenue by country -- MY + SG dominate
 ctry = pd.read_csv(OUT / "02_orders_by_country.csv")
 top2_orders = ctry[ctry["Shipping: Country"].isin(["Malaysia","Singapore"])]["orders"].sum()
 total_orders_ctry = ctry["orders"].sum()
@@ -160,9 +160,9 @@ if not yr2.empty:
     dp24 = float(yr2["disc_pct_orders"].iloc[0])
     chk("2024 disc_pct_orders > 60%", dp24 > 0.60, f"{dp24:.1%}")
 
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 # 4. VISUALIZATION SCRIPT HARDCODING AUDIT
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 print("\n[4] VISUALIZATION HARDCODING AUDIT")
 import re
 VIZ = BASE / "visualizations"
@@ -227,15 +227,15 @@ for py in sorted(VIZ.glob("*.py")):
             if not exempt:
                 hardcoded.append(f"    L{lineno}: {stripped[:80]}")
     if hardcoded:
-        print(f"  [WARN] {py.name} — possible hardcoded data:")
+        print(f"  [WARN] {py.name} -- possible hardcoded data:")
         for h in hardcoded[:5]:
             print(h)
     else:
         print(f"  [PASS] {py.name}")
 
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 # 5. CHARTS EXIST CHECK
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 print("\n[5] CHART FILES")
 charts = sorted((VIZ / "charts").glob("*.png"))
 print(f"  Total charts: {len(charts)}")
@@ -254,12 +254,12 @@ expected = [
 for c in expected:
     chk(c, (VIZ/"charts"/c).exists())
 
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 # SUMMARY
-# ─────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 print("\n" + "="*70)
 if issues:
     print(f"ISSUES FOUND ({len(issues)}):  " + " | ".join(issues))
 else:
-    print("ALL CHECKS PASSED — pipeline is clean and numbers are consistent")
+    print("ALL CHECKS PASSED -- pipeline is clean and numbers are consistent")
 print("="*70)

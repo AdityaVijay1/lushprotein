@@ -3,8 +3,8 @@
 Charts: subscriber vs one-time LTV, subscription churn by cycle,
         cancellation reasons, subscriber tenure distribution
 
-All data read from EDA/outputs CSVs — no hardcoded values.
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020–2026).
+All data read from EDA/outputs CSVs -- no hardcoded values.
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020-2026).
 """
 import sys
 from pathlib import Path
@@ -19,7 +19,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 
-# ── Chart 1: Subscriber vs one-time LTV metrics ────────────────────────────────
+# -- Chart 1: Subscriber vs one-time LTV metrics --------------------------------
 # Source: EDA/outputs/06_sub_vs_onetime_ltv.csv
 _sv = pd.read_csv(_outputs / "06_sub_vs_onetime_ltv.csv", index_col=0)
 _sub    = _sv.loc["Subscriber"]
@@ -37,7 +37,7 @@ ns_days   = round(float(_nonsub["median_days_2nd"]), 0)
 
 ltv_uplift_pct = round((sub_ltv / ns_ltv - 1) * 100, 0)
 
-# Scale values to fit same chart axis: Repeat Rate (%), LTV (SGD), Orders×10, Days÷10
+# Scale values to fit same chart axis: Repeat Rate (%), LTV (SGD), Ordersx10, Days/10
 sub_vals    = [sub_rr,  sub_ltv,  sub_orders * 10,  sub_days / 10]
 nonsub_vals = [ns_rr,   ns_ltv,   ns_orders  * 10,  ns_days  / 10]
 labels_sub  = [f"{sub_rr}%", f"S${sub_ltv:.0f}", f"{sub_orders:.2f} orders", f"{sub_days:.0f} days"]
@@ -65,7 +65,7 @@ ax.annotate(f"+{ltv_uplift_pct:.0f}%\nLTV uplift",
 fig.tight_layout()
 save(fig, "04a_subscriber_vs_onetime")
 
-# ── Chart 2: Subscription churn by cycle ─────────────────────────────────────
+# -- Chart 2: Subscription churn by cycle -------------------------------------
 # Source: EDA/outputs/06_churn_by_cycle.csv
 _cc = pd.read_csv(_outputs / "06_churn_by_cycle.csv")
 _cc = _cc[_cc["approx_cycle"] <= 6].sort_values("approx_cycle").reset_index(drop=True)
@@ -86,7 +86,7 @@ peak_cycle_idx = churn_n.index(max(churn_n))
 fig, ax1 = plt.subplots(figsize=(12, 6))
 bar_colors = [ORANGE, RED, RED, ORANGE, GOLD, SLATE, ORANGE][:len(cycles)]
 bars = ax1.bar(cycles_display, churn_n, color=bar_colors, width=0.58, zorder=3)
-ax1.set_title("When Do Subscribers Cancel? — Churn by Subscription Cycle")
+ax1.set_title("When Do Subscribers Cancel? -- Churn by Subscription Cycle")
 ax1.set_ylabel("Subscribers Cancelled", fontsize=11)
 ax1.set_xlabel("Subscription Cycle  (1 cycle approx 30 days = 1 product tub)", fontsize=10)
 ax1.set_ylim(0, max(churn_n) * 1.4)
@@ -108,7 +108,7 @@ ax1.text(1.0, max(churn_n)*1.25, f"Cycle 1: peak churn window\n(30-60 days)", ha
 fig.tight_layout()
 save(fig, "04b_churn_by_cycle")
 
-# ── Chart 3: Cancellation reasons horizontal bar ─────────────────────────────
+# -- Chart 3: Cancellation reasons horizontal bar -----------------------------
 # Source: EDA/outputs/06_churn_reasons.csv
 _cr = pd.read_csv(_outputs / "06_churn_reasons.csv")
 _cr = _cr.sort_values("n", ascending=False).head(7).reset_index(drop=True)
@@ -123,14 +123,14 @@ fig, ax = plt.subplots(figsize=(12, 6))
 y = np.arange(len(reasons))
 bars = ax.barh(y, counts, color=theme_colors, height=0.58, zorder=3)
 ax.set_yticks(y); ax.set_yticklabels(reasons, fontsize=9)
-ax.set_title("Why Subscribers Cancel — Cancellation Reasons Breakdown")
+ax.set_title("Why Subscribers Cancel -- Cancellation Reasons Breakdown")
 ax.set_xlabel("Number of Cancellations", fontsize=10)
 for i, (v, p) in enumerate(zip(counts, pcts)):
     ax.text(v+1, i, f"{v}  ({p:.1f}%)", va="center", fontsize=10, color=NAVY)
 
 top_reason = reasons[0]
 if "have more" in top_reason.lower() or "already" in top_reason.lower() or "too much" in top_reason.lower():
-    ax.annotate("Cadence mismatch —\nnot satisfaction failure",
+    ax.annotate("Cadence mismatch --\nnot satisfaction failure",
                 xy=(counts[0], len(reasons)-1), xytext=(counts[0]*0.65, len(reasons)-1.8),
                 arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.5),
                 fontsize=9, color=ORANGE, fontweight="bold")
@@ -141,7 +141,7 @@ ax.spines["left"].set_visible(False); ax.tick_params(left=False)
 fig.tight_layout()
 save(fig, "04c_cancellation_reasons")
 
-# ── Chart 4: Churn tenure distribution ────────────────────────────────────────
+# -- Chart 4: Churn tenure distribution ----------------------------------------
 # Source: EDA/outputs/06_churn_tenure.csv
 _ct = pd.read_csv(_outputs / "06_churn_tenure.csv")
 
@@ -171,4 +171,4 @@ ax.annotate(f"First 60 days:\n{cum_first2_pct:.0f}% of all cancellations",
 fig.tight_layout()
 save(fig, "04d_churn_tenure_distribution")
 
-print("Done – 04_subscription_churn")
+print("Done - 04_subscription_churn")

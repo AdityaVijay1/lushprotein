@@ -1,8 +1,8 @@
 """
 03_product_and_crosssell.py
 Charts: cross-product LTV waterfall, product revenue mix, SKU checkout vs recurring,
-        product × channel heatmap
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026).
+        product x channel heatmap
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020-2026).
 """
 import sys
 from pathlib import Path
@@ -17,7 +17,7 @@ from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, LILAC
 
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 
-# ── Chart 1: Cross-product LTV staircase ─────────────────────────────────────
+# -- Chart 1: Cross-product LTV staircase -------------------------------------
 # Source: EDA/outputs/04_cross_product_ltv.csv
 _cp = pd.read_csv(_outputs / "04_cross_product_ltv.csv")
 _cp_order = ["1 product", "2 products", "3 products", "4+ products"]
@@ -36,7 +36,7 @@ ax1.set_ylabel("Average LTV (SGD)", fontsize=11, color=NAVY)
 ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:,.0f}"))
 ax1.set_ylim(0, 1050)  # extra headroom so bar labels don't clash with red line
 
-# ALL LTV labels inside bar near top — keeps them clear of the red line
+# ALL LTV labels inside bar near top -- keeps them clear of the red line
 # n= label centred in the middle of the bar
 for bar, v, n in zip(bars, ltv, n_custs):
     bx = bar.get_x() + bar.get_width() / 2
@@ -46,7 +46,7 @@ for bar, v, n in zip(bars, ltv, n_custs):
     ax1.text(bx, bh / 2, f"n={n:,}",
              ha="center", va="center", fontsize=9.5, color="white", fontweight="bold")
 
-# Right axis — repeat rate line
+# Right axis -- repeat rate line
 ax2 = ax1.twinx()
 ax2.plot(labels, repeat_rate, color=RED, marker="D", linewidth=2.5, markersize=9, zorder=4)
 ax2.set_ylabel("Repeat Purchase Rate (%)", color=RED, fontsize=11)
@@ -55,7 +55,7 @@ ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"{v:.0f}%"))
 ax2.spines["right"].set_visible(True); ax2.spines["right"].set_color(RED)
 ax2.tick_params(axis="y", colors=RED)
 
-# Red % labels — staggered offsets so they always sit clearly above the diamond markers
+# Red % labels -- staggered offsets so they always sit clearly above the diamond markers
 # Offsets chosen so short bars (bar 0 & 1) push labels further up
 _rr_offsets = [14, 12, 9, 9]
 for xi, (r, off) in enumerate(zip(repeat_rate, _rr_offsets)):
@@ -63,7 +63,7 @@ for xi, (r, off) in enumerate(zip(repeat_rate, _rr_offsets)):
              color=RED, fontweight="bold",
              bbox=dict(boxstyle="round,pad=0.25", facecolor="white", edgecolor="none", alpha=0.85))
 
-# Uplift annotations — placed in clear space above the bar, staggered x-offset
+# Uplift annotations -- placed in clear space above the bar, staggered x-offset
 for i in range(1, len(ltv)):
     uplift = (ltv[i]-ltv[0])/ltv[0]*100
     ax1.annotate(f"+{uplift:.0f}%\nvs 1 product",
@@ -75,7 +75,7 @@ for i in range(1, len(ltv)):
 fig.tight_layout()
 save(fig, "03a_cross_product_ltv")
 
-# ── Chart 2: Product revenue mix (hero vs other) ──────────────────────────────
+# -- Chart 2: Product revenue mix (hero vs other) ------------------------------
 # Revenue and unit prices read from lines.parquet (FX-corrected SGD, all markets)
 _lines = pd.read_parquet(_outputs / "lines.parquet")
 _prod_rev = (
@@ -114,7 +114,7 @@ axes[0].set_title("Revenue Mix by Product Category", fontsize=12, fontweight="bo
 axes[0].text(0, 0, f"S${total/1000:.0f}K\nTotal", ha="center", va="center",
              fontsize=11, fontweight="bold", color=NAVY)
 
-# Avg unit price comparison — from lines.parquet (SGD, FX-corrected)
+# Avg unit price comparison -- from lines.parquet (SGD, FX-corrected)
 _hero_order = ["Lean Protein", "Clear Protein", "Collagen Glow", "Soy Protein"]
 _hero_df = _prod_rev[_prod_rev["product_category"].isin(_hero_order)].set_index("product_category").reindex(_hero_order).reset_index()
 hero_cats   = _hero_df["product_category"].tolist()
@@ -133,7 +133,7 @@ axes[1].set_xlim(0, 100)
 fig.tight_layout()
 save(fig, "03b_product_revenue_mix")
 
-# ── Chart 3: SKU loyalty — checkout vs recurring ─────────────────────────────
+# -- Chart 3: SKU loyalty -- checkout vs recurring -----------------------------
 # Source: EDA/outputs/04_sku_popularity.csv (merged checkout + recurring)
 _sku = pd.read_csv(_outputs / "04_sku_popularity.csv")
 _co = _sku[_sku["type"]=="checkout"].set_index(["product_title","variant_title"])["n_customers"].rename("checkout_n")
@@ -172,8 +172,8 @@ for xi, r in zip(x, loyalty_ratio):
 fig.tight_layout()
 save(fig, "03c_sku_loyalty")
 
-# ── Chart 4: Top product combos (repeat buyers) ───────────────────────────────
-# Source: computed from lines.parquet — top combos that include a named hero product
+# -- Chart 4: Top product combos (repeat buyers) -------------------------------
+# Source: computed from lines.parquet -- top combos that include a named hero product
 _lines_full = pd.read_parquet(_outputs / "lines.parquet")
 _cust_full  = pd.read_parquet(_outputs / "customers.parquet")
 _cust_full["is_repeat"] = _cust_full["is_repeat"].astype(str).map({"True":True,"False":False}).fillna(False)
@@ -205,4 +205,4 @@ ax.spines["left"].set_visible(False); ax.tick_params(left=False)
 fig.tight_layout()
 save(fig, "03d_top_product_combos")
 
-print("Done – 03_product_and_crosssell")
+print("Done - 03_product_and_crosssell")

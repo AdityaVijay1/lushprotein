@@ -1,11 +1,11 @@
 """
 06_channel_quality_chart.py
 Recreates the dual-panel channel quality chart (Picture1 style):
-  Left  — Repeat Rate by Acquisition Channel (horizontal bars, color-coded, n= labels)
-  Right — Average LTV by Acquisition Channel (SGD) (horizontal bars, S$ labels)
+  Left  -- Repeat Rate by Acquisition Channel (horizontal bars, color-coded, n= labels)
+  Right -- Average LTV by Acquisition Channel (SGD) (horizontal bars, S$ labels)
 
 Data: combined SG + MY + HK markets, all revenue in SGD.
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026).
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020-2026).
 Source: EDA/outputs/05_channel_quality.csv  (verified May 2026)
 """
 import sys
@@ -19,7 +19,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, GRID_LINE
 
-# ── Data: read from EDA/outputs/05_channel_quality.csv (no hardcoded values) ──
+# -- Data: read from EDA/outputs/05_channel_quality.csv (no hardcoded values) --
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 _cq = pd.read_csv(_outputs / "05_channel_quality.csv")
 _cq["first_channel"] = _cq["first_channel"].str.replace(" / ", "/", regex=False)
@@ -32,7 +32,7 @@ ltv         = _cq["avg_ltv"].round(0).astype(int).tolist()
 n_custs     = _cq["customers"].astype(int).tolist()
 overall_avg = round(_cq["repeaters"].sum() / _cq["customers"].sum() * 100, 1)
 
-# ── Colour coding — green (high), orange (mid), red (low) ────────────────────
+# -- Colour coding -- green (high), orange (mid), red (low) --------------------
 def rr_color(r):
     if r >= 30: return TEAL
     if r >= 18: return ORANGE
@@ -46,13 +46,13 @@ def ltv_color(v):
 rr_colors  = [rr_color(r)  for r in rr]
 ltv_colors = [ltv_color(v) for v in ltv]
 
-# ── Build figure (two panels, 14 × 5) ────────────────────────────────────────
+# -- Build figure (two panels, 14 x 5) ----------------------------------------
 fig, (ax_rr, ax_ltv) = plt.subplots(1, 2, figsize=(14, 5))
 fig.patch.set_facecolor(LIGHT_BG)
 
 BAR_H = 0.52
 
-# ─── LEFT: Repeat Rate ───────────────────────────────────────────────────────
+# --- LEFT: Repeat Rate -------------------------------------------------------
 y_pos = np.arange(len(channels))
 bars_rr = ax_rr.barh(
     y_pos, rr[::-1], color=rr_colors[::-1],
@@ -89,7 +89,7 @@ ax_rr.grid(axis="x", color=GRID_LINE, linewidth=1, zorder=0)
 ax_rr.grid(axis="y", visible=False)
 ax_rr.set_facecolor(LIGHT_BG)
 
-# ─── RIGHT: Average LTV ──────────────────────────────────────────────────────
+# --- RIGHT: Average LTV ------------------------------------------------------
 ax_ltv.barh(
     y_pos, ltv[::-1], color=ltv_colors[::-1],
     height=BAR_H, zorder=3, edgecolor="white", linewidth=0.4
@@ -116,10 +116,10 @@ ax_ltv.grid(axis="x", color=GRID_LINE, linewidth=1, zorder=0)
 ax_ltv.grid(axis="y", visible=False)
 ax_ltv.set_facecolor(LIGHT_BG)
 
-# ─── Legend ──────────────────────────────────────────────────────────────────
+# --- Legend ------------------------------------------------------------------
 legend_patches = [
-    mpatches.Patch(color=TEAL,   label="High performer  (RR ≥ 30%)"),
-    mpatches.Patch(color=ORANGE, label="Mid performer   (18–30%)"),
+    mpatches.Patch(color=TEAL,   label="High performer  (RR >= 30%)"),
+    mpatches.Patch(color=ORANGE, label="Mid performer   (18-30%)"),
     mpatches.Patch(color=RED,    label="Low performer   (< 18%)"),
 ]
 fig.legend(
@@ -129,10 +129,10 @@ fig.legend(
     bbox_to_anchor=(0.5, -0.06),
 )
 
-# ─── Footnote ─────────────────────────────────────────────────────────────────
+# --- Footnote -----------------------------------------------------------------
 fig.text(
     0.5, -0.10,
-    "Combined SG + MY + HK markets · All revenue in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD)\n"
+    "Combined SG + MY + HK markets * All revenue in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD)\n"
     "Marketplace 0% subscribed = Shopify subscriptions only; Shopee/Lazada subscriptions not tracked here.",
     ha="center", fontsize=8, color=SLATE, style="italic"
 )

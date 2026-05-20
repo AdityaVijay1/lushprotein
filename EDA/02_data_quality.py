@@ -1,9 +1,9 @@
 ﻿"""
-02_data_quality.py    “  Data quality audit and descriptive overview.
+02_data_quality.py    "  Data quality audit and descriptive overview.
 
 Outputs
 -------
-outputs/02_data_quality_report.txt    “  full text report
+outputs/02_data_quality_report.txt    "  full text report
 outputs/02_orders_by_year.csv
 outputs/02_orders_by_country.csv
 outputs/02_orders_by_channel.csv
@@ -48,7 +48,7 @@ def p(msg=""):
     report_lines.append(msg)
 
 p("=" * 70)
-p("LUSHPROTEIN EDA    “  DATA QUALITY & OVERVIEW REPORT")
+p("LUSHPROTEIN EDA -- DATA QUALITY & OVERVIEW REPORT")
 p("=" * 70)
 
 #      1. Table dimensions                                                                                                               
@@ -63,7 +63,7 @@ p(f"  Discount codes:          {len(disc):>8,}")
 p("\n[2] DATE RANGE")
 p(f"  Earliest order: {orders['order_date'].min().date()}")
 p(f"  Latest order:   {orders['order_date'].max().date()}")
-p(f"  Cohort span:    {orders['order_date'].dt.year.min()}   “ {orders['order_date'].dt.year.max()}")
+p(f"  Cohort span:    {orders['order_date'].dt.year.min()} -- {orders['order_date'].dt.year.max()}")
 
 #      3. Orders by year                                                                                                                   
 p("\n[3] ORDERS BY YEAR")
@@ -135,7 +135,7 @@ try:
         _monthly_target.unlink()
     shutil.move(str(_monthly_tmp), str(_monthly_target))
 except PermissionError:
-    # Target is locked (open in IDE); tmp file kept — rename manually or close the tab
+    # Target is locked (open in IDE); tmp file kept -- rename manually or close the tab
     p(f"  WARNING: Could not overwrite {_monthly_target.name} (file locked).")
     p(f"           Saved to {_monthly_tmp.name} instead. Close the IDE tab to unlock.")
 
@@ -159,7 +159,7 @@ p("\n[9] FULFILMENT STATUS")
 p(orders["Order Fulfillment Status"].value_counts(dropna=False).to_string())
 
 #      10. Product master: hero SKU coverage                                                                           
-p("\n[10] PRODUCT MASTER   “ active SKUs by category")
+p("\n[10] PRODUCT MASTER -- active SKUs by category")
 if "Status" in prod.columns:
     active_prod = prod[prod["Status"] == "active"].copy()
 else:

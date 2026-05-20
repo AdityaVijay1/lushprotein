@@ -39,5 +39,5 @@ print(f"  5.8 + 7.8 + 10.1 + 10.4 = {user_sum:.1f}% of ALL 4,459 repeaters -- CO
 print()
 print("WHERE 'NOT TIMED' COMES FROM:")
 print(f"  These {round(total_repeaters*not_timed/100):,} customers are repeaters (2+ orders) but don't appear")
-print(f"  in the time distribution — likely very recent 2nd purchases")
+print(f"  in the time distribution -- likely very recent 2nd purchases")
 print(f"  where the gap calculation was cut off at the analysis date.")

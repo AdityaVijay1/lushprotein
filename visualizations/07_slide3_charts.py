@@ -1,8 +1,8 @@
 """
 07_slide3_charts.py
 Generates the two Slide 3 charts in the clean Excel-like presentation style:
-  slide3a_revenue_discounts.png        – Revenue & Discounts Given
-  slide3b_customers_rev_per_customer.png – Revenue per Customer vs # of Unique Customers
+  slide3a_revenue_discounts.png        - Revenue & Discounts Given
+  slide3b_customers_rev_per_customer.png - Revenue per Customer vs # of Unique Customers
 
 All data loaded dynamically from EDA/outputs/02_orders_by_year.csv
 FX: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020-2026)
@@ -17,7 +17,7 @@ import matplotlib.ticker as mticker
 import matplotlib.patches as mpatches
 import numpy as np
 
-# ── Data ──────────────────────────────────────────────────────────────────────
+# -- Data ----------------------------------------------------------------------
 _outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 yr = pd.read_csv(_outputs / "02_orders_by_year.csv")
 yr = yr[yr["year"].between(2020, 2025)].reset_index(drop=True)
@@ -32,7 +32,7 @@ rev_per_cust     = (yr["revenue_sgd"] / yr["customers"]).tolist()
 
 x = np.arange(len(years))
 
-# ── Colour palette (Excel-like) ───────────────────────────────────────────────
+# -- Colour palette (Excel-like) -----------------------------------------------
 BLUE    = "#4472C4"
 ORANGE  = "#C55A11"
 GREEN   = "#70AD47"
@@ -49,9 +49,9 @@ def clean_axes(ax):
     ax.tick_params(axis="both", which="both", length=0)
     ax.set_facecolor("white")
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# CHART A — Revenue & Discounts Given
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
+# CHART A -- Revenue & Discounts Given
+# ===============================================================================
 fig, ax1 = plt.subplots(figsize=(7, 4.5))
 fig.patch.set_facecolor("white")
 
@@ -75,7 +75,7 @@ ax1.spines["left"].set_color(LGRAY)
 ax1.spines["bottom"].set_color(LGRAY)
 ax1.grid(axis="y", color=LGRAY, linewidth=0.8, zorder=0)
 
-# Right axis — % Discounted
+# Right axis -- % Discounted
 ax2 = ax1.twinx()
 ax2.plot(x, disc_pct, color=BLACK, marker="o", linewidth=2, markersize=5,
          label="% Discounted", zorder=4)
@@ -87,7 +87,7 @@ ax2.spines["left"].set_visible(False)
 ax2.spines["bottom"].set_visible(False)
 ax2.tick_params(axis="both", which="both", length=0)
 
-# -52% annotation: 2021 peak → 2025 revenue (dashed line at top of bars)
+# -52% annotation: 2021 peak -> 2025 revenue (dashed line at top of bars)
 _peak_i = years.index(2021)
 _end_i  = years.index(2025)
 _peak_y = revenue[_peak_i]
@@ -105,7 +105,7 @@ ax1.annotate(
     bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor=RED, linewidth=1.5),
 )
 
-# Bottom label row — # of customers per year (spaced to avoid overlap)
+# Bottom label row -- # of customers per year (spaced to avoid overlap)
 fig.subplots_adjust(bottom=0.22)
 row_y = -0.165
 ax1.text(-0.62, row_y, "# of customers", transform=ax1.get_xaxis_transform(),
@@ -130,9 +130,9 @@ plt.close(fig)
 print(f"  Saved: {out_a.name}")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# CHART B — Revenue per Customer vs # of Unique Customers
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
+# CHART B -- Revenue per Customer vs # of Unique Customers
+# ===============================================================================
 fig, ax1 = plt.subplots(figsize=(7, 4.5))
 fig.patch.set_facecolor("white")
 
@@ -152,7 +152,7 @@ ax1.spines["left"].set_color(LGRAY)
 ax1.spines["bottom"].set_color(LGRAY)
 ax1.grid(axis="y", color=LGRAY, linewidth=0.8, zorder=0)
 
-# Right axis — Revenue per Customer
+# Right axis -- Revenue per Customer
 ax2 = ax1.twinx()
 rpc = [r / c for r, c in zip(revenue, customers)]
 ax2.plot(x, rpc, color=ORANGE, marker="o", linewidth=2.5, markersize=7,
@@ -218,4 +218,4 @@ fig.savefig(out_b, dpi=150, bbox_inches="tight", facecolor="white")
 plt.close(fig)
 print(f"  Saved: {out_b.name}")
 
-print("Done – 07_slide3_charts")
+print("Done - 07_slide3_charts")

@@ -1,8 +1,8 @@
 """
-10_lens4_vintage_comparison.py  —  Customer-Base Audit: LENS 4
+10_lens4_vintage_comparison.py  --  Customer-Base Audit: LENS 4
 "Are the Customers We Are Acquiring Now Better or Worse Than Before?"
 
-Framework: Bruce, Fader & Ross — The Customer-Base Audit (2022)
+Framework: Bruce, Fader & Ross -- The Customer-Base Audit (2022)
 Lens 4 = Two (or more) cohorts compared at the SAME AGE.
 The key methodological requirement: compare cohorts at the same point in their lifecycle,
 NOT at the same calendar year.
@@ -10,11 +10,11 @@ NOT at the same calendar year.
 Analyses
 --------
 A. Cohort quality comparison at Age 0 (acquisition year): size, avg AOV, avg spend
-B. Year 1 repeat rate comparison — did a higher or lower % return within 12 months?
-C. Year 1 Revenue per cohort member — is each cohort worth more or less at same age?
+B. Year 1 repeat rate comparison -- did a higher or lower % return within 12 months?
+C. Year 1 Revenue per cohort member -- is each cohort worth more or less at same age?
 D. 60-day and 180-day retention by acquisition cohort (quality drift over time)
-E. Channel mix shift by cohort — are we acquiring a different type of customer?
-F. Discount intensity by cohort — has discounting depth increased over time?
+E. Channel mix shift by cohort -- are we acquiring a different type of customer?
+F. Discount intensity by cohort -- has discounting depth increased over time?
 G. Acquisition quality summary: composite quality score per cohort
 
 Notes
@@ -27,11 +27,11 @@ Notes
 
 Outputs
 -------
-EDA/outputs/10_lens4_cohort_quality.csv     — Per-cohort quality metrics at acquisition
-EDA/outputs/10_lens4_year1_comparison.csv   — Year 1 metrics by cohort
-EDA/outputs/10_lens4_retention_by_vintage.csv — 30/60/90/180d retention by cohort
-EDA/outputs/10_lens4_channel_mix_shift.csv  — Channel composition per cohort year
-EDA/outputs/10_lens4_discount_intensity.csv — Discount depth by cohort year
+EDA/outputs/10_lens4_cohort_quality.csv     -- Per-cohort quality metrics at acquisition
+EDA/outputs/10_lens4_year1_comparison.csv   -- Year 1 metrics by cohort
+EDA/outputs/10_lens4_retention_by_vintage.csv -- 30/60/90/180d retention by cohort
+EDA/outputs/10_lens4_channel_mix_shift.csv  -- Channel composition per cohort year
+EDA/outputs/10_lens4_discount_intensity.csv -- Discount depth by cohort year
 """
 
 import sys
@@ -58,11 +58,11 @@ OUTPUT_DIR = cfg.OUTPUT_DIR
 MARGIN = 0.40
 
 print("=" * 65)
-print("LENS 4 — COMPARING COHORTS AT THE SAME AGE")
+print("LENS 4 -- COMPARING COHORTS AT THE SAME AGE")
 print("Vintage comparison  |  Acquisition quality drift  |  Channel mix")
 print("=" * 65)
 
-# ── Load ──────────────────────────────────────────────────────────────────────
+# -- Load ----------------------------------------------------------------------
 orders = pd.read_parquet(OUTPUT_DIR / "orders.parquet")
 orders["order_date"]   = pd.to_datetime(orders["order_date"], utc=True)
 orders["Price: Total"] = pd.to_numeric(orders["Price: Total"], errors="coerce").fillna(0)
@@ -140,7 +140,7 @@ print(f"\nSaved: 10_lens4_cohort_quality.csv")
 # ==============================================================================
 # B.  YEAR 1 RETENTION COMPARISON (same-age = 365 days post acquisition)
 # ==============================================================================
-print("\n\n[B] YEAR 1 RETENTION — Same-Age Comparison (0-365 days)")
+print("\n\n[B] YEAR 1 RETENTION -- Same-Age Comparison (0-365 days)")
 print("-" * 65)
 
 # For each cohort, count what % returned within 365 days
@@ -317,7 +317,7 @@ print("""
 
   4. CHANNEL MIX SHIFT IS A HIDDEN DRIVER.
      If Marketplace share is growing, the apparent "growth" in customer count
-     is partly a shift to a lower-quality customer type — not genuine growth.
+     is partly a shift to a lower-quality customer type -- not genuine growth.
 
   5. THE ACQUISITION QUALITY TREND IS A LEADING INDICATOR.
      If cohort quality is declining year-over-year (at same age),
