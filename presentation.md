@@ -215,6 +215,7 @@ print(summary)
 
 > **Note for presentation:** Relabel the right axis from "Discount Rate (%)" to "% Orders With Discount" and cite the 35.2% gross revenue figure in the speaker notes, not on the slide itself.
 
+![Discount Chart](visualizations/discountchart_excel.png)
 ---
 
 ## Slide 3 — Channel Quality
