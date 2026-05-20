@@ -125,7 +125,7 @@ fig.legend(
 # ─── Footnote ─────────────────────────────────────────────────────────────────
 fig.text(
     0.5, -0.10,
-    "Combined SG + MY + HK markets · All revenue in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, fixed April 2026)\n"
+    "Combined SG + MY + HK markets · All revenue in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD)\n"
     "Marketplace 0% subscribed = Shopify subscriptions only; Shopee/Lazada subscriptions not tracked here.",
     ha="center", fontsize=8, color=SLATE, style="italic"
 )
