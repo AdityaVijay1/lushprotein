@@ -6,35 +6,36 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from style import save, CAT_COLORS, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, bar_label
 
-# ── Data ──────────────────────────────────────────────────────────────────────
-# All figures in SGD (FX-converted: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, fixed April 2026)
-# Combined SG + MY + HK markets
-years        = ["2020","2021","2022","2023","2024","2025"]
-revenue      = [456952, 847930, 747587, 182038, 284971, 409152]
-orders       = [2847, 6259, 3710, 2253, 4261, 6407]
-disc_rate    = [0.0, 0.0, 15.2, 59.3, 69.2, 49.6]  # % of orders with any discount
+# -- Data: all read from EDA outputs (FX-corrected, combined SG+MY+HK in SGD) --
+# FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020-2026)
+_outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
 
-monthly_labels = [
-    "Jan-24","Feb-24","Mar-24","Apr-24","May-24","Jun-24",
-    "Jul-24","Aug-24","Sep-24","Oct-24","Nov-24","Dec-24",
-    "Jan-25","Feb-25","Mar-25","Apr-25","May-25","Jun-25",
-    "Jul-25","Aug-25","Sep-25","Oct-25","Nov-25","Dec-25",
-    "Jan-26","Feb-26","Mar-26",
-]
-monthly_rev = [
-    38220, 41052, 42553, 42553, 61925, 41528,
-    138167, 48800, 59236, 28968, 59550, 25023,
-    18594, 18556, 24840, 29257, 33381, 34389,
-    43345, 34923, 52344, 47297, 60014, 35957,
-    44351, 56861, 83002,
-]
+# Annual data from 02_orders_by_year.csv
+_annual_df = pd.read_csv(_outputs / "02_orders_by_year.csv")
+_annual_df = _annual_df[_annual_df["year"].between(2020, 2025)].reset_index(drop=True)
+years     = _annual_df["year"].astype(str).tolist()
+revenue   = _annual_df["revenue_sgd"].round(0).astype(int).tolist()
+orders    = _annual_df["orders"].astype(int).tolist()
+customers = _annual_df["customers"].astype(int).tolist()
+disc_rate = (_annual_df["disc_pct_orders"] * 100).round(1).tolist()
 
-# ── Chart 1: Revenue + discount rate (dual axis) ─────────────────────────────
+# Monthly revenue from 02_revenue_by_month.csv
+_monthly_df = pd.read_csv(_outputs / "02_revenue_by_month.csv")
+_monthly_df["month"] = pd.to_datetime(_monthly_df["month"])
+_monthly_df = _monthly_df[
+    (_monthly_df["month"] >= "2024-01-01") &
+    (_monthly_df["month"] <= "2026-03-31")
+].reset_index(drop=True)
+monthly_labels = _monthly_df["month"].dt.strftime("%b-%y").tolist()
+monthly_rev    = _monthly_df["revenue"].round(0).astype(int).tolist()
+
+# -- Chart 1: Revenue + discount rate (dual axis) -----------------------------
 fig, ax1 = plt.subplots(figsize=(11, 6))
 x = np.arange(len(years))
 bars = ax1.bar(x, [r/1000 for r in revenue], color=[TEAL if r > 600000 else ORANGE if r < 400000 else GOLD for r in revenue], width=0.55, zorder=3)
@@ -65,25 +66,31 @@ ax1.annotate("Discounted orders\nrise: 0% to 69%", xy=(4, 284), xycoords="data",
 fig.tight_layout()
 save(fig, "01a_revenue_discount_trend")
 
-# ── Chart 2: Monthly revenue trend 2024-2026 ─────────────────────────────────
+# -- Chart 2: Monthly revenue trend 2024-2026 ---------------------------------
 fig, ax = plt.subplots(figsize=(14, 5))
 x = np.arange(len(monthly_labels))
-colors = [RED if v > 100000 else TEAL if v > 50000 else SLATE for v in monthly_rev]
+colors = [ORANGE if v > 50000 else TEAL if v > 30000 else SLATE for v in monthly_rev]
 ax.fill_between(x, monthly_rev, alpha=0.15, color=TEAL)
 ax.plot(x, monthly_rev, color=TEAL, linewidth=2.5, marker="o", markersize=5, zorder=3)
 ax.set_xticks(x[::2]); ax.set_xticklabels(monthly_labels[::2], rotation=35, ha="right", fontsize=9)
-ax.set_title("Monthly Revenue (SGD) — Jan 2024 to Mar 2026")
+ax.set_title("Monthly Revenue (SGD) -- Jan 2024 to Mar 2026")
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v/1000:.0f}K"))
 ax.set_ylabel("Revenue (SGD)", fontsize=11)
-ax.annotate("Jul-24 spike\n(sale event)", xy=(6, 138167), xytext=(7.5, 125000),
-            arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.5), color=ORANGE, fontsize=9)
-ax.annotate("Mar-26", xy=(26, 83002), xytext=(24, 95000),
-            arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.5), color=TEAL, fontsize=9)
+# Annotate Jul-24 spike dynamically using actual data
+_jul24_idx = next((i for i, l in enumerate(monthly_labels) if l == "Jul-24"), None)
+_mar26_idx = next((i for i, l in enumerate(monthly_labels) if l == "Mar-26"), None)
+if _jul24_idx is not None:
+    ax.annotate("Jul-24 spike\n(sale event)", xy=(_jul24_idx, monthly_rev[_jul24_idx]),
+                xytext=(_jul24_idx + 1.5, monthly_rev[_jul24_idx] * 0.88),
+                arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.5), color=ORANGE, fontsize=9)
+if _mar26_idx is not None:
+    ax.annotate("Mar-26", xy=(_mar26_idx, monthly_rev[_mar26_idx]),
+                xytext=(_mar26_idx - 2, monthly_rev[_mar26_idx] * 1.12),
+                arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.5), color=TEAL, fontsize=9)
 fig.tight_layout()
 save(fig, "01b_monthly_revenue_2024_2026")
 
-# ── Chart 3: Orders and unique customers by year ─────────────────────────────
-customers = [1696, 3815, 2299, 1399, 2621, 4107]  # all markets combined
+# -- Chart 3: Orders and unique customers by year -----------------------------
 fig, ax = plt.subplots(figsize=(11, 5))
 x = np.arange(len(years)); w = 0.38
 b1 = ax.bar(x-w/2, orders, width=w, color=TEAL, label="Orders", zorder=3)
@@ -98,4 +105,4 @@ for bar, v in zip(b2, customers):
 fig.tight_layout()
 save(fig, "01c_orders_customers_by_year")
 
-print("Done – 01_revenue_and_volume")
+print("Done - 01_revenue_and_volume")

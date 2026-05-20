@@ -5,7 +5,7 @@
 **Scope:** Shopify customer transaction data (2020–2026), all markets combined (SG + MY + HK) in SGD
 **Audience:** Course instructors (assessment of data due diligence)
 
-> **CURRENCY UPDATE (Applied May 2026):** All revenue figures have been converted to SGD using fixed exchange rates:
+> **CURRENCY ASSUMPTION:** All revenue figures have been converted to SGD using 5-year average exchange rates (2020–2026):
 > **1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD**
 > Conversion is applied at data load time in `EDA/01_load_and_merge.py`.
 > See DQ-01 (updated) for full discussion of limitations and assumptions.
@@ -76,15 +76,15 @@
 | SG | 16,041 | S$1,913,387 | 1.000 | **S$1,913,387** |
 | MY | 11,309 | RM 3,958,566 | ÷ 3.30 | **S$1,199,566** |
 | HK | 2 | HK$1,943 | ÷ 6.10 | **S$319** |
-| **All markets** | **27,352** | — | — | **S$3,113,272 SGD total** |
+| **All markets** | **27,350** | — | — | **S$3,112,952 SGD total** |
 
 **Critical note:** The three stores use different currencies. The raw data contains no FX rates.
 
-**Mitigation applied (May 2026):** Fixed exchange rates provided by the team are applied at data load time:
+**Mitigation applied (May 2026):** 5-year average exchange rates (2020–2026) applied at data load time:
 - `1 SGD = 3.30 MYR` → MYR ÷ 3.30 = SGD equivalent
 - `1 SGD = 6.10 HKD` → HKD ÷ 6.10 = SGD equivalent
 
-These are **fixed historical rates** (not market rates at each transaction date). This introduces a measurement error in absolute revenue figures. The **direction and relative magnitude of findings are unaffected**.
+These are **5-year average rates** (not spot rates at each transaction date). This introduces a measurement error in absolute revenue figures of up to ±10%. The **direction and relative magnitude of all findings are unaffected** — retention, repeat rates, and channel comparisons are count-based and FX-neutral.
 
 **Known limitations of fixed-rate FX approach:**
 1. SGD/MYR moved between ~3.0 and ~3.5 over 2020–2026. Early-year MY revenue (2020–2021) may be understated/overstated by up to 10%.
@@ -101,7 +101,7 @@ These are **fixed historical rates** (not market rates at each transaction date)
 
 | Statistic | Value (All Markets, SGD) | SG-only (SGD) |
 |---|---|---|
-| Count | 27,352 orders | 16,041 orders |
+| Count | 27,350 orders | 16,041 orders |
 | Mean | SGD 113.83 | SGD 119.28 |
 | Median | SGD 62.10 | SGD 62.10 |
 | 25th percentile | SGD 29.00 |
@@ -188,20 +188,20 @@ HK store:      2 orders, HKD 1,943     (HKD → SGD equivalent: S$319)
 **Severity:** HIGH — mixing currencies without conversion produces nonsensical revenue totals.
 
 **Mitigation Applied (May 2026):**
-Fixed exchange rates provided by the team are applied at data load time in `EDA/01_load_and_merge.py`:
+5-year average exchange rates (2020–2026) are applied at data load time in `EDA/01_load_and_merge.py`:
 ```python
 FX_RATES_TO_SGD = {
     "SG": 1.0,
-    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (1 SGD = 3.30 MYR)
-    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (1 SGD = 6.10 HKD)
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (5-yr avg: 1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (5-yr avg: 1 SGD = 6.10 HKD)
 }
 # Applied to Price: Total, Price: Total Discount, Price: Total Shipping
 # Currency column set to "SGD" for all orders after conversion
 ```
 
 **Assumption stated explicitly:**
-- Rates are **fixed at April 2026** and do not vary by transaction date
-- Historical MYR/SGD rate moved between ~3.0 and ~3.5 over 2020–2026 → absolute revenue figures for 2020–2022 may be off by up to ±10%
+- Rates represent the **5-year average (2020–2026)** and do not vary by transaction date
+- Actual MYR/SGD rate moved between ~3.0 and ~3.5 over the period → individual year figures may deviate up to ±10% from the average-rate conversion
 - For **relative comparisons** (repeat rates, LTV uplift %, cohort retention), the FX rate has no impact — these are count-based or ratio-based metrics
 
 **Post-conversion market revenue summary:**

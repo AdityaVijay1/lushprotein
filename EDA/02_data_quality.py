@@ -1,9 +1,9 @@
 ﻿"""
-02_data_quality.py    “  Data quality audit and descriptive overview.
+02_data_quality.py    "  Data quality audit and descriptive overview.
 
 Outputs
 -------
-outputs/02_data_quality_report.txt    “  full text report
+outputs/02_data_quality_report.txt    "  full text report
 outputs/02_orders_by_year.csv
 outputs/02_orders_by_country.csv
 outputs/02_orders_by_channel.csv
@@ -48,7 +48,7 @@ def p(msg=""):
     report_lines.append(msg)
 
 p("=" * 70)
-p("LUSHPROTEIN EDA    “  DATA QUALITY & OVERVIEW REPORT")
+p("LUSHPROTEIN EDA -- DATA QUALITY & OVERVIEW REPORT")
 p("=" * 70)
 
 #      1. Table dimensions                                                                                                               
@@ -63,21 +63,28 @@ p(f"  Discount codes:          {len(disc):>8,}")
 p("\n[2] DATE RANGE")
 p(f"  Earliest order: {orders['order_date'].min().date()}")
 p(f"  Latest order:   {orders['order_date'].max().date()}")
-p(f"  Cohort span:    {orders['order_date'].dt.year.min()}   “ {orders['order_date'].dt.year.max()}")
+p(f"  Cohort span:    {orders['order_date'].dt.year.min()} -- {orders['order_date'].dt.year.max()}")
 
 #      3. Orders by year                                                                                                                   
 p("\n[3] ORDERS BY YEAR")
 by_year = (
-    orders.assign(year=orders["order_date"].dt.year)
+    orders.assign(
+        year=orders["order_date"].dt.year,
+        has_discount_bool=pd.to_numeric(orders["Price: Total Discount"], errors="coerce").fillna(0) > 0
+    )
     .groupby("year")
     .agg(
-        orders      = ("order_id",       "count"),
-        customers   = ("customer_id",    "nunique"),
-        revenue_sgd = ("Price: Total",   "sum"),
-        disc_amt    = ("Price: Total Discount", "sum"),
+        orders        = ("order_id",           "count"),
+        customers     = ("customer_id",        "nunique"),
+        revenue_sgd   = ("Price: Total",       "sum"),
+        disc_amt      = ("Price: Total Discount", "sum"),
+        disc_orders   = ("has_discount_bool",  "sum"),
     )
-    .assign(avg_order_value=lambda d: d["revenue_sgd"] / d["orders"],
-            disc_rate      =lambda d: d["disc_amt"]    / d["revenue_sgd"])
+    .assign(
+        avg_order_value = lambda d: d["revenue_sgd"] / d["orders"],
+        disc_rate       = lambda d: d["disc_amt"]    / d["revenue_sgd"],
+        disc_pct_orders = lambda d: d["disc_orders"] / d["orders"],
+    )
 )
 p(by_year.to_string())
 by_year.to_csv(OUTPUT_DIR / "02_orders_by_year.csv")
@@ -119,7 +126,18 @@ monthly = (
 )
 # Show only last 24 months for brevity
 p(monthly.tail(24).to_string())
-monthly.to_csv(OUTPUT_DIR / "02_revenue_by_month.csv")
+import os, shutil
+_monthly_target = OUTPUT_DIR / "02_revenue_by_month.csv"
+_monthly_tmp    = OUTPUT_DIR / "02_revenue_by_month.tmp.csv"
+monthly.to_csv(_monthly_tmp)
+try:
+    if _monthly_target.exists():
+        _monthly_target.unlink()
+    shutil.move(str(_monthly_tmp), str(_monthly_target))
+except PermissionError:
+    # Target is locked (open in IDE); tmp file kept -- rename manually or close the tab
+    p(f"  WARNING: Could not overwrite {_monthly_target.name} (file locked).")
+    p(f"           Saved to {_monthly_tmp.name} instead. Close the IDE tab to unlock.")
 
 #      7. Null-rate audit on key columns                                                                                   
 p("\n[7] NULL-RATE AUDIT (order-level key columns)")
@@ -141,7 +159,7 @@ p("\n[9] FULFILMENT STATUS")
 p(orders["Order Fulfillment Status"].value_counts(dropna=False).to_string())
 
 #      10. Product master: hero SKU coverage                                                                           
-p("\n[10] PRODUCT MASTER   “ active SKUs by category")
+p("\n[10] PRODUCT MASTER -- active SKUs by category")
 if "Status" in prod.columns:
     active_prod = prod[prod["Status"] == "active"].copy()
 else:

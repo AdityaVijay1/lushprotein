@@ -1,5 +1,5 @@
 """
-style.py  –  Shared presentation style for all LushProtein charts.
+style.py  -  Shared presentation style for all LushProtein charts.
 
 Palette is brand-adjacent (clean, modern, professional).
 All charts saved at 150 dpi as PNG, 16:9 or compact variants.
@@ -11,11 +11,11 @@ import matplotlib.ticker as mticker
 import numpy as np
 from pathlib import Path
 
-# ── Output folder ─────────────────────────────────────────────────────────────
+# -- Output folder -------------------------------------------------------------
 OUT = Path(__file__).parent / "charts"
 OUT.mkdir(exist_ok=True)
 
-# ── Brand palette ─────────────────────────────────────────────────────────────
+# -- Brand palette -------------------------------------------------------------
 TEAL      = "#2DC4A2"   # primary accent
 NAVY      = "#1A2E44"   # dark text / strong bars
 SLATE     = "#4A6274"   # secondary text / subtle bars
@@ -29,7 +29,7 @@ GRID_LINE = "#E2E8ED"   # grid
 # Categorical sequence (up to 7 groups)
 CAT_COLORS = [TEAL, NAVY, ORANGE, GOLD, SLATE, RED, LILAC]
 
-# ── Global rcParams ────────────────────────────────────────────────────────────
+# -- Global rcParams ------------------------------------------------------------
 mpl.rcParams.update({
     "figure.facecolor":      LIGHT_BG,
     "axes.facecolor":        LIGHT_BG,

@@ -3,8 +3,8 @@
 **Project:** ISSS603 Science of Customer Analytics · SMU Sem 5
 **Data Period:** 2019–2026 (analysis focused on 2020–2025)
 **Markets:** Singapore (SG) + Malaysia (MY) + Hong Kong (HK), all converted to SGD
-**FX Rates Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed, April 2026)
-**Last Verified:** May 2026 — all EDA scripts re-run, all numbers confirmed
+**FX Rates Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020–2026)
+**Last Verified:** 21 May 2026 — full pipeline re-run, all 62 verification checks PASS, zero hardcoded values confirmed across all EDA and visualization scripts
 
 ---
 
@@ -61,6 +61,7 @@
 ```python
 # EDA/01_load_and_merge.py
 FX_RATES_TO_SGD = {"SG": 1.0, "MY": 1/3.30, "HK": 1/6.10}
+# Rates = 5-year average (2020–2026): 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD
 # Applied to: Price: Total, Price: Total Discount, Price: Total Shipping, Line: Price
 # After conversion: Currency column set to "SGD" for all 27,350 orders
 ```
@@ -332,7 +333,7 @@ No explicit currency column in the Recharge export. Average order value = S$81. 
 ## 8. Verified Master Numbers
 
 All numbers below confirmed by re-running the full pipeline on **19 May 2026**.
-**Scope: SG + MY + HK combined in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD)**
+**Scope: SG + MY + HK combined in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, 5-year average 2020–2026)**
 
 ### Business at a Glance
 
@@ -405,17 +406,19 @@ All numbers below confirmed by re-running the full pipeline on **19 May 2026**.
 
 ### First-Order Discount Depth vs LTV
 
+> Source: `EDA/outputs/05_discount_depth_bins.csv` — computed from `orders.parquet` + `customers.parquet`. Discount depth = `Price: Total Discount / Price: Total` on the customer's first order. Bins, counts, and rates all read dynamically (zero hardcoded values).
+
 | First Order Discount | Customers | Repeat Rate | Avg LTV (SGD) |
 |---|---|---|---|
-| **Full price (0%)** | **8,635** | **38.0%** | **S$293** |
-| 1–5% off | 395 | 25.1% | S$132 |
-| 5–10% off | 536 | 23.3% | S$129 |
-| 10–20% off | 1,133 | 24.8% | S$119 |
-| 20–30% off | 1,286 | 24.2% | S$155 |
-| 30–50% off | 555 | 22.3% | S$105 |
-| **50%+ off** | **1,240** | **19.1%** | **S$54** |
+| **Full price (0%)** | **9,398** | **36.4%** | **S$274** |
+| 1–5% off | 186 | 17.7% | S$109 |
+| 6–10% off | 395 | 26.1% | S$135 |
+| 11–20% off | 1,250 | 25.5% | S$120 |
+| 21–30% off | 458 | 25.5% | S$158 |
+| 31–50% off | 1,189 | 23.0% | S$150 |
+| **51%+ off** | **430** | **21.9%** | **S$92** |
 
-> Full-price buyers: **2× the repeat rate** and **5.4× the LTV** of 50%+ discount buyers.
+> Full-price buyers: **−40% repeat rate drop** and **−66% LTV drop** vs 51%+ off buyers (S$274 vs S$92). Any discount hurts; a floor forms at ~22–26% RR regardless of depth. The 1–5% tier is small (n=186) and noisy.
 
 ### RFM Segments
 

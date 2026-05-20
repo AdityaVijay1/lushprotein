@@ -1,5 +1,5 @@
 """
-run_visualizations.py  –  Generate all presentation charts.
+run_visualizations.py  -  Generate all presentation charts.
 
 Usage
 -----

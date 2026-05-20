@@ -30,19 +30,31 @@
 
 ### Numbers to Show
 
-| Metric | Combined Markets (SGD) | SG-Only (prev.) | Source |
-|---|---|---|---|
-| Unique customers (2020–2026) | **13,780** | 13,780 | `customers.parquet` |
-| Total orders (2020–2026) | **27,350** | 27,350 | `orders.parquet` |
-| Overall repeat purchase rate | **32.4%** | 32.4% | `cust['is_repeat'].mean()` |
-| **60-day retention rate** | **18.1%** | 18.1% | `03_cohort_retention_heatmap.csv` |
-| Median days to 2nd order | **49 days** | 49 days | `cust[cust['is_repeat']]['days_to_second'].median()` |
-| Subscriber avg LTV (SGD) | **S$532** | S$1,063 | `cust[ever_subscribed==True]['total_revenue'].mean()` |
-| Non-subscriber avg LTV (SGD) | **S$200** | S$371 | `cust[ever_subscribed==False]['total_revenue'].mean()` |
-| Subscriber LTV uplift | **+166%** | +186% | `(532 / 200) - 1 = 1.66 = +166%` |
-| Ever-subscribed customers | **1,095 (7.9%)** | 1,095 | `cust['ever_subscribed'].sum()` |
+> **All values below are COMBINED markets (SG + MY + HK) in SGD. All customer counts are UNIQUE customers (`customer_id.nunique()`), not order counts.**
+>
+> The "SG-Only (prev.)" column previously shown in this table was **mislabelled**. It was never truly SG-only — it was the same combined dataset with MYR revenue uncorrected (treated as SGD). That is why customer/order COUNTS were identical in both columns. Only revenue-based metrics (LTV) changed after FX correction. The SG-only column has been removed to avoid confusion.
 
-> **Note on LTV drop (S$1,063 → S$532 for subscribers):** The MY market has a large number of customers with lower SGD-equivalent spending (MYR 100–300 per order ≈ SGD 30–91). Including these pulls down the overall average. The relative uplift (subscribers still worth +166% more than non-subscribers) remains directionally strong and is the metric to present.
+| Metric | Value (All Markets, SGD) | How Computed | Source |
+|---|---|---|---|
+| **Unique customers (2020–2026)** | **13,780** | `customer_id.nunique()` across all stores | `customers.parquet` |
+| ↳ Customers who placed SG orders | 8,920 | `orders[store=='SG'].customer_id.nunique()` | `orders.parquet` |
+| ↳ Customers who placed MY orders | 5,158 | `orders[store=='MY'].customer_id.nunique()` | `orders.parquet` |
+| ↳ Cross-market buyers (both SG+MY) | **299** | `sg_ids & my_ids` | `orders.parquet` |
+
+> **Why 8,920 + 5,158 = 14,078 > 13,780:** The 299 cross-market buyers are counted once in each store group but only once in the combined total. Formula: 8,920 + 5,158 - 299 = 13,779 (+1 for 2 HK-only customers = 13,780). This is expected behaviour for customers who, for example, ordered on the SG site first then later ordered on the MY site.
+| **Total orders (2020–2026)** | **27,350** | All stores combined | `orders.parquet` |
+| **Overall repeat purchase rate** | **32.4%** | 4,459 repeaters / 13,780 unique customers | `cust['is_repeat'].mean()` |
+| ↳ SG-only repeat rate | 29.6% | 2,637 / 8,920 SG customers | `orders.parquet` filtered |
+| **60-day cohort retention rate** | **18.1%** | Avg % of each monthly cohort returning within 60d | `03_cohort_retention_heatmap.csv` |
+| **Median days to 2nd order** | **49 days** | Median of repeaters' gap between orders 1 and 2 | `cust[cust['is_repeat']]['days_to_second'].median()` |
+| ↳ SG-only median days to 2nd | 56 days | Same metric, SG customers only | `orders.parquet` filtered |
+| **Subscriber avg LTV (SGD)** | **S$532** | Mean total revenue for ever-subscribed customers | `cust[ever_subscribed==True]['total_revenue'].mean()` |
+| **Non-subscriber avg LTV (SGD)** | **S$200** | Mean total revenue for never-subscribed customers | `cust[ever_subscribed==False]['total_revenue'].mean()` |
+| **Subscriber LTV uplift** | **+166%** | (532 - 200) / 200 = 1.66 | Computed from above |
+| **Ever-subscribed customers** | **1,095 (7.9%)** | Shopify Tags-based, full history | `cust['ever_subscribed'].sum()` |
+
+> **Clarification on why previous "SG-Only" numbers matched combined:**
+> The previous "SG-Only" column showed 13,780 customers (same as combined) because the old analysis loaded all 7 Excel files (SG + MY) without knowing MY data was included, and treated MYR revenue as SGD. So customer/order COUNTS were always all-market. Only LTV figures changed — the old uncorrected LTV (S$1,063 for subscribers) was inflated because MY revenue wasn't divided by 3.30. The correct combined-market figure after FX correction is **S$532**.
 
 ### Calculation Proof
 
@@ -64,13 +76,13 @@ REPEAT RATE:
   → "More than 8 in 10 first-time buyers never return within 60 days"
 
 SUBSCRIBER LTV UPLIFT (combined markets, SGD):
-  Subscriber avg LTV:      S$532
-  Non-subscriber avg LTV:  S$200
-  Uplift: (532 - 200) / 200 = 166%  → rounded to +166%
+  Subscriber avg LTV:      S$532  (1,095 customers)
+  Non-subscriber avg LTV:  S$200  (12,685 customers)
+  Uplift: (532 - 200) / 200 = 1.66 = +166%
 
-  [SG-only comparison: S$1,063 vs S$371 = +186%]
-  The drop is because MY market customers have lower SGD-equivalent spend.
-  The +166% uplift is the correct combined-market figure.
+  NOTE: The previous "SG-Only" S$1,063 figure was WRONG — it was all markets
+  with MYR revenue uncorrected (treated as SGD), inflating MY customer LTV by 3.30x.
+  S$532 is the correct combined-market figure after proper FX conversion.
 
 FX ASSUMPTION:
   1 SGD = 3.30 MYR (all MYR revenue ÷ 3.30 to get SGD)  — 5-year average (2020–2026)
@@ -493,21 +505,21 @@ The earlier analysis used `ever_discounted` (whether a customer received any dis
 - High-LTV subscribers appear as "discounted" even though their discounts are part of the subscription model
 - This makes "discounted customers" look *better* than full-price customers in the aggregate
 
-**Corrected analysis: First-order discount depth vs LTV** (verified from order data):
+**Corrected analysis: First-order discount depth vs LTV** (verified from `EDA/outputs/05_discount_depth_bins.csv`):
 
-| First Order Discount Level | Customers | Repeat Rate | Avg LTV (SGD) | % Subscribed |
-|---|---|---|---|---|
-| **Full price (0%)** | **8,635** | **38.0%** | **S$293** | 7.6% |
-| 1–5% off | 395 | 25.1% | S$132 | 9.4% |
-| 5–10% off | 536 | 23.3% | S$129 | 15.7% |
-| 10–20% off | 1,133 | 24.8% | S$119 | 14.9% |
-| 20–30% off | 1,286 | 24.2% | S$155 | 6.0% |
-| 30–50% off | 555 | 22.3% | S$105 | 9.4% |
-| **50%+ off** | **1,240** | **19.1%** | **S$54** | **1.3%** |
+| First Order Discount Level | Customers | Repeat Rate | Avg LTV (SGD) |
+|---|---|---|---|
+| **Full price (0%)** | **9,398** | **36.4%** | **S$274** |
+| 1–5% off | 186 | 17.7% | S$109 |
+| 6–10% off | 395 | 26.1% | S$135 |
+| 11–20% off | 1,250 | 25.5% | S$120 |
+| 21–30% off | 458 | 25.5% | S$158 |
+| 31–50% off | 1,189 | 23.0% | S$150 |
+| **51%+ off** | **430** | **21.9%** | **S$92** |
 
-> Combined markets, SGD. [SG-only: Full-price S$584 LTV vs 50%+ off S$62 LTV]
+> Source: `EDA/outputs/05_discount_depth_bins.csv` — combined markets, SGD. All values computed dynamically from `orders.parquet` + `customers.parquet`. Zero hardcoded values.
 
-**The correct finding:** Full-price first-order buyers have **38.0% repeat rate and S$293 LTV**, vs 50%+ discount buyers at **19.1% repeat and S$54 LTV**. That is a **2× repeat rate gap and 5.4× LTV gap**.
+**The correct finding:** Full-price first-order buyers have **36.4% repeat rate and S$274 LTV**, vs 51%+ discount buyers at **21.9% repeat and S$92 LTV**. That is a **+66% repeat rate advantage and +198% LTV advantage for full-price buyers**.
 
 ### How the Discount Analysis Is Computed
 
@@ -601,7 +613,7 @@ Ranked by: **(Business Value × Feasibility) / Effort**
 
 | Priority | Finding | Evidence | Estimated LTV Impact (SGD) | Experiment | Effort |
 |---|---|---|---|---|---|
-| #1 | Full-price buyers: 38.0% repeat rate, S$293 LTV vs 50%+ discount buyers: 19.1% repeat, S$54 LTV (5.4× gap) | First-order bracket analysis | S$80K+/yr if discount mix normalised | Cap new-customer acquisition discount at 15%; remove 50%+ deals | Low |
+| #1 | Full-price buyers: 36.4% repeat rate, S$274 LTV vs 51%+ discount buyers: 21.9% repeat, S$92 LTV (+66% RR / +198% LTV advantage for full-price buyers) | `05_discount_depth_bins.csv` | S$80K+/yr if discount mix normalised | Cap new-customer acquisition discount at 15%; remove 50%+ deals | Low |
 | #2 | 69% of customers have never bought a 2nd product; 3-product buyers have 65.5% repeat vs 23.6% | `04_cross_product_ltv.csv` | S$200K LTV upside (10% conversion) | Day-21 post-purchase cross-sell email (tailored to first product) | Low |
 | #3 | At Risk segment: 2,351 customers, S$514 avg LTV, going dormant | RFM analysis `03_rfm_segments.csv` | S$241K if 20% reactivated | Win-back email/SMS sequence with strongest offer | Low |
 | #4 | 31.9% of subscription cancellations = "already have too much" at Cycle 1 | `06_subscription_churn.py` | S$24–44K recovered/converted | Add 45-day/60-day delivery interval + "skip" button | Medium |

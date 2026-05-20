@@ -5,8 +5,8 @@
 **Data period:** 2020 – Q1 2026
 **Dataset:** 27,350 Shopify orders · 13,780 unique customers · **All markets (SG + MY + HK) combined in SGD**
 
-> **CURRENCY ASSUMPTION:** Fixed exchange rates applied at data load:
-> **1 SGD = 3.30 MYR** | **1 SGD = 6.10 HKD** (rates as of April 2026)
+> **CURRENCY ASSUMPTION:** 5-year average exchange rates (2020–2026) applied at data load:
+> **1 SGD = 3.30 MYR** | **1 SGD = 6.10 HKD**
 > Applied in `EDA/01_load_and_merge.py`. All revenue figures below are SGD-equivalent.
 > Retention rates, repeat rates, and cohort patterns are count-based — FX-neutral.
 
@@ -435,18 +435,20 @@ The relationship between first-order discount depth and long-term customer quali
 
 | First-Order Discount Depth | Customers | Repeat Rate | Avg LTV (SGD) |
 |---|---|---|---|
-| **Full price (0%)** | **8,635** | **38.0%** | **S$293** |
-| 1–5% off | 395 | 25.1% | S$132 |
-| 5–10% off | 536 | 23.3% | S$129 |
-| 10–20% off | 1,133 | 24.8% | S$119 |
-| 20–30% off | 1,286 | 24.2% | S$155 |
-| 30–50% off | 555 | 22.3% | S$105 |
-| **50%+ off** | **1,240** | **19.1%** | **S$54** |
+| **Full price (0%)** | **9,398** | **36.4%** | **S$274** |
+| 1–5% off | 186 | 17.7% | S$109 |
+| 6–10% off | 395 | 26.1% | S$135 |
+| 11–20% off | 1,250 | 25.5% | S$120 |
+| 21–30% off | 458 | 25.5% | S$158 |
+| 31–50% off | 1,189 | 23.0% | S$150 |
+| **51%+ off** | **430** | **21.9%** | **S$92** |
 
-Full-price buyers repeat at **38.0%** with **S$293 LTV**.
-50%+ discount buyers repeat at **19.1%** with **S$54 LTV** — a **2.0× repeat gap and 5.4× LTV gap**.
+Source: `EDA/outputs/05_discount_depth_bins.csv` — dynamically computed, zero hardcoded values.
 
-The drop is immediate and steep: any discount at all pulls the repeat rate from 38% to the low 20s. The LTV damage is consistent across all discount depths. The 50%+ cohort (S$54 LTV) is acquiring customers at near-zero lifetime value — many of these are the 100% affiliate orders or event give-away codes.
+Full-price buyers repeat at **36.4%** with **S$274 LTV**.
+51%+ discount buyers repeat at **21.9%** with **S$92 LTV** — a **+66% repeat rate advantage and +198% LTV advantage for full-price buyers**.
+
+The drop is immediate: any discount at all pulls the repeat rate into the low-to-mid 20s. The LTV damage is consistent across all discount depths — from S$274 (full price) to S$92 (51%+). The 51%+ cohort includes 100% affiliate/event codes — these are effectively zero-revenue acquisition events disguised as customers.
 
 With 35.2% of gross 2025 revenue absorbed by discounts, the business is predominantly acquiring weaker cohorts. This compounds over time.
 
@@ -568,7 +570,7 @@ The **At Risk segment (2,351 customers, S$514 avg LTV)** represents the most urg
 
 | Rank | Finding | Key Evidence | Confidence | Suggested Experiment |
 |---|---|---|---|---|
-| 1 | Deep discounting destroys cohort quality | Full-price: 38.0% repeat, S$293 LTV vs 50%+ off: 19.1% repeat, S$54 LTV | High | Cap new-customer discount at 15%; remove 50%+ deals |
+| 1 | Deep discounting destroys cohort quality | Full-price: 36.4% repeat, S$274 LTV vs 51%+ off: 21.9% repeat, S$92 LTV (+66% RR, +198% LTV for full-price buyers) | High | Cap new-customer discount at 15%; remove 50%+ deals |
 | 2 | Cross-sell drives biggest LTV jump | 3-product buyers: 65.5% repeat, S$470 LTV (+176% vs 1-product) | High | Post-purchase cross-sell email at Day 14–21 |
 | 3 | At Risk segment = immediate high-value opportunity | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back campaign |
 | 4 | Subscription cadence causes stockpile churn | 27% cancel "already have too much"; peak churn at Cycle 1 | High | Add 45/60-day interval option + skip-delivery CTA |

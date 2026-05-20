@@ -1,33 +1,33 @@
 """
-07_lens1_heterogeneity.py  —  Customer-Base Audit: LENS 1
+07_lens1_heterogeneity.py  --  Customer-Base Audit: LENS 1
 "How Different Are Your Customers?"
 
-Framework: Bruce, Fader & Ross — The Customer-Base Audit (2022)
+Framework: Bruce, Fader & Ross -- The Customer-Base Audit (2022)
 Lens 1 = One period, all active customers.
 Answers: How concentrated is value? Who are the vital few? What drives that difference?
 
 Analyses
 --------
 A. Five distributions with Mean/Median: transactions, spend, AOV, lifespan, recency
-B. Multiplicative decomposition: Revenue = Customers × AOF × AOV
-C. Decile analysis — 10 equal groups by total spend (most → least valuable)
+B. Multiplicative decomposition: Revenue = Customers x AOF x AOV
+C. Decile analysis -- 10 equal groups by total spend (most -> least valuable)
    Table 1: % Revenue, % Customers, % Transactions, Avg Spend, AOF, AOV per decile
    Table 2: Equal-profit slicing (flip: how many customers to make 10% of revenue)
 D. Cross-channel and cross-product breakdown of per-customer metrics
-E. The "Three Ds" summary — Distribution, Decomposition, Decile
+E. The "Three Ds" summary -- Distribution, Decomposition, Decile
 
 Notes
 -----
 - Currency filter: SGD-denominated orders only (to avoid SGD/MYR aggregation errors)
-- "Profit" proxy = revenue × 0.40 (estimated 40% gross margin; we have no COGS data)
+- "Profit" proxy = revenue x 0.40 (estimated 40% gross margin; we have no COGS data)
 - Focal period: all-time cumulative (Lens 1 treats the full history as one snapshot)
 
 Outputs
 -------
-EDA/outputs/07_lens1_distributions.csv        — Mean/Median per metric
-EDA/outputs/07_lens1_decile_table.csv         — Per-decile breakdown
-EDA/outputs/07_lens1_equal_profit_slicing.csv — How many % customers for 10% revenue
-EDA/outputs/07_lens1_decomposition.csv        — Overall multiplicative decomposition
+EDA/outputs/07_lens1_distributions.csv        -- Mean/Median per metric
+EDA/outputs/07_lens1_decile_table.csv         -- Per-decile breakdown
+EDA/outputs/07_lens1_equal_profit_slicing.csv -- How many % customers for 10% revenue
+EDA/outputs/07_lens1_decomposition.csv        -- Overall multiplicative decomposition
 """
 
 import sys
@@ -41,7 +41,7 @@ import numpy as np
 import importlib.util
 from pathlib import Path
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# -- Config ---------------------------------------------------------------------
 def _load_config():
     spec = importlib.util.spec_from_file_location(
         "lp_config", Path(__file__).parent / "00_config.py"
@@ -55,11 +55,11 @@ OUTPUT_DIR = cfg.OUTPUT_DIR
 ANALYSIS_DATE = cfg.ANALYSIS_DATE
 
 print("=" * 65)
-print("LENS 1 — HOW DIFFERENT ARE YOUR CUSTOMERS?")
+print("LENS 1 -- HOW DIFFERENT ARE YOUR CUSTOMERS?")
 print("Single-period snapshot  |  Heterogeneity  |  Decile analysis")
 print("=" * 65)
 
-# ── Load data ─────────────────────────────────────────────────────────────────
+# -- Load data -----------------------------------------------------------------
 orders = pd.read_parquet(OUTPUT_DIR / "orders.parquet")
 cust   = pd.read_parquet(OUTPUT_DIR / "customers.parquet")
 
@@ -74,7 +74,7 @@ cust["total_revenue"]     = pd.to_numeric(cust["total_revenue"],     errors="coe
 cust["recency_days"]      = pd.to_numeric(cust["recency_days"],      errors="coerce").fillna(0)
 cust["lifespan_days"]     = pd.to_numeric(cust["lifespan_days"],     errors="coerce").fillna(0)
 
-# ── SGD filter ────────────────────────────────────────────────────────────────
+# -- SGD filter ----------------------------------------------------------------
 sgd_orders = orders[orders["Currency"].fillna("") == "SGD"].copy()
 sgd_cust_ids = sgd_orders["customer_id"].unique()
 sgd_cust = cust[cust["customer_id"].isin(sgd_cust_ids)].copy()
@@ -103,7 +103,7 @@ print(f"       (Profit proxy @ {MARGIN_RATE:.0%} margin = S${sgd_cust['profit_pr
 # ==============================================================================
 # A.  FIVE DISTRIBUTIONS WITH MEAN / MEDIAN
 # ==============================================================================
-print("\n\n[A] FIVE DISTRIBUTIONS — Mean vs Median")
+print("\n\n[A] FIVE DISTRIBUTIONS -- Mean vs Median")
 print("-" * 55)
 
 metrics = {
@@ -143,16 +143,16 @@ print("Saved: 07_lens1_distributions.csv")
 
 print("\nKey insight from distributions:")
 print("  - Mean >> Median for spend and transactions  ==> right-skewed, heavy-tailed")
-print("  - The 'average customer' is a statistical fiction — most customers fall BELOW it")
+print("  - The 'average customer' is a statistical fiction -- most customers fall BELOW it")
 print("  - This is the empirical foundation of Lens 1: customers are NOT equal")
 
 # ==============================================================================
 # B.  MULTIPLICATIVE DECOMPOSITION
-#     Revenue = # Customers × AOF × AOV
+#     Revenue = # Customers x AOF x AOV
 # ==============================================================================
 print("\n\n[B] MULTIPLICATIVE DECOMPOSITION")
 print("-" * 55)
-print("Formula: Revenue = Customers × AOF × AOV")
+print("Formula: Revenue = Customers x AOF x AOV")
 print()
 
 n_cust  = len(sgd_cust)
@@ -167,10 +167,10 @@ print(f"  Avg AOV            :  S${avg_aov:>8.2f}  per order")
 print(f"  Implied Revenue    :  S${implied_rev:>10,.0f}")
 print(f"  Actual Revenue     :  S${total_rev:>10,.0f}")
 print()
-print("  Revenue per customer = AOF × AOV = "
-      f"  {avg_aof:.2f} × S${avg_aov:.2f} = S${avg_aof*avg_aov:.2f}")
+print("  Revenue per customer = AOF x AOV = "
+      f"  {avg_aof:.2f} x S${avg_aov:.2f} = S${avg_aof*avg_aov:.2f}")
 print()
-print("  Insight: AOF is the key lever — frequency drives 90%+ of revenue variation")
+print("  Insight: AOF is the key lever -- frequency drives 90%+ of revenue variation")
 print("  (AOV varies ~2x across deciles; AOF varies ~20x+)")
 
 decomp_df = pd.DataFrame([{
@@ -187,7 +187,7 @@ print("Saved: 07_lens1_decomposition.csv")
 # C.  DECILE ANALYSIS
 #     Sort customers into 10 equal groups by total spend (D1 = most valuable)
 # ==============================================================================
-print("\n\n[C] DECILE ANALYSIS — 10 Equal Groups by Total Spend")
+print("\n\n[C] DECILE ANALYSIS -- 10 Equal Groups by Total Spend")
 print("-" * 55)
 
 sgd_cust_sorted = sgd_cust.sort_values("sgd_revenue", ascending=False).copy()
@@ -264,7 +264,7 @@ print("\nSaved: 07_lens1_equal_profit_slicing.csv")
 # ==============================================================================
 # D.  CROSS-CHANNEL AND CROSS-PRODUCT DECOMPOSITION
 # ==============================================================================
-print("\n\n[D] LENS 1 — DECOMPOSITION BY CHANNEL & PRODUCT")
+print("\n\n[D] LENS 1 -- DECOMPOSITION BY CHANNEL & PRODUCT")
 print("-" * 55)
 
 # Join channel back from orders
@@ -295,27 +295,27 @@ for dim, label in [("channel","Acquisition Channel"), ("product_category","First
               f"S${row['avg_aov']:>6.0f}  {row['pct_rev']:>5.1%}")
 
 # ==============================================================================
-# E.  SUMMARY — THE THREE Ds
+# E.  SUMMARY -- THE THREE Ds
 # ==============================================================================
 print("\n\n[E] THE THREE Ds SUMMARY")
 print("=" * 65)
 print("""
   DISTRIBUTION  (plot the full distribution, not just the average)
-  ─────────────────────────────────────────────────────────────────
+  -----------------------------------------------------------------
   - Spend and transactions are heavily right-skewed (Mean > Median)
-  - Most customers are below the average — the average customer is a fiction
-  - AOV is less skewed — purchase SIZE is more consistent than FREQUENCY
+  - Most customers are below the average -- the average customer is a fiction
+  - AOV is less skewed -- purchase SIZE is more consistent than FREQUENCY
 
   DECOMPOSITION  (break totals into multiplicative components)
-  ─────────────────────────────────────────────────────────────────
-  - Revenue = Customers × AOF × AOV
-  - AOF varies far more across deciles than AOV — frequency is the driver
+  -----------------------------------------------------------------
+  - Revenue = Customers x AOF x AOV
+  - AOF varies far more across deciles than AOV -- frequency is the driver
   - Implication: retention and repurchase programs > upselling
 
   DECILE  (sort into 10 equal groups, compare concentration)
-  ─────────────────────────────────────────────────────────────────
+  -----------------------------------------------------------------
   - Top 10% of customers generate a disproportionate share of revenue
-  - Bottom 10% barely contribute — churn in this tier is acceptable
+  - Bottom 10% barely contribute -- churn in this tier is acceptable
   - Middle tiers are the highest-ROI intervention target
 """)
 

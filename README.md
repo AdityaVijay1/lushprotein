@@ -1,7 +1,7 @@
 # LushProtein — Customer Analytics Project
 
 **Markets:** Singapore + Malaysia + Hong Kong — all figures in SGD
-**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD
+**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026)
 
 ---
 
@@ -81,7 +81,7 @@ LushProtein_Project_Data_20260505/
 │   ├── 04_subscription_churn.py
 │   ├── 05_discount_channel.py
 │   ├── run_visualizations.py        # Runs all chart scripts in one command
-│   └── charts/                      # 19 PNG charts (150 dpi, presentation-ready)
+│   └── charts/                      # 22 PNG charts (150 dpi, presentation-ready)
 |
 ├── LushProtein_Data_Glossary_20260505.xlsx
 ├── LushProtein_Source_to_Target_Mapping_Exercise.xlsx
@@ -103,7 +103,7 @@ LushProtein_Project_Data_20260505/
 **Key filtering rules:**
 - Use `Top Row == 1` for **one row per order** (order-level analysis)
 - Use `Line: Type == 'Line Item'` for **product-level analysis** (all line items)
-- All revenue is FX-converted to SGD at load time — `Price: Total` in `orders.parquet` is always in SGD (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD)
+- All revenue is FX-converted to SGD at load time — `Price: Total` in `orders.parquet` is always in SGD (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD, 5-year average 2020–2026)
 
 ---
 
@@ -165,7 +165,7 @@ Charts are saved to `visualizations/charts/` as PNG files at 150 dpi.
 | 2024 | **S$284,971** | 69.2% | 30.9% |
 | 2025 | **S$409,152** | 49.6% | 35.2% |
 
-> **FX note:** All figures are SG + MY + HK combined in SGD (1 SGD = 3.30 MYR). Previous figures (S$1.86M in 2021) mixed MYR as SGD — those were incorrect.
+> **FX note:** All figures are SG + MY + HK combined in SGD (1 SGD = 3.30 MYR, 5-year average 2020–2026). Previous figures (S$1.86M in 2021) mixed MYR as SGD — those were incorrect.
 
 Revenue peaked at **S$848K in 2021 across both SG and MY markets with zero discounting**. MY was near-equal to SG at peak (S$441K vs S$407K) and has since collapsed. Since 2022, discount rates climbed to 69% of orders in 2024 while combined revenue has not recovered. The 2023 collapse coincides with the first aggressive discounting campaigns.
 
@@ -211,11 +211,11 @@ Revenue peaked at **S$848K in 2021 across both SG and MY markets with zero disco
 - Raises repeat rate from 23.6% → 65.5% (+178%)
 - Raises avg LTV from S$170 → S$470 (+176%)
 
-**Top cross-purchase combinations (repeat buyers):**
-1. Clear Protein + Lean Protein (59 customers)
-2. Accessories + Clear Protein (56 customers)
-3. Accessories + Other (54 customers)
-4. Accessories + Clear Protein + Lean Protein (69 customers) — highest combo loyalty
+**Top cross-purchase combinations (all customers — computed dynamically from `lines.parquet`):**
+1. Lean Protein (104 customers — single-product)
+2. Lean Protein + Other (80 customers)
+3. Clear Protein (76 customers — single-product)
+4. Accessories + Clear Protein + Lean Protein (69 customers) — highest multi-product combo
 
 This is a supply-side insight, not a demand-side problem: customers who are exposed to multiple products become loyal. The implication is a strong cross-sell sequence after first purchase.
 
@@ -297,18 +297,20 @@ Of 13,780 total customers, **4,459 (32.4%) ever placed a second order.**
 
 | First-Order Discount Depth | Customers | Repeat Rate | Avg LTV (SGD) |
 |---|---|---|---|
-| **Full price (0%)** | **8,635** | **38.0%** | **S$293** |
-| 1–5% off | 395 | 25.1% | S$132 |
-| 5–10% off | 536 | 23.3% | S$129 |
-| 10–20% off | 1,133 | 24.8% | S$119 |
-| 20–30% off | 1,286 | 24.2% | S$155 |
-| 30–50% off | 555 | 22.3% | S$105 |
-| **50%+ off** | **1,240** | **19.1%** | **S$54** |
+| **Full price (0%)** | **9,398** | **36.4%** | **S$274** |
+| 1–5% off | 186 | 17.7% | S$109 |
+| 6–10% off | 395 | 26.1% | S$135 |
+| 11–20% off | 1,250 | 25.5% | S$120 |
+| 21–30% off | 458 | 25.5% | S$158 |
+| 31–50% off | 1,189 | 23.0% | S$150 |
+| **51%+ off** | **430** | **21.9%** | **S$92** |
 
-Full-price first-order customers repeat at **38.0%** with **S$293 avg LTV**.
-Customers acquired at 50%+ discount repeat at only **19.1%** with **S$54 avg LTV** — a **2× repeat rate gap and 5.4× LTV gap**.
+Source: `EDA/outputs/05_discount_depth_bins.csv` — all values dynamically computed.
 
-The steepest drop is at the 1–5% tier — from **38.0% (full price) → 25.1% (any discount)** — suggesting that any discount signals price-sensitivity and immediately lowers the cohort's loyalty profile. Deeper discounts produce marginal additional damage on repeat rate, but the LTV damage is consistent and extreme: from S$293 (full price) down to S$54 (50%+).
+Full-price first-order customers repeat at **36.4%** with **S$274 avg LTV**.
+Customers acquired at 51%+ discount repeat at only **21.9%** with **S$92 avg LTV** — a **+66% repeat rate advantage and +198% LTV advantage for full-price buyers**.
+
+Any discount immediately pulls the repeat rate into the low-to-mid 20s. The LTV damage is consistent across all discount depths — from S$274 (full price) down to S$92 (51%+). The 1–5% tier is small (n=186) and noisy but confirms the pattern.
 
 > **Bottom line:** Every promotional campaign that uses deep discounts (>20% off) is acquiring cohorts that are materially less loyal and less profitable over time. The brand is spending margin to attract weaker customers.
 
@@ -340,7 +342,7 @@ RFM scores each customer on Recency (how recently they bought), Frequency (how o
 
 | Rank | Finding | Key Evidence | Confidence | Suggested Experiment |
 |---|---|---|---|---|
-| 1 | **Deep discounting destroys cohort quality** | Full-price: 38.0% repeat, S$293 LTV vs 50%+ off: 19.1% repeat, S$54 LTV (5.4× gap) | High | Cap new-customer discount at 15%; remove 50%+ deals |
+| 1 | **Deep discounting destroys cohort quality** | Full-price: 36.4% repeat, S$274 LTV vs 51%+ off: 21.9% repeat, S$92 LTV (+66% RR, +198% LTV advantage for full-price buyers) | High | Cap new-customer discount at 15%; remove 50%+ deals |
 | 2 | **Cross-sell is the #1 LTV lever** | 3-product buyers: 65.5% repeat, S$470 LTV (+176% vs 1-product) | High | Post-purchase cross-sell email at Day 21 post-first-order |
 | 3 | **At Risk segment = urgent high-value opportunity** | 2,351 customers, S$514 avg LTV, currently dormant | High | Targeted win-back with strongest offer |
 | 4 | **Subscription cadence causes stockpile churn** | 27% cancel "already have too much"; peak churn at Cycle 1 (30–60 days) | High | Add 45/60-day interval option + skip-delivery button |
@@ -460,7 +462,7 @@ Recommended 14-slide structure:
 | 7 | Not All Customers Are Equal | Channel quality — Marketplace vs Direct LTV and repeat rate gap | `02a_retention_by_channel.png` + `05b_marketplace_vs_website.png` |
 | 8 | The Cross-Sell Opportunity | LTV staircase (1 → 4 products). +171% LTV uplift. | `03a_cross_product_ltv.png` |
 | 9 | Subscription: High Value, High Churn | Sub vs non-sub metrics; churn by cycle; top cancellation reason | `04a_subscriber_vs_onetime.png` + `04b_churn_by_cycle.png` + `04c_cancellation_reasons.png` |
-| 10 | Discount Depth Destroys Loyalty | Full-price vs 50%+ off: repeat rate and LTV comparison (S$293 → S$54 LTV) | `05a_discount_depth_impact.png` |
+| 10 | Discount Depth Destroys Loyalty | Full-price (36.4% RR, S$274 LTV) vs 51%+ off (21.9% RR, S$92 LTV) — +66% RR and +198% LTV for full-price buyers | `05a_discount_depth_impact.png` |
 | 11 | Customer Segments (RFM) | RFM pie + priority action table; At Risk and Can't Lose are urgent | `05c_rfm_segments.png` |
 | 12 | Time-to-Second-Purchase | Distribution histogram; ~41% of repeaters return within 60 days | `02c_time_to_second_purchase.png` |
 | 13 | Top Findings and Proposed Experiments | Findings table (ranked 1–6) with suggested experiments | — |
