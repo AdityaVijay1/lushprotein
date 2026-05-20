@@ -216,6 +216,9 @@ print(summary)
 > **Note for presentation:** Relabel the right axis from "Discount Rate (%)" to "% Orders With Discount" and cite the 35.2% gross revenue figure in the speaker notes, not on the slide itself.
 
 ![Discount Chart](visualizations/discountchart_excel.png)
+
+Disc % of Gross Revenue = Discount Given ÷ (Price: Total + Discount Given)
+Denominator is what customers would have paid at full price
 ---
 
 ## Slide 3 — Channel Quality
