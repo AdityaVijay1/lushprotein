@@ -235,21 +235,33 @@ print(summary)
 Source: `EDA/outputs/05_channel_quality.csv`
 Script: `EDA/05_discount_channel.py`
 
-###  Critical Caveat: Marketplace Subscription Tracking
+### Critical Caveats: Marketplace Metrics
 
-Data limitation. **Marketplace customers show 0% subscription rate because Shopify cannot track subscriptions originated on Shopee or Lazada.**
+**A — Subscription tracking gap**
 
-- Marketplace platforms (Shopee, Lazada) have their own subscription/auto-delivery systems
-- Orders placed through those platforms do not appear as `is_subscription = True` in Shopify data
-- Therefore, the "0% subscribed" for Marketplace customers means "0% subscribed **through Shopify**" — not that they never subscribed anywhere
+Marketplace customers show 0% subscription rate because Shopify cannot track subscriptions that originate on Shopee or Lazada.
+
+- Marketplace platforms have their own auto-delivery/subscription systems; those orders do not appear as `is_subscription = True` in Shopify data
+- The "0% subscribed" for Marketplace means "0% subscribed **through Shopify**" — not that they never subscribed anywhere
+
+**B — Repeat rate measurement scope (important for Q&A readiness)**
+
+The 14.4% marketplace repeat rate is computed as **306 customers with 2+ Shopify-visible orders ÷ 2,126 marketplace-first customers**. It counts any second Shopify order — whether a repeat Shopee/Lazada order synced via integration, or a cross-channel migration to Shopify.com.
+
+*Evidence that repeat marketplace orders are captured:* There are 3,268 total marketplace-tagged Shopify orders for 2,126 customers (avg 1.54 orders per customer). If only first-time purchases were synced, there would be exactly 2,126 orders, not 3,268. The extra ~1,142 orders confirm that repeat purchases do appear in Shopify.
+
+*Why the 14.4% could still be an undercount:* If a customer repurchases on Shopee with a different email address, a new Shopify customer record is created and the repeat purchase is not linked to the original customer. This would make 14.4% a conservative estimate.
+
+*Strategically,* this does not weaken the finding. Customers who only repeat on marketplace without entering LushProtein's Shopify ecosystem have zero CRM visibility, zero Shopify subscription potential, and their CLV accrues to Shopee/Lazada's platform — not to LushProtein's direct channel.
 
 **Impact on the finding:**
-- The **LTV gap** (S$115 vs S$198, Marketplace vs Direct/Organic) is still valid — it is based on Shopify purchase history, which is complete for both channels
-- The **repeat rate gap** (14.4% vs 33.5%) is still valid — repeat Shopify orders are tracked regardless of original channel
-- The subscription comparison should be **removed from the Marketplace column** or annotated as "Shopify subscriptions only"
+- The **LTV gap** (S$115 vs S$198) is valid — based on complete Shopify purchase history for both channels
+- The **repeat rate gap** (14.4% vs 33.5%) is valid — both channels measured on identical Shopify-data basis
+- The **0% subscription rate** should be annotated as "Shopify subscriptions only"
+- The **14.4% repeat rate** should be annotated as "Shopify-trackable repeat purchases only"
 
-**Recommended slide annotation:**
-> *"Subscription data reflects Shopify subscriptions only. Marketplace platforms (Shopee/Lazada) have their own subscription systems that are not tracked here. The LTV and repeat rate comparisons remain valid."*
+**Recommended slide footnote:**
+> *"Marketplace repeat rate (14.4%) reflects customers with 2+ Shopify-visible orders. Repeat purchases made exclusively on Shopee/Lazada and not synced to Shopify are not captured. Subscription data = Shopify subscriptions only; Shopee/Lazada subscription systems are not tracked here. All channel comparisons use Shopify purchase history as a consistent basis."*
 
 ### Supplementary: Top-of-Funnel Channel Context (4.Campaigns dataset)
 

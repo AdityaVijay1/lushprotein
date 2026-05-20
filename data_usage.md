@@ -373,7 +373,7 @@ All numbers below confirmed by re-running the full pipeline on **19 May 2026**.
 | Paid Social | 382 | 19.4% | S$71 | 6.0% |
 | Email | 48 | 12.5% | S$50 | 2.1% |
 
-*Shopify subscriptions only — Shopee/Lazada subscriptions not tracked here.
+*Marketplace notes: (1) **0% subscribed** = Shopify subscriptions only — Shopee/Lazada auto-delivery systems are not tracked in Shopify. (2) **14.4% repeat rate** = 306 customers with 2+ Shopify-visible orders ÷ 2,126 marketplace-first customers. Repeat purchases made exclusively on Shopee/Lazada without syncing to Shopify are not captured. There are 3,268 total marketplace-tagged Shopify orders across 2,126 customers (avg 1.54 orders/customer), confirming that repeat marketplace purchases do partially appear in Shopify via the integration. The relative channel comparison is valid as all channels are measured on the same Shopify-data basis.
 
 ### Cross-Sell LTV Staircase
 

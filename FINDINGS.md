@@ -383,7 +383,9 @@ Not all acquisition channels produce the same customer. The data reveals a funda
 | **Marketplace** | **2,126** | **14.4%** | **S$115** | **0.0%** |
 | Email | 48 | 12.5% | S$50 | 2.1% |
 
-> Marketplace 0% subscribed reflects Shopify subscriptions only. Shopee/Lazada auto-delivery systems are not tracked in Shopify.
+> **Marketplace repeat rate — measurement note:** The 14.4% is computed as 306 customers with 2+ Shopify-visible orders ÷ 2,126 marketplace-first customers. A customer's second order counts whether it was another Shopee/Lazada order synced back into Shopify via the integration, or a direct Shopify.com purchase. Evidence of partial sync: there are 3,268 total marketplace-tagged orders across 2,126 marketplace customers (avg 1.54 orders/customer) — if only first-time orders were synced, there would be exactly 2,126 orders, not 3,268. The extra ~1,142 orders confirm repeat marketplace purchases do appear in Shopify. The 14.4% may still be an undercount if some customers repurchase on Shopee/Lazada using a different email (creating a new Shopify ID) or if the sync is incomplete. Strategically, customers who only repeat on marketplace without entering the Shopify ecosystem have 0% Shopify subscription conversion and no CRM visibility — strengthening, not weakening, the channel quality argument.
+>
+> **Marketplace 0% subscribed:** Reflects Shopify subscriptions only. Shopee/Lazada operate independent auto-delivery systems not tracked in Shopify. The LTV and repeat rate comparisons remain valid as both are measured purely from Shopify order history.
 
 Marketplace customers (Shopee, Lazada, Tokopedia) represent **15% of total customers** but:
 - Repeat at **14.4%** vs **33.5%** for Direct/Organic — a **2.3× gap**

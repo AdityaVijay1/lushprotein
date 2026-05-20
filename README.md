@@ -181,10 +181,12 @@ Revenue peaked at **S$848K in 2021 across both SG and MY markets with zero disco
 | Direct / Organic | 6,920 | **33.5%** | S$198 | 3.8% |
 | Paid Social | 382 | 19.4% | S$71 | 6.0% |
 | Affiliate | 26 | 19.2% | S$94 | 3.8% |
-| **Marketplace** | **2,126** | **14.4%** | **S$115** | **0.0%** |
+| **Marketplace** | **2,126** | **14.4%** | **S$115** | **0.0%*** |
 | Email | 48 | 12.5% | S$50 | 2.1% |
 
-> **Note on Marketplace 0% subscribed:** Shopee/Lazada operate their own auto-delivery systems not tracked in Shopify. The LTV and repeat rate gaps are valid; the subscription comparison should be annotated on slides.
+> **\* Marketplace metric notes:**
+> - **0% subscribed** = Shopify subscriptions only. Shopee/Lazada operate independent auto-delivery systems not tracked in Shopify.
+> - **14.4% repeat rate** = customers with 2+ Shopify-visible orders ÷ 2,126 marketplace-first customers (306 repeaters). Repeat purchases made exclusively on Shopee/Lazada without syncing to Shopify are not captured. Evidence of partial sync: there are 3,268 total marketplace-tagged Shopify orders for 2,126 customers (avg 1.54/customer) — if only first-time orders were synced, the count would be exactly 2,126. All channels are compared on the same Shopify-data basis, making the relative comparison valid.
 
 **Marketplace is a structural problem.** 2,126 customers (15% of base) deliver:
 - 1.7× lower LTV than Direct/Organic (S$115 vs S$198)

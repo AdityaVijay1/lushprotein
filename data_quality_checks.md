@@ -401,9 +401,12 @@ Discrepancy (flagged but not tagged):           0
 
 ---
 
-### DQ-08 — Marketplace Subscription Tracking Gap
+### DQ-08 — Marketplace Subscription Tracking Gap and Repeat Rate Measurement
 
-**Description:** Shopify cannot track subscriptions that originate on third-party marketplace platforms (Shopee, Lazada). All 2,126 Marketplace customers show `pct_subscribed = 0.0%` in the channel quality analysis — but this reflects Shopify's data limitations, not necessarily the true subscription behaviour of these customers.
+**Description:** Two related limitations affect the Marketplace channel quality metrics.
+
+**Part A — Subscription tracking gap:**
+Shopify cannot track subscriptions that originate on third-party marketplace platforms (Shopee, Lazada). All 2,126 Marketplace customers show `pct_subscribed = 0.0%` in the channel quality analysis — but this reflects Shopify's data limitations, not necessarily the true subscription behaviour of these customers.
 
 **Evidence:**
 ```
@@ -411,16 +414,37 @@ Marketplace channel orders:          3,268
 Marketplace is_subscription = True:  0
 ```
 
-**Impact:**
-- The "0% subscription conversion from Marketplace" finding is technically correct within Shopify data
-- However, Shopee and Lazada both have auto-delivery/subscription features on their own platforms
-- If Marketplace customers subscribe on Shopee/Lazada, those recurring orders would not appear in Shopify at all — they would be entirely absent from the dataset
+Shopee and Lazada both have auto-delivery/subscription features on their own platforms. If Marketplace customers subscribe on those platforms, those recurring orders do not appear in Shopify at all.
 
-**Severity:** MEDIUM for the subscription conversion metric; LOW for the LTV and repeat rate metrics (which track all Shopify purchases regardless of origin channel).
+**Part B — Repeat rate measurement scope:**
+The 14.4% marketplace repeat rate is computed as 306 customers with ≥2 Shopify-visible orders ÷ 2,126 marketplace-first customers. A "repeat" is any second Shopify order regardless of whether it came through Shopee/Lazada again or through a direct Shopify.com visit.
+
+```
+Marketplace customers:                 2,126
+Marketplace repeaters (2+ Shopify):      306
+Repeat rate:                           14.4%   (306 / 2,126)
+Total marketplace-tagged orders:       3,268
+Avg orders per marketplace customer:    1.54
+```
+
+The fact that there are 3,268 marketplace-tagged orders across 2,126 customers (not 2,126 as would be the case if only first orders were synced) confirms that repeat Shopee/Lazada orders ARE being captured in Shopify via the integration — at least partially.
+
+**Potential sources of undercount in the 14.4%:**
+1. A customer who buys on Shopee with email A and then on Shopee again with email B gets two separate Shopify customer records — the repeat is not linked.
+2. If the Shopify–Shopee/Lazada integration misses some repeat orders, those are invisible.
+
+**Impact:**
+- The **0% Shopify subscription rate** for Marketplace is technically correct within Shopify data; the true marketplace subscription rate on Shopee/Lazada is unknown.
+- The **14.4% repeat rate** may be a modest undercount. However, even if the true rate is higher, customers who only repeat on Shopee/Lazada without entering the Shopify ecosystem have zero CRM visibility and zero Shopify subscription potential — this strengthens, not weakens, the channel quality argument.
+- The **relative comparison** (14.4% Marketplace vs 33.5% Direct/Organic) is valid: all channels are measured on identical Shopify-data basis.
+- The **LTV gap** (S$115 Marketplace vs S$198 Direct/Organic) is also valid — both channels' LTV is measured from complete Shopify purchase histories.
+
+**Severity:** MEDIUM for the subscription conversion metric and repeat rate headline; LOW for the LTV comparison and the strategic conclusion.
 
 **Mitigation:**
 - LTV and repeat rate comparisons across channels remain valid (both use Shopify purchase history)
-- Subscription conversion comparison must be annotated: "Shopify subscriptions only; Marketplace platforms operate independent subscription systems not tracked here"
+- Subscription comparison annotated: "Shopify subscriptions only; Marketplace platforms operate independent subscription systems not tracked here"
+- Repeat rate annotated: "Marketplace repeat rate reflects customers with 2+ Shopify-visible orders. Repeat purchases exclusively on Shopee/Lazada and not synced to Shopify are not captured."
 
 ---
 
