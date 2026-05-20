@@ -104,10 +104,10 @@ These are **5-year average rates** (not spot rates at each transaction date). Th
 | Count | 27,350 orders | 16,041 orders |
 | Mean | SGD 113.83 | SGD 119.28 |
 | Median | SGD 62.10 | SGD 62.10 |
-| 25th percentile | SGD 29.00 |
-| 75th percentile | SGD 115.00 |
-| Maximum | SGD 26,520.00 |
-| Std deviation | SGD 405.16 |
+| 25th percentile | SGD 29.00 | — |
+| 75th percentile | SGD 115.00 | — |
+| Maximum | SGD 26,520.00 | — |
+| Std deviation | SGD 405.16 | — |
 
 The mean (S$119) is nearly double the median (S$62), indicating **right-skewed distribution** driven by a small number of high-value orders. This is expected in a consumer health brand context but the outliers require examination (see DQ-04).
 

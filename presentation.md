@@ -40,8 +40,6 @@
 | ↳ Customers who placed SG orders | 8,920 | `orders[store=='SG'].customer_id.nunique()` | `orders.parquet` |
 | ↳ Customers who placed MY orders | 5,158 | `orders[store=='MY'].customer_id.nunique()` | `orders.parquet` |
 | ↳ Cross-market buyers (both SG+MY) | **299** | `sg_ids & my_ids` | `orders.parquet` |
-
-> **Why 8,920 + 5,158 = 14,078 > 13,780:** The 299 cross-market buyers are counted once in each store group but only once in the combined total. Formula: 8,920 + 5,158 - 299 = 13,779 (+1 for 2 HK-only customers = 13,780). This is expected behaviour for customers who, for example, ordered on the SG site first then later ordered on the MY site.
 | **Total orders (2020–2026)** | **27,350** | All stores combined | `orders.parquet` |
 | **Overall repeat purchase rate** | **32.4%** | 4,459 repeaters / 13,780 unique customers | `cust['is_repeat'].mean()` |
 | ↳ SG-only repeat rate | 29.6% | 2,637 / 8,920 SG customers | `orders.parquet` filtered |
@@ -53,8 +51,9 @@
 | **Subscriber LTV uplift** | **+166%** | (532 - 200) / 200 = 1.66 | Computed from above |
 | **Ever-subscribed customers** | **1,095 (7.9%)** | Shopify Tags-based, full history | `cust['ever_subscribed'].sum()` |
 
-> **Clarification on why previous "SG-Only" numbers matched combined:**
-> The previous "SG-Only" column showed 13,780 customers (same as combined) because the old analysis loaded all 7 Excel files (SG + MY) without knowing MY data was included, and treated MYR revenue as SGD. So customer/order COUNTS were always all-market. Only LTV figures changed — the old uncorrected LTV (S$1,063 for subscribers) was inflated because MY revenue wasn't divided by 3.30. The correct combined-market figure after FX correction is **S$532**.
+> **Note on customer counts:** 8,920 + 5,158 = 14,078, which is higher than 13,780 because **299 customers ordered from both SG and MY stores** at different times. They are counted once in each store group but only once in the combined total. Full check: 8,920 + 5,158 − 299 (overlap) + 2 (HK-only) = **13,780** ✓
+>
+> **Note on previous LTV figures:** The old S$1,063 subscriber LTV was incorrect — it used all markets but left MYR revenue unconverted (treated as SGD), inflating MY customer LTV by 3.30×. After proper FX correction (÷3.30), the correct combined-market figure is **S$532**. All customer and order counts were always all-market and remain unchanged.
 
 ### Calculation Proof
 
@@ -137,8 +136,8 @@ print('60d retention avg:', cohort['retention_60d'].mean())
 | 2024 | 4,261 | 2,621 | **S$284,971** | S$109 | S$127,408 | 69.2% | 30.9% |
 | 2025 | 6,407 | 4,107 | **S$409,152** | S$100 | S$222,033 | 49.6% | 35.2% |
 
-Disc % of Gross Revenue = Discount Given ÷ (Price: Total + Discount Given)
-Denominator is what customers would have paid at full price
+
+> **Disc % of Gross Revenue** = Discount Given ÷ (Net Revenue + Discount Given). The denominator is what customers would have paid at full price.
 
 > **Market breakdown for 2021 peak (S$847,930):**
 > SG = S$406,908 | MY (converted) = S$441,022
@@ -232,7 +231,6 @@ print(summary)
 
 > **Note for presentation:** Relabel the right axis from "Discount Rate (%)" to "% Orders With Discount" and cite the 35.2% gross revenue figure in the speaker notes, not on the slide itself.
 
-![Discount Chart](visualizations/discountchart_excel.png)
 ---
 
 ## Slide 3 — Channel Quality

@@ -209,6 +209,8 @@ Date range:              NO DATE COLUMN — 5 years aggregated into totals
 | shopify_email | 4,608 | 5% |
 | snowball | 3,879 | 4% |
 
+**Top cities by session volume:**
+
 | City | Sessions |
 |---|---|
 | Singapore | 30,506 (12%) |
