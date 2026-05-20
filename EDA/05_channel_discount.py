@@ -153,6 +153,10 @@ depth_summary = (
 )
 print("\n  Repeat rate by discount depth on first order:")
 print(depth_summary.to_string())
+depth_summary.reset_index().rename(columns={"disc_bin": "discount_bin"}).to_csv(
+    OUTPUT_DIR / "05_discount_depth_bins.csv", index=False
+)
+print(f"  Saved: 05_discount_depth_bins.csv")
 
 # â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 # C.  DISCOUNT CODE TAXONOMY

@@ -5,8 +5,8 @@
 **Data period:** 2020 – Q1 2026
 **Dataset:** 27,350 Shopify orders · 13,780 unique customers · **All markets (SG + MY + HK) combined in SGD**
 
-> **CURRENCY ASSUMPTION:** Fixed exchange rates applied at data load:
-> **1 SGD = 3.30 MYR** | **1 SGD = 6.10 HKD** (rates as of April 2026)
+> **CURRENCY ASSUMPTION:** 5-year average exchange rates (2020–2026) applied at data load:
+> **1 SGD = 3.30 MYR** | **1 SGD = 6.10 HKD**
 > Applied in `EDA/01_load_and_merge.py`. All revenue figures below are SGD-equivalent.
 > Retention rates, repeat rates, and cohort patterns are count-based — FX-neutral.
 

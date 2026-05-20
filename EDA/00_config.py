@@ -80,31 +80,32 @@ def classify_channel(row) -> str:
         return "Email"
     return "Direct / Organic"
 
-# ── FX conversion rates (fixed, applied at data load time) ────────────────────
+# ── FX conversion rates (5-year average, applied at data load time) ───────────
 #
-# ASSUMPTION: Fixed exchange rates as of analysis date (April 2026).
+# ASSUMPTION: Exchange rates represent the approximate 5-year average (2020–2026).
 #   Rates provided by team: 1 SGD = 3.30 MYR  |  1 SGD = 6.10 HKD
 #   All revenue (Price: Total, Price: Total Discount, Price: Total Shipping,
 #   Line: Price) is multiplied by the relevant rate before saving to Parquet.
 #   After conversion the Currency column is set to "SGD" for all orders.
 #   This enables combined SG + MY + HK analysis in a single SGD-denominated dataset.
 #
-#   Limitation: Using a single fixed rate ignores historical FX movements.
+#   Limitation: Using a single average rate ignores year-to-year FX movements.
 #   For orders spanning 2020–2026, the actual rate at time of transaction may
-#   differ. This introduces a measurement error in early-year MY/HK revenue.
+#   differ from the 5-year average. This introduces a measurement error in
+#   absolute revenue figures (estimated ≤10% for MY store).
 #   Impact is LOW for relative comparisons (retention, repeat rate) but should
 #   be noted when citing absolute SGD revenue figures.
 #
 FX_RATES_TO_SGD = {
     "SG": 1.0,
-    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD
-    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (5-yr avg: 1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (5-yr avg: 1 SGD = 6.10 HKD)
 }
 
 FX_ASSUMPTION_NOTE = (
-    "All revenue converted to SGD using fixed rates: "
+    "All revenue converted to SGD using 5-year average rates (2020–2026): "
     "1 SGD = 3.30 MYR; 1 SGD = 6.10 HKD. "
-    "Rates fixed at April 2026. Historical FX movements not applied."
+    "Applied as fixed rates at data load time."
 )
 
 # ── Date helpers ───────────────────────────────────────────────────────────────

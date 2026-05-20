@@ -5,7 +5,7 @@
 **Scope:** Shopify customer transaction data (2020–2026), all markets combined (SG + MY + HK) in SGD
 **Audience:** Course instructors (assessment of data due diligence)
 
-> **CURRENCY UPDATE (Applied May 2026):** All revenue figures have been converted to SGD using fixed exchange rates:
+> **CURRENCY ASSUMPTION:** All revenue figures have been converted to SGD using 5-year average exchange rates (2020–2026):
 > **1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD**
 > Conversion is applied at data load time in `EDA/01_load_and_merge.py`.
 > See DQ-01 (updated) for full discussion of limitations and assumptions.
@@ -188,20 +188,20 @@ HK store:      2 orders, HKD 1,943     (HKD → SGD equivalent: S$319)
 **Severity:** HIGH — mixing currencies without conversion produces nonsensical revenue totals.
 
 **Mitigation Applied (May 2026):**
-Fixed exchange rates provided by the team are applied at data load time in `EDA/01_load_and_merge.py`:
+5-year average exchange rates (2020–2026) are applied at data load time in `EDA/01_load_and_merge.py`:
 ```python
 FX_RATES_TO_SGD = {
     "SG": 1.0,
-    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (1 SGD = 3.30 MYR)
-    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (1 SGD = 6.10 HKD)
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (5-yr avg: 1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (5-yr avg: 1 SGD = 6.10 HKD)
 }
 # Applied to Price: Total, Price: Total Discount, Price: Total Shipping
 # Currency column set to "SGD" for all orders after conversion
 ```
 
 **Assumption stated explicitly:**
-- Rates are **fixed at April 2026** and do not vary by transaction date
-- Historical MYR/SGD rate moved between ~3.0 and ~3.5 over 2020–2026 → absolute revenue figures for 2020–2022 may be off by up to ±10%
+- Rates represent the **5-year average (2020–2026)** and do not vary by transaction date
+- Actual MYR/SGD rate moved between ~3.0 and ~3.5 over the period → individual year figures may deviate up to ±10% from the average-rate conversion
 - For **relative comparisons** (repeat rates, LTV uplift %, cohort retention), the FX rate has no impact — these are count-based or ratio-based metrics
 
 **Post-conversion market revenue summary:**

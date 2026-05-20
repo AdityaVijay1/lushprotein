@@ -3,7 +3,7 @@
 **Project:** ISSS603 Science of Customer Analytics · SMU Sem 5
 **Data Period:** 2019–2026 (analysis focused on 2020–2025)
 **Markets:** Singapore (SG) + Malaysia (MY) + Hong Kong (HK), all converted to SGD
-**FX Rates Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed, April 2026)
+**FX Rates Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average, 2020–2026)
 **Last Verified:** May 2026 — all EDA scripts re-run, all numbers confirmed
 
 ---
@@ -61,6 +61,7 @@
 ```python
 # EDA/01_load_and_merge.py
 FX_RATES_TO_SGD = {"SG": 1.0, "MY": 1/3.30, "HK": 1/6.10}
+# Rates = 5-year average (2020–2026): 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD
 # Applied to: Price: Total, Price: Total Discount, Price: Total Shipping, Line: Price
 # After conversion: Currency column set to "SGD" for all 27,350 orders
 ```
@@ -332,7 +333,7 @@ No explicit currency column in the Recharge export. Average order value = S$81. 
 ## 8. Verified Master Numbers
 
 All numbers below confirmed by re-running the full pipeline on **19 May 2026**.
-**Scope: SG + MY + HK combined in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD)**
+**Scope: SG + MY + HK combined in SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, 5-year average 2020–2026)**
 
 ### Business at a Glance
 

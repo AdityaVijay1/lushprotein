@@ -138,6 +138,13 @@ tenure_dist_pct = tenure_dist / tenure_dist.sum()
 print("\n  Churn tenure distribution:")
 for lbl, n, pct in zip(labels, tenure_dist, tenure_dist_pct):
     print(f"    {lbl:<12}  {n:>4}  ({pct:.1%})")
+tenure_df = pd.DataFrame({
+    "tenure_bin": labels,
+    "n": tenure_dist.values,
+    "pct": tenure_dist_pct.values,
+})
+tenure_df.to_csv(OUTPUT_DIR / "06_churn_tenure.csv", index=False)
+print("  Saved: 06_churn_tenure.csv")
 
 # â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 # C.  CANCELLATION REASONS â€” education gap proxy
@@ -189,8 +196,13 @@ print(theme_summary.to_string())
 # Products last ~30 days/tub; a cycle is ~30 days
 rc_churned["approx_cycle"] = (rc_churned["tenure_days"] / 30).fillna(0).clip(lower=0).round().astype(int)
 cycle_dist = rc_churned["approx_cycle"].value_counts().sort_index().head(13)
-print("\n  Approximate cycle at which subscribers cancel (1 cycle â‰ˆ 30 days):")
+print("\n  Approximate cycle at which subscribers cancel (1 cycle approx 30 days):")
 print(cycle_dist.to_string())
+cycle_df = cycle_dist.reset_index()
+cycle_df.columns = ["approx_cycle", "n_cancellations"]
+cycle_df["cycle_label"] = "Cycle " + cycle_df["approx_cycle"].astype(str)
+cycle_df.to_csv(OUTPUT_DIR / "06_churn_by_cycle.csv", index=False)
+print("  Saved: 06_churn_by_cycle.csv")
 
 # â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 # D.  REACTIVATED SUBSCRIBERS

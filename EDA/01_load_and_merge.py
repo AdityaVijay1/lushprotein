@@ -101,7 +101,7 @@ orders_df = orders_df[orders_df["Order Fulfillment Status"].fillna("") != "resto
 
 # ── FX conversion: convert all revenue columns to SGD ─────────────────────────
 print("Applying FX conversion (all revenue -> SGD)...")
-print(f"  Assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed, April 2026)")
+print(f"  Assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026)")
 orders_df["_fx"] = orders_df["store"].map(FX_RATES_TO_SGD).fillna(1.0)
 for col in ["Price: Total", "Price: Total Discount", "Price: Total Shipping", "Line: Price"]:
     if col in orders_df.columns:

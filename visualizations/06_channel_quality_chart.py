@@ -5,25 +5,32 @@ Recreates the dual-panel channel quality chart (Picture1 style):
   Right — Average LTV by Acquisition Channel (SGD) (horizontal bars, S$ labels)
 
 Data: combined SG + MY + HK markets, all revenue in SGD.
-FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed April 2026).
+FX assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026).
 Source: EDA/outputs/05_channel_quality.csv  (verified May 2026)
 """
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.patches as mpatches
 import numpy as np
 from style import save, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_BG, GRID_LINE
 
-# ── Verified data (combined markets, SGD) ─────────────────────────────────────
-channels    = ["Subscription", "Direct/Organic", "Paid Social", "Affiliate", "Marketplace", "Email"]
-rr          = [40.9, 33.5, 19.4, 19.2, 14.4, 12.5]   # repeat rate %
-ltv         = [343,  198,  71,   94,   115,  50]       # avg LTV SGD
-n_custs     = [4275, 6920, 382,  26,  2126,  48]       # customer count
-overall_avg = 32.4                                      # overall repeat rate %
+# ── Data: read from EDA/outputs/05_channel_quality.csv (no hardcoded values) ──
+_outputs = Path(__file__).resolve().parent.parent / "EDA" / "outputs"
+_cq = pd.read_csv(_outputs / "05_channel_quality.csv")
+_cq["first_channel"] = _cq["first_channel"].str.replace(" / ", "/", regex=False)
+_ch_order = ["Subscription", "Direct/Organic", "Paid Social", "Affiliate", "Marketplace", "Email"]
+_cq = _cq[_cq["first_channel"].isin(_ch_order)].set_index("first_channel").reindex(_ch_order).reset_index()
+
+channels    = _cq["first_channel"].tolist()
+rr          = (_cq["repeat_rate"] * 100).round(1).tolist()
+ltv         = _cq["avg_ltv"].round(0).astype(int).tolist()
+n_custs     = _cq["customers"].astype(int).tolist()
+overall_avg = round(_cq["repeaters"].sum() / _cq["customers"].sum() * 100, 1)
 
 # ── Colour coding — green (high), orange (mid), red (low) ────────────────────
 def rr_color(r):

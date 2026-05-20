@@ -1,7 +1,7 @@
 # LushProtein — Customer Analytics Project
 
 **Markets:** Singapore + Malaysia + Hong Kong — all figures in SGD
-**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD
+**FX Applied:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026)
 
 ---
 
@@ -103,7 +103,7 @@ LushProtein_Project_Data_20260505/
 **Key filtering rules:**
 - Use `Top Row == 1` for **one row per order** (order-level analysis)
 - Use `Line: Type == 'Line Item'` for **product-level analysis** (all line items)
-- All revenue is FX-converted to SGD at load time — `Price: Total` in `orders.parquet` is always in SGD (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD)
+- All revenue is FX-converted to SGD at load time — `Price: Total` in `orders.parquet` is always in SGD (1 SGD = 3.30 MYR, 1 SGD = 6.10 HKD, 5-year average 2020–2026)
 
 ---
 
@@ -165,7 +165,7 @@ Charts are saved to `visualizations/charts/` as PNG files at 150 dpi.
 | 2024 | **S$284,971** | 69.2% | 30.9% |
 | 2025 | **S$409,152** | 49.6% | 35.2% |
 
-> **FX note:** All figures are SG + MY + HK combined in SGD (1 SGD = 3.30 MYR). Previous figures (S$1.86M in 2021) mixed MYR as SGD — those were incorrect.
+> **FX note:** All figures are SG + MY + HK combined in SGD (1 SGD = 3.30 MYR, 5-year average 2020–2026). Previous figures (S$1.86M in 2021) mixed MYR as SGD — those were incorrect.
 
 Revenue peaked at **S$848K in 2021 across both SG and MY markets with zero discounting**. MY was near-equal to SG at peak (S$441K vs S$407K) and has since collapsed. Since 2022, discount rates climbed to 69% of orders in 2024 while combined revenue has not recovered. The 2023 collapse coincides with the first aggressive discounting campaigns.
 
