@@ -16,6 +16,8 @@ from style import save, CAT_COLORS, TEAL, NAVY, ORANGE, RED, SLATE, GOLD, LIGHT_
 # Combined SG + MY + HK markets
 years        = ["2020","2021","2022","2023","2024","2025"]
 revenue      = [456952, 847930, 747587, 182038, 284971, 409152]
+discounts    = [0, 0, 30073, 32419, 127408, 222033]
+gross_revenue = [r + d for r, d in zip(revenue, discounts)]
 orders       = [2847, 6259, 3710, 2253, 4261, 6407]
 disc_rate    = [0.0, 0.0, 15.2, 59.3, 69.2, 49.6]  # % of orders with any discount
 
@@ -64,6 +66,42 @@ ax1.annotate("Discounted orders\nrise: 0% to 69%", xy=(4, 284), xycoords="data",
 
 fig.tight_layout()
 save(fig, "01a_revenue_discount_trend")
+
+# ── Chart 1b: Gross revenue before discounts vs net revenue after discounts ───
+fig, ax = plt.subplots(figsize=(12, 6))
+x = np.arange(len(years))
+w = 0.36
+b1 = ax.bar(x - w/2, [v/1000 for v in gross_revenue], width=w, color=SLATE,
+            label="Revenue before discounts", zorder=3)
+b2 = ax.bar(x + w/2, [v/1000 for v in revenue], width=w, color=TEAL,
+            label="Revenue after discounts", zorder=3)
+
+ax.set_xticks(x)
+ax.set_xticklabels(years, fontsize=11)
+ax.set_ylabel("Revenue (SGD '000)", fontsize=11)
+ax.set_title("Revenue Before vs After Discounts")
+ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v,_: f"S${v:.0f}K"))
+ax.legend(loc="upper right")
+
+for bar, v in zip(b1, gross_revenue):
+    ax.text(bar.get_x()+bar.get_width()/2, bar.get_height()+12,
+            f"S${v/1000:.0f}K", ha="center", va="bottom",
+            fontsize=8.5, color=SLATE, fontweight="bold")
+for bar, v in zip(b2, revenue):
+    ax.text(bar.get_x()+bar.get_width()/2, bar.get_height()+12,
+            f"S${v/1000:.0f}K", ha="center", va="bottom",
+            fontsize=8.5, color=TEAL, fontweight="bold")
+
+for xi, gross, net, disc in zip(x, gross_revenue, revenue, discounts):
+    if disc > 0:
+        ax.plot([xi - w/2, xi + w/2], [gross/1000, net/1000],
+                color=RED, linewidth=1.2, alpha=0.65, zorder=4)
+        ax.text(xi, (gross + net)/2000, f"-S${disc/1000:.0f}K",
+                ha="center", va="center", fontsize=8.5,
+                color=RED, fontweight="bold")
+
+fig.tight_layout()
+save(fig, "01d_revenue_before_after_discounts")
 
 # ── Chart 2: Monthly revenue trend 2024-2026 ─────────────────────────────────
 fig, ax = plt.subplots(figsize=(14, 5))
