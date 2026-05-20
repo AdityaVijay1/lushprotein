@@ -5,8 +5,8 @@
 > **Purpose of this document:** Verified findings, calculation proofs, narrative scripts, and chart references for each slide
 
 > ⚠️ **MARKET SCOPE — IMPORTANT ASSUMPTION**
-> All figures in this document cover **SG + MY + HK combined**, converted to SGD using fixed rates:
-> **1 SGD = 3.30 MYR · 1 SGD = 6.10 HKD** (average rate estimate over 5 years).
+> All figures in this document cover **SG + MY + HK combined**, converted to SGD using 5-year average rates (2020–2026):
+> **1 SGD = 3.30 MYR · 1 SGD = 6.10 HKD**
 > Previous SG-only figures are shown in parentheses where materially different.
 > Retention rates, repeat rates, and cohort patterns are not affected by the FX conversion — they are count-based.
 > Revenue and LTV figures change because the MY market (which was previously excluded) is now included.
@@ -73,8 +73,8 @@ SUBSCRIBER LTV UPLIFT (combined markets, SGD):
   The +166% uplift is the correct combined-market figure.
 
 FX ASSUMPTION:
-  1 SGD = 3.30 MYR (all MYR revenue ÷ 3.30 to get SGD)
-  1 SGD = 6.10 HKD (all HKD revenue ÷ 6.10 to get SGD)
+  1 SGD = 3.30 MYR (all MYR revenue ÷ 3.30 to get SGD)  — 5-year average (2020–2026)
+  1 SGD = 6.10 HKD (all HKD revenue ÷ 6.10 to get SGD)  — 5-year average (2020–2026)
   Applied in: EDA/01_load_and_merge.py at data load time
   Defined in: EDA/00_config.py (FX_RATES_TO_SGD dict)
 ```
@@ -112,16 +112,21 @@ print('60d retention avg:', cohort['retention_60d'].mean())
 
 ### The Data (Verified — All Markets, SGD)
 
-> **FX Assumption:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed April 2026 rates)
+> **FX Assumption:** 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020–2026)
 
-| Year | Revenue (SGD) | Unique Customers | % Orders Discounted | Discounts Given (SGD) | Discounts as % of Gross Revenue |
-|---|---|---|---|---|---|
-| 2020 | **S$456,952** | 1,696 | 0% | S$0 | 0% |
-| 2021 | **S$847,930** | 3,815 | 0% | S$0 | 0% ← Peak |
-| 2022 | **S$747,587** | 2,299 | 15.2% | S$30,073 | 3.9% |
-| 2023 | **S$182,038** | 1,399 | 59.3% | S$32,419 | 15.1% |
-| 2024 | **S$284,971** | 2,621 | 69.2% | S$127,408 | 30.9% |
-| 2025 | **S$409,152** | 4,107 | 49.6% | S$222,033 | 35.2% |
+> **Customers = unique customer IDs per year** (`customer_id.nunique()` grouped by year in `02_data_quality.py`). A customer who buys in both 2022 and 2023 is counted in both years. All values read dynamically from `EDA/outputs/02_orders_by_year.csv` — zero hardcoded numbers. FX: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-yr avg, 2020–2026).
+
+| Year | Orders | Unique Customers | Revenue (SGD) | Rev / Customer | Discounts Given (SGD) | % Orders Discounted | Disc as % of Gross Rev |
+|---|---|---|---|---|---|---|---|
+| 2020 | 2,847 | 1,696 | **S$456,952** | S$269 | S$0 | 0% | 0% |
+| 2021 | 6,259 | 3,815 | **S$847,930** | S$222 | S$0 | 0% | 0% |
+| 2022 | 3,710 | 2,299 | **S$747,587** | S$325 | S$30,073 | 15.2% | 3.9% |
+| 2023 | 2,253 | 1,399 | **S$182,038** | S$130 | S$32,419 | 59.3% | 15.1% |
+| 2024 | 4,261 | 2,621 | **S$284,971** | S$109 | S$127,408 | 69.2% | 30.9% |
+| 2025 | 6,407 | 4,107 | **S$409,152** | S$100 | S$222,033 | 49.6% | 35.2% |
+
+Disc % of Gross Revenue = Discount Given ÷ (Price: Total + Discount Given)
+Denominator is what customers would have paid at full price
 
 > **Market breakdown for 2021 peak (S$847,930):**
 > SG = S$406,908 | MY (converted) = S$441,022
@@ -216,9 +221,6 @@ print(summary)
 > **Note for presentation:** Relabel the right axis from "Discount Rate (%)" to "% Orders With Discount" and cite the 35.2% gross revenue figure in the speaker notes, not on the slide itself.
 
 ![Discount Chart](visualizations/discountchart_excel.png)
-
-Disc % of Gross Revenue = Discount Given ÷ (Price: Total + Discount Given)
-Denominator is what customers would have paid at full price
 ---
 
 ## Slide 3 — Channel Quality
@@ -595,7 +597,7 @@ Note: Directional finding unchanged — this is still the highest-value actionab
 
 Ranked by: **(Business Value × Feasibility) / Effort**
 
-> All figures below use combined SG + MY + HK markets, SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD).
+> All figures below use combined SG + MY + HK markets, SGD (1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD, 5-year average 2020–2026).
 
 | Priority | Finding | Evidence | Estimated LTV Impact (SGD) | Experiment | Effort |
 |---|---|---|---|---|---|
