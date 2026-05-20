@@ -9,3 +9,13 @@ LushProtein_Data_Glossary_20260505.xlsx
 LushProtein_Source_to_Target_Mapping_Exercise.xlsx
 Combined_Slides.pdf
 LushProtein_Midterm presentation.pdf
+
+# Ignore Python bytecode files and virtual environment
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.env
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/

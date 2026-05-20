@@ -16,7 +16,7 @@ ORDER_FILES = sorted(
 )
 
 PRODUCTS_FILE   = BASE_DIR / "2.product_master"   / "2_1.products_master_20260505.xlsx"
-DISCOUNTS_FILE  = BASE_DIR / "3.Discounts"        / "3_1.discounts_export_20260505 - Copy - Copy - Copy.csv"
+DISCOUNTS_FILE  = BASE_DIR / "3.Discounts"        / "3_1.discounts_export_20260505.csv"
 CAMPAIGNS_FILE  = BASE_DIR / "4.Campaigns"        / "4_1.Sessions by referrer_20260505.csv"
 
 RECHARGE_ORDERS     = BASE_DIR / "5.Recharge_data" / "5_1.orders_combined_20260505.xlsx"
