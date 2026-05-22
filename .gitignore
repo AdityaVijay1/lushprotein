@@ -13,3 +13,8 @@ LushProtein_Midterm presentation.pdf
 __pycache__/
 *.pyc
 *.pyo
+
+*DS_Store
+*.ipynb_checkpoints
+*.parquet
+*.csv
