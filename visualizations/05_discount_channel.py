@@ -92,23 +92,46 @@ mkt_vals = [mkt_rr, mkt_ltv, mkt_orders, mkt_sub_pct]
 web_vals = [web_rr, web_ltv, web_orders, web_sub_pct]
 mkt_norm = [m/w*100 if w > 0 else 0 for m, w in zip(mkt_vals, web_vals)]
 
-fig, axes = plt.subplots(1, 2, figsize=(13, 5))
-x = np.arange(len(metrics_labels)); w = 0.38
-b1 = axes[0].bar(x-w/2, [100]*4, width=w, color=TEAL, label="Own Website", zorder=3)
-b2 = axes[0].bar(x+w/2, mkt_norm, width=w, color=RED,  label="Marketplace",  zorder=3)
-axes[0].set_xticks(x); axes[0].set_xticklabels(metrics_labels, fontsize=9.5, rotation=10)
-axes[0].set_title("Marketplace vs Own Website\n(Indexed: Website = 100 | *Shopify subscriptions only)",
-                  fontsize=10, fontweight="bold")
-axes[0].set_ylabel("Index (Website = 100)", fontsize=10)
-axes[0].legend()
-axes[0].axhline(100, color=SLATE, linewidth=1, linestyle="--", alpha=0.5)
-
 actual_web = [f"{web_rr}%", f"S${web_ltv:.0f}", f"{web_orders:.2f}", f"{web_sub_pct}%"]
 actual_mkt = [f"{mkt_rr}%", f"S${mkt_ltv:.0f}", f"{mkt_orders:.2f}", f"{mkt_sub_pct}%*"]
+
+fig, axes = plt.subplots(1, 2, figsize=(15, 6.5), gridspec_kw={"width_ratios": [1.15, 1]})
+ax_bar, ax_pie = axes
+
+x = np.arange(len(metrics_labels))
+bar_w = 0.30
+gap = 0.06
+b1 = ax_bar.bar(x - bar_w / 2 - gap / 2, [100] * 4, width=bar_w, color=TEAL, label="Own Website", zorder=3)
+b2 = ax_bar.bar(x + bar_w / 2 + gap / 2, mkt_norm, width=bar_w, color=RED, label="Marketplace", zorder=3)
+
+ax_bar.set_xticks(x)
+ax_bar.set_xticklabels(metrics_labels, fontsize=10.5)
+ax_bar.tick_params(axis="x", pad=10)
+ax_bar.set_ylabel("Index (Website = 100)", fontsize=11, labelpad=10)
+ax_bar.set_ylim(0, 135)
+ax_bar.set_title("Marketplace vs Own Website", fontsize=13, fontweight="bold", pad=22)
+ax_bar.text(
+    0.5, 1.06,
+    "(Indexed: Website = 100  |  *Shopify subscriptions only)",
+    transform=ax_bar.transAxes,
+    ha="center",
+    fontsize=9.5,
+    color=SLATE,
+)
+ax_bar.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2, fontsize=10, frameon=True)
+ax_bar.axhline(100, color=SLATE, linewidth=1, linestyle="--", alpha=0.5)
+
 for bar, lbl in zip(b1, actual_web):
-    axes[0].text(bar.get_x()+bar.get_width()/2, 103, lbl, ha="center", fontsize=8, color=TEAL)
-for i, (bar, lbl, mn) in enumerate(zip(b2, actual_mkt, mkt_norm)):
-    axes[0].text(bar.get_x()+bar.get_width()/2, mn+2, lbl, ha="center", fontsize=8, color=RED)
+    ax_bar.text(
+        bar.get_x() + bar.get_width() / 2, 108,
+        lbl, ha="center", va="bottom", fontsize=9.5, color=TEAL, fontweight="bold",
+    )
+for bar, lbl, mn in zip(b2, actual_mkt, mkt_norm):
+    label_y = max(mn + 7, 12)
+    ax_bar.text(
+        bar.get_x() + bar.get_width() / 2, label_y,
+        lbl, ha="center", va="bottom", fontsize=9.5, color=RED, fontweight="bold",
+    )
 
 # Country mix -- order counts from 02_orders_by_country.csv
 _ctry = pd.read_csv(_outputs / "02_orders_by_country.csv")
@@ -119,7 +142,7 @@ countries = _top5["Shipping: Country"].tolist() + ["Other"]
 order_n   = _top5["orders"].astype(int).tolist() + [int(_other_orders)]
 c_colors  = [NAVY, TEAL, ORANGE, GOLD, SLATE, LILAC]
 
-wedges, _, autotexts = axes[1].pie(
+wedges, _, autotexts = ax_pie.pie(
     order_n, labels=None, colors=c_colors,
     autopct=lambda p: f"{p:.1f}%" if p > 3 else "",
     startangle=90,
@@ -127,13 +150,18 @@ wedges, _, autotexts = axes[1].pie(
     pctdistance=0.75,
 )
 for at in autotexts:
-    at.set_fontsize(10); at.set_fontweight("bold"); at.set_color("white")
+    at.set_fontsize(11)
+    at.set_fontweight("bold")
+    at.set_color("white")
 legend_labels = [f"{c}  ({n:,} orders)" for c, n in zip(countries, order_n)]
-axes[1].legend(wedges, legend_labels, loc="lower center", bbox_to_anchor=(0.5, -0.22),
-               ncol=2, fontsize=8.5)
-axes[1].set_title("Order Volume by Country", fontsize=11, fontweight="bold")
+ax_pie.legend(
+    wedges, legend_labels,
+    loc="lower center", bbox_to_anchor=(0.5, -0.34),
+    ncol=2, fontsize=9.5, frameon=True,
+)
+ax_pie.set_title("Order Volume by Country", fontsize=13, fontweight="bold", pad=22)
 
-fig.tight_layout()
+fig.subplots_adjust(left=0.07, right=0.97, top=0.86, bottom=0.28, wspace=0.38)
 save(fig, "05b_marketplace_vs_website")
 
 # -- Chart 3: RFM segment breakdown -------------------------------------------
