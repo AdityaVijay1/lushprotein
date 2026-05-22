@@ -1,5 +1,5 @@
 """
-01_load_and_merge.py  –  Load all raw sources and build the two canonical tables:
+01_load_and_merge.py  -  Load all raw sources and build the two canonical tables:
 
     orders_df   : one row per ORDER  (Top Row == 1 filter)
     lines_df    : one row per LINE ITEM  (Line: Type == 'Line Item' filter)
@@ -17,7 +17,7 @@ import pandas as pd
 import importlib.util
 from pathlib import Path
 
-# ── load 00_config.py via importlib (leading digit prevents normal import) ─────
+# -- load 00_config.py via importlib (leading digit prevents normal import) -----
 def _load_config():
     spec = importlib.util.spec_from_file_location(
         "lp_config", Path(__file__).parent / "00_config.py"
@@ -41,7 +41,7 @@ classify_channel = cfg.classify_channel
 ANALYSIS_DATE    = cfg.ANALYSIS_DATE
 FX_RATES_TO_SGD  = cfg.FX_RATES_TO_SGD
 
-# ── 1. Load all Shopify order files ───────────────────────────────────────────
+# -- 1. Load all Shopify order files -------------------------------------------
 print("Loading Shopify order files...")
 raw_chunks = []
 for f in ORDER_FILES:
@@ -53,11 +53,11 @@ for f in ORDER_FILES:
 raw = pd.concat(raw_chunks, ignore_index=True)
 print(f"  Total rows (all line types): {len(raw):,}\n")
 
-# ── 2. Parse dates ─────────────────────────────────────────────────────────────
+# -- 2. Parse dates -------------------------------------------------------------
 raw["Processed At"] = pd.to_datetime(raw["Processed At"], utc=True, errors="coerce")
 raw["order_date"]   = raw["Processed At"].dt.tz_convert("Asia/Singapore").dt.normalize()
 
-# ── 3. Derive store / country prefix from order Name ──────────────────────────
+# -- 3. Derive store / country prefix from order Name --------------------------
 def store_prefix(name: str) -> str:
     if pd.isna(name):
         return "Unknown"
@@ -70,7 +70,7 @@ def store_prefix(name: str) -> str:
 
 raw["store"] = raw["Name"].apply(store_prefix)
 
-# ── 4. Order-level table (one row per order) ───────────────────────────────────
+# -- 4. Order-level table (one row per order) -----------------------------------
 print("Building order-level table (Top Row == 1)...")
 orders_cols = [
     "ID", "Name", "Tags", "order_date", "store",
@@ -99,9 +99,9 @@ if "Payment: Status" in orders_df.columns:
     ]
 orders_df = orders_df[orders_df["Order Fulfillment Status"].fillna("") != "restocked"]
 
-# ── FX conversion: convert all revenue columns to SGD ─────────────────────────
+# -- FX conversion: convert all revenue columns to SGD -------------------------
 print("Applying FX conversion (all revenue -> SGD)...")
-print(f"  Assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (fixed, April 2026)")
+print(f"  Assumption: 1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD (5-year average rate, 2020-2026)")
 orders_df["_fx"] = orders_df["store"].map(FX_RATES_TO_SGD).fillna(1.0)
 for col in ["Price: Total", "Price: Total Discount", "Price: Total Shipping", "Line: Price"]:
     if col in orders_df.columns:
@@ -131,7 +131,7 @@ print(f"  Order-level rows: {len(orders_df):,}")
 print(f"  Unique customers: {orders_df['customer_id'].nunique():,}")
 print(f"  Date range: {orders_df['order_date'].min().date()} to {orders_df['order_date'].max().date()}\n")
 
-# ── 5. Line-item table ─────────────────────────────────────────────────────────
+# -- 5. Line-item table ---------------------------------------------------------
 print("Building line-item table (Line: Type == 'Line Item')...")
 line_cols = [
     "ID", "Customer: ID", "order_date", "store",
@@ -152,7 +152,7 @@ lines_df.drop(columns=["_fx"], inplace=True)
 
 print(f"  Line-item rows: {len(lines_df):,}\n")
 
-# ── 6. Customer-level summary ──────────────────────────────────────────────────
+# -- 6. Customer-level summary --------------------------------------------------
 print("Building customer summary table...")
 cust = (
     orders_df.sort_values("order_date")
@@ -202,7 +202,7 @@ cust["recency_days"] = (ANALYSIS_DATE - cust["last_order_date"]).dt.days
 print(f"  Customer rows: {len(cust):,}")
 print(f"  Overall repeat rate: {cust['is_repeat'].mean():.1%}\n")
 
-# ── 7. Load ancillary tables ───────────────────────────────────────────────────
+# -- 7. Load ancillary tables ---------------------------------------------------
 print("Loading ancillary tables...")
 products_df   = pd.read_excel(PRODUCTS_FILE)
 discounts_df  = pd.read_csv(DISCOUNTS_FILE, encoding="utf-8", encoding_errors="replace")
@@ -221,7 +221,7 @@ for tbl, name in [
 ]:
     print(f"  {name}: {len(tbl):,} rows")
 
-# ── 8. Coerce mixed-type object columns → clean strings before saving ─────────
+# -- 8. Coerce mixed-type object columns -> clean strings before saving ---------
 def clean_object_cols(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.select_dtypes(include="object").columns:
         df[col] = df[col].where(df[col].notna(), other=pd.NA)
@@ -232,7 +232,7 @@ orders_df = clean_object_cols(orders_df)
 lines_df  = clean_object_cols(lines_df)
 cust      = clean_object_cols(cust)
 
-# ── 9. Save Parquet ────────────────────────────────────────────────────────────
+# -- 9. Save Parquet ------------------------------------------------------------
 print("\nSaving Parquet files to", OUTPUT_DIR)
 orders_df.to_parquet(OUTPUT_DIR / "orders.parquet", index=False)
 lines_df .to_parquet(OUTPUT_DIR / "lines.parquet",  index=False)

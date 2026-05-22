@@ -1,38 +1,38 @@
 """
-09_lens3_cohort_evolution.py  —  Customer-Base Audit: LENS 3
+09_lens3_cohort_evolution.py  --  Customer-Base Audit: LENS 3
 "How Does Customer Behaviour Evolve Over Time?"
 
-Framework: Bruce, Fader & Ross — The Customer-Base Audit (2022)
+Framework: Bruce, Fader & Ross -- The Customer-Base Audit (2022)
 Lens 3 = One acquisition cohort tracked from first purchase onward.
 
 Analyses
 --------
 A. Annual cohort revenue tracking + multiplicative decomposition:
-   Cohort Revenue = Cohort Size × % Active × AOF × AOV
+   Cohort Revenue = Cohort Size x % Active x AOF x AOV
 B. % Cohort Active per year (fixed denominator = original cohort size)
 C. Purchase incidence patterns (YYYY / YNNY / etc.) + year-to-year repeat rates
 D. Time-to-Nth-purchase distribution (1->2, 2->3, 3->4, 4->5)
-   — builds the inter-purchase cumulative curve from the slides
-E. VTD (Value to Date) distribution — Mean vs Median, cohort value concentration
+   -- builds the inter-purchase cumulative curve from the slides
+E. VTD (Value to Date) distribution -- Mean vs Median, cohort value concentration
 F. VTD decile table: % VTD, % Cohort, % Transactions, AOF, AOV by decile
 G. % Active by VTD decile per year
 H. RFM analysis at the cohort level (Q1/2016 equivalent = 2020 cohort)
 
 Notes
 -----
-- Focal cohort: 2020 (first-time buyers in 2020) — largest early cohort
+- Focal cohort: 2020 (first-time buyers in 2020) -- largest early cohort
 - SGD orders only for all revenue
-- "Profit proxy" = revenue × 40% gross margin (no COGS data available)
+- "Profit proxy" = revenue x 40% gross margin (no COGS data available)
 
 Outputs
 -------
-EDA/outputs/09_lens3_cohort_annual.csv        — Annual activity, % active, AOF, AOV
-EDA/outputs/09_lens3_purchase_incidence.csv   — YNNN pattern table
-EDA/outputs/09_lens3_inter_purchase_time.csv  — CDF of days between each Nth purchase
-EDA/outputs/09_lens3_vtd_distribution.csv     — VTD distribution stats
-EDA/outputs/09_lens3_vtd_decile_table.csv     — VTD decile breakdown
-EDA/outputs/09_lens3_vtd_pct_active.csv       — % Active by VTD decile per year
-EDA/outputs/09_lens3_rfm_cohort.csv           — RFM table for the focal cohort
+EDA/outputs/09_lens3_cohort_annual.csv        -- Annual activity, % active, AOF, AOV
+EDA/outputs/09_lens3_purchase_incidence.csv   -- YNNN pattern table
+EDA/outputs/09_lens3_inter_purchase_time.csv  -- CDF of days between each Nth purchase
+EDA/outputs/09_lens3_vtd_distribution.csv     -- VTD distribution stats
+EDA/outputs/09_lens3_vtd_decile_table.csv     -- VTD decile breakdown
+EDA/outputs/09_lens3_vtd_pct_active.csv       -- % Active by VTD decile per year
+EDA/outputs/09_lens3_rfm_cohort.csv           -- RFM table for the focal cohort
 """
 
 import sys
@@ -59,11 +59,11 @@ OUTPUT_DIR = cfg.OUTPUT_DIR
 MARGIN = 0.40
 
 print("=" * 65)
-print("LENS 3 — HOW DOES CUSTOMER BEHAVIOUR EVOLVE OVER TIME?")
+print("LENS 3 -- HOW DOES CUSTOMER BEHAVIOUR EVOLVE OVER TIME?")
 print("One cohort tracked from first purchase  |  Retention & lifecycle")
 print("=" * 65)
 
-# ── Load ──────────────────────────────────────────────────────────────────────
+# -- Load ----------------------------------------------------------------------
 orders = pd.read_parquet(OUTPUT_DIR / "orders.parquet")
 orders["order_date"]   = pd.to_datetime(orders["order_date"], utc=True)
 orders["Price: Total"] = pd.to_numeric(orders["Price: Total"], errors="coerce").fillna(0)
@@ -99,9 +99,9 @@ print(f"  Total revenue (cohort lifetime): S${cohort_orders['Price: Total'].sum(
 # ==============================================================================
 # A.  ANNUAL COHORT REVENUE + MULTIPLICATIVE DECOMPOSITION
 # ==============================================================================
-print("\n\n[A] ANNUAL COHORT ACTIVITY — Decomposition")
+print("\n\n[A] ANNUAL COHORT ACTIVITY -- Decomposition")
 print("-" * 65)
-print("Formula: Cohort Revenue = Cohort Size × % Active × AOF × AOV")
+print("Formula: Cohort Revenue = Cohort Size x % Active x AOF x AOV")
 print()
 print(f"  {'Year':<6}  {'Active':>8}  {'%Active':>8}  {'Rev(SGD)':>12}  {'AvgSpend':>10}  {'AOF':>5}  {'AOV':>8}")
 print(f"  {'-'*65}")
@@ -136,7 +136,7 @@ print(f"\n  Revenue decay: Acquisition year S${acq_row['total_revenue']:,.0f}")
 print(f"                 Latest year ({LAST_YEAR}) S${last_row['total_revenue']:,.0f}")
 print(f"  % Active drop: {acq_row['pct_active']:.0%} -> {last_row['pct_active']:.1%}")
 print(f"  Insight: Revenue decay is ALMOST ENTIRELY driven by % Active declining.")
-print(f"  Per-customer spending (AOF × AOV) stays relatively stable.")
+print(f"  Per-customer spending (AOF x AOV) stays relatively stable.")
 
 # ==============================================================================
 # B.  PURCHASE INCIDENCE PATTERNS
@@ -194,7 +194,7 @@ print(f"\nSaved: 09_lens3_purchase_incidence.csv")
 # ==============================================================================
 # C.  TIME-TO-NTH-PURCHASE (Inter-purchase time CDF)
 # ==============================================================================
-print(f"\n\n[C] TIME-TO-NTH PURCHASE — Cumulative Distribution")
+print(f"\n\n[C] TIME-TO-NTH PURCHASE -- Cumulative Distribution")
 print("-" * 65)
 print("Tracks how long it takes to reach each successive purchase")
 print()
@@ -255,7 +255,7 @@ inter_df.to_csv(OUTPUT_DIR / "09_lens3_inter_purchase_time.csv", index=False)
 print(f"Saved: 09_lens3_inter_purchase_time.csv")
 print(f"\n  KEY INSIGHT: The hardest transition is 1->2 (one-and-done ceiling).")
 print(f"  Once a customer reaches purchase 3+, median days drop sharply and behaviour stabilises.")
-print(f"  These are 'committed repeat buyers' — the selection effect explains the speed-up.")
+print(f"  These are 'committed repeat buyers' -- the selection effect explains the speed-up.")
 
 # ==============================================================================
 # D.  VTD (VALUE TO DATE) DISTRIBUTION
@@ -358,7 +358,7 @@ for _, row in decile_vtd.iterrows():
 print(f"\n  Top 10% (D1) generates: {decile_vtd.iloc[0]['pct_vtd']:.0%} of VTD profit")
 print(f"  AOF range D1 vs D10:    {decile_vtd.iloc[0]['avg_aof']:.1f} vs {decile_vtd.iloc[-1]['avg_aof']:.1f}")
 print(f"  AOV range D1 vs D10:    S${decile_vtd.iloc[0]['avg_aov']:.0f} vs S${decile_vtd.iloc[-1]['avg_aov']:.0f}")
-print(f"  INSIGHT: AOF drives the value difference — not AOV or product mix.")
+print(f"  INSIGHT: AOF drives the value difference -- not AOV or product mix.")
 
 decile_vtd.to_csv(OUTPUT_DIR / "09_lens3_vtd_decile_table.csv", index=False)
 print(f"\nSaved: 09_lens3_vtd_decile_table.csv")
@@ -406,13 +406,13 @@ pct_active_df = pd.DataFrame(pct_active_matrix)
 pct_active_df.to_csv(OUTPUT_DIR / "09_lens3_vtd_pct_active.csv", index=False)
 print(f"\nSaved: 09_lens3_vtd_pct_active.csv")
 print(f"\n  INSIGHT: High-VTD deciles (D1-D3) retain at 70-90% year-over-year.")
-print(f"  Low-VTD deciles (D8-D10) effectively zero by year 2 — these are truly one-and-done.")
+print(f"  Low-VTD deciles (D8-D10) effectively zero by year 2 -- these are truly one-and-done.")
 print(f"  The retention GRADIENT tells you exactly where intervention ROI is highest.")
 
 # ==============================================================================
 # G.  RFM ANALYSIS AT COHORT LEVEL
 # ==============================================================================
-print(f"\n\n[G] RFM ANALYSIS — {FOCAL_YEAR} COHORT")
+print(f"\n\n[G] RFM ANALYSIS -- {FOCAL_YEAR} COHORT")
 print("-" * 65)
 
 # Compute RFM for cohort members as of ANALYSIS_DATE
@@ -466,9 +466,9 @@ for seg, row in rfm_summary.iterrows():
 # Cohort-level RFM quadrant analysis
 print(f"\n  COHORT-LEVEL RFM OBSERVATIONS:")
 print(f"  - Upper-Left (R=Q1=acq only, F=1): These are the one-and-done buyers")
-print(f"  - Lower-Right (recent + high F):    The loyal core — protect at all costs")
-print(f"  - Lower-Left (recent + low F):      Growth opportunity — willing to return but infrequent")
-print(f"  - Upper-Right (old R + high F):     STRUCTURALLY EMPTY — if they buy often, they'd be recent")
+print(f"  - Lower-Right (recent + high F):    The loyal core -- protect at all costs")
+print(f"  - Lower-Left (recent + low F):      Growth opportunity -- willing to return but infrequent")
+print(f"  - Upper-Right (old R + high F):     STRUCTURALLY EMPTY -- if they buy often, they'd be recent")
 
 cust_rfm.to_csv(OUTPUT_DIR / "09_lens3_rfm_cohort.csv", index=False)
 print(f"\nSaved: 09_lens3_rfm_cohort.csv")
@@ -485,7 +485,7 @@ print(f"""
      account for this structural loss at acquisition.
 
   2. % COHORT ACTIVE decays sharply after the acquisition year.
-     Revenue decay is NOT driven by customers spending less per trip —
+     Revenue decay is NOT driven by customers spending less per trip --
      it is driven by fewer customers being active each year.
 
   3. THE HARDEST TRANSITION is always purchase 1 -> 2.

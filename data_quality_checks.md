@@ -5,7 +5,7 @@
 **Scope:** Shopify customer transaction data (2020–2026), all markets combined (SG + MY + HK) in SGD
 **Audience:** Course instructors (assessment of data due diligence)
 
-> **CURRENCY UPDATE (Applied May 2026):** All revenue figures have been converted to SGD using fixed exchange rates:
+> **CURRENCY ASSUMPTION:** All revenue figures have been converted to SGD using 5-year average exchange rates (2020–2026):
 > **1 SGD = 3.30 MYR | 1 SGD = 6.10 HKD**
 > Conversion is applied at data load time in `EDA/01_load_and_merge.py`.
 > See DQ-01 (updated) for full discussion of limitations and assumptions.
@@ -76,15 +76,15 @@
 | SG | 16,041 | S$1,913,387 | 1.000 | **S$1,913,387** |
 | MY | 11,309 | RM 3,958,566 | ÷ 3.30 | **S$1,199,566** |
 | HK | 2 | HK$1,943 | ÷ 6.10 | **S$319** |
-| **All markets** | **27,352** | — | — | **S$3,113,272 SGD total** |
+| **All markets** | **27,350** | — | — | **S$3,112,952 SGD total** |
 
 **Critical note:** The three stores use different currencies. The raw data contains no FX rates.
 
-**Mitigation applied (May 2026):** Fixed exchange rates provided by the team are applied at data load time:
+**Mitigation applied (May 2026):** 5-year average exchange rates (2020–2026) applied at data load time:
 - `1 SGD = 3.30 MYR` → MYR ÷ 3.30 = SGD equivalent
 - `1 SGD = 6.10 HKD` → HKD ÷ 6.10 = SGD equivalent
 
-These are **fixed historical rates** (not market rates at each transaction date). This introduces a measurement error in absolute revenue figures. The **direction and relative magnitude of findings are unaffected**.
+These are **5-year average rates** (not spot rates at each transaction date). This introduces a measurement error in absolute revenue figures of up to ±10%. The **direction and relative magnitude of all findings are unaffected** — retention, repeat rates, and channel comparisons are count-based and FX-neutral.
 
 **Known limitations of fixed-rate FX approach:**
 1. SGD/MYR moved between ~3.0 and ~3.5 over 2020–2026. Early-year MY revenue (2020–2021) may be understated/overstated by up to 10%.
@@ -101,13 +101,13 @@ These are **fixed historical rates** (not market rates at each transaction date)
 
 | Statistic | Value (All Markets, SGD) | SG-only (SGD) |
 |---|---|---|
-| Count | 27,352 orders | 16,041 orders |
+| Count | 27,350 orders | 16,041 orders |
 | Mean | SGD 113.83 | SGD 119.28 |
 | Median | SGD 62.10 | SGD 62.10 |
-| 25th percentile | SGD 29.00 |
-| 75th percentile | SGD 115.00 |
-| Maximum | SGD 26,520.00 |
-| Std deviation | SGD 405.16 |
+| 25th percentile | SGD 29.00 | — |
+| 75th percentile | SGD 115.00 | — |
+| Maximum | SGD 26,520.00 | — |
+| Std deviation | SGD 405.16 | — |
 
 The mean (S$119) is nearly double the median (S$62), indicating **right-skewed distribution** driven by a small number of high-value orders. This is expected in a consumer health brand context but the outliers require examination (see DQ-04).
 
@@ -188,20 +188,20 @@ HK store:      2 orders, HKD 1,943     (HKD → SGD equivalent: S$319)
 **Severity:** HIGH — mixing currencies without conversion produces nonsensical revenue totals.
 
 **Mitigation Applied (May 2026):**
-Fixed exchange rates provided by the team are applied at data load time in `EDA/01_load_and_merge.py`:
+5-year average exchange rates (2020–2026) are applied at data load time in `EDA/01_load_and_merge.py`:
 ```python
 FX_RATES_TO_SGD = {
     "SG": 1.0,
-    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (1 SGD = 3.30 MYR)
-    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (1 SGD = 6.10 HKD)
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (5-yr avg: 1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (5-yr avg: 1 SGD = 6.10 HKD)
 }
 # Applied to Price: Total, Price: Total Discount, Price: Total Shipping
 # Currency column set to "SGD" for all orders after conversion
 ```
 
 **Assumption stated explicitly:**
-- Rates are **fixed at April 2026** and do not vary by transaction date
-- Historical MYR/SGD rate moved between ~3.0 and ~3.5 over 2020–2026 → absolute revenue figures for 2020–2022 may be off by up to ±10%
+- Rates represent the **5-year average (2020–2026)** and do not vary by transaction date
+- Actual MYR/SGD rate moved between ~3.0 and ~3.5 over the period → individual year figures may deviate up to ±10% from the average-rate conversion
 - For **relative comparisons** (repeat rates, LTV uplift %, cohort retention), the FX rate has no impact — these are count-based or ratio-based metrics
 
 **Post-conversion market revenue summary:**
@@ -401,9 +401,12 @@ Discrepancy (flagged but not tagged):           0
 
 ---
 
-### DQ-08 — Marketplace Subscription Tracking Gap
+### DQ-08 — Marketplace Subscription Tracking Gap and Repeat Rate Measurement
 
-**Description:** Shopify cannot track subscriptions that originate on third-party marketplace platforms (Shopee, Lazada). All 2,126 Marketplace customers show `pct_subscribed = 0.0%` in the channel quality analysis — but this reflects Shopify's data limitations, not necessarily the true subscription behaviour of these customers.
+**Description:** Two related limitations affect the Marketplace channel quality metrics.
+
+**Part A — Subscription tracking gap:**
+Shopify cannot track subscriptions that originate on third-party marketplace platforms (Shopee, Lazada). All 2,126 Marketplace customers show `pct_subscribed = 0.0%` in the channel quality analysis — but this reflects Shopify's data limitations, not necessarily the true subscription behaviour of these customers.
 
 **Evidence:**
 ```
@@ -411,16 +414,37 @@ Marketplace channel orders:          3,268
 Marketplace is_subscription = True:  0
 ```
 
-**Impact:**
-- The "0% subscription conversion from Marketplace" finding is technically correct within Shopify data
-- However, Shopee and Lazada both have auto-delivery/subscription features on their own platforms
-- If Marketplace customers subscribe on Shopee/Lazada, those recurring orders would not appear in Shopify at all — they would be entirely absent from the dataset
+Shopee and Lazada both have auto-delivery/subscription features on their own platforms. If Marketplace customers subscribe on those platforms, those recurring orders do not appear in Shopify at all.
 
-**Severity:** MEDIUM for the subscription conversion metric; LOW for the LTV and repeat rate metrics (which track all Shopify purchases regardless of origin channel).
+**Part B — Repeat rate measurement scope:**
+The 14.4% marketplace repeat rate is computed as 306 customers with ≥2 Shopify-visible orders ÷ 2,126 marketplace-first customers. A "repeat" is any second Shopify order regardless of whether it came through Shopee/Lazada again or through a direct Shopify.com visit.
+
+```
+Marketplace customers:                 2,126
+Marketplace repeaters (2+ Shopify):      306
+Repeat rate:                           14.4%   (306 / 2,126)
+Total marketplace-tagged orders:       3,268
+Avg orders per marketplace customer:    1.54
+```
+
+The fact that there are 3,268 marketplace-tagged orders across 2,126 customers (not 2,126 as would be the case if only first orders were synced) confirms that repeat Shopee/Lazada orders ARE being captured in Shopify via the integration — at least partially.
+
+**Potential sources of undercount in the 14.4%:**
+1. A customer who buys on Shopee with email A and then on Shopee again with email B gets two separate Shopify customer records — the repeat is not linked.
+2. If the Shopify–Shopee/Lazada integration misses some repeat orders, those are invisible.
+
+**Impact:**
+- The **0% Shopify subscription rate** for Marketplace is technically correct within Shopify data; the true marketplace subscription rate on Shopee/Lazada is unknown.
+- The **14.4% repeat rate** may be a modest undercount. However, even if the true rate is higher, customers who only repeat on Shopee/Lazada without entering the Shopify ecosystem have zero CRM visibility and zero Shopify subscription potential — this strengthens, not weakens, the channel quality argument.
+- The **relative comparison** (14.4% Marketplace vs 33.5% Direct/Organic) is valid: all channels are measured on identical Shopify-data basis.
+- The **LTV gap** (S$115 Marketplace vs S$198 Direct/Organic) is also valid — both channels' LTV is measured from complete Shopify purchase histories.
+
+**Severity:** MEDIUM for the subscription conversion metric and repeat rate headline; LOW for the LTV comparison and the strategic conclusion.
 
 **Mitigation:**
 - LTV and repeat rate comparisons across channels remain valid (both use Shopify purchase history)
-- Subscription conversion comparison must be annotated: "Shopify subscriptions only; Marketplace platforms operate independent subscription systems not tracked here"
+- Subscription comparison annotated: "Shopify subscriptions only; Marketplace platforms operate independent subscription systems not tracked here"
+- Repeat rate annotated: "Marketplace repeat rate reflects customers with 2+ Shopify-visible orders. Repeat purchases exclusively on Shopee/Lazada and not synced to Shopify are not captured."
 
 ---
 

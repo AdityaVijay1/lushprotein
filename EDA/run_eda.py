@@ -1,5 +1,5 @@
 """
-run_eda.py  –  Orchestrator: runs all EDA scripts in order.
+run_eda.py  -  Orchestrator: runs all EDA scripts in order.
 
 Usage
 -----
@@ -12,7 +12,7 @@ Usage
 Flags
 -----
 --skip-load   Skip 01_load_and_merge (use if Parquet cache already exists)
---only N      Run only script number N (01–06)
+--only N      Run only script number N (01-06)
 """
 
 import subprocess
@@ -30,7 +30,7 @@ SCRIPTS = [
     ("04", "04_product_analysis.py",        "Product stickiness, SKU popularity, cross-sell"),
     ("05", "05_channel_discount.py",        "Channel quality & discount sensitivity"),
     ("06", "06_subscription_churn.py",      "Subscription LTV, churn reasons, win-backs"),
-    # ── 5-Lens Customer-Base Audit (Bruce, Fader & Ross 2022) ──────────────
+    # -- 5-Lens Customer-Base Audit (Bruce, Fader & Ross 2022) --------------
     ("07", "07_lens1_heterogeneity.py",     "Lens 1: Distributions, deciles, decomposition"),
     ("08", "08_lens2_period_decomposition.py","Lens 2: New/Retained/Lost, migration matrix, up-down"),
     ("09", "09_lens3_cohort_evolution.py",  "Lens 3: Cohort tracking, VTD, inter-purchase time"),

@@ -1,5 +1,5 @@
 """
-00_config.py  –  Paths, constants, and shared helpers for LushProtein EDA.
+00_config.py  -  Paths, constants, and shared helpers for LushProtein EDA.
 
 All other scripts import from here.  Adjust BASE_DIR if you move the EDA folder.
 """
@@ -7,10 +7,10 @@ All other scripts import from here.  Adjust BASE_DIR if you move the EDA folder.
 from pathlib import Path
 import pandas as pd
 
-# ── Root of the data drop ──────────────────────────────────────────────────────
+# -- Root of the data drop ------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent   # LushProtein_Project_Data_*
 
-# ── Raw file paths ─────────────────────────────────────────────────────────────
+# -- Raw file paths -------------------------------------------------------------
 ORDER_FILES = sorted(
     (BASE_DIR / "1.customer_transaction").glob("1_*.xlsx")
 )
@@ -25,12 +25,12 @@ RECHARGE_REACTIVATED= BASE_DIR / "5.Recharge_data" / "5_3.subscribers_reactivate
 RECHARGE_CHURNED    = BASE_DIR / "5.Recharge_data" / "5_4.subscriptions_churned_20260505.xlsx"
 RECHARGE_RECURRING  = BASE_DIR / "5.Recharge_data" / "5_5.order_items_recurring_20260505.xlsx"
 
-# ── Output dir ─────────────────────────────────────────────────────────────────
+# -- Output dir -----------------------------------------------------------------
 OUTPUT_DIR = BASE_DIR / "EDA" / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# ── Hero product classification ────────────────────────────────────────────────
-# Map product handle keywords → clean category label
+# -- Hero product classification ------------------------------------------------
+# Map product handle keywords -> clean category label
 PRODUCT_MAP = {
     "lean-protein":    "Lean Protein",
     "lean_protein":    "Lean Protein",
@@ -52,7 +52,7 @@ def classify_product(handle: str) -> str:
             return label
     return "Other"
 
-# ── Channel classification from order tags + UTM source ───────────────────────
+# -- Channel classification from order tags + UTM source -----------------------
 # Tags can contain: 'shopee', 'lazada', 'tokopedia', 'Subscription Order',
 #                   'FIRST_ORDER', marketplace names
 MARKETPLACE_KEYWORDS = ["shopee", "lazada", "tokopedia", "redmart", "grab"]
@@ -80,34 +80,35 @@ def classify_channel(row) -> str:
         return "Email"
     return "Direct / Organic"
 
-# ── FX conversion rates (fixed, applied at data load time) ────────────────────
+# -- FX conversion rates (5-year average, applied at data load time) -----------
 #
-# ASSUMPTION: Fixed exchange rates as of analysis date (April 2026).
+# ASSUMPTION: Exchange rates represent the approximate 5-year average (2020-2026).
 #   Rates provided by team: 1 SGD = 3.30 MYR  |  1 SGD = 6.10 HKD
 #   All revenue (Price: Total, Price: Total Discount, Price: Total Shipping,
 #   Line: Price) is multiplied by the relevant rate before saving to Parquet.
 #   After conversion the Currency column is set to "SGD" for all orders.
 #   This enables combined SG + MY + HK analysis in a single SGD-denominated dataset.
 #
-#   Limitation: Using a single fixed rate ignores historical FX movements.
-#   For orders spanning 2020–2026, the actual rate at time of transaction may
-#   differ. This introduces a measurement error in early-year MY/HK revenue.
+#   Limitation: Using a single average rate ignores year-to-year FX movements.
+#   For orders spanning 2020-2026, the actual rate at time of transaction may
+#   differ from the 5-year average. This introduces a measurement error in
+#   absolute revenue figures (estimated <=10% for MY store).
 #   Impact is LOW for relative comparisons (retention, repeat rate) but should
 #   be noted when citing absolute SGD revenue figures.
 #
 FX_RATES_TO_SGD = {
     "SG": 1.0,
-    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD
-    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD
+    "MY": 1.0 / 3.30,   # 1 MYR = 0.3030 SGD  (5-yr avg: 1 SGD = 3.30 MYR)
+    "HK": 1.0 / 6.10,   # 1 HKD = 0.1639 SGD  (5-yr avg: 1 SGD = 6.10 HKD)
 }
 
 FX_ASSUMPTION_NOTE = (
-    "All revenue converted to SGD using fixed rates: "
+    "All revenue converted to SGD using 5-year average rates (2020-2026): "
     "1 SGD = 3.30 MYR; 1 SGD = 6.10 HKD. "
-    "Rates fixed at April 2026. Historical FX movements not applied."
+    "Applied as fixed rates at data load time."
 )
 
-# ── Date helpers ───────────────────────────────────────────────────────────────
+# -- Date helpers ---------------------------------------------------------------
 ANALYSIS_DATE = pd.Timestamp("2026-04-30", tz="UTC")   # treat as "today" for RFM calcs
 
 print("[config] BASE_DIR:", BASE_DIR)

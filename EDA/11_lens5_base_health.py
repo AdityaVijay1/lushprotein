@@ -1,16 +1,16 @@
 """
-11_lens5_base_health.py  —  Customer-Base Audit: LENS 5
+11_lens5_base_health.py  --  Customer-Base Audit: LENS 5
 "How Healthy Is Our Customer Base?"
 
-Framework: Bruce, Fader & Ross — The Customer-Base Audit (2022)
-Lens 5 = The whole customer base — ALL cohorts and ALL periods.
+Framework: Bruce, Fader & Ross -- The Customer-Base Audit (2022)
+Lens 5 = The whole customer base -- ALL cohorts and ALL periods.
 Integrates Lenses 1-4 into a single health diagnostic.
 
 Analyses
 --------
-A. Full cohort × year revenue matrix (rows = acquisition cohorts, cols = calendar years)
+A. Full cohort x year revenue matrix (rows = acquisition cohorts, cols = calendar years)
    This is the "triangle" chart from the textbook
-B. Cohort revenue decay curves — how each cohort fades over time
+B. Cohort revenue decay curves -- how each cohort fades over time
 C. Customer base composition by year: New / Retained / Recovered (3-state waterfall)
 D. Revenue contribution: what % of each year's revenue came from this year's new customers?
    (leading indicator of acquisition dependency vs retention strength)
@@ -25,10 +25,10 @@ Notes
 
 Outputs
 -------
-EDA/outputs/11_lens5_cohort_revenue_matrix.csv — Cohort x Year revenue triangle
-EDA/outputs/11_lens5_revenue_decay_curves.csv  — % of cohort acquisition revenue by year
-EDA/outputs/11_lens5_composition_waterfall.csv — New/Retained/Recovered by year
-EDA/outputs/11_lens5_health_scorecard.csv      — 5-KPI health diagnostic
+EDA/outputs/11_lens5_cohort_revenue_matrix.csv -- Cohort x Year revenue triangle
+EDA/outputs/11_lens5_revenue_decay_curves.csv  -- % of cohort acquisition revenue by year
+EDA/outputs/11_lens5_composition_waterfall.csv -- New/Retained/Recovered by year
+EDA/outputs/11_lens5_health_scorecard.csv      -- 5-KPI health diagnostic
 """
 
 import sys
@@ -55,11 +55,11 @@ OUTPUT_DIR = cfg.OUTPUT_DIR
 MARGIN = 0.40
 
 print("=" * 65)
-print("LENS 5 — HOW HEALTHY IS THE CUSTOMER BASE?")
+print("LENS 5 -- HOW HEALTHY IS THE CUSTOMER BASE?")
 print("All cohorts, all periods  |  Integrated diagnostic  |  Base health")
 print("=" * 65)
 
-# ── Load ──────────────────────────────────────────────────────────────────────
+# -- Load ----------------------------------------------------------------------
 orders = pd.read_parquet(OUTPUT_DIR / "orders.parquet")
 orders["order_date"]   = pd.to_datetime(orders["order_date"], utc=True)
 orders["Price: Total"] = pd.to_numeric(orders["Price: Total"], errors="coerce").fillna(0)
@@ -84,7 +84,7 @@ print(f"\nCalendar years: {CALENDAR_YEARS}")
 print(f"Acquisition cohorts analyzed: {ACQ_YEARS}")
 
 # ==============================================================================
-# A.  COHORT × YEAR REVENUE MATRIX (THE TRIANGLE)
+# A.  COHORT x YEAR REVENUE MATRIX (THE TRIANGLE)
 # ==============================================================================
 print("\n\n[A] COHORT x YEAR REVENUE MATRIX (SGD)")
 print("-" * 65)
@@ -117,18 +117,18 @@ for acq_yr, row in matrix_df.iterrows():
     for yr in CALENDAR_YEARS:
         v = row[str(yr)]
         if pd.isna(v):
-            vals += "       —"
+            vals += "       --"
         else:
             vals += f"  {v/1000:>5.0f}K"
     print(f"  {acq_yr}  {vals}")
 
-print("\n  (Values in S$K — thousands of SGD)")
+print("\n  (Values in S$K -- thousands of SGD)")
 
 matrix_df.reset_index().to_csv(OUTPUT_DIR / "11_lens5_cohort_revenue_matrix.csv", index=False)
 print(f"\nSaved: 11_lens5_cohort_revenue_matrix.csv")
 
 # ==============================================================================
-# B.  REVENUE DECAY CURVES — % of Year 0 (acquisition) revenue
+# B.  REVENUE DECAY CURVES -- % of Year 0 (acquisition) revenue
 # ==============================================================================
 print("\n\n[B] REVENUE DECAY CURVES")
 print("-" * 65)
@@ -164,7 +164,7 @@ for acq_yr in ACQ_YEARS:
             pct = np.nan
         row[f"age_plus_{age}"] = round(pct, 4) if not pd.isna(pct) else np.nan
         if pd.isna(pct):
-            row_str += "       —"
+            row_str += "       --"
         else:
             row_str += f"  {pct:>6.1%}"
     decay_rows.append(row)
@@ -178,9 +178,9 @@ print(f"  The speed of decay (how quickly % falls after Year 0) measures cohort 
 print(f"  Faster decay = weaker cohort = worse acquisition quality OR worse post-purchase experience")
 
 # ==============================================================================
-# C.  CUSTOMER BASE COMPOSITION WATERFALL — New / Retained / Recovered
+# C.  CUSTOMER BASE COMPOSITION WATERFALL -- New / Retained / Recovered
 # ==============================================================================
-print("\n\n[C] CUSTOMER BASE COMPOSITION — Annual Waterfall")
+print("\n\n[C] CUSTOMER BASE COMPOSITION -- Annual Waterfall")
 print("-" * 65)
 print("New = buying for first time | Retained = bought last year too | Recovered = gap buyers")
 print()
@@ -243,11 +243,11 @@ for yr in CALENDAR_YEARS:
     prev_buyers = current_buyers
 
 print(f"\n  IF a high % of revenue comes from New customers: the base is ACQUISITION-DEPENDENT.")
-print(f"  This means revenue is fragile — it only holds if acquisition keeps up.")
+print(f"  This means revenue is fragile -- it only holds if acquisition keeps up.")
 print(f"  A healthy base has growing RETAINED contribution (denominator = loyal customers).")
 
 # ==============================================================================
-# D.  REVENUE MIX — What % came from each acquisition cohort per calendar year
+# D.  REVENUE MIX -- What % came from each acquisition cohort per calendar year
 # ==============================================================================
 print("\n\n[D] REVENUE CONTRIBUTION BY COHORT VINTAGE")
 print("-" * 65)
@@ -273,7 +273,7 @@ for acq_yr in ACQ_YEARS:
     print(f"  {acq_yr} coh", end="")
     for yr in CALENDAR_YEARS:
         if yr < acq_yr:
-            print(f"        —", end="")
+            print(f"        --", end="")
         else:
             yr_total = sgd[sgd["year"] == yr]["Price: Total"].sum()
             cohort_rev = rev_by_cohort_yr.get((acq_yr, yr), 0)
@@ -342,20 +342,20 @@ print(f"\nSaved: 11_lens5_health_scorecard.csv")
 # ==============================================================================
 # F.  INTEGRATED LENS 5 DIAGNOSTIC NARRATIVE
 # ==============================================================================
-print("\n\n[F] INTEGRATED DIAGNOSTIC — LENS 5 NARRATIVE")
+print("\n\n[F] INTEGRATED DIAGNOSTIC -- LENS 5 NARRATIVE")
 print("=" * 65)
 print(f"""
   WHAT LENS 5 IS SAYING ABOUT LUSHPROTEIN:
 
   1. THE BASE IS ACQUISITION-DEPENDENT.
      A high proportion of annual revenue comes from first-time buyers.
-     This means revenue is tied directly to marketing spend — if acquisition
+     This means revenue is tied directly to marketing spend -- if acquisition
      slows, revenue drops immediately. A healthy base generates growing
      revenue from retained cohorts even without new acquisition.
 
   2. COHORT REVENUE DECAYS RAPIDLY.
      Each cohort loses most of its revenue contribution within 1-2 years.
-     The "triangle" matrix is steep — the off-diagonal cells are much smaller
+     The "triangle" matrix is steep -- the off-diagonal cells are much smaller
      than the diagonal (acquisition year) cells. This is a classic pattern
      of a leaky bucket: new customers flow in but don't accumulate.
 
@@ -370,7 +370,7 @@ print(f"""
      This likely reflects increased marketplace acquisition and discount depth.
 
   5. THE INTEGRATED IMPLICATION:
-     LushProtein is in a "growth trap" — revenue looks like it's recovering
+     LushProtein is in a "growth trap" -- revenue looks like it's recovering
      (2024 vs 2023) but it is powered by more acquisition, not better retention.
      If cohort retention doesn't improve, each new cohort requires progressively
      more acquisition spend to maintain revenue. This is an unsustainable trajectory.
