@@ -1,0 +1,38 @@
+target_column,target_data_type,pk_fk,source_file(s),source_column,source_data_type,transformation,notes / business rule
+order_id,STRING (id),PK,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,ID,id (13-digit),Filter Top Row = 1; cast STRING; direct copy.,Shopify order PK. Join target for lines and Recharge.
+order_name,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Name,text,Filter Top Row = 1; direct copy.,"Human-readable order number. Prefix encodes store: LP/LPSG=SG, LPMY=MY, LPHK=HK."
+order_date,DATETIME,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Processed At,datetime+tz,Parse UTC; convert to Asia/Singapore; normalize to date.,Use Processed At (payment time) not Created At.
+customer_id,STRING (id),FK -> customers,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Customer: ID,id (13-digit),Filter Top Row = 1; cast STRING; drop nulls.,Links to customer entity.
+store,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Name (derived),text,"CASE WHEN Name starts LPMY->MY, LPHK->HK, LPSG/LP->SG ELSE Other.",Derived column — not in raw export. Implemented in 01_load_and_merge.py.
+currency,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Currency,text,Direct copy at load; post-FX all rows set to SGD in pipeline.,Raw: SGD/MYR/HKD mixed. Never sum across currencies before FX.
+total_price,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Price: Total,decimal,Numeric cast; multiply by FX_RATES_TO_SGD[store] at load.,Net order revenue in SGD after FX conversion.
+total_discount,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Price: Total Discount,decimal,Numeric cast; fill null->0; multiply by FX rate.,Order-level discount amount in SGD.
+total_shipping,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Price: Total Shipping,decimal,Numeric cast; fill null->0; multiply by FX rate.,Shipping charged on order.
+payment_status,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Payment: Status,text,Direct copy; keep paid and partially_refunded only.,Exclude unpaid/cancelled before payment.
+fulfillment_status,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Order Fulfillment Status,text,Direct copy; exclude restocked.,restocked rows removed in 01_load_and_merge.py.
+tags,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Tags,text (comma-list),Direct copy; parse for subscription/marketplace signals.,"62% null. Key: Subscription Order, FIRST_ORDER, shopee, lazada."
+order_source,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Source,text,Filter Top Row=1; lower-case; direct copy.,"Shopify order source: web, pos, subscription_contract, shopee, etc. pos = on-site (Shopify POS)."
+utm_source,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Browser: UTM Source,text,Direct copy.,94.9% null. Used in classify_channel when present.
+utm_medium,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Browser: UTM Medium,text,Direct copy.,Companion to utm_source.
+utm_campaign,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Browser: UTM Campaign,text,Direct copy.,Campaign name string.
+shipping_country,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Shipping: Country,text,Direct copy.,"Top: Malaysia 52%, Singapore 41%."
+cancelled_at,DATETIME,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Cancelled At,datetime,Parse datetime; null = not cancelled.,89% null.
+channel,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Tags + Browser: UTM Source + Name (derived),text,classify_channel() in 00_config.py.,Derived: Subscription | Marketplace | Direct/Organic | Paid Social | Email | Affiliate | Paid Search.
+product_category,STRING (cat),,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Product Handle (derived),text,classify_product() keyword map in 00_config.py.,Derived from first line handle on Top Row. Not a product-master join.
+has_discount,BOOL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Price: Total Discount (derived),bool,total_discount > 0.,Flag for discounted orders.
+is_subscription,BOOL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Tags (derived),bool,Tags contains subscription|yotpo subscriptions (case-insensitive).,Shopify-trackable subscriptions only.
+is_first_order_tag,BOOL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Tags (derived),bool,Tags contains FIRST_ORDER.,Tag-based first order indicator.
+line_id,STRING (id),PK (line-level),1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: ID,id,Filter Line: Type = Line Item; cast STRING.,Line-level PK for product analysis.
+line_product_handle,STRING,FK -> products,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Product Handle,text (slug),Filter Line: Type = Line Item; direct copy.,Join key to products_master.Handle.
+line_sku,STRING,FK -> products,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: SKU,text,Filter Line: Type = Line Item; cast STRING preserve leading zeros.,Join key to products_master.Variant SKU.
+line_title,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Title,text,Filter Line: Type = Line Item; direct copy.,Product display name.
+line_variant_title,STRING,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Variant Title,text,Filter Line: Type = Line Item; direct copy.,Flavor/pack size label — use for flavor-level analysis.
+line_quantity,INT,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Quantity,int,Cast INT.,Units purchased.
+line_price,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Price,decimal,Numeric cast; multiply by FX rate.,Unit price before line discount (SGD).
+line_discount,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Discount,decimal,Numeric cast; fill null->0; multiply by FX rate.,Line-level discount (SGD).
+line_total,DECIMAL,,1.customer_transaction/1_*.orders-YYYY_20260505.xlsx,Line: Total,decimal,Numeric cast; multiply by FX rate.,Line revenue after discount (SGD).
+total_revenue,DECIMAL,,orders.parquet (derived),Price: Total,decimal,SUM(Price: Total) GROUP BY customer_id.,Customer LTV definition used in finals analysis.
+is_repeat,BOOL,,customers.parquet (derived),order count (derived),bool,total_orders >= 2.,Repeat customer flag.
+ever_subscribed,BOOL,,customers.parquet (derived),is_subscription (derived),bool,ANY(is_subscription) GROUP BY customer_id.,Ever had a Shopify subscription order.
+first_channel,STRING (cat),,customers.parquet (derived),channel (derived),text,FIRST channel by order_date per customer.,Acquisition channel for LTV-by-channel analysis.
+cohort_month,PERIOD,,customers.parquet (derived),first_order_date (derived),period,first_order_date.to_period(M).,Monthly acquisition cohort key.
