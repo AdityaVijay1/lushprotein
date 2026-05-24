@@ -258,24 +258,7 @@ loyal_profile = pd.DataFrame({
 })
 loyal_profile.to_csv(OUT / "12_loyal_customer_profile.csv", index=False)
 
-# Compare loyal vs one-and-done
-one_done = cust[cust["total_orders"] == 1]
-compare = pd.DataFrame({
-    "segment": ["Loyal (3+ orders, repeat)", "One-and-done"],
-    "customers": [len(loyal), len(one_done)],
-    "avg_ltv": [loyal["total_revenue"].mean(), one_done["total_revenue"].mean()],
-    "pct_subscribed": [loyal["ever_subscribed"].mean(), one_done["ever_subscribed"].mean()],
-    "avg_unique_handles": [loyal["unique_handles"].mean(), one_done["unique_handles"].mean()],
-    "pct_direct_acq": [
-        (loyal["first_channel"] == "Direct / Organic").mean(),
-        (one_done["first_channel"] == "Direct / Organic").mean(),
-    ],
-    "pct_full_price_first": [
-        (loyal["first_disc_bin"].astype(str) == "0%").mean(),
-        (one_done["first_disc_bin"].astype(str) == "0%").mean(),
-    ],
-})
-compare.to_csv(OUT / "12_loyal_vs_one_and_done.csv", index=False)
+# Compare loyal vs one-and-done — full factor table written in section 11b
 
 # ── VTD decile × cumulative product categories ─────────────────────────────
 print("\n[5] VTD decile × product breadth...")
@@ -390,11 +373,294 @@ for label, rate in [("Marketplace LTV gap (conservative 5% improved)", 0.05), ("
 
 pd.DataFrame(scenarios).to_csv(OUT / "12_business_value_scenarios.csv", index=False)
 
+# ── 8. First-purchase flavor/SKU → loyalty outcomes ───────────────────────
+print("\n[8] First-purchase flavor/SKU loyalty...")
+first_lines = (
+    lines_clean.sort_values("order_date")
+    .groupby("customer_id")
+    .first()
+    .reset_index()[["customer_id", "Line: Product Handle", "Line: Variant Title", "Line: SKU", "flavor_sku"]]
+)
+first_lines = first_lines.rename(columns={
+    "Line: Product Handle": "first_handle",
+    "Line: Variant Title": "first_variant",
+    "Line: SKU": "first_sku",
+})
+flavor_loyalty = first_lines.merge(
+    cust[["customer_id", "total_revenue", "total_orders", "is_repeat", "ever_subscribed", "finals_eligible"]],
+    on="customer_id",
+)
+flavor_stats = (
+    flavor_loyalty.groupby(["first_handle", "first_variant", "first_sku", "flavor_sku"])
+    .agg(
+        customers=("customer_id", "count"),
+        repeat_rate=("is_repeat", "mean"),
+        avg_ltv=("total_revenue", "mean"),
+        avg_orders=("total_orders", "mean"),
+        pct_subscribed=("ever_subscribed", "mean"),
+    )
+    .reset_index()
+    .sort_values("customers", ascending=False)
+)
+flavor_stats.to_csv(OUT / "12_first_flavor_loyalty_all.csv", index=False)
+flavor_stats[flavor_stats["customers"] >= 30].sort_values("repeat_rate", ascending=False).to_csv(
+    OUT / "12_first_flavor_loyalty_min30.csv", index=False
+)
+
+# Finals-filtered flavor loyalty
+flavor_stats_f = (
+    flavor_loyalty[flavor_loyalty["finals_eligible"]]
+    .groupby(["first_handle", "first_variant", "first_sku", "flavor_sku"])
+    .agg(customers=("customer_id", "count"), repeat_rate=("is_repeat", "mean"), avg_ltv=("total_revenue", "mean"))
+    .reset_index()
+    .sort_values("customers", ascending=False)
+)
+flavor_stats_f.to_csv(OUT / "12_first_flavor_loyalty_2022plus_filtered.csv", index=False)
+
+# ── 9. Discontinued / draft products — full historical sales ───────────────
+print("\n[9] Discontinued & draft product history...")
+inactive_handles = set(products[products["Status"].isin(["archived", "draft"])]["Handle"])
+disc_hist = (
+    lines_clean[lines_clean["Line: Product Handle"].isin(inactive_handles)]
+    .groupby(["Line: Product Handle", "Line: Variant Title", "Line: SKU"])
+    .agg(
+        total_orders=("order_id", "nunique"),
+        unique_customers=("customer_id", "nunique"),
+        total_revenue=("Line: Total", "sum"),
+        first_sale=("order_date", "min"),
+        last_sale=("order_date", "max"),
+    )
+    .reset_index()
+)
+disc_hist = disc_hist.merge(
+    products[["Handle", "Status"]].drop_duplicates("Handle").rename(columns={"Handle": "Line: Product Handle"}),
+    on="Line: Product Handle", how="left",
+)
+disc_hist = disc_hist.sort_values("total_revenue", ascending=False)
+disc_hist.to_csv(OUT / "12_discontinued_products_history.csv", index=False)
+
+# ── 10. Reorder interval by SKU (repeat buyers, same SKU) ───────────────────
+print("\n[10] Reorder interval by SKU...")
+lines_clean["order_date"] = pd.to_datetime(lines_clean["order_date"], utc=True)
+lines_clean = lines_clean[lines_clean["order_date"] >= ANALYSIS_START]
+lines_clean = lines_clean[~lines_clean["order_date"].dt.month.isin(EXCLUDE_MONTHS)]
+lines_clean["flavor_label"] = (
+    lines_clean["Line: Product Handle"].fillna("") + " / "
+    + lines_clean["Line: Variant Title"].fillna("Default")
+)
+
+def _median_reorder_gap(g):
+    dates = g.sort_values("order_date")["order_date"].drop_duplicates()
+    if len(dates) < 2:
+        return np.nan
+    gaps = dates.diff().dt.days.dropna()
+    return gaps.median() if len(gaps) else np.nan
+
+reorder_rows = []
+for (sku, label), grp in lines_clean.groupby(["Line: SKU", "flavor_label"]):
+    cust_gaps = grp.groupby("customer_id", group_keys=False).apply(_median_reorder_gap, include_groups=False)
+    cust_gaps = cust_gaps.dropna()
+    if len(cust_gaps) < 5:
+        continue
+    reorder_rows.append({
+        "Line: SKU": sku,
+        "flavor_label": label,
+        "repeat_buyers": len(cust_gaps),
+        "median_reorder_days": cust_gaps.median(),
+        "mean_reorder_days": cust_gaps.mean(),
+    })
+reorder_df = pd.DataFrame(reorder_rows).sort_values("repeat_buyers", ascending=False)
+reorder_df.to_csv(OUT / "12_reorder_interval_by_sku.csv", index=False)
+
+# ── 11. Loyal repeater targeting criteria ───────────────────────────────────
+print("\n[11] Loyal repeater targeting criteria...")
+cust["loyal_repeater"] = cust["is_repeat"] & (cust["total_orders"] >= 3)
+cust["target_tier"] = np.select(
+    [
+        cust["loyal_repeater"] & cust["ever_subscribed"],
+        cust["loyal_repeater"] & ~cust["ever_subscribed"],
+        cust["is_repeat"] & (cust["total_orders"] == 2),
+        cust["total_orders"] == 1,
+    ],
+    ["Tier 1: Loyal + Subscribed", "Tier 2: Loyal Non-Sub", "Tier 3: 2-order", "Tier 4: One-and-done"],
+    default="Other",
+)
+target_summary = (
+    cust.groupby("target_tier")
+    .agg(customers=("customer_id", "count"), avg_ltv=("total_revenue", "mean"), avg_orders=("total_orders", "mean"))
+    .reset_index()
+    .sort_values("avg_ltv", ascending=False)
+)
+target_summary.to_csv(OUT / "12_loyal_repeater_target_tiers.csv", index=False)
+
+# ── 11b. What makes loyal repeaters come back? (loyalty drivers) ─────────────
+print("\n[11b] Loyal repeater loyalty drivers...")
+BASELINE_LOYAL = cust["loyal_repeater"].mean()
+
+cust["returned_within_60d"] = cust["days_to_second"].le(60)
+cust["has_2plus_products"] = cust["unique_handles"] >= 2
+cust["has_3plus_products"] = cust["unique_handles"] >= 3
+cust["first_order_full_price"] = cust["first_disc_bin"].astype(str) == "0%"
+cust["first_order_web"] = ~cust["first_order_pos"].fillna(True)
+
+loyal = cust[cust["loyal_repeater"]].copy()
+one_done = cust[cust["total_orders"] == 1].copy()
+two_order = cust[cust["is_repeat"] & (cust["total_orders"] == 2)].copy()
+
+def _driver_compare(name, loyal_mask, one_done_mask):
+    lv = loyal_mask(loyal).mean() if len(loyal) else np.nan
+    ov = one_done_mask(one_done).mean() if len(one_done) else np.nan
+    return {
+        "factor": name,
+        "loyal_pct": lv,
+        "one_and_done_pct": ov,
+        "gap_pp": lv - ov,
+        "lift_vs_one_and_done": lv / ov if ov and ov > 0 else np.nan,
+        "lift_vs_baseline": lv / BASELINE_LOYAL if BASELINE_LOYAL else np.nan,
+    }
+
+behavioral_drivers = pd.DataFrame([
+    _driver_compare("Ever subscribed", lambda s: s["ever_subscribed"], lambda s: s["ever_subscribed"]),
+    _driver_compare("First order full-price (0% discount)", lambda s: s["first_order_full_price"], lambda s: s["first_order_full_price"]),
+    _driver_compare("First order via web (not POS)", lambda s: s["first_order_web"], lambda s: s["first_order_web"]),
+    _driver_compare("2+ unique product handles purchased", lambda s: s["has_2plus_products"], lambda s: s["has_2plus_products"]),
+    _driver_compare("3+ unique product handles purchased", lambda s: s["has_3plus_products"], lambda s: s["has_3plus_products"]),
+]).sort_values("gap_pp", ascending=False)
+behavioral_drivers.to_csv(OUT / "12_loyal_repeater_behavioral_drivers.csv", index=False)
+
+# Pathway marker (repeaters only — not comparable to one-and-done)
+pathway = pd.DataFrame([{
+    "factor": "Returned within 60 days of 1st order",
+    "loyal_pct": loyal["returned_within_60d"].mean(),
+    "two_order_pct": two_order["returned_within_60d"].mean(),
+    "loyal_median_days_to_2nd": loyal["days_to_second"].median(),
+    "two_order_median_days_to_2nd": two_order["days_to_second"].median(),
+}])
+pathway.to_csv(OUT / "12_loyal_repeater_return_pathway.csv", index=False)
+
+# Continuous metrics — loyal vs one-and-done vs 2-order (speed to 2nd order)
+speed_compare = pd.DataFrame({
+    "segment": ["Loyal (3+ orders)", "2-order", "One-and-done"],
+    "customers": [len(loyal), len(two_order), len(one_done)],
+    "median_days_to_2nd": [
+        loyal["days_to_second"].median(),
+        two_order["days_to_second"].median(),
+        np.nan,
+    ],
+    "pct_returned_within_60d": [
+        loyal["returned_within_60d"].mean(),
+        two_order["returned_within_60d"].mean(),
+        np.nan,
+    ],
+    "avg_unique_handles": [loyal["unique_handles"].mean(), two_order["unique_handles"].mean(), one_done["unique_handles"].mean()],
+    "avg_unique_flavor_skus": [loyal["unique_flavor_skus"].mean(), two_order["unique_flavor_skus"].mean(), one_done["unique_flavor_skus"].mean()],
+})
+speed_compare.to_csv(OUT / "12_loyal_repeater_speed_and_breadth.csv", index=False)
+
+# Categorical: P(loyal repeater) by acquisition channel, first product, discount depth
+cat_rows = []
+for dim, label in [
+    ("first_channel", "Acquisition channel"),
+    ("first_product_cat", "First product category"),
+    ("first_disc_bin", "First-order discount depth"),
+]:
+    grp = (
+        cust.groupby(dim, observed=True)
+        .agg(customers=("customer_id", "count"), loyal_rate=("loyal_repeater", "mean"))
+        .reset_index()
+    )
+    grp["factor_type"] = label
+    grp["factor_value"] = grp[dim].astype(str)
+    grp["lift_vs_baseline"] = grp["loyal_rate"] / BASELINE_LOYAL
+    cat_rows.append(grp[["factor_type", "factor_value", "customers", "loyal_rate", "lift_vs_baseline"]])
+pd.concat(cat_rows, ignore_index=True).sort_values("loyal_rate", ascending=False).to_csv(
+    OUT / "12_loyal_repeater_rate_by_factor.csv", index=False
+)
+
+# First-purchase SKU → P(loyal repeater)  (which entry products create loyalty?)
+fl_loyal = flavor_loyalty.merge(cust[["customer_id", "loyal_repeater"]], on="customer_id")
+sku_loyal_rate = (
+    fl_loyal.groupby(["first_handle", "first_variant", "first_sku", "flavor_sku"])
+    .agg(
+        customers=("customer_id", "count"),
+        loyal_rate=("loyal_repeater", "mean"),
+        avg_ltv=("total_revenue", "mean"),
+        avg_orders=("total_orders", "mean"),
+        pct_subscribed=("ever_subscribed", "mean"),
+    )
+    .reset_index()
+)
+sku_loyal_rate["lift_vs_baseline"] = sku_loyal_rate["loyal_rate"] / BASELINE_LOYAL
+sku_loyal_rate.to_csv(OUT / "12_loyal_rate_by_first_sku.csv", index=False)
+sku_loyal_rate[sku_loyal_rate["customers"] >= 30].sort_values("loyal_rate", ascending=False).to_csv(
+    OUT / "12_loyal_rate_by_first_sku_min30.csv", index=False
+)
+
+# Among loyal repeaters: which SKUs do they keep reordering? (all purchases, not just first)
+loyal_ids = set(loyal["customer_id"])
+loyal_lines = lines_clean[lines_clean["customer_id"].isin(loyal_ids)].copy()
+loyal_lines["flavor_label"] = (
+    loyal_lines["Line: Product Handle"].fillna("") + " / "
+    + loyal_lines["Line: Variant Title"].fillna("Default")
+)
+loyal_reorder_skus = (
+    loyal_lines.groupby(["Line: Product Handle", "Line: Variant Title", "Line: SKU", "flavor_label"])
+    .agg(
+        loyal_buyers=("customer_id", "nunique"),
+        total_line_items=("order_id", "count"),
+        total_revenue=("Line: Total", "sum"),
+    )
+    .reset_index()
+)
+loyal_reorder_skus["avg_purchases_per_loyal_buyer"] = (
+    loyal_reorder_skus["total_line_items"] / loyal_reorder_skus["loyal_buyers"]
+)
+loyal_reorder_skus = loyal_reorder_skus.sort_values("loyal_buyers", ascending=False)
+loyal_reorder_skus.to_csv(OUT / "12_loyal_repeater_reorder_skus.csv", index=False)
+
+# Enriched loyal vs one-and-done comparison (all key factors in one table)
+compare = pd.DataFrame({
+    "segment": ["Loyal (3+ orders, repeat)", "One-and-done"],
+    "customers": [len(loyal), len(one_done)],
+    "avg_ltv": [loyal["total_revenue"].mean(), one_done["total_revenue"].mean()],
+    "pct_subscribed": [loyal["ever_subscribed"].mean(), one_done["ever_subscribed"].mean()],
+    "avg_unique_handles": [loyal["unique_handles"].mean(), one_done["unique_handles"].mean()],
+    "avg_unique_flavor_skus": [loyal["unique_flavor_skus"].mean(), one_done["unique_flavor_skus"].mean()],
+    "median_days_to_2nd": [loyal["days_to_second"].median(), np.nan],
+    "pct_returned_within_60d": [loyal["returned_within_60d"].mean(), np.nan],
+    "pct_direct_acq": [
+        (loyal["first_channel"] == "Direct / Organic").mean(),
+        (one_done["first_channel"] == "Direct / Organic").mean(),
+    ],
+    "pct_subscription_acq": [
+        (loyal["first_channel"] == "Subscription").mean(),
+        (one_done["first_channel"] == "Subscription").mean(),
+    ],
+    "pct_marketplace_acq": [
+        (loyal["first_channel"] == "Marketplace").mean(),
+        (one_done["first_channel"] == "Marketplace").mean(),
+    ],
+    "pct_full_price_first": [loyal["first_order_full_price"].mean(), one_done["first_order_full_price"].mean()],
+    "pct_first_order_web": [loyal["first_order_web"].mean(), one_done["first_order_web"].mean()],
+    "pct_2plus_products": [loyal["has_2plus_products"].mean(), one_done["has_2plus_products"].mean()],
+})
+compare.to_csv(OUT / "12_loyal_vs_one_and_done.csv", index=False)
+
+loyal_first_flavors = (
+    flavor_loyalty[flavor_loyalty["customer_id"].isin(cust[cust["loyal_repeater"]]["customer_id"])]
+    .groupby("flavor_sku")
+    .size()
+    .reset_index(name="loyal_customers")
+    .sort_values("loyal_customers", ascending=False)
+    .head(20)
+)
+loyal_first_flavors.to_csv(OUT / "12_loyal_repeater_top_first_flavors.csv", index=False)
+
 # Save enriched customer table (for report)
 cust_out_cols = [
     "customer_id", "acq_year", "acq_month", "first_channel", "total_revenue", "total_orders",
     "is_repeat", "ever_subscribed", "first_disc_bin", "first_order_pos", "unique_handles",
-    "unique_flavor_skus", "vtd_decile", "finals_eligible", "profit_proxy",
+    "unique_flavor_skus", "vtd_decile", "finals_eligible", "profit_proxy", "loyal_repeater", "target_tier",
 ]
 cust[cust_out_cols].to_csv(OUT / "12_customer_enriched_finals.csv", index=False)
 

@@ -18,6 +18,9 @@ SCRIPTS = [
     ("03_product_and_crosssell.py","Cross-sell LTV, product mix, SKU loyalty, combos"),
     ("04_subscription_churn.py",   "Sub vs one-time, churn by cycle, cancellation reasons"),
     ("05_discount_channel.py",     "Discount depth, marketplace vs web, RFM, code taxonomy"),
+    ("06_channel_quality_chart.py","Dual-panel channel quality (repeat + LTV)"),
+    ("07_slide3_charts.py",        "Slide 3 supporting charts"),
+    ("08_finals_charts.py",        "Finals: VTD, POS, SKU/flavor, loyal tiers, business value"),
 ]
 
 print("LushProtein Visualization Pipeline")
