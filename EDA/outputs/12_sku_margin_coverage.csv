@@ -1,245 +1,244 @@
 Line: Product Handle,Line: Variant Title,Line: SKU,line_items,unique_customers,total_revenue,unit_cost,Price / Singapore,Status,has_cost
-clear-protein,500g Pack (20 Serv) / Peach,0724999807814,667,532,46450.35363636364,,,,False
-lean-protein,1 x 1kg Pack (25 servings) / Thai Milk Tea,LEAN-THA-1KG-V1,359,282,35519.909999999996,18.16,,,True
-clear-protein,500g Pack (20 Serv) / White Grape,0724999807807,438,366,29374.878787878788,,,,False
-clear-protein,1 x 500g Pack (20 servings) / Peach,CLEAR-PEA-500G-V2,287,239,28312.99,18.39,,active,True
-clear-protein,1 x 500g Pack (20 servings) / White Grape,CLEAR-GRA-500G-V2,262,212,26701.28,18.39,,,True
-lean-protein,1 x 1kg Pack (25 servings) / Taro,LEAN-TAR-1KG-V1,281,216,26200.079999999998,17.65,,active,True
-lean-protein,1kg Pack (25 servings) / Thai Milk Tea,0724999807821,313,258,19547.52,,,,False
-micronized-creatine-monohydrate,1 x 250g Pack (50 servings),CRE-UNF-250G-V1,255,205,12130.52,5.07,,active,True
-collagen-glow,1 x 300g pack (30 servings),COL-UNF-300G-V1,121,97,11397.4,11.86,,active,True
-soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,SOY-UNF-1KG-V1,122,99,10536.82,4.34,,active,True
-better-whey,1kg Pack (40 servings) / Cocoa Dinosaur,0724999807937,160,125,10205.703333333333,,,,False
-clear-protein,1 x 500g Pack (20 servings) / Peach,0724999807814,118,96,9692.71,,,,False
-lean-protein,1 x 1kg Pack (25 servings) / Thai Milk Tea,0724999807821,128,100,8565.72,,,,False
-plant-protein,480g Pack (16 servings) / Cocoa Dinosaur,0724999808606,172,122,7993.83,,,,False
-lean-protein-peach-oolong-pre-order,1 x 1kg Pack (25 servings) / Peach Oolong,LEAN-POL-1KG-V1,83,83,7638.68,17.65,,active,True
-better-whey,1kg Pack (40 servings) / Natural (Unflavoured),0724999807890,100,82,7571.818181818182,,,,False
-prime-whey-isolate,1kg Pack (40 servings) / Natural (Unflavoured),0724999807760,92,55,7446.737878787879,,,,False
-lean-protein,1 x 1kg Pack (25 servings) / Taro,0724999807822,85,68,7265.46,,,,False
-plant-protein,480g Pack (16 servings) / Vanilla,0724999808613,138,87,7144.515757575758,,,,False
-collagen-glow,300g Pack (30 servings),0724999808507,148,115,6811.5199999999995,,,,False
-soy-protein-isolate,1kg Pack (40 servings) / Natural (Unflavoured),0724999807845,170,119,6711.5233333333335,,,,False
-collagen-glow,300g Pack,724999808507.0,136,102,6698.29,,,,False
+clear-protein,500g Pack (20 Serv) / Peach,0724999807814,654,532,45811.22727272727,,,,False
+lean-protein,1 x 1kg Pack (25 servings) / Thai Milk Tea,LEAN-THA-1KG-V1,336,275,33209.52,18.16,,,True
+clear-protein,500g Pack (20 Serv) / White Grape,0724999807807,425,362,28903.933333333334,,,,False
+clear-protein,1 x 500g Pack (20 servings) / Peach,CLEAR-PEA-500G-V2,273,237,27105.88,18.39,,active,True
+clear-protein,1 x 500g Pack (20 servings) / White Grape,CLEAR-GRA-500G-V2,244,207,23701.77,18.39,,,True
+lean-protein,1 x 1kg Pack (25 servings) / Taro,LEAN-TAR-1KG-V1,259,205,20887.739999999998,17.65,,active,True
+lean-protein,1kg Pack (25 servings) / Thai Milk Tea,0724999807821,304,255,19307.72818181818,,,,False
+micronized-creatine-monohydrate,1 x 250g Pack (50 servings),CRE-UNF-250G-V1,234,192,11524.66,5.07,,active,True
+soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,SOY-UNF-1KG-V1,120,99,10465.02,4.34,,active,True
+collagen-glow,1 x 300g pack (30 servings),COL-UNF-300G-V1,115,92,10269.25,11.86,,active,True
+better-whey,1kg Pack (40 servings) / Cocoa Dinosaur,0724999807937,152,119,10043.963333333333,,,,False
+clear-protein,1 x 500g Pack (20 servings) / Peach,0724999807814,112,94,9284.11,,,,False
+lean-protein,1 x 1kg Pack (25 servings) / Thai Milk Tea,0724999807821,122,100,8327.43,,,,False
+plant-protein,480g Pack (16 servings) / Cocoa Dinosaur,0724999808606,167,123,7805.8,,,,False
+lean-protein-peach-oolong-pre-order,1 x 1kg Pack (25 servings) / Peach Oolong,LEAN-POL-1KG-V1,85,85,7758.48,17.65,,active,True
+better-whey,1kg Pack (40 servings) / Natural (Unflavoured),0724999807890,97,81,7346.693939393939,,,,False
+plant-protein,480g Pack (16 servings) / Vanilla,0724999808613,140,90,7150.635757575757,,,,False
+prime-whey-isolate,1kg Pack (40 servings) / Natural (Unflavoured),0724999807760,86,55,6927.813636363637,,,,False
+collagen-glow,300g Pack (30 servings),0724999808507,143,115,6538.2,,,,False
+collagen-glow,300g Pack,724999808507.0,132,102,6485.016666666667,,,,False
 collagen-glow,300g Pack (30 servings) / Natural (Unflavoured),0724999808507,115,75,6037.539393939394,,,,False
-clear-protein,500g Pack (20 servings) / Peach,0724999807814,88,73,6012.76,,,,False
-clear-protein,1 x 500g Pack (20 servings) / White Grape,0724999807807,82,65,5977.74,,,,False
-lean-protein,1kg Pack (25 serves) / Thai Milk Tea,0724999807821,108,93,5592.750303030303,,,,False
-lushprotein-clear-shaker,White,ACC-SHK-V2,351,322,5497.19,1.58,,active,True
-plant-protein,480g Pack (16 servings) / Cocoa Dinosaur,PLT-CHO-480G-V1,74,50,5319.45,6.09,,active,True
-clear-protein,500g Pack (20 servings) / White Grape,0724999807807,68,55,4813.6,,,,False
-prime-whey-isolate,1kg Pack (40 servings) / Cocoa Dinosaur,0724999807791,60,41,4731.675151515152,,,,False
-collagen-glow,300g (30 serves) / Unflavoured,0724999808507,124,80,4707.672727272728,,,,False
+clear-protein,500g Pack (20 servings) / Peach,0724999807814,86,74,5874.76,,,,False
+soy-protein-isolate,1kg Pack (40 servings) / Natural (Unflavoured),0724999807845,152,118,5812.69303030303,,,,False
+clear-protein,1 x 500g Pack (20 servings) / White Grape,0724999807807,79,64,5776.14,,,,False
+lean-protein,1kg Pack (25 serves) / Thai Milk Tea,0724999807821,108,96,5578.072424242424,,,,False
+lushprotein-clear-shaker,White,ACC-SHK-V2,342,316,5409.79,1.58,,active,True
+plant-protein,480g Pack (16 servings) / Cocoa Dinosaur,PLT-CHO-480G-V1,71,50,5194.82,6.09,,active,True
+lean-protein,1 x 1kg Pack (25 servings) / Taro,0724999807822,82,70,4978.6,,,,False
+clear-protein,500g Pack (20 servings) / White Grape,0724999807807,65,56,4675.6,,,,False
+collagen-glow,300g (30 serves) / Unflavoured,0724999808507,122,79,4654.69393939394,,,,False
 better-whey,1KG Pack / Cocoa Dinosaur,724999807937.0,75,66,4606.783333333334,,,,False
-better-whey,1kg (40 serves) / Cocoa Dinosaur,0724999807937,87,49,4444.285757575758,,,,False
-lushprotein-clear-shaker,White,0724999808361,497,463,4355.38,,,,False
-clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,CLEAR-PEA-500G-2BL-V2,32,22,4095.98,,,,False
-better-whey,1kg Pack (40 servings) / Matchawhey,0724999807784,78,68,4078.068181818182,,,,False
-better-whey,1KG Pack / Matchawhey,724999807784.0,56,50,3864.106060606061,,,,False
-prime-whey-isolate,Natural (Unflavored) / 1kg,724999807760.0,45,34,3789.885151515152,,,,False
-collagen-glow,300g,0724999808507,77,62,3689.3999999999996,,,,False
-lean-protein,1kg Pack (25 serves) / Taro,0724999807708,70,66,3434.2566666666667,,,,False
-clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / White Grape,CLEAR-GRA-500G-2BL-V2,25,21,3104.52,,,,False
-discovery-sampler,5 Sachets Variety,BND-SS-MIX6-V1,106,62,3015.21,3.97,,active,True
-lean-protein,2 x 1kg Packs (50 servings) *MOST POPULAR* / Thai Milk Tea,LEAN-THA-1KG-2BL-V1,27,20,2975.66,,,,False
+prime-whey-isolate,1kg Pack (40 servings) / Cocoa Dinosaur,0724999807791,53,39,4349.544545454545,,,,False
+lushprotein-clear-shaker,White,0724999808361,479,451,4226.2,,,,False
+better-whey,1kg (40 serves) / Cocoa Dinosaur,0724999807937,81,46,4131.640303030303,,,,False
+better-whey,1kg Pack (40 servings) / Matchawhey,0724999807784,71,64,4009.188181818182,,,,False
+better-whey,1KG Pack / Matchawhey,724999807784.0,58,51,3982.946060606061,,,,False
+prime-whey-isolate,Natural (Unflavored) / 1kg,724999807760.0,44,33,3716.6451515151516,,,,False
+collagen-glow,300g,0724999808507,76,63,3653.49,,,,False
+lean-protein,1kg Pack (25 serves) / Taro,0724999807708,71,68,3539.7166666666667,,,,False
+clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / White Grape,CLEAR-GRA-500G-2BL-V2,24,20,3104.52,,,,False
+clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,CLEAR-PEA-500G-2BL-V2,24,22,3063.98,,,,False
 lean-protein,2 x 1kg Packs (50 servings) *MOST POPULAR* / Taro,LEAN-TAR-1KG-2BL-V1,28,25,2972.42,,,,False
-plant-protein,480g Pack (16 servings) / Natural (Unflavoured),0724999808620,77,58,2956.888484848485,,,,False
-better-whey,1KG Pack / Natural (Unflavored),724999807890.0,38,32,2839.188484848485,,,,False
-better-whey,1kg Pack (40 servings) / Cocoa Dinosaur,724999807937.0,52,43,2815.6278787878787,,,,False
-lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Taro,LEAN-TAR-40G-5PK-V1,41,31,2804.85,4.15,,,True
-lean-protein,1kg Pack (25 servings) / Taro,0724999807822,48,40,2773.09,,,,False
+plant-protein,480g Pack (16 servings) / Natural (Unflavoured),0724999808620,77,59,2937.5433333333335,,,,False
+discovery-sampler,5 Sachets Variety,BND-SS-MIX6-V1,100,62,2875.91,3.97,,active,True
+better-whey,1kg Pack (40 servings) / Cocoa Dinosaur,724999807937.0,51,42,2774.44,,,,False
+lean-protein,2 x 1kg Packs (50 servings) *MOST POPULAR* / Thai Milk Tea,LEAN-THA-1KG-2BL-V1,25,20,2749.66,,,,False
+clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,0724999807814_2,22,20,2724.9,,,,False
+better-whey,1KG Pack / Natural (Unflavored),724999807890.0,36,31,2709.868484848485,,,,False
 prime-whey-isolate,Cocoa Dinosaur / 1kg,724999807791.0,27,21,2689.337575757576,,,,False
-prime-whey-isolate,1kg Pack (40 servings) / Natural (Unflavoured),724999807760.0,37,26,2620.6133333333332,,,,False
-clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / Peach,0724999807814_2,21,19,2595.9,,,,False
+lean-protein,1kg Pack (25 servings) / Taro,0724999807822,43,38,2552.99,,,,False
+prime-whey-isolate,1kg Pack (40 servings) / Natural (Unflavoured),724999807760.0,34,24,2522.7830303030305,,,,False
 pureburn-fat-burner-capsules,90 Tablets,CAP-PBT-BOTTLE-V1,27,16,2465.88,8.37,,active,True
-better-whey,1kg (40 serves) / Unflavoured,0724999807890,44,31,2460.2063636363637,,,,False
-clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / White Grape,0724999807807_2,19,14,2427.29,,,,False
-discovery-sampler,6 Sachets Variety,BND-SS-MIX6-V1,76,47,2401.83,3.97,,active,True
-plant-protein,480g Pack (16 servings) / Vanilla,PLT-VAN-480G-V1,45,28,2395.73,6.74,,,True
-soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,0724999807845,41,35,2346.72,,,,False
-lean-protein,4 x 1kg Packs (100 servings) / Thai Milk Tea,LEAN-THA-1KG4BL-V1,11,8,2320.72,,,,False
+better-whey,1kg (40 serves) / Unflavoured,0724999807890,43,31,2400.3063636363636,,,,False
+soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,0724999807845,40,34,2346.72,,,,False
 better-whey,500g Pack / Cocoa Dinosaur,724999808897.0,44,44,2320.6787878787877,,,,False
-micronized-creatine-monohydrate,250g (50 servings),0724999807999,82,68,2262.690909090909,,,,False
-better-whey,1kg Pack (40 servings) / Matchawhey,724999807784.0,43,35,2257.777575757576,,,,False
-lean-protein,1kg Pack (40 servings) / Thai Milk Tea,0724999807821,34,32,2204.81,,,,False
+discovery-sampler,6 Sachets Variety,BND-SS-MIX6-V1,70,45,2302.23,3.97,,active,True
+plant-protein,480g Pack (16 servings) / Vanilla,PLT-VAN-480G-V1,43,27,2216.12,6.74,,,True
 better-whey,1KG Pack / Cocoa Dinosaur,0724999807937,25,25,2201.7939393939396,,,,False
 clear-protein,4 x 500g Pack (80 servings) / Peach,CLEAR-PEA-500G-4BL-V2,9,9,2196.38,,,,False
 better-whey,1kg (40 servings) / Unflavoured,0724999807890,34,24,2183.7799999999997,,,,False
-micronized-creatine-monohydrate,250g (50 serves),0724999807999,66,30,2114.83,,,,False
-creatine-monohydrate-sachet,10 x 5g (10 servings) *Most Popular*,CRE-UNF-5G-10PK-V1,54,37,2104.44,2.1,,,True
+better-whey,1kg Pack (40 servings) / Matchawhey,724999807784.0,41,34,2182.2412121212124,,,,False
+clear-protein,2 x 500g Pack (40 servings) *MOST POPULAR* / White Grape,0724999807807_2,17,15,2169.29,,,,False
+lean-protein,1kg Pack (40 servings) / Thai Milk Tea,0724999807821,33,31,2150.9,,,,False
+micronized-creatine-monohydrate,250g (50 servings),0724999807999,79,67,2098.7954545454545,,,,False
 better-whey,1kg (40 servings) / Cocoa Dinosaur,0724999807937,32,25,2067.08,,,,False
+creatine-monohydrate-sachet,10 x 5g (10 servings) *Most Popular*,CRE-UNF-5G-10PK-V1,53,37,2064.54,2.1,,,True
 plant-protein,Cocoa Dinosaur / 480g,724999808606.0,32,28,2053.926363636364,,,,False
 plant-protein,480g Pack (16 servings) / Cocoa Dinosaur,724999808606.0,49,35,2027.0436363636363,,,,False
-better-whey,1kg Pack (40 servings) / Natural (Unflavoured),724999807890.0,34,31,1995.1172727272726,,,,False
-better-whey,500g (20 servings) / Cocoa Dinosaur,0724999808897,37,31,1991.27,,,,False
-lean-protein,1kg Pack (25 servings) / Taro,0724999807708,31,28,1893.27,,,,False
-pureburn-fat-burner-capsules,90 Tablets,0724999807562,36,29,1889.6499999999999,,,,False
+lean-protein,1kg Pack (25 servings) / Taro,0724999807708,33,30,1985.27,,,,False
+better-whey,500g (20 servings) / Cocoa Dinosaur,0724999808897,37,32,1980.1499999999999,,,,False
+better-whey,1kg Pack (40 servings) / Natural (Unflavoured),724999807890.0,33,30,1953.929393939394,,,,False
+lean-protein,4 x 1kg Packs (100 servings) / Thai Milk Tea,LEAN-THA-1KG4BL-V1,9,8,1890.72,,,,False
 better-whey,1KG Pack / Vanilla,724999807913.0,25,20,1857.48,,,,False
-soy-protein-isolate,1kg Pack (40 servings) / Unflavoured,0724999807845,38,25,1686.03,,,,False
-clear-protein-25g-single-sachet,1 x 25g (1 serving) / Peach,CLEAR-PEA-25G-V2,111,100,1682.04,1.05,,active,True
-micronized-creatine-monohydrate,1 x 250g Pack (50 servings),0724999807999,49,45,1679.35,,,,False
+collagen-glow,1 x 300g pack (30 servings),0724999808507,30,27,1737.8,,,,False
+pureburn-fat-burner-capsules,90 Tablets,0724999807562,33,29,1715.94,,,,False
+clear-protein-25g-single-sachet,1 x 25g (1 serving) / Peach,CLEAR-PEA-25G-V2,110,100,1666.14,1.05,,active,True
 prime-whey-isolate,1kg Pack (40 servings) / Cocoa Dinosaur,724999807791.0,17,14,1659.337575757576,,,,False
 plant-protein,480g Pack (16 servings) / Vanilla,724999808613.0,37,28,1645.6524242424243,,,,False
-soy-protein-isolate,1KG Pack / Natural (Unflavoured),724999807845.0,32,27,1636.7778787878788,,,,False
-collagen-glow,1 x 300g pack (30 servings),0724999808507,28,25,1634.02,,,,False
-better-whey,1KG Pack / Teh Tarik,724999808422.0,18,16,1500.41,,,,False
+micronized-creatine-monohydrate,1 x 250g Pack (50 servings),0724999807999,48,44,1607.55,,,,False
+soy-protein-isolate,1KG Pack / Natural (Unflavoured),724999807845.0,30,27,1529.077878787879,,,,False
+soy-protein-isolate,1kg Pack (40 servings) / Unflavoured,0724999807845,34,24,1510.12,,,,False
 collagen-glow,300g Pack (30 servings) / Natural (Unflavoured),724999808507.0,31,20,1490.969696969697,,,,False
 clear-protein,4 x 500g Pack (80 servings) / Peach,0724999807814_4,6,5,1477.33,,,,False
-lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Taro,0724999810524,21,9,1477.29,,,,False
-better-whey,1kg (40 serves) / Matchawhey,0724999807784,28,24,1414.8727272727274,,,,False
+better-whey,1KG Pack / Teh Tarik,724999808422.0,17,15,1430.51,,,,False
 collagen-glow,300g Pack,0724999808507,20,20,1412.389696969697,,,,False
 prime-whey-isolate,Matchawhey / 1kg,724999807777.0,14,12,1345.98,,,,False
 prime-whey-isolate,Cocoa Dinosaur,0724999807791,11,10,1345.0575757575757,,,,False
-better-whey,500g Pack (20 servings) / Cocoa Dinosaur,0724999808897,45,36,1339.2939393939394,,,,False
+better-whey,500g Pack (20 servings) / Cocoa Dinosaur,0724999808897,42,34,1339.2939393939394,,,,False
+better-whey,1kg (40 serves) / Matchawhey,0724999807784,26,23,1317.9636363636364,,,,False
 pureburn-fat-burner-capsules,90 Tablets (90 servings),0724999807562,29,20,1316.0,,,,False
-better-whey,500g Pack / Cocoa Dinosaur,0724999808897,27,27,1267.4163636363637,,,,False
-lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,LEAN-THA-40G-5PK-V1,40,31,1256.8899999999999,4.15,,,True
+better-whey,500g Pack / Cocoa Dinosaur,0724999808897,28,28,1307.3163636363636,,,,False
 lean-protein,4 x 1kg Packs (100 servings) / Taro,LEAN-TAR-1KG-4BL-V1,5,3,1255.88,,,,False
 lean-protein,4 x 1kg Packs (100 servings) / Taro,0724999807822_4,6,5,1251.31,,,,False
-clear-protein-25g-single-sachet,5 x 25g (5 servings) *MOST POPULAR* / White Grape,CLEAR-GRA-25G-5PK-V2,49,41,1247.12,5.25,,,True
 clear-protein,4 x 500g Pack (80 servings) / White Grape,CLEAR-GRA-500G-4BL-V2,4,4,1245.0,,,,False
-soy-protein-isolate,1KG / Unflavoured,0724999807845,33,27,1238.14,,,,False
+clear-protein-25g-single-sachet,5 x 25g (5 servings) *MOST POPULAR* / White Grape,CLEAR-GRA-25G-5PK-V2,48,40,1228.4099999999999,5.25,,,True
+lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,LEAN-THA-40G-5PK-V1,38,31,1211.09,4.15,,,True
 lean-protein,2 x 1kg Packs (50 servings) *MOST POPULAR* / Thai Milk Tea,0724999807821_2,11,10,1205.52,,,,False
+soy-protein-isolate,1KG / Unflavoured,0724999807845,31,27,1202.24,,,,False
 lean-protein,2 x 1kg Packs (50 servings) *MOST POPULAR* / Taro,0724999807822_2,12,11,1192.94,,,,False
-lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Thai Milk Tea,LEAN-THA-40G-V1,93,80,1191.72,0.83,,,True
-super-omega-3,60 Softgels,CAP-OMG-BOTTLE-V1,18,13,1112.66,11.56,,draft,True
+micronized-creatine-monohydrate,250g (50 serves),0724999807999,38,30,1187.83,,,,False
+lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Thai Milk Tea,LEAN-THA-40G-V1,91,80,1161.92,0.83,,,True
 better-whey,1KG Pack / Matchawhey,0724999807784,12,12,1103.4766666666667,,,,False
-clear-protein-25g-single-sachet,5 x 25g (5 servings) *MOST POPULAR* / Peach,CLEAR-PEA-25G-5PK-V2,41,34,1038.76,5.25,,,True
-plant-protein,Natural (Unflavored) / 480g,724999808620.0,25,23,1028.9642424242425,,,,False
-collagen-glow,300g Pack (30 servings),724999808507.0,15,13,1015.73,,,,False
-better-whey,1kg Pack (40 servings) / Mango,0724999807951,16,14,1000.31,,,,False
+clear-protein-25g-single-sachet,5 x 25g (5 servings) *MOST POPULAR* / Peach,CLEAR-PEA-25G-5PK-V2,40,33,1020.05,5.25,,,True
 clear-protein,4 x 500g Pack (80 servings) / White Grape,0724999807807_4,4,4,996.0,,,,False
-better-whey,500g (20 serves) / Cocoa Dinosaur,0724999808897,25,19,984.8878787878789,,,,False
+lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Taro,LEAN-TAR-40G-5PK-V1,39,31,986.5699999999999,4.15,,,True
 better-whey,1kg Pack (40 servings) / Vanilla (Exp Nov23),724999807913.0,18,16,979.9499999999999,,,,False
-lean-protein,1kg Pack (40 servings) / Taro,0724999807708,14,14,881.89,,,,False
+super-omega-3,60 Softgels,CAP-OMG-BOTTLE-V1,15,13,969.06,11.56,,draft,True
+plant-protein,Natural (Unflavored) / 480g,724999808620.0,24,23,948.2342424242424,,,,False
 clear-protein-25g-single-sachet,1 x 25g (1 serving) / White Grape,CLEAR-GRA-25G-V2,86,75,861.02,1.05,,,True
-soy-protein-isolate,1KG Pack / Natural (Unflavoured),0724999807845,10,9,838.7454545454545,,,,False
+collagen-glow,300g Pack (30 servings),724999808507.0,14,13,846.13,,,,False
+better-whey,1kg Pack (40 servings) / Mango,0724999807951,14,14,838.5699999999999,,,,False
 better-whey,1KG Pack / Natural (Unflavoured),0724999807890,7,7,832.5254545454545,,,,False
-plant-protein,Vanilla / 480g,724999808613.0,17,13,826.9845454545455,,,,False
-soy-protein-isolate,1kg Pack (40 servings) / Natural (Unflavoured),724999807845.0,18,15,811.6730303030304,,,,False
+lean-protein,1kg Pack (40 servings) / Taro,0724999807708,13,13,827.98,,,,False
 better-whey,1kg Pack (40 servings) / Vanilla,0724999807913,14,14,809.54,,,,False
 better-whey,1kg (40 servings) / Unflavoured,BET-UNF-1KG-V1,10,5,803.64,21.1,,draft,True
+soy-protein-isolate,1KG Pack / Natural (Unflavoured),0724999807845,9,9,802.8454545454546,,,,False
 better-whey,1KG Pack / Natural (Unflavored),0724999807890,7,6,799.1800000000001,,,,False
-lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Taro,LEAN-TAR-40G-V1,75,67,791.79,0.83,,active,True
-plant-protein,480g Pack (16 servings) / Natural (Unflavoured),724999808620.0,19,16,788.0721212121213,,,,False
+soy-protein-isolate,1kg Pack (40 servings) / Natural (Unflavoured),724999807845.0,17,15,785.939696969697,,,,False
+lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Taro,LEAN-TAR-40G-V1,74,67,785.89,0.83,,active,True
+better-whey,500g (20 serves) / Cocoa Dinosaur,0724999808897,22,16,781.5333333333334,,,,False
 collagen-glow,2 x 300g packs (60 servings) *Most Popular*,COL-UNF-300G-2BL-V1,11,7,762.2,,,,False
+plant-protein,Vanilla / 480g,724999808613.0,16,13,746.2545454545455,,,,False
+super-omega-3,60 Softgels,0724999807555,23,16,722.2527272727273,,,,False
 better-whey,500g Pack / Teh Tarik,724999808910.0,17,16,718.1999999999999,,,,False
-better-whey,1kg Pack (40 servings) / Genmai-Roasted Brown Rice,0724999808736,15,13,695.1999999999999,,,,False
-green-tea-extract-capsules,60 Capsules (60 servings),0724999807548,28,25,692.979393939394,,,,False
+super-omega-3,60 Softgels (60 servings),0724999807555,19,19,697.9454545454546,,,,False
+plant-protein,480g Pack (16 servings) / Natural (Unflavoured),724999808620.0,18,16,686.3921212121212,,,,False
 prime-whey-isolate,1kg Pack (40 servings) / Matchawhey,724999807777.0,7,7,679.6800000000001,,,,False
-green-tea-extract-capsules,60 Capsules,0724999807548,29,27,678.4472727272728,,,,False
-clear-protein,25g Sachet (1 serving) / White Grape,0724999810487,76,70,668.77,,,,False
-super-omega-3,60 Softgels (60 servings),0724999807555,18,18,667.4254545454546,,,,False
+green-tea-extract-capsules,60 Capsules (60 servings),0724999807548,27,25,668.079393939394,,,,False
 pureburn-fat-burner-capsules,90 capsules,724999807562.0,16,16,661.6848484848485,,,,False
-clear-protein,25g Sachet (1 serving) / Peach,0724999810494,77,70,655.97,,,,False
-better-whey,1kg Pack (40 servings) / Teh Tarik,724999808422.0,11,9,632.25,,,,False
-better-whey,1kg Pack (40 servings) / Vanilla (unsweetened),0724999807913,11,9,631.96,,,,False
-super-omega-3,60 Softgels,0724999807555,20,14,631.6427272727273,,,,False
+green-tea-extract-capsules,60 Capsules,0724999807548,28,27,657.2654545454545,,,,False
+clear-protein,25g Sachet (1 serving) / White Grape,0724999810487,72,68,643.33,,,,False
+better-whey,1kg Pack (40 servings) / Genmai-Roasted Brown Rice,0724999808736,13,12,635.3,,,,False
 better-whey,1KG Pack / Teh Tarik,0724999808422,6,6,630.26,,,,False
 collagen-glow,4 x 300g packs (120 servings),COL-UNF-300G-4BL-V1,5,4,624.1099999999999,,,,False
+clear-protein,25g Sachet (1 serving) / Peach,0724999810494,72,68,618.73,,,,False
 better-whey,500g Pack / Matchawhey,724999808941.0,15,15,587.6,,,,False
-better-whey,500g Pack (20 servings) / Cocoa Dinosaur,724999808897.0,16,15,573.780303030303,,,,False
+better-whey,1kg Pack (40 servings) / Teh Tarik,724999808422.0,10,9,581.33,,,,False
+better-whey,1kg Pack (40 servings) / Vanilla (unsweetened),0724999807913,10,9,572.06,,,,False
 better-whey,500g Pack / Vanilla,724999808903.0,16,15,564.86,,,,False
 soy-protein-isolate,4 x 1kg Pack (160 servings) / Unflavoured,SOY-UNF-1KG-4BL-V1,5,5,562.62,,,,False
 collagen-glow,2 x 300g packs (60 servings) *Most Popular*,0724999808507_2,8,5,559.69,,,,False
 prime-whey-isolate,Natural (Unflavored),0724999807760,4,4,545.1818181818182,,,,False
-better-whey,500g Pack (20 servings) / Natural (Unflavoured),0724999808880,16,16,535.7121212121212,,,,False
 lean-protein,2 x 1kg Packs (50 servings) *POPULAR* / Taro,0724999807822_2,5,5,527.61,,,,False
-lean-protein,40g Sachet (1 serving) / Thai Milk Tea,0724999810463,136,131,525.67,,,,False
+better-whey,500g Pack (20 servings) / Cocoa Dinosaur,724999808897.0,15,14,519.2954545454545,,,,False
+lean-protein,40g Sachet (1 serving) / Thai Milk Tea,0724999810463,133,129,514.12,,,,False
 lushprotein-lean-protein-40g-single-serve,40g Sachet / Thai Milk Tea,0724999810463,36,35,511.23,,,,False
-soy-protein-isolate,4 x 1kg Pack (160 servings) / Unflavoured,0724999807845_4,4,2,484.68,,,,False
+super-omega-3,60 Capsules,724999807555.0,12,9,501.58787878787876,,,,False
+better-whey,500g Pack (20 servings) / Natural (Unflavoured),0724999808880,15,15,495.8121212121212,,,,False
 prime-whey-isolate,1KG Pack / Cocoa-dinosaur,0724999807791,2,2,479.97,,,,False
 plant-protein,Vanilla / 480g,0724999808613,2,2,478.40000000000003,,,,False
-super-omega-3,60 Capsules,724999807555.0,11,8,471.0678787878788,,,,False
-discovery-sampler,6 Sachets Variety,0724999809610,20,20,470.95,,,,False
 multivitamin-vegan,90 Capsules (30 servings),0724999808378,12,11,456.469696969697,,,,False
-lean-protein,40g Sachet (1 serving) / Taro,0724999810470,128,126,444.57,,,,False
+discovery-sampler,6 Sachets Variety,0724999809610,19,19,446.94,,,,False
+lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Taro,0724999810524,14,9,446.78999999999996,,,,False
+lean-protein,40g Sachet (1 serving) / Taro,0724999810470,126,124,442.82,,,,False
 better-whey,1kg Pack (40 servings) / Mango,724999807951.0,8,8,439.06,,,,False
-lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,0724999810517,15,12,435.16999999999996,,,,False
 better-whey,1KG Pack / Vanilla,0724999807913,4,4,419.40000000000003,,,,False
-lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Taro,0724999810470,52,50,403.15000000000003,,,,False
-lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Thai Milk Tea,0724999810463,54,50,401.2,,,,False
+lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Taro,0724999810470,51,49,403.15000000000003,,,,False
 plant-protein,Cocoa Dinosaur / 480g,0724999808606,7,7,394.6818181818182,,,,False
+lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,0724999810517,14,12,389.37,,,,False
 plant-protein,Vanilla,0724999808613,7,7,382.77696969696973,,,,False
+lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet (1 serving) / Thai Milk Tea,0724999810463,51,49,380.46000000000004,,,,False
 better-whey,500g Pack / Natural (Unflavored),724999808880.0,12,12,377.6090909090909,,,,False
 collagen-glow,4 x 300g packs (120 servings),0724999808507_4,3,3,376.78,,,,False
-pureburn-fat-burner-capsules,90 Capsules (90 servings),0724999807562,9,8,373.03636363636366,,,,False
-micronized-creatine-monohydrate,2 x 250g Pack (100 servings) *Most Popular*,CRE-UNF-250G-2BL-V1,7,4,370.5,,,,False
 prime-whey-isolate,Natural (Unflavored) / 1kg,0724999807760,5,5,363.4545454545455,,,,False
 prime-whey-isolate,Matchawhey / 1kg,0724999807777,4,4,359.6,,,,False
+micronized-creatine-monohydrate,2 x 250g Pack (100 servings) *Most Popular*,CRE-UNF-250G-2BL-V1,7,5,356.03,,,,False
+soy-protein-isolate,4 x 1kg Pack (160 servings) / Unflavoured,0724999807845_4,3,2,355.68,,,,False
 prime-whey-isolate,1KG Pack / Cocoa Dinosaur,0724999807791,2,2,355.44545454545454,,,,False
 micronized-creatine-monohydrate,4 x 250g Pack (200 servings),CRE-UNF-250G-4BL-V1,4,4,352.51,,,,False
 soy-protein-isolate,2 x 1kg Pack (80 servings) *Most Popular* / Unflavoured,SOY-UNF-1KG-2BL-V1,5,4,340.0,,,,False
-prime-whey-isolate,1kg Pack (40 servings) / Matchawhey,0724999807777,3,2,339.6,,,,False
 lean-protein,1 x 1kg Pack / Thai Milk Tea,LEAN-THA-1KG-V1,3,3,337.65999999999997,18.16,,,True
+pureburn-fat-burner-capsules,90 Capsules (90 servings),0724999807562,8,8,336.70303030303035,,,,False
+prime-whey-isolate,Cocoa Dinosaur / 1kg,0724999807791,5,5,332.20303030303035,,,,False
 clear-protein-25g-single-sachet,5 x 25g Sachet (5 servings)  *MOST POPULAR* / Peach,0724999810548,12,10,331.94,,,,False
 clear-protein-25g-single-sachet,5 x 25g Sachet (5 servings)  *MOST POPULAR* / White Grape,0724999810531,14,10,329.78999999999996,,,,False
 prime-whey-isolate,1KG Pack / Natural (Unflavoured),0724999807760,1,1,319.98,,,,False
 multivitamin-vegan,90 Capsules,724999808378.0,5,4,319.08000000000004,,,,False
 plant-protein,Cocoa Dinosaur,0724999808606,8,8,317.7887878787879,,,,False
-clear-protein-25g-single-sachet,1 x 25g Sachet (1 serving) / White Grape,0724999810487,40,34,312.96000000000004,,,,False
-lushprotein-lean-protein-40g-single-serve,40g Sachet / Taro,0724999810470,34,31,298.82,,,,False
-lean-protein,40g Sachet / Thai Milk Tea,0724999810463,48,46,296.03000000000003,,,,False
-clear-protein-25g-single-sachet,1 x 25g Sachet (1 serving) / Peach,0724999810494,41,35,284.94,,,,False
+lean-protein,40g Sachet / Thai Milk Tea,0724999810463,49,47,298.97,,,,False
 better-whey,500g Pack (20 servings) / Vanilla,0724999808903,9,9,279.09999999999997,,,,False
 clear-protein,500g Pack (20 Servings) / Peach,0724999807814,6,6,278.8909090909091,,,,False
-better-whey,500g Pack (20 servings) / Vanilla (unsweetened),0724999808903,9,9,264.62,,,,False
-prime-whey-isolate,Cocoa Dinosaur / 1kg,0724999807791,4,4,242.3030303030303,,,,False
+lushprotein-lean-protein-40g-single-serve,40g Sachet / Taro,0724999810470,32,31,275.22,,,,False
+clear-protein-25g-single-sachet,1 x 25g Sachet (1 serving) / White Grape,0724999810487,36,32,268.26,,,,False
+clear-protein-25g-single-sachet,1 x 25g Sachet (1 serving) / Peach,0724999810494,37,33,260.98,,,,False
+better-whey,500g Pack (20 servings) / Vanilla (unsweetened),0724999808903,8,8,234.72,,,,False
 lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet / Thai Milk Tea,LEAN-THA-40G-V1,12,12,233.36,0.83,,,True
-creatine-monohydrate-sachet,1 x 5g (1 servings),CRE-UNF-5G-V1,22,18,230.39,0.21,,active,True
 lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet / Taro,LEAN-TAR-40G-5PK-V1,4,4,229.9,4.15,,,True
 better-whey,500g Pack (20 servings) / Vanilla (Expiry Sep 2024),0724999808903,10,10,228.0,,,,False
-lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet / Thai Milk Tea,LEAN-THA-40G-5PK-V1,6,5,225.77,4.15,,,True
+creatine-monohydrate-sachet,1 x 5g (1 servings),CRE-UNF-5G-V1,21,18,224.49,0.21,,active,True
 pureburn-fat-burner-capsules,90 tablets,724999807562.0,5,5,214.5,,,,False
-collagen-glow-10g-single-serve,7 x 10g Sachet (7 servings) *Most Popular*,COL-UNF-10G-7PK-V1,7,5,212.77,2.75,,,True
 plant-protein,Natural (Unflavored),0724999808620,2,2,209.3,,,,False
 better-whey,500g Pack / Vanilla,0724999808903,3,3,195.89,,,,False
 lean-protein,4 x 1kg Packs (100 servings) / Thai Milk Tea,0724999807821_4,1,1,193.5,,,,False
 better-whey,500g Pack (20 servings) / Matchawhey,724999808941.0,5,5,191.92,,,,False
+lean-protein,40g Sachet / Taro,0724999810470,31,30,191.14000000000001,,,,False
 green-tea-extract-capsules,60 Capsules,724999807548.0,7,6,187.4369696969697,,,,False
-lean-protein,40g Sachet / Taro,0724999810470,30,29,186.24,,,,False
-plant-protein,480g Pack / Vanilla,0724999808613,4,3,185.34454545454545,,,,False
 clear-protein-25g-single-sachet,5 x 25g Sachets / Peach,CLEAR-PEA-25G-5PK-V2,3,3,175.57999999999998,5.25,,,True
 pureburn-fat-burner-capsules,90 capsules,0724999807562,2,2,172.31333333333333,,,,False
 multivitamin-vegan,90 Capsules (30 servings),724999808378.0,5,4,167.4348484848485,,,,False
-lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet / Taro,LEAN-TAR-40G-V1,12,10,165.62,0.83,,active,True
+super-omega-3,60 Softgels (60 servings),724999807555.0,5,5,165.49878787878788,,,,False
 clear-protein,500g Pack (20 Servings) / Peach,724999807814.0,4,4,164.34545454545454,,,,False
 lean-protein,1kg Pack (25 serves) / Taro,0724999807822,3,3,161.35,,,,False
 better-whey,500g Pack / Matchawhey,0724999808941,4,4,155.60999999999999,,,,False
 lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,0724999810463_5,5,4,154.99,,,,False
+plant-protein,480g Pack / Vanilla,0724999808613,3,3,139.89303030303032,,,,False
 clear-protein,1 x 500g Pack / White Grape,CLEAR-GRA-500G-V2,2,2,136.31,18.39,,,True
 soy-protein-isolate,2 x 1kg Pack (80 servings) *Most Popular* / Unflavoured,0724999807845_2,2,2,136.0,,,,False
-super-omega-3,60 Softgels (60 servings),724999807555.0,4,4,134.97878787878787,,,,False
 pureburn-fat-burner-capsules,90 Capsules (90 servings),724999807562.0,4,4,134.43636363636364,,,,False
+lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet / Thai Milk Tea,LEAN-THA-40G-5PK-V1,4,4,133.87,4.15,,,True
 pureburn-fat-burner-capsules,90 Tablets (90 servings),724999807562.0,3,3,128.7,,,,False
 clear-protein-25g-single-sachet,25g Sachet / White Grape,0724999810487,22,20,128.49,,,,False
 green-tea-extract-capsules,60 Capsules (60 servings),724999807548.0,6,5,128.1639393939394,,,,False
+lushprotein-lean-protein-40g-single-serve,1 x 40g Sachet / Taro,LEAN-TAR-40G-V1,9,9,127.92,0.83,,active,True
 clear-protein,500g Pack (20 Servings) / White Grape,724999807807.0,2,2,124.07272727272726,,,,False
 clear-protein,500g Pack (20 Servings) / White Grape,0724999807807,3,3,122.44545454545454,,,,False
-better-whey,500g Pack (20 servings) / Vanilla,724999808903.0,3,3,119.69999999999999,,,,False
 better-whey,500g Pack / Teh Tarik,0724999808910,3,3,119.69999999999999,,,,False
+better-whey,500g Pack (20 servings) / Vanilla,724999808903.0,3,3,119.69999999999999,,,,False
 lean-protein,1kg Pack (40 servings) / Taro,0724999807822,2,2,113.81,,,,False
 green-tea-extract-capsules,60 Capsules,CAP-GTE-BOTTLE-V1,5,5,111.25,6.19,,draft,True
-clear-protein-25g-single-sachet,5 x 25g Sachet (5 servings)  *MOST POPULAR* / Peach,0724999810494_5,4,4,109.52,,,,False
 better-whey,500g Pack / Natural (Unflavoured),0724999808880,2,2,109.05060606060606,,,,False
 plant-protein,Natural (Unflavored) / 480g,0724999808620,3,3,108.96969696969698,,,,False
 better-whey,500g Pack (20 servings) / Natural (Unflavoured),724999808880.0,3,3,107.04242424242425,,,,False
+collagen-glow-10g-single-serve,7 x 10g Sachet (7 servings) *Most Popular*,COL-UNF-10G-7PK-V1,5,4,106.89,2.75,,,True
 clear-protein-25g-single-sachet,25g Sachet / Peach,0724999810494,22,19,106.61,,,,False
-better-whey,500g Pack (20 servings) / Matchawhey,0724999808941,5,3,101.76,,,,False
+better-whey,500g Pack (20 servings) / Matchawhey,0724999808941,3,1,101.76,,,,False
+super-omega-3,60 Capsules,0724999807555,3,3,100.08181818181819,,,,False
 better-whey,1kg Pack (40 servings) / Genmai-Roasted Brown Rice,724999808736.0,2,2,99.8,,,,False
-better-whey,1KG Pack / Natural / Unflavored,724999807890.0,2,1,91.47,,,,False
 lean-protein,1 x 1kg Pack / Taro,LEAN-TAR-1KG-V1,1,1,88.76,17.65,,active,True
-multivitamin-vegan,90 capsules,0724999808378,3,3,77.8,,,,False
+clear-protein-25g-single-sachet,5 x 25g Sachet (5 servings)  *MOST POPULAR* / Peach,0724999810494_5,3,3,86.62,,,,False
+multivitamin-vegan,90 capsules,0724999808378,2,2,77.8,,,,False
 better-whey,500g Pack / Natural (Unflavored),0724999808880,2,2,75.81,,,,False
-collagen-glow-10g-single-serve,1 x 10g Sachet (1 serving),COL-UNF-10G-V1,10,5,73.50999999999999,0.55,,active,True
 clear-protein-25g-single-sachet,5 x 25g Sachets / White Grape,CLEAR-GRA-25G-5PK-V2,1,1,69.0,5.25,,,True
 micronized-creatine-monohydrate,4 x 250g Pack (200 servings),0724999807999_4,1,1,68.32,,,,False
+prime-whey-isolate,1kg Pack (40 servings) / Matchawhey,0724999807777,1,1,67.92,,,,False
 clear-protein,1 x 500g Pack / Peach,CLEAR-PEA-500G-V2,1,1,67.31,18.39,,active,True
-super-omega-3,60 Capsules,0724999807555,2,2,64.18181818181819,,,,False
 multivitamin-vegan,90 Caps,0724999808378,2,2,56.13939393939394,,,,False
+collagen-glow-10g-single-serve,1 x 10g Sachet (1 serving),COL-UNF-10G-V1,7,5,50.11,0.55,,active,True
 collagen-glow-10g-single-serve,1 x 10g Sachet,COL-UNF-10G-V1,3,3,48.120000000000005,0.55,,active,True
-clear-protein-25g-single-sachet,1 x 25g (1 serving) / White Grape,0724999810487,4,4,47.47,,,,False
 clear-protein-25g-single-sachet,1 x 25g (1 serving) / Peach,0724999810494,4,4,47.47,,,,False
+clear-protein-25g-single-sachet,1 x 25g (1 serving) / White Grape,0724999810487,4,4,47.47,,,,False
 better-whey,1KG Pack / Natural/Unflavored,724999807890.0,1,1,45.42424242424243,,,,False
 clear-protein-25g-single-sachet,5 x 25g (5 servings) *MOST POPULAR* / Peach,0724999810548,2,2,41.34,,,,False
 clear-protein-25g-single-sachet,5 x 25g Sachet (5 servings)  *MOST POPULAR* / White Grape,0724999810487_5,2,2,40.82,,,,False
@@ -255,4 +254,3 @@ creatine-monohydrate-sachet,1 x 5g (1 servings),0724999809603,2,1,17.70000000000
 creatine-monohydrate-sachet,1 x 5g Sachet (1 servings),0724999809603,2,2,16.92,,,,False
 collagen-glow-10g-single-serve,1 x 10g Sachet (1 serving),724999809009,2,2,10.54,,,,False
 lean-protein,40g Sachet (single serve) / Taro,0724999810470,1,1,2.98,,,,False
-better-whey,1kg Pack (40 servings) / Vanilla (Expiry Sep 2024),0724999807913,1,1,0.0,,,,False

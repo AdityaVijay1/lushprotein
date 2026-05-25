@@ -2,8 +2,18 @@
 12_finals_deep_dive.py
 Finals deliverables: LTV by cohort/channel, on-site vs off-site discounts,
 loyal-customer profiling, VTD decile x product breadth, business value scenarios,
-SKU-level margin view, 2022+ filters (excl. Jul/Nov promo months, 51%+ depth,
-better-whey-protein-elite).
+SKU-level margin view.
+
+DATA DROPS APPLIED (Option B — finals layer only; base parquet unchanged):
+  DQ-02  Zero-revenue + zero-discount orders (−336)
+  DQ-03  100%-discount / free-fulfilment orders (−1,281)
+  DQ-04  Wholesale-tagged OR Price: Total > S$5,000 (−78)
+
+LUSHPROTEIN FEEDBACK FILTERS (applied to finals_eligible cohort):
+  LP-F01  Exclude better-whey-protein-elite buyers (bulk distortion)
+  LP-F02  Exclude customers acquired in July or November (promo months)
+  LP-F03  Analysis window: 2022-01-01 onwards
+  LP-F04  Exclude customers whose first order was 51%+ discounted (acquisition experiments)
 
 Run after: python EDA/run_eda.py  (or at least 01_load_and_merge.py)
 """
@@ -63,7 +73,61 @@ orders["is_web"] = orders["order_source"] == "web"
 print(f"  Orders with Source: {orders['Source'].notna().sum():,} / {len(orders):,}")
 print(f"  POS orders: {orders['is_pos'].sum():,} | Web orders: {orders['is_web'].sum():,}")
 
-# ── First-order discount depth (for 51%+ exclusion flag) ───────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# OPTION B — FINALS-LAYER DATA QUALITY DROPS
+# Base parquet (27,350 orders, 13,780 customers) is unchanged.
+# Midterm scripts 01–11 are unaffected. Drops applied here only.
+# ══════════════════════════════════════════════════════════════════════════════
+print("\n[1b] Finals-layer data quality drops (Option B — base parquet unchanged)...")
+_n_start = len(orders)
+
+_rev  = pd.to_numeric(orders["Price: Total"],          errors="coerce").fillna(0)
+_disc = pd.to_numeric(orders["Price: Total Discount"], errors="coerce").fillna(0)
+
+# DQ-02: Zero-revenue + zero-discount orders
+# 336 export artifacts / system-placeholder events (2021 spike: 173 orders).
+# Inflate order counts; contribute S$0 revenue. LP confirmed safe to drop.
+_dq02 = (_rev == 0) & (_disc == 0)
+print(f"  DQ-02 (zero rev + zero disc):             {_dq02.sum():>5,} orders dropped")
+
+# DQ-03: 100%-discounted orders (free fulfilments)
+# 1,281 real shipments (referral rewards, PR, subscription gifts) at zero revenue.
+# Distort discount-rate metrics; inflate repeat counts. LP confirmed safe to drop.
+_dq03 = (_rev == 0) & (_disc > 0)
+print(f"  DQ-03 (100%-discount / free fulfilment):  {_dq03.sum():>5,} orders dropped")
+
+# DQ-04: Wholesale / bulk outlier orders
+# Drop if tagged 'wholesale-sale' OR Price: Total > S$5,000.
+# Excludes B2B/reseller orders that distort consumer LTV and AOV. LP confirmed.
+_dq04_tag = orders["Tags"].fillna("").str.lower().str.contains("wholesale")
+_dq04_rev = _rev > 5000
+_dq04 = _dq04_tag | _dq04_rev
+print(f"  DQ-04 (wholesale-tag OR > S$5,000):       {_dq04.sum():>5,} orders dropped")
+
+_drop_mask = _dq02 | _dq03 | _dq04
+orders = orders[~_drop_mask].copy()
+lines  = lines[lines["order_id"].isin(set(orders["order_id"]))].copy()
+print(f"  {'-' * 58}")
+print(f"  Unique dropped: {_drop_mask.sum():,}  |  Retained: {len(orders):,} / {_n_start:,} orders")
+
+# Rebuild per-customer stats from the cleaned order set so that
+# total_orders / total_revenue / is_repeat reflect only retained orders.
+orders["_rev_sgd"] = pd.to_numeric(orders["Price: Total"], errors="coerce").fillna(0)
+_cust_rebuild = (
+    orders.groupby("customer_id")
+    .agg(_total_orders=("order_id", "count"), _total_revenue=("_rev_sgd", "sum"))
+    .reset_index()
+)
+orders.drop(columns=["_rev_sgd"], inplace=True)
+cust = cust.merge(_cust_rebuild, on="customer_id", how="left")
+cust["total_orders"]  = cust["_total_orders"].fillna(0).astype(int)
+cust["total_revenue"] = cust["_total_revenue"].fillna(0)
+cust["is_repeat"]     = cust["total_orders"] >= 2
+cust.drop(columns=["_total_orders", "_total_revenue"], inplace=True)
+print(f"  Customer stats rebuilt from clean orders.")
+print(f"  Customers with 0 retained orders (all orders dropped): {(cust['total_orders'] == 0).sum():,}")
+
+# ── First-order discount depth (used for LP-F04 exclusion flag) ───────────
 first_ord = orders.sort_values("order_date").groupby("customer_id").first().reset_index()
 first_ord["order_id"] = first_ord["order_id"].astype(str)
 first_ord["first_rev"] = pd.to_numeric(first_ord["Price: Total"], errors="coerce").fillna(0)
@@ -85,25 +149,44 @@ cust = cust.merge(
 )
 cust["first_order_pos"] = cust["first_order_source"] == "pos"
 
-# ── Finals analysis cohort: 2022+, excl promo months, excl 51%+, excl elite ──
-print("\n[2] Building finals analysis filters...")
+# ══════════════════════════════════════════════════════════════════════════════
+# LUSHPROTEIN FEEDBACK — APPLIED ANALYSIS FILTERS (finals cohort only)
+# These are analytical scope decisions requested by LushProtein, not data errors.
+# ══════════════════════════════════════════════════════════════════════════════
+print("\n[2] Building LushProtein feedback filters (finals cohort)...")
+
+# LP-F01: Exclude better-whey-protein-elite buyers
+# LP confirmed this is a bulk/unsustainable product not representative of
+# the core consumer base. ~200 customers affected.
 elite_customers = set(
     lines[lines["Line: Product Handle"].fillna("").str.contains(EXCLUDE_HANDLE, case=False)]["customer_id"]
 )
 cust["exclude_elite_buyer"] = cust["customer_id"].isin(elite_customers)
+
+# LP-F04: Exclude customers whose first order was 51%+ discounted
+# LP confirmed these are acquisition/gifting experiments, not organic buyers.
 cust["exclude_51pct"] = cust["first_disc_bin"].astype(str) == "51%+"
+
+# LP-F02: Exclude customers acquired in July or November (promo months)
+# July = LP birthday month; November = Black Friday/Cyber Monday.
+# Promo-month cohorts have atypical discount intensity that distorts
+# LTV and repeat-rate benchmarks. LP confirmed to exclude.
 cust["exclude_promo_month"] = cust["acq_month"].isin(EXCLUDE_MONTHS)
 
+# LP-F03: Restrict analysis window to 2022-01-01 onwards
+# Pre-2022 = market acquisition / product experimentation phase per LP.
+# Post-2022 portfolio and pricing strategy is the stable reference period.
 cust["finals_eligible"] = (
-    (cust["first_order_date"] >= ANALYSIS_START)
-    & ~cust["exclude_elite_buyer"]
-    & ~cust["exclude_51pct"]
-    & ~cust["exclude_promo_month"]
+    (cust["first_order_date"] >= ANALYSIS_START)   # LP-F03
+    & ~cust["exclude_elite_buyer"]                  # LP-F01
+    & ~cust["exclude_51pct"]                        # LP-F04
+    & ~cust["exclude_promo_month"]                  # LP-F02
 )
-print(f"  Elite-product buyers (excluded): {cust['exclude_elite_buyer'].sum():,}")
-print(f"  First order 51%+ depth (excluded): {cust['exclude_51pct'].sum():,}")
-print(f"  Acquired Jul/Nov (excluded): {cust['exclude_promo_month'].sum():,}")
-print(f"  Finals-eligible customers (2022+, filters): {cust['finals_eligible'].sum():,}")
+print(f"  LP-F01  Elite-product buyers excluded:           {cust['exclude_elite_buyer'].sum():,}")
+print(f"  LP-F02  Acquired Jul/Nov excluded:               {cust['exclude_promo_month'].sum():,}")
+print(f"  LP-F03  Pre-2022 acquisitions excluded:          {(cust['first_order_date'] < ANALYSIS_START).sum():,}")
+print(f"  LP-F04  First order 51%+ discount excluded:      {cust['exclude_51pct'].sum():,}")
+print(f"  Finals-eligible customers (all LP filters):      {cust['finals_eligible'].sum():,}")
 
 # ── LTV DEFINITION ───────────────────────────────────────────────────────────
 # LTV = sum(Price: Total) per customer in SGD (FX applied at load in 01_load_and_merge)
