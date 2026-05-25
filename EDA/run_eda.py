@@ -36,6 +36,7 @@ SCRIPTS = [
     ("09", "09_lens3_cohort_evolution.py",  "Lens 3: Cohort tracking, VTD, inter-purchase time"),
     ("10", "10_lens4_vintage_comparison.py","Lens 4: Vintage quality comparison, channel/discount drift"),
     ("11", "11_lens5_base_health.py",       "Lens 5: Full base health, waterfall, integrated scorecard"),
+    ("12", "12_finals_deep_dive.py",         "Finals: LTV cohort/channel, POS vs web, loyal profile, business value"),
 ]
 
 def run_script(script_file: Path, label: str) -> bool:
