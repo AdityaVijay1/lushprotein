@@ -1,7 +1,7 @@
 # LushProtein — Data Quality & Due Diligence Report (Final)
 
-**Team:** Group 1 — Aditya Vijay, Emily Pham Vinh Tan, Saelin Lee, Shwe Tin Aung, Weilin Ang, Zhengfeng Toh
-**Date:** May 2026
+**Team:** Group 1 — Aditya Vijay, Emily Pham Vinh Tan, Saelin Lee, Shwe Tin Aung, Weilin Ang, Zhengfeng Toh <br>
+**Date:** May 2026 <br>
 **Scope:** Shopify customer transactions (2020–Q1 2026), SG + MY + HK, all revenue in **SGD** after FX conversion
 
 
