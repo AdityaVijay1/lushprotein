@@ -1,12 +1,11 @@
 # LushProtein — Data Quality & Due Diligence Report (Final)
 
-**Team:** Group 1 — Aditya Vijay, Emily Pham Vinh Tan, Saelin Lee, Shwe Tin Aung, Weilin Ang, Zhengfeng Toh
-**Date:** May 2026
+**Team:** Group 1 — Aditya Vijay, Emily Pham Vinh Tan, Saelin Lee, Shwe Tin Aung, Weilin Ang, Zhengfeng Toh <br>
+**Date:** May 2026 <br>
 **Scope:** Shopify customer transactions (2020–Q1 2026), SG + MY + HK, all revenue in **SGD** after FX conversion
-**Audience:** Course instructors (ISSS603 — assessment of data due diligence)
 
-> **This is the single reference document for the PDF Data Quality Report.**
-> Midterm narrative file `data_quality_checks.md` is preserved unchanged for teammate reference.
+
+> Midterm narrative file `data_quality_checks.md` is preserved unchanged for reference.
 > Finals-layer drops (DQ-02, DQ-03, DQ-04) are applied **only** in `EDA/12_finals_deep_dive.py`.
 > Midterm pipeline scripts 01–11 and the base 27,350-order parquet are unmodified.
 
