@@ -12,3 +12,4 @@ LushProtein_Midterm presentation.pdf
 __pycache__/
 *.pyc
 *.pyo
+context_prompt.md
