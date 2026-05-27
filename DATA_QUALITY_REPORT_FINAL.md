@@ -76,7 +76,7 @@
 
 | Store | Orders | Revenue (Own Currency) | FX Rate | Revenue (SGD equivalent) |
 |---|---|---|---|---|
-| SG | 16,041 | S$1,913,387 | 1.000 | **S$1,913,387** |
+| SG | 16,039 | S$1,913,068 | 1.000 | **S$1,913,068** |
 | MY | 11,309 | RM 3,958,566 | ÷ 3.30 | **S$1,199,566** |
 | HK | 2 | HK$1,943 | ÷ 6.10 | **S$319** |
 | **All markets** | **27,350** | — | — | **S$3,112,952 total SGD** |
@@ -107,19 +107,19 @@ Year  SG (SGD)    MY (SGD)    Total
 
 ### Key Summary Statistics (post-mitigation, SGD — full 27,350-order pipeline)
 
-**Order revenue (all markets, SGD):**
+**Order revenue (all markets combined, SGD):**
 
-| Statistic | Value (All Markets, SGD) | SG-only (SGD) |
-|---|---|---|
-| Count | 27,350 orders | 16,041 orders |
-| Mean | S$113.83 | S$119.28 |
-| Median | S$62.10 | S$62.10 |
-| 25th percentile | S$29.00 | — |
-| 75th percentile | S$115.00 | — |
-| Maximum | S$26,520.00 (wholesale-tagged, SG 2026) | — |
-| Std deviation | S$405.16 | — |
+| Statistic | All Markets (SGD) | SG only (SGD) | MY only (SGD equiv.) |
+|---|---|---|---|
+| Count | **27,350** | 16,039 | 11,309 |
+| Mean | S$113.82 | S$119.28 | S$106.07 |
+| Median | **S$59.90** | S$62.10 | S$55.48 |
+| 25th percentile | S$29.40 | S$29.00 | S$29.70 |
+| 75th percentile | S$108.41 | S$115.00 | S$96.67 |
+| Maximum | **S$34,618** *(MY wholesale MYR 114,240)* | S$26,520 *(SG wholesale)* | S$34,618 |
+| Std deviation | S$413.76 | S$405.16 | S$425.60 |
 
-Mean ≈ 2× median → right-skewed distribution expected in consumer health context (see DQ-04).
+Mean ≈ 2× median → right-skewed distribution expected in consumer health context (see DQ-04). All-markets median (S$59.90) is slightly below SG-only median (S$62.10) because MY orders average lower after FX conversion.
 
 **Customers:**
 
@@ -146,78 +146,99 @@ Mean ≈ 2× median → right-skewed distribution expected in consumer health co
 
 ## 2. Summary Statistics and Distributions
 
-### Order Revenue Distribution (All Markets — SGD after FX conversion)
+> **All statistics below cover all three markets (SG + MY + HK) combined in SGD unless a column explicitly says "SG only" or "MY only".**
+> Verified against `orders.parquet` (27,350 orders). Chart: `visualizations/charts/99_summary_stats_verification.png`.
 
-| Statistic | Value (All Markets, SGD) | SG-only (SGD) |
-|---|---|---|
-| Count | 27,350 orders | 16,041 orders |
-| Mean | SGD 113.83 | SGD 119.28 |
-| Median | SGD 62.10 | SGD 62.10 |
-| 25th percentile | SGD 29.00 | — |
-| 75th percentile | SGD 115.00 | — |
-| Maximum | SGD 26,520.00 | — |
-| Std deviation | SGD 405.16 | — |
+### Order Revenue Distribution (All Markets Combined — SGD after FX conversion)
 
-The mean (S$114) is nearly double the median (S$62), indicating **right-skewed distribution** driven by a small number of high-value orders. This is expected in a consumer health brand context but the outliers require examination (see DQ-04).
+*Note: Several figures in earlier drafts of this table used SG-only values in the "All markets" column. The table below has been corrected against the parquet and verified.*
 
-### Order Revenue Distribution (MY Store — MYR)
+| Statistic | All Markets (SGD) | SG only (SGD) | MY only (SGD equiv.) |
+|---|---|---|---|
+| Count | **27,350** orders | 16,039 orders | 11,309 orders |
+| Mean | S$113.82 | S$119.28 | S$106.07 |
+| Median | **S$59.90** | S$62.10 | S$55.48 |
+| 25th percentile | S$29.40 | S$29.00 | S$29.70 |
+| 75th percentile | S$108.41 | S$115.00 | S$96.67 |
+| 90th percentile | S$202.48 | S$206.66 | — |
+| Maximum | **S$34,618** *(MYR 114,240 ÷ 3.30)* | S$26,520 | S$34,618 |
+| Std deviation | S$413.76 | S$405.16 | S$425.60 |
 
-| Statistic | Value |
+**Why the all-markets median (S$59.90) is lower than SG median (S$62.10):** MY orders have a slightly lower median (S$55.48 SGD-equivalent) due to smaller average pack sizes and the fixed-rate FX approximation. Combining both markets pulls the combined median below the SG-only figure.
+
+**Why the all-markets max (S$34,618) is higher than SG max (S$26,520):** The largest single order in the dataset is a MY wholesale order of MYR 114,240 (≈ S$34,618 after FX conversion), which exceeds the largest SG order of S$26,520. Both are B2B/reseller outliers — see DQ-04.
+
+The mean (S$114) is nearly **double** the median (S$60) across all markets, indicating a strongly **right-skewed distribution** driven by a small number of high-value wholesale/reseller orders. This is why per-customer LTV is reported as a median in key comparisons (see DQ-04 mitigation).
+
+**MY store original-currency statistics (for reference):**
+
+| Statistic | Value (MYR — original currency) |
 |---|---|
 | Count | 11,309 orders |
-| Mean | MYR 350.04 |
+| Mean | MYR 350.05 |
 | Median | MYR 183.07 |
-| Maximum | MYR 114,240.00 |
+| Maximum | MYR 114,240 |
 | Std deviation | MYR 1,404.48 |
 
-The MY store shows even higher skew — the maximum order of MYR 114,240 is likely a wholesale/bulk order and is more than 600× the median.
+The MYR maximum of 114,240 is more than **620× the median** (MYR 183) — a strong signal of wholesale distortion. This order was tagged `wholesale-sale` and is dropped in the finals analysis (DQ-04).
 
-### Orders Per Customer Distribution
+### Orders Per Customer Distribution (All Markets Combined)
 
-| Statistic | Value |
-|---|---|
-| Mean | 1.98 orders |
-| Median | 1.0 orders |
-| 75th percentile | 2.0 orders |
-| Maximum | 667 orders |
-| Customers with exactly 1 order | **9,321 (67.6%)** |
-| Customers with 10+ orders | 268 (1.9%) |
-| Customers with 20+ orders | 35 (0.3%) |
+*This table counts orders across all three stores (SG + MY + HK). A customer who placed orders on both the SG and MY Shopify storefronts would have their orders counted together under one `customer_id`.*
 
-**Key insight:** 67.6% of customers made exactly one purchase. The extreme max (667 orders) is one customer, likely a reseller or test account.
-
-### Discount Distribution (All Discounted Orders)
-
-| Discount Depth | Count | % of Discounted Orders |
+| Statistic | All Markets Combined | SG Customers Only |
 |---|---|---|
-| 0–5% off | 871 | 10.2% |
-| 5–10% off | 997 | 11.7% |
-| 10–15% off | 1,161 | 13.6% |
-| 15–20% off | 734 | 8.6% |
-| 20–30% off | 2,159 | 25.3% |
-| 30–40% off | 886 | 10.4% |
-| 40–50% off | 167 | 2.0% |
-| 50–60% off | 284 | 3.3% |
-| 60–70% off | 329 | 3.9% |
-| 70–80% off | 96 | 1.1% |
-| 80–90% off | 31 | 0.4% |
-| 90–100% off | **1,308** | **15.3%** |
+| Unique customers | **13,780** | 8,920 |
+| Mean orders per customer | 1.98 | 1.80 |
+| Median orders per customer | 1.0 | 1.0 |
+| 75th percentile | 2.0 | 2.0 |
+| 90th percentile | 4.0 | 3.0 |
+| Maximum | 667 | 667 |
+| Customers with exactly 1 order | **9,321 (67.6%)** | 6,454 **(72.4%)** |
+| Customers with 10+ orders | 268 (1.9%) | 111 (1.2%) |
+| Customers with 20+ orders | 35 (0.3%) | — |
 
-The **15.3% of discounted orders at 90–100% off** is a notable spike that warrants its own issue entry (see DQ-03).
+**Key insight:** 67.6% of all-markets customers — and 72.4% of SG-only customers — made exactly one purchase. The SG one-and-done rate is slightly higher, partly because many MY customers who made multiple purchases across the more established MY market have longer order histories. The extreme maximum of 667 orders belongs to a single customer and is almost certainly a reseller or test account.
 
-### Missing Values Summary
+### Discount Distribution (All Markets Combined — Orders with Any Discount)
+
+*9,024 orders have `Price: Total Discount > 0` — that is **33.0%** of all 27,350 orders. The table below shows the distribution of discount depth (discount ÷ gross order value) across these 9,024 discounted orders.*
+
+| Discount Depth | Count | % of Discounted Orders | % of All Orders |
+|---|---|---|---|
+| 0–5% off | 785 | 8.7% | 2.9% |
+| 5–10% off | 920 | 10.2% | 3.4% |
+| 10–15% off | 1,150 | 12.7% | 4.2% |
+| 15–20% off | 878 | 9.7% | 3.2% |
+| 20–30% off | 2,076 | 23.0% | 7.6% |
+| 30–40% off | 930 | 10.3% | 3.4% |
+| 40–50% off | 237 | 2.6% | 0.9% |
+| 50–60% off | 280 | 3.1% | 1.0% |
+| 60–70% off | 333 | 3.7% | 1.2% |
+| 70–80% off | 96 | 1.1% | 0.4% |
+| 80–90% off | 31 | 0.3% | 0.1% |
+| **90–100% off** | **1,308** | **14.5%** | **4.8%** |
+| **Total** | **9,024** | **100%** | **33.0%** |
+
+**Discount depth** is calculated as `Price: Total Discount ÷ (Price: Total + Price: Total Discount)` — i.e., discount as a percentage of the gross (pre-discount) order value.
+
+The **14.5% spike at 90–100% off** (1,308 orders where the customer paid nothing or near-nothing) is a notable anomaly — these are real product shipments (referral rewards, PR samples, subscription welcome gifts) at zero customer cost. See DQ-03 for full treatment.
+
+### Missing Values Summary (All Markets Combined — Order Level)
 
 | Column | Null Count | % Missing | Notes |
 |---|---|---|---|
-| `Tags` | 17,026 | 62.3% | Many orders have no tag — this is normal; tags are manually or programmatically applied |
-| `Browser: UTM Source` | 25,945 | 94.9% | Most orders lack UTM tracking (see DQ-05) |
-| `Browser: UTM Medium` | 25,945 | 94.9% | Same as above |
-| `Browser: UTM Campaign` | 25,978 | 95.0% | Same as above |
-| `Browser: Referrer Domain` | 22,383 | 81.8% | Expected for direct/organic traffic |
-| `Line: Product Handle` | 13,484 | 49.3% | Order-header rows without line items (see DQ-06) |
+| `Tags` | 17,026 | **62.3%** | Many orders have no tag — normal; tags are applied programmatically or manually |
+| `Browser: UTM Source` | 25,945 | **94.9%** | Most orders lack UTM tracking — default falls back to Direct/Organic channel (see DQ-05) |
+| `Browser: UTM Medium` | 25,945 | **94.9%** | Same as UTM Source |
+| `Browser: UTM Campaign` | 25,978 | **95.0%** | Same as UTM Source |
+| `Browser: Referrer Domain` | 22,383 | **81.8%** | Expected for direct/organic traffic |
+| `Line: Product Handle` | 13,484 | **49.3%** | Order-header rows without line items (see DQ-06) — not true missingness |
 | `Shipping: Country` | 1,055 | 3.9% | Some orders missing shipping destination |
 | `Order Fulfillment Status` | 207 | 0.8% | Minor gap |
-| `second_order_date` (customers) | **9,321** | **67.6%** | Expected: 67.6% of customers are one-time buyers |
+| `second_order_date` (customers table) | **9,321** | **67.6%** | Expected — these are the 67.6% one-time buyers with no second purchase |
+
+The `Line: Product Handle` 49.3% missingness is **not** a data error — it reflects the mixed order-header / line-item row structure of the Shopify export (see DQ-06). Revenue and customer analyses use the `Top Row = 1` filter; product analyses filter to non-null handles.
 
 ---
 
@@ -233,7 +254,7 @@ Issues are ordered by severity. DQ-01 through DQ-12 are data due-diligence findi
 
 **Evidence:**
 ```
-SG store: 16,041 orders, SGD 1,913,387 (SGD)
+SG store: 16,039 orders, SGD 1,913,068 (SGD)
 MY store: 11,309 orders, MYR 3,958,566 (MYR → SGD equivalent: S$1,199,566)
 HK store:      2 orders, HKD 1,943     (HKD → SGD equivalent: S$319)
 ```
@@ -364,10 +385,11 @@ Revenue impact:               S$0  (all dropped orders have net rev = S$0)
 The March 2026 SG order is explicitly tagged `wholesale-sale`, confirming these are B2B/reseller orders. The untagged MY orders with 600×+ the median order value are almost certainly the same.
 
 ```
-Orders tagged 'wholesale-sale':      65
-Orders with Price: Total > S$5,000:  14
-Combined (union):                    78 unique orders
+Orders tagged 'wholesale-sale':        65
+Orders with Price: Total > S$5,000:    14
+Combined (union, unique):              78 orders
 By year: 2020 (2), 2021 (4), 2022 (6), 2025 (36), 2026 (30)
+Note: 1 overlap between tag and >S$5K criteria → 65 + 14 − 1 = 78 unique
 ```
 
 **Impact:**
