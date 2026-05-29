@@ -92,7 +92,7 @@ def _pk_fk(col: str) -> str:
     if col in {"Line: SKU", "Line: Variant SKU"}:
         return "FK -> products.Variant SKU"
     if col == "Checkout ID":
-        return "FK -> checkout (Shopify)"
+        return ""
     return ""
 
 

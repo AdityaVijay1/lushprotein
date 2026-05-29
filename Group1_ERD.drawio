@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="mfoPfbxTSpd2CSubJq-Y">
-    <mxGraphModel dx="4040" dy="2171" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="10" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1230" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="10" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -106,7 +106,7 @@
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-288" parent="kulL2Lyo68gXv0h54mrN-286" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="source BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-288" parent="kulL2Lyo68gXv0h54mrN-286" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="source VARCHAR(50)" vertex="1">
           <mxGeometry height="30" width="340" x="30" as="geometry">
             <mxRectangle height="30" width="340" as="alternateBounds" />
           </mxGeometry>
@@ -114,12 +114,12 @@
         <mxCell id="kulL2Lyo68gXv0h54mrN-289" parent="kulL2Lyo68gXv0h54mrN-264" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="30" width="370" y="270" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-290" parent="kulL2Lyo68gXv0h54mrN-289" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;fontStyle=1" value="FK" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-290" parent="kulL2Lyo68gXv0h54mrN-289" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-291" parent="kulL2Lyo68gXv0h54mrN-289" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;fontStyle=1" value="checkout_ID BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-291" parent="kulL2Lyo68gXv0h54mrN-289" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="checkout_ID BIGINT" vertex="1">
           <mxGeometry height="30" width="340" x="30" as="geometry">
             <mxRectangle height="30" width="340" as="alternateBounds" />
           </mxGeometry>
@@ -392,7 +392,7 @@
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-354" parent="kulL2Lyo68gXv0h54mrN-352" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="shipping province_code VARCHAR(20)" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-354" parent="kulL2Lyo68gXv0h54mrN-352" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="shipping_province_code VARCHAR(20)" vertex="1">
           <mxGeometry height="30" width="340" x="30" as="geometry">
             <mxRectangle height="30" width="340" as="alternateBounds" />
           </mxGeometry>
@@ -1444,7 +1444,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="lp-erd-label-sessions" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#666666;fontStyle=2" value="Attribution only — no FK (campaigns has no order/customer ID)" vertex="1">
-          <mxGeometry x="4780" y="2340" width="380" height="40" as="geometry" />
+          <mxGeometry height="40" width="380" x="4690" y="2150" as="geometry" />
         </mxCell>
         <mxCell id="kulL2Lyo68gXv0h54mrN-846" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-614" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=11;fontColor=#666666;fontStyle=2;endArrow=open;endFill=0;startArrow=open;startFill=0;" target="kulL2Lyo68gXv0h54mrN-379">
           <mxGeometry relative="1" as="geometry" />
@@ -1582,7 +1582,7 @@
             <mxRectangle height="30" width="220" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-647" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="RECHARGE ORDERS" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-647" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="RECHARGE ORDERS&#xa;(→ Shopify via shopify_order_id)" vertex="1">
           <mxGeometry height="330" width="320" x="4030" y="2560" as="geometry" />
         </mxCell>
         <mxCell id="kulL2Lyo68gXv0h54mrN-648" parent="kulL2Lyo68gXv0h54mrN-647" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
@@ -1705,12 +1705,12 @@
         <mxCell id="kulL2Lyo68gXv0h54mrN-675" parent="kulL2Lyo68gXv0h54mrN-647" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="30" width="320" y="300" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-676" parent="kulL2Lyo68gXv0h54mrN-675" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;fontStyle=1" value="FK" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-676" parent="kulL2Lyo68gXv0h54mrN-675" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-677" parent="kulL2Lyo68gXv0h54mrN-675" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;fontStyle=1" value="customer_id BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-677" parent="kulL2Lyo68gXv0h54mrN-675" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="customer_id BIGINT (Recharge ID)" vertex="1">
           <mxGeometry height="30" width="290" x="30" as="geometry">
             <mxRectangle height="30" width="290" as="alternateBounds" />
           </mxGeometry>
@@ -1890,12 +1890,12 @@
         <mxCell id="kulL2Lyo68gXv0h54mrN-722" parent="kulL2Lyo68gXv0h54mrN-682" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="30" width="260" y="420" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-723" parent="kulL2Lyo68gXv0h54mrN-722" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;fontStyle=1" value="FK" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-723" parent="kulL2Lyo68gXv0h54mrN-722" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-724" parent="kulL2Lyo68gXv0h54mrN-722" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;fontStyle=1" value="customer_ID BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-724" parent="kulL2Lyo68gXv0h54mrN-722" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="customer_ID BIGINT (Recharge ID)" vertex="1">
           <mxGeometry height="30" width="230" x="30" as="geometry">
             <mxRectangle height="30" width="230" as="alternateBounds" />
           </mxGeometry>
@@ -2075,12 +2075,12 @@
         <mxCell id="kulL2Lyo68gXv0h54mrN-767" parent="kulL2Lyo68gXv0h54mrN-727" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="30" width="260" y="420" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-768" parent="kulL2Lyo68gXv0h54mrN-767" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;fontStyle=1" value="FK" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-768" parent="kulL2Lyo68gXv0h54mrN-767" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-769" parent="kulL2Lyo68gXv0h54mrN-767" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;fontStyle=1" value="customer_ID BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-769" parent="kulL2Lyo68gXv0h54mrN-767" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="customer_ID BIGINT (Recharge ID)" vertex="1">
           <mxGeometry height="30" width="230" x="30" as="geometry">
             <mxRectangle height="30" width="230" as="alternateBounds" />
           </mxGeometry>
@@ -2172,12 +2172,12 @@
         <mxCell id="kulL2Lyo68gXv0h54mrN-790" parent="kulL2Lyo68gXv0h54mrN-783" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="30" width="250" y="90" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-791" parent="kulL2Lyo68gXv0h54mrN-790" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;fontStyle=1" value="FK" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-791" parent="kulL2Lyo68gXv0h54mrN-790" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=0;right=0;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
             <mxRectangle height="30" width="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-792" parent="kulL2Lyo68gXv0h54mrN-790" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;fontStyle=1" value="customer_ID BIGINT" vertex="1">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-792" parent="kulL2Lyo68gXv0h54mrN-790" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=0;right=0;spacingLeft=6;" value="customer_ID BIGINT (Recharge ID)" vertex="1">
           <mxGeometry height="30" width="220" x="30" as="geometry">
             <mxRectangle height="30" width="220" as="alternateBounds" />
           </mxGeometry>
@@ -2363,10 +2363,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-843" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-648" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;endArrow=ERmandOne;endFill=0;startArrow=ERmandOne;startFill=0;" target="kulL2Lyo68gXv0h54mrN-265">
+        <mxCell id="kulL2Lyo68gXv0h54mrN-843" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-654" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;endArrow=ERmandOne;endFill=0;startArrow=ERzeroToMany;startFill=0;" target="kulL2Lyo68gXv0h54mrN-265">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="kulL2Lyo68gXv0h54mrN-845" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-562" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.999;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startArrow=ERzeroToOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="kulL2Lyo68gXv0h54mrN-271">
+        <mxCell id="lp-erd-label-recharge" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#666666;fontStyle=2" value="shopify_order_id → ORDERS.ID (DQ-11: Recharge customer_id ≠ Shopify)" vertex="1">
+          <mxGeometry height="36" width="420" x="3580" y="2480" as="geometry" />
+        </mxCell>
+        <mxCell id="lp-erd-label-discounts" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#666666;fontStyle=2" value="Conceptual only — no discount code on orders (DQ-10)" vertex="1">
+          <mxGeometry height="36" width="340" x="3130" y="2516" as="geometry" />
+        </mxCell>
+        <mxCell id="kulL2Lyo68gXv0h54mrN-845" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-562" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.999;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Helvetica;fontSize=11;fontColor=#666666;fontStyle=2;startArrow=open;startFill=0;endArrow=open;endFill=0;" target="kulL2Lyo68gXv0h54mrN-271">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="kulL2Lyo68gXv0h54mrN-849" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-415" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;" target="kulL2Lyo68gXv0h54mrN-489">
@@ -2390,25 +2396,6 @@
           <mxGeometry height="30" width="250" x="30" as="geometry">
             <mxRectangle height="30" width="250" as="alternateBounds" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="UJCsMN8ORCLcRcgbQEXO-8" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="SHOPIFY_CHECKOUT (logical)" vertex="1">
-          <mxGeometry height="60" width="350" x="3665" y="280" as="geometry" />
-        </mxCell>
-        <mxCell id="UJCsMN8ORCLcRcgbQEXO-9" parent="UJCsMN8ORCLcRcgbQEXO-8" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;strokeColor=inherit;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="350" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="UJCsMN8ORCLcRcgbQEXO-10" parent="UJCsMN8ORCLcRcgbQEXO-9" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;strokeColor=inherit;top=0;left=0;bottom=1;right=0;fontStyle=1" value="PK" vertex="1">
-          <mxGeometry height="30" width="80" as="geometry">
-            <mxRectangle height="30" width="80" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="UJCsMN8ORCLcRcgbQEXO-11" parent="UJCsMN8ORCLcRcgbQEXO-9" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;align=left;strokeColor=inherit;top=0;left=0;bottom=1;right=0;spacingLeft=6;fontStyle=5" value="checkout_id BIGINT NOT NULL" vertex="1">
-          <mxGeometry height="30" width="270" x="80" as="geometry">
-            <mxRectangle height="30" width="270" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="UJCsMN8ORCLcRcgbQEXO-15" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-289" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERmandOne;endFill=0;startArrow=ERzeroToMany;startFill=0;" target="UJCsMN8ORCLcRcgbQEXO-9">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="UJCsMN8ORCLcRcgbQEXO-16" edge="1" parent="1" source="kulL2Lyo68gXv0h54mrN-331" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=ERmandOne;endFill=0;startArrow=ERzeroToMany;startFill=0;" target="UJCsMN8ORCLcRcgbQEXO-2">
           <mxGeometry relative="1" as="geometry" />
