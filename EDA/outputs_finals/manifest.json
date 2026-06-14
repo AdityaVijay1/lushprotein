@@ -1,0 +1,63 @@
+{
+  "generated_by": "EDA/13_build_finals_datasets.py",
+  "source_dir": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs",
+  "output_dir": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs_finals",
+  "filters_applied": {
+    "layer1_dq": {
+      "DQ-02": "Price: Total = 0 AND Price: Total Discount = 0",
+      "DQ-03": "Price: Total = 0 AND Price: Total Discount > 0",
+      "DQ-04": "Tags contains wholesale-sale OR Price: Total > 5000 SGD"
+    },
+    "layer2_lp": {
+      "LP-F01": "Exclude customers who bought better-whey-protein-elite",
+      "LP-F02": "Exclude customers acquired in July or November",
+      "LP-F03": "first_order_date >= 2022-01-01",
+      "LP-F04": "Exclude first-order discount depth 51%+"
+    },
+    "layer3_sku": {
+      "rules": [
+        "finals_eligible customers only",
+        "order_date >= 2022-01-01",
+        "exclude order months July and November",
+        "exclude product handle better-whey-protein-elite"
+      ],
+      "file": "lines_sku_analysis.parquet"
+    }
+  },
+  "row_counts": {
+    "base_midterm": {
+      "orders": 27350,
+      "lines": 50963,
+      "customers": 13780,
+      "products": 167,
+      "discounts": 367,
+      "rc_orders": 1215,
+      "rc_checkout": 1094,
+      "rc_churned": 526,
+      "rc_reactivated": 50,
+      "rc_recurring": 650
+    },
+    "layer1_dq_clean": {
+      "orders_dq_clean.parquet": 25658,
+      "lines_dq_clean.parquet": 46280,
+      "customers_dq_clean.parquet": 13780
+    },
+    "layer2_finals_primary": {
+      "orders.parquet": 9852,
+      "lines.parquet": 16040,
+      "customers.parquet": 6353
+    },
+    "layer3_sku": {
+      "lines_sku_analysis.parquet": 14448
+    },
+    "reference": {
+      "products.parquet": 167,
+      "discounts.parquet": 367,
+      "rc_orders.parquet": 785,
+      "rc_checkout.parquet": 712,
+      "rc_churned.parquet": 344,
+      "rc_reactivated.parquet": 28,
+      "rc_recurring.parquet": 395
+    }
+  }
+}
