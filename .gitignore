@@ -14,3 +14,4 @@ __pycache__/
 *.pyo
 context_prompt.md
 deliverables
+.DS_Store
