@@ -1,0 +1,14 @@
+handle,repeat_buyers,median_reorder_days,recommended_cross_sell,next_order_confidence,next_order_lift,trigger_day,play
+collagen-glow,189.0,47.02910052910053,micronized-creatine-monohydrate,0.10596026490066225,0.9421986754966887,40.0,Day 40: remind to reorder collagen-glow + introduce micronized-creatine-monohydrate
+better-whey,178.0,70.92696629213484,micronized-creatine-monohydrate,0.09123434704830054,0.8112558139534883,64.0,Day 64: remind to reorder better-whey + introduce micronized-creatine-monohydrate
+clear-protein,160.0,52.9625,discovery-sampler,0.034420289855072464,2.8339371980676327,46.0,Day 46: remind to reorder clear-protein + introduce discovery-sampler
+lean-protein,136.0,36.1764705882353,clear-protein-25g-single-sachet,0.05995203836930456,1.9891549447009558,29.0,Day 29: remind to reorder lean-protein + introduce clear-protein-25g-single-sachet
+plant-protein,102.0,54.25,soy-protein-isolate,0.0825242718446602,1.2739684466019419,47.0,Day 47: remind to reorder plant-protein + introduce soy-protein-isolate
+micronized-creatine-monohydrate,82.0,63.25,collagen-glow,0.14948453608247422,1.0616745166496493,56.0,Day 56: remind to reorder micronized-creatine-monohydrate + introduce collagen-glow
+prime-whey-isolate,72.0,50.388888888888886,better-whey,0.19333333333333333,0.8953749999999999,43.0,Day 43: remind to reorder prime-whey-isolate + introduce better-whey
+soy-protein-isolate,50.0,67.6,plant-protein,0.1048951048951049,1.1776859504132233,61.0,Day 61: remind to reorder soy-protein-isolate + introduce plant-protein
+lushprotein-clear-shaker,35.0,50.285714285714285,clear-protein-25g-single-sachet,0.06588235294117648,2.1859174714661984,43.0,Day 43: remind to reorder lushprotein-clear-shaker + introduce clear-protein-25g-single-sachet
+pureburn-fat-burner-capsules,11.0,74.54545454545455,,,,68.0,Day 68: reorder reminder for pureburn-fat-burner-capsules (no strong cross-sell yet)
+creatine-monohydrate-sachet,6.0,47.5,,,,40.0,Day 40: reorder reminder for creatine-monohydrate-sachet (no strong cross-sell yet)
+lushprotein-lean-protein-40g-single-serve,6.0,12.25,lean-protein,0.6776859504132231,2.971392244119517,7.0,Day 7: remind to reorder lushprotein-lean-protein-40g-single-serve + introduce lean-protein
+super-omega-3,6.0,82.5,,,,76.0,Day 76: reorder reminder for super-omega-3 (no strong cross-sell yet)
