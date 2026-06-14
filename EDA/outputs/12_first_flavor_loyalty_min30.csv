@@ -1,6 +1,6 @@
 first_handle,first_variant,first_sku,flavor_sku,customers,repeat_rate,avg_ltv,avg_orders,pct_subscribed
-collagen-glow,300g Pack,0724999808507,unknown | Default,31,1.0,883.6986901270772,7.064516129032258,0.16129032258064516
 better-whey,1KG Pack / Cocoa Dinosaur,0724999807937,unknown | Default,30,1.0,1633.1917474747474,8.633333333333333,0.3
+collagen-glow,300g Pack,0724999808507,unknown | Default,31,1.0,883.6986901270772,7.064516129032258,0.16129032258064516
 collagen-glow,300g Pack (30 servings) / Natural (Unflavoured),0724999808507,collagen-glow | 300g Pack (30 servings) / Natural (Unflavoured),36,0.4444444444444444,177.59265151515152,2.361111111111111,0.2222222222222222
 collagen-glow,300g,0724999808507,collagen-glow | 300g,38,0.42105263157894735,124.15684210526315,2.210526315789474,0.21052631578947367
 lean-protein,1kg Pack (25 serves) / Taro,0724999807708,lean-protein | 1kg Pack (25 serves) / Taro,39,0.38461538461538464,119.75472416472417,1.9743589743589745,0.20512820512820512
@@ -22,8 +22,8 @@ better-whey,1kg Pack (40 servings) / Cocoa Dinosaur,0724999807937,better-whey | 
 clear-protein,500g Pack (20 Serv) / Peach,0724999807814,clear-protein | 500g Pack (20 Serv) / Peach,412,0.26941747572815533,137.35849808767284,1.6432038834951457,0.12135922330097088
 plant-protein,480g Pack (16 servings) / Natural (Unflavoured),0724999808620,plant-protein | 480g Pack (16 servings) / Natural (Unflavoured),34,0.2647058823529412,80.72081996434937,1.8823529411764706,0.11764705882352941
 clear-protein,500g Pack (20 servings) / White Grape,0724999807807,clear-protein | 500g Pack (20 servings) / White Grape,35,0.2571428571428571,129.98914285714287,1.6571428571428573,0.2
-clear-protein,500g Pack (20 Serv) / White Grape,0724999807807,clear-protein | 500g Pack (20 Serv) / White Grape,260,0.25,125.79815967365967,1.5538461538461539,0.11153846153846154
 lushprotein-lean-protein-40g-single-serve,40g Sachet / Thai Milk Tea,0724999810463,lushprotein-lean-protein-40g-single-serve | 40g Sachet / Thai Milk Tea,32,0.25,58.001875,1.375,0.0625
+clear-protein,500g Pack (20 Serv) / White Grape,0724999807807,clear-protein | 500g Pack (20 Serv) / White Grape,260,0.25,125.79815967365967,1.5538461538461539,0.11153846153846154
 plant-protein,480g Pack (16 servings) / Vanilla,0724999808613,plant-protein | 480g Pack (16 servings) / Vanilla,69,0.2463768115942029,104.2168511198946,1.536231884057971,0.057971014492753624
 discovery-sampler,6 Sachets Variety,BND-SS-MIX6-V1,discovery-sampler | 6 Sachets Variety,54,0.24074074074074073,109.55259259259259,1.462962962962963,0.07407407407407407
 soy-protein-isolate,1kg Pack (40 servings) / Natural (Unflavoured),0724999807845,soy-protein-isolate | 1kg Pack (40 servings) / Natural (Unflavoured),84,0.23809523809523808,88.62388167388168,1.5714285714285714,0.08333333333333333
@@ -49,8 +49,8 @@ better-whey,500g Pack / Cocoa Dinosaur,724999808897.0,better-whey | 500g Pack / 
 soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,0724999807845,soy-protein-isolate | 1 x 1kg Pack (40 servings) / Unflavoured,61,0.13114754098360656,70.68885245901639,1.2295081967213115,0.01639344262295082
 lushprotein-lean-protein-40g-single-serve,5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,LEAN-THA-40G-5PK-V1,lushprotein-lean-protein-40g-single-serve | 5 x 40g Sachet (5 servings) *Most Popular* / Thai Milk Tea,39,0.1282051282051282,45.72948717948718,1.1282051282051282,0.07692307692307693
 lean-protein,1 x 1kg Pack (25 servings) / Thai Milk Tea,LEAN-THA-1KG-V1,lean-protein | 1 x 1kg Pack (25 servings) / Thai Milk Tea,182,0.12637362637362637,119.95945054945054,1.1428571428571428,0.15384615384615385
-clear-protein-25g-single-sachet,1 x 25g (1 serving) / Peach,CLEAR-PEA-25G-V2,clear-protein-25g-single-sachet | 1 x 25g (1 serving) / Peach,40,0.125,54.423500000000004,1.175,0.05
 lean-protein-peach-oolong-pre-order,1 x 1kg Pack (25 servings) / Peach Oolong,LEAN-POL-1KG-V1,lean-protein-peach-oolong-pre-order | 1 x 1kg Pack (25 servings) / Peach Oolong,32,0.125,90.1809375,1.15625,0.125
+clear-protein-25g-single-sachet,1 x 25g (1 serving) / Peach,CLEAR-PEA-25G-V2,clear-protein-25g-single-sachet | 1 x 25g (1 serving) / Peach,40,0.125,54.423500000000004,1.175,0.05
 lean-protein,40g Sachet (1 serving) / Taro,0724999810470,lean-protein | 40g Sachet (1 serving) / Taro,36,0.1111111111111111,22.234444444444446,1.1111111111111112,0.05555555555555555
 clear-protein,1 x 500g Pack (20 servings) / White Grape,CLEAR-GRA-500G-V2,clear-protein | 1 x 500g Pack (20 servings) / White Grape,161,0.10559006211180125,144.05217391304348,1.1987577639751552,0.13664596273291926
 soy-protein-isolate,1 x 1kg Pack (40 servings) / Unflavoured,SOY-UNF-1KG-V1,soy-protein-isolate | 1 x 1kg Pack (40 servings) / Unflavoured,96,0.10416666666666667,97.7415625,1.125,0.020833333333333332

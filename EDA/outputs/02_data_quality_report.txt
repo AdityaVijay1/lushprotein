@@ -1,5 +1,5 @@
 ======================================================================
-LUSHPROTEIN EDA    “  DATA QUALITY & OVERVIEW REPORT
+LUSHPROTEIN EDA -- DATA QUALITY & OVERVIEW REPORT
 ======================================================================
 
 [1] TABLE DIMENSIONS
@@ -12,7 +12,7 @@ LUSHPROTEIN EDA    “  DATA QUALITY & OVERVIEW REPORT
 [2] DATE RANGE
   Earliest order: 2019-12-31
   Latest order:   2026-03-30
-  Cohort span:    2019   “ 2026
+  Cohort span:    2019 -- 2026
 
 [3] ORDERS BY YEAR
       orders  customers    revenue_sgd       disc_amt  disc_orders  avg_order_value  disc_rate  disc_pct_orders
@@ -101,7 +101,7 @@ fulfilled    27121
 NaN            207
 partial         22
 
-[10] PRODUCT MASTER   “ active SKUs by category
+[10] PRODUCT MASTER -- active SKUs by category
 category
 Other            17
 Lean Protein      7
