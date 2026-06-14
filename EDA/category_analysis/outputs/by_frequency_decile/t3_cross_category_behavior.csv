@@ -1,0 +1,15 @@
+segment,category,n_category_buyers,pct_sole_cat_buyers,avg_n_categories,cat_share_of_buyers_profit,most_common_additional_cat,pct_also_buying
+all_frequency,Unknown,1429,0.5899,1.64,0.6526,Other,0.2281
+all_frequency,Other,1376,0.3794,2.01,0.5168,Unknown,0.2369
+all_frequency,Clear Protein,1363,0.4277,1.92,0.6559,Accessories,0.2656
+all_frequency,Lean Protein,1148,0.3371,2.06,0.5669,Accessories,0.3484
+all_frequency,Accessories,892,0.0123,2.54,0.0676,Lean Protein,0.4484
+all_frequency,Collagen Glow,411,0.2482,2.45,0.3841,Other,0.4185
+all_frequency,Soy Protein,192,0.3438,2.23,0.2866,Other,0.4115
+d1_frequency,Other,248,0.0968,2.81,0.4378,Unknown,0.4879
+d1_frequency,Unknown,207,0.1981,2.61,0.4639,Other,0.5845
+d1_frequency,Clear Protein,154,0.1169,3.06,0.4863,Lean Protein,0.5455
+d1_frequency,Lean Protein,144,0.0972,3.17,0.4369,Clear Protein,0.5833
+d1_frequency,Accessories,135,0.0,3.42,0.0205,Other,0.6741
+d1_frequency,Collagen Glow,108,0.1296,3.09,0.3522,Other,0.5463
+d1_frequency,Soy Protein,39,0.0513,3.36,0.1793,Other,0.6923

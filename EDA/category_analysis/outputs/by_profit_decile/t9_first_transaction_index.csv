@@ -1,0 +1,15 @@
+segment,category,category_profit_sgd,pct_ever_buying_cat,pct_buying_cat_on_first_trans,n_first_tx_buyers,pct_ever_buyers_on_first_trans,tot_vtd_sgd,avg_vtd_sgd,vtd_index,cohort_avg_vtd_sgd
+all_profit,Unknown,69576.81,0.3331,0.3214,1379,0.965,96340.65,69.86,135.8,51.46
+all_profit,Clear Protein,53293.32,0.3177,0.2956,1268,0.9303,62768.31,49.5,96.2,51.46
+all_profit,Other,52044.46,0.3207,0.2709,1162,0.8445,58308.03,50.18,97.5,51.46
+all_profit,Lean Protein,36881.95,0.2676,0.235,1008,0.878,43360.42,43.02,83.6,51.46
+all_profit,Accessories,3136.61,0.2079,0.1809,776,0.87,27377.9,35.28,68.6,51.46
+all_profit,Collagen Glow,13727.13,0.0958,0.0762,327,0.7956,18711.04,57.22,111.2,51.46
+all_profit,Soy Protein,4716.15,0.0448,0.0357,153,0.7969,6035.55,39.45,76.7,51.46
+d1_profit,Unknown,45805.12,0.5688,0.5152,221,0.9057,62952.51,284.85,124.8,228.32
+d1_profit,Other,21880.1,0.5198,0.2634,113,0.5067,20228.18,179.01,78.4,228.32
+d1_profit,Clear Protein,15332.5,0.345,0.2471,106,0.7162,18766.47,177.04,77.5,228.32
+d1_profit,Lean Protein,11319.39,0.2984,0.1608,69,0.5391,11578.2,167.8,73.5,228.32
+d1_profit,Accessories,463.72,0.2424,0.1166,50,0.4808,7925.75,158.51,69.4,228.32
+d1_profit,Collagen Glow,6333.4,0.2191,0.1096,47,0.5,7517.49,159.95,70.1,228.32
+d1_profit,Soy Protein,1513.63,0.0676,0.0186,8,0.2759,1378.84,172.36,75.5,228.32

@@ -48,3 +48,11 @@ Re-run: `python EDA/category_analysis/run_category_analysis.py`
 | `charts/fig_04_co_purchase_heatmap.png` | Cross-category co-purchase heatmap |
 
 Generate: `python EDA/category_analysis/plot_category_analysis.py`
+
+## Decile × Category (T1–T9)
+
+See **`README_decile_category.md`** and:
+- `by_profit_decile/` — all slides grouped by **profit_decile**
+- `by_frequency_decile/` — all slides grouped by **freq_decile**
+
+Run: `python EDA/category_analysis/run_decile_category_analysis.py`

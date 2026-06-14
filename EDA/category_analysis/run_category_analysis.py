@@ -14,6 +14,7 @@ Outputs (EDA/category_analysis/outputs/):
 
 Run: python EDA/category_analysis/run_category_analysis.py
 Charts: python EDA/category_analysis/plot_category_analysis.py
+Decile × category (T1–T9): python EDA/category_analysis/run_decile_category_analysis.py
 """
 import warnings
 warnings.filterwarnings("ignore")

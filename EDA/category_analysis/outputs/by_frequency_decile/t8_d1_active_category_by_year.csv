@@ -1,0 +1,29 @@
+calendar_year,category,pct_d1_active_in_year,n_d1_active_buyers,d1_pool_size,n_d1_active_any_order
+2022,Accessories,0.0023,1,429,116
+2022,Clear Protein,0.0,0,429,116
+2022,Collagen Glow,0.0186,8,429,116
+2022,Lean Protein,0.0,0,429,116
+2022,Other,0.0583,25,429,116
+2022,Soy Protein,0.007,3,429,116
+2022,Unknown,0.2611,112,429,116
+2023,Accessories,0.0513,22,429,131
+2023,Clear Protein,0.0,0,429,131
+2023,Collagen Glow,0.0746,32,429,131
+2023,Lean Protein,0.0,0,429,131
+2023,Other,0.2261,97,429,131
+2023,Soy Protein,0.0233,10,429,131
+2023,Unknown,0.1212,52,429,131
+2024,Accessories,0.1142,49,429,230
+2024,Clear Protein,0.1935,83,429,230
+2024,Collagen Glow,0.1492,64,429,230
+2024,Lean Protein,0.0932,40,429,230
+2024,Other,0.324,139,429,230
+2024,Soy Protein,0.0606,26,429,230
+2024,Unknown,0.1422,61,429,230
+2025,Accessories,0.1538,66,429,253
+2025,Clear Protein,0.2284,98,429,253
+2025,Collagen Glow,0.1189,51,429,253
+2025,Lean Protein,0.2657,114,429,253
+2025,Other,0.2704,116,429,253
+2025,Soy Protein,0.042,18,429,253
+2025,Unknown,0.0559,24,429,253
