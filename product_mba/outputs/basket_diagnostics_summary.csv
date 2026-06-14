@@ -1,0 +1,4 @@
+level,total_orders,orders_with_any_item,analysis_ready_order_pct,avg_distinct_items,median_distinct_items,p90_distinct_items,multi_item_orders,multi_item_order_pct,three_plus_item_orders,three_plus_item_order_pct,unique_items,actionable
+category,27901,15000,0.5376151392423211,1.3393333333333333,1.0,2.0,4085,0.2723333333333333,843,0.0562,6,False
+handle,27901,15000,0.5376151392423211,1.4276666666666666,1.0,2.0,4599,0.3066,1264,0.08426666666666667,36,True
+sku_flavor,27901,15435,0.5532059782803483,1.6913508260447037,1.0,3.0,6460,0.41852931648850017,2703,0.17512147716229348,477,True
