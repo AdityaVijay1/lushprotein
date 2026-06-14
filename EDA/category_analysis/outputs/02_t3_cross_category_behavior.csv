@@ -1,0 +1,8 @@
+category,n_category_buyers,pct_sole_cat_buyers,avg_n_categories,cat_share_of_buyers_profit,most_common_additional_cat,pct_also_buying,n_sole_cat_buyers,n_also_buying_most_common
+Other,2046,0.5235,1.76,0.5319,Unknown,0.176,1071,360
+Unknown,1623,0.5903,1.63,0.6046,Other,0.2218,958,360
+Clear Protein,1614,0.4498,1.87,0.6273,Lean Protein,0.2497,726,403
+Lean Protein,1395,0.3857,1.97,0.5506,Accessories,0.2925,538,408
+Accessories,990,0.0636,2.45,0.0678,Lean Protein,0.4121,63,408
+Collagen Glow,516,0.3217,2.27,0.3237,Other,0.3702,166,191
+Soy Protein,320,0.4969,1.89,0.2815,Other,0.3281,159,105
