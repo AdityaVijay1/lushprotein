@@ -1,4 +1,4 @@
 field,missing_pct,nonnull_unique
-Line: Product Handle,0.5254792692737869,36
-Line: SKU,0.4842729038714361,191
-product_category == Unknown,0.5254792692737869,7
+Line: Product Handle,0.23235049833887042,24
+Line: SKU,0.16521317829457363,157
+product_category == Unknown,0.23235049833887042,7
