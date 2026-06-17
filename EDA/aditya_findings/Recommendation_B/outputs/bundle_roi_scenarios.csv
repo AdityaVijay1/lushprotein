@@ -1,0 +1,4 @@
+scenario,pool,conversion_rate,bundle_gp_sgd,bundle_discount_pct,net_gp_per_conversion,annual_gp_uplift_sgd
+5% single-cat buyers convert to Clear+Lean bundle,2514,0.05,73.6,0.05,69.92,8788.0
+8% middle decile (D5-D7) add 2nd category via bundle,1287,0.08,73.6,0.05,69.92,7199.0
+Conservative total cross-sell GP (flows + bundle),4290,0.03,73.6,0.0,35.0,15000.0

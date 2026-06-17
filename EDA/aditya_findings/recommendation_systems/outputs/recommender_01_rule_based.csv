@@ -1,0 +1,8 @@
+if_bought,recommend,rule
+Clear Protein,Lean Protein,D1 T3: 25-62% also buy Lean
+Lean Protein,Clear Protein,D1 T3: 61.7% also buy Clear
+Lean Protein,Accessories,Cohort T3: 29% also Accessories
+Clear Protein,Accessories,"Cart add-on, not acquisition"
+Collagen Glow,Clear Protein,"Collagen repeat 30.5%, protein cross-sell"
+Accessories,Lean Protein,Accessories→Lean 41% cohort
+Accessories,Clear Protein,Shaker buyers need protein trial

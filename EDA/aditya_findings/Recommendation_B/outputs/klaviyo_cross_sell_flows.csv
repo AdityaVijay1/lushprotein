@@ -1,0 +1,4 @@
+flow_id,name,trigger,delay_days,target_product,evidence_pct,evidence_source,expected_attach_rate,avg_basket_gp_sgd
+CS-01,Clear → Lean,"2nd order fulfilled, first category = Clear Protein",14,Lean Protein (Thai Milk Tea or Taro 1kg),53.4,D1 co-purchase matrix + T3 pct_also_buying,0.08,35
+CS-02,Lean → Clear,"2nd order fulfilled, first category = Lean Protein",14,Clear Protein (Peach or White Grape 500g),65.4,D1 T3: 61.7% Lean buyers also Clear,0.1,38
+CS-03,Collagen → Protein,"1st order Collagen, no protein yet",21,Clear or Lean starter (500g),30.5,Collagen first-tx repeat rate 30.5%,0.12,32

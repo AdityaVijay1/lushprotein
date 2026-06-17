@@ -1,0 +1,6 @@
+discount_pct,gp_impact_sgd,label
+0,0.0,No discount
+5,6998.048212121212,5% site-wide on D1
+10,13996.096424242423,10% site-wide on D1
+15,20994.144636363635,15% site-wide on D1
+10,0.0,Exclude D1 from promo (Rec A)
