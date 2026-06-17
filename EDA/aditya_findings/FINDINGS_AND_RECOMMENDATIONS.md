@@ -1,224 +1,152 @@
 # LushProtein — Findings & Recommendations (Product × Customer)
 
 **Author:** Aditya · Group 1 · ISSS603  
-**Sources:** `category_analysis/` + `decile_analysis/` + **LP COGS (June 2026)**  
-**Cohort:** 4,290 customers · S$552K revenue · **true margin where COGS available (70.5% weighted)**  
+**Pool:** 4,290 customers · true COGS on 74.7% of revenue · **70.5% measured margin**  
 **Date:** June 2026
 
-> **Deck = one story + two recommendations (Section 2).** Everything else is PDF / Q&A.
+> **Deck:** Lead with **Rec C + Rec D**. Rec B executes C. Rec A is guardrail only.
 
 ---
 
-## 1. The one narrative (pitch to the founder)
+## 1. The one narrative
 
-**10% of your customers generate 41% of your true gross profit.** They are not just "more frequent" — they buy **bigger baskets** (S$326 avg GP vs S$5 for worst decile) and **more categories** (2.2+ vs 1.6).
+**59% of customers have only ever bought one product category.** They average S$59 GP and 17% repeat. Customers with 3 categories average **S$144 GP and 55% repeat** — 2.4× the profit, 3× the repeat.
 
-At the same time, you're probably **over-discounting** these people. A 10% site-wide sale on your best 429 customers costs **S$14K in GP** they would have spent anyway. And half your "loyal" frequent buyers aren't actually your most profitable.
-
-**The story:** *Find your best customers, stop discounting them, and use your product range (Clear + Lean, flavours, 2nd category by order 3) to turn everyone else into better buyers.*
+The fix is not more discounting (that saves S$14K on VIPs at best). The fix is **product structure**: cross-sell Clear↔Lean on order 2, add a 3rd category by order 3, and put repeat buyers on Subscribe & Save for hero SKUs.
 
 ---
 
-## 2. Lead with these two recommendations
+## 2. Lead recommendations (pitch order)
 
-### Recommendation A — Stop treating your best customers like strangers
+### Recommendation C — Climb the category ladder (LEAD)
 
-**What it means:** Export `klaviyo_crm_tiers.csv` → tag customers in Klaviyo/Shopify:
+| | |
+|---|---|
+| **What** | 2,514 single-category buyers → target 2nd category on order 2, 3rd by order 3 |
+| **Why** | GP S$59 → S$144 (+S$85); repeat 17% → 55% |
+| **Prize** | 5% reach 3 categories = **S$10,693 GP/yr**; 8% add 2nd = **S$3,969** |
+| **How** | Rec B flows (day 14 after order 1) + Clear+Lean bundle |
+| **Figure** | `pitch_analysis/outputs/fig_category_ladder.png` |
 
-| Tier | Who | Count | What to do |
-|------|-----|-------|------------|
-| **VIP** | Best profit + best frequency | **245** | Early access, bundles, subscription. **No % off.** |
-| **Profit D1** | High spend, not frequent | **184** | Premium upsell (1kg packs). **No blanket promos.** |
-| **Freq D1** | Frequent, lower spend | **184** | Replenishment reminders only. |
-| **Standard** | Everyone else | **3,677** | Normal acquisition/win-back. |
-
-**Why (one number):** 10% discount on profit D1 = **S$14K GP lost/yr** (true COGS). VIPs alone hold **26% of all GP**.
-
-**Product depth:** D1 over-indexes on **Lean** (index 275) and **Clear** (265). True margin on hero SKUs = **~70%**, not 40%. Upsell 1kg / hero flavours — not shakers as lead.
-
-**Size of prize:** **S$18–20K GP/yr** (leakage stopped + VIP retention)
-
-**Execution:** **High** — CSV export → Klaviyo tags. **2–4 weeks.**
-
-**Slide figures:** `Recommendation_A/outputs/fig_gp_by_decile_true.png`, `fig_discount_erosion.png`
-
-**Full doc:** `Recommendation_A/RECOMMENDATION_A.md`
+**Full doc:** `pitch_analysis/NEW_RECOMMENDATIONS.md` · **Hypothesis:** H1 in `pitch_analysis/HYPOTHESES.md`
 
 ---
 
-### Recommendation B — Use your product lineup to cross-sell, on a schedule
+### Recommendation D — Subscribe the repeaters
 
-**What it means:**
+| | |
+|---|---|
+| **What** | Klaviyo flow: 48 days after 2nd order → Subscribe & Save on exact SKU (Peach Clear / TMT Lean) |
+| **Why** | Subscribers repeat **62%** vs **19%**; GP gap **S$66/customer** |
+| **Prize** | 5% of 689 repeat non-subs = **S$2,262 GP/yr** (+ compounding repeat) |
+| **Product** | Target top replenishment SKUs: Clear Peach 500g, Lean TMT 1kg |
+| **Figure** | `pitch_analysis/outputs/fig_prize_by_hypothesis.png` |
 
-**Phase 1 (now):**
-- 3 Klaviyo flows: **Clear→Lean**, **Lean→Clear**, **Collagen→protein** (trigger: after 2nd order)
-- 1 Shopify bundle: **Clear + Lean starter** (5% bundle discount, not stackable)
-- Tag tiers from Rec A so VIPs get bundles, not % off
+**Hypothesis:** H2
 
-**Phase 2 (next sprint):**
-- Plug `sku_association_rules.csv` into PDP
-- Plug `first_to_second_sku_matrix.csv` into post-purchase emails
+---
 
-**Why (one number):** Only **28%** of D1 stay in one category. **65%** of D1 Lean buyers also buy Clear. Category breadth jumps at **order 3**.
+### Recommendation B — Cross-sell execution engine (supports C)
 
-**Product depth:** Top SKU pairs: **Peach ↔ White Grape Clear** (36% confidence), **Taro ↔ TMT Lean** (36%). Bundle true GP = **S$73.60**/conversion.
+**Phase 1 timing (critical):**
 
-**Size of prize:** **S$15–16K GP/yr** conservative (flows + bundle scenarios in `bundle_roi_scenarios.csv`)
+| When | Action |
+|------|--------|
+| **Day 14 after order 1 ships** | Email: recommend other protein for **order 2** |
+| **Day 7 after order 2 ships** | Email: recommend 3rd category for **order 3** |
+| **At order 1 checkout** | Clear+Lean bundle offer |
 
-**Execution:** **Medium** — 3 flows + 1 bundle. **4–6 weeks.**
+**Not** "after order 2" — the email fires after order 1 so it influences order 2.
 
-**Slide figures:** `Recommendation_B/outputs/fig_co_purchase_heatmap_d1.png`, `fig_breadth_by_order.png`
+**Prize explained:** See `Recommendation_B/RECOMMENDATION_B.md` — pool = eligible customers, conversion = % converted, uplift = GP gain per customer.
 
 **Full doc:** `Recommendation_B/RECOMMENDATION_B.md`
 
 ---
 
-## 3. LP COGS data — how we use it
+### Recommendation A — VIP guardrail (keep, don't lead)
 
-**File:** `20260616-COGS_Data_Request_LushProtein (1).xlsx`
+Exclude 429 profit D1 + 245 VIP from site-wide % promos. Saves **S$14K GP/yr**. Operational — implement alongside C/D.
 
-| Metric | Before (40% proxy) | After (LP COGS) |
-|--------|-------------------|-----------------|
-| Revenue with known margin | 31% | **74.7%** |
-| SKUs with unit cost | 28 | **129** |
-| Weighted gross margin | 40% assumed | **70.5%** measured |
-| D1 % of profit | 44% | **41%** (still hyper-concentrated) |
-| D1 avg GP | S$228 (proxy) | **S$326** (true hybrid) |
-| Margin leakage (10% on D1) | ~S$24K (estimated) | **S$14K** (true GP base) |
-
-**Method:** True GP on COGS-covered lines + 40% proxy on remainder. See `margin_analysis/MARGIN_ANALYSIS.md`.
-
-**What changed:** Profit decile ranks are **54% stable** — story holds, numbers are sharper. Hero proteins are **more profitable** than we assumed. Accessories margin may be lower — validates "shaker as add-on, not lead."
+**Full doc:** `Recommendation_A/RECOMMENDATION_A.md`
 
 ---
 
-## 4. Market basket analysis
+### Recommendation E — Fix acquisition product mix
 
-### Phase 1 — Done (category level)
+Accessories-first: 20% repeat. Collagen-first: 37%. Stop shaker-led acquisition; 30-day protein upsell for shaker buyers. **S$4,389 GP** if 15% convert.
 
-| Asset | Location |
-|-------|----------|
-| Co-purchase matrix (D1) | `Recommendation_B/outputs/co_purchase_matrix_d1.csv` |
-| 3 Klaviyo flow specs | `Recommendation_B/outputs/klaviyo_cross_sell_flows.csv` |
-| Bundle ROI | `Recommendation_B/outputs/bundle_roi_scenarios.csv` |
-
-### Phase 2 — Done (SKU level)
-
-| Asset | Location |
-|-------|----------|
-| Top 20 association rules | `recommendation_systems/outputs/sku_association_rules.csv` |
-| Next-order matrix | `recommendation_systems/outputs/first_to_second_sku_matrix.csv` |
-| 4 recommender comparison | `recommendation_systems/outputs/recommender_system_comparison.csv` |
-
-**Expected yield (Phase 2):** +2–3% attach on repeat orders; flavour bundles (Peach + TMT) outperform generic links.
+**Hypothesis:** H4
 
 ---
 
-## 5. Four recommendation systems
+## 3. COGS integration
 
-| # | System | Deploy where | Effort | Lift |
-|---|--------|--------------|--------|------|
-| 1 | **Rule-based** | Klaviyo flows | Low | 5–8% |
-| 2 | **Association rules** | PDP bundles | Low-Med | 2–4% |
-| 3 | **Sequential next-best** | Post-purchase email | Medium | 3–5% |
-| 4 | **Item-based CF** | Logged-in "You may also like" | Med-High | 2–3% |
+**Script:** `enrich_finals_with_margin.py` — updates `outputs_finals/*.parquet`
 
-**Item-based CF chosen over user-based** because 67% one-and-done = sparse user vectors; item similarity works from first purchase.
-
-**Full doc:** `recommendation_systems/RECOMMENDER_SYSTEMS.md`
+| Table | New columns |
+|-------|-------------|
+| `lines.parquet` | `unit_cost`, `cogs`, `gross_profit`, `margin_pct`, `pack_size` |
+| `orders.parquet` | `order_gp`, `order_margin_pct`, `n_categories` |
+| `customers.parquet` | `true_gross_profit`, `n_categories_ever`, `crm_tier`, `profit_decile_true` |
 
 ---
 
-## 6. Hierarchical clustering — yes, but not as primary recommender
+## 4. Hypothesis framework (all 5)
 
-**5 clusters** on purchase profiles confirm:
-- **Casual_Clear** = 3,712 customers (86%) — cross-sell target for Rec B
-- **Premium** clusters = 9% of customers, ~40%+ of GP — protect via Rec A
+| ID | Hypothesis | Prize | Rec |
+|----|------------|-------|-----|
+| H1 | Category ladder drives GP + repeat | S$11–17K | C + B |
+| H2 | Subscription captures replenishment | S$2–4K + repeat | D |
+| H3 | Pack-size upgrade (500g→1kg) | S$13K | Product |
+| H4 | First-product steers ceiling | S$4K | E |
+| H5 | VIP discount guardrail | S$14K protected | A |
 
-**Use for:** Segment validation, appendix. **Not for:** Product recommendations (use the 4 systems above).
-
-**Full doc:** `recommendation_systems/HIERARCHICAL_CLUSTERING.md`
-
----
-
-## 7. Findings catalog (prioritised by size of prize)
-
-### Customer concentration
-| Finding | Evidence | Action |
-|---------|----------|--------|
-| GP hyper-concentrated | D1 = **41% true GP**, 43% revenue | VIP programme |
-| Profit ≠ frequency | 245 both, 184 profit-only, 184 freq-only | Two playbooks |
-| 69× GP gap | D1 S$326 vs D10 S$5 (true COGS) | Don't discount D1 |
-| 21 whales | First 10% revenue = 21 customers | Founder outreach |
-
-### Product × category
-| Finding | Evidence | Action |
-|---------|----------|--------|
-| Hero proteins | Lean index 275, Clear 265 | Lead acquisition with Clear/Lean |
-| Cross-sell is norm for D1 | 72% multi-category | Trigger for everyone at order 3 |
-| Clear↔Lean pair | 53–65% D1 co-purchase | Bundle + flows |
-| Collagen quality entry | 30.5% repeat | Collagen→protein flow |
-| Accessories weak lead | VTD index ~68 | 30-day protein upsell |
-
-### Margin (new — COGS)
-| Finding | Evidence | Action |
-|---------|----------|--------|
-| True margin > proxy | **70.5%** weighted on covered SKUs | Stop assuming 40% everywhere |
-| Discount erosion quantified | 10% on D1 = **S$14K GP** | Exclude D1 from site-wide promos |
-| Bundle still profitable | S$73.60 GP after 5% bundle discount | Clear+Lean starter bundle |
+**Full write-up:** `pitch_analysis/HYPOTHESES.md`  
+**Scenarios with pool explained:** `pitch_analysis/outputs/prize_scenarios_explained.csv`
 
 ---
 
-## 8. Combined yield (both recommendations)
+## 5. Recommendation systems + integration demo
 
-| Source | Conservative GP/yr |
-|--------|-------------------|
-| Rec A — stop margin leakage | **S$14–20K** |
-| Rec B — cross-sell flows + bundle | **S$15–16K** |
-| **Combined** | **S$29–36K GP** |
+| System | Deploy | Evidence |
+|--------|--------|----------|
+| Rule-based | Klaviyo day-14 email | 65% Clear↔Lean co-purchase |
+| Association rules | PDP bundle widget | Peach↔White Grape 36% conf, 333 orders |
+| Sequential | Order 2 email | 739 SKU transitions measured |
+| Item-CF | Logged-in page | 83 SKUs, cosine similarity |
 
----
-
-## 9. What goes on slides vs PDF
-
-| Deck (5–6 slides) | PDF / appendix |
-|-------------------|----------------|
-| Narrative: 10% → 41% GP | Full decile tables |
-| Rec A: CRM tiers + S$14K leakage | COGS coverage, rank stability |
-| Rec B: cross-sell heatmap + order 3 | SKU association rules, 4 recommenders |
-| Combined yield: S$29–36K | Hierarchical clustering, full EDA |
-| Next step: deploy Klaviyo tags | `customers_decile_table.csv` definitions |
+**Integration mockups:** `pitch_analysis/INTEGRATION_DEMO.md` (email copy + PDP wireframes with real rules)
 
 ---
 
-## 10. Regenerate everything
+## 6. Combined prize
+
+| Source | GP/yr |
+|--------|-------|
+| Rec C (category ladder) | S$11–17K |
+| Rec D (subscription) | S$2–4K |
+| Rec E (acquisition) | S$4K |
+| Rec A (guardrail) | S$14K protected |
+| **Total** | **S$30–35K** |
+
+---
+
+## 7. Regenerate
 
 ```bash
 python EDA/aditya_findings/run_all.py
 ```
 
-Or step by step:
-```bash
-python EDA/aditya_findings/margin_analysis/run_margin_analysis.py
-python EDA/aditya_findings/Recommendation_A/run_recommendation_a.py
-python EDA/aditya_findings/Recommendation_B/run_recommendation_b.py
-python EDA/aditya_findings/recommendation_systems/sku_market_basket.py
-python EDA/aditya_findings/recommendation_systems/build_recommenders.py
-python EDA/aditya_findings/recommendation_systems/hierarchical_clustering.py
-```
-
 ---
 
-## 11. Folder index
+## 8. Folder index
 
-| Folder | Contents |
-|--------|----------|
-| `margin_analysis/` | COGS integration, true profit deciles, leakage |
-| `Recommendation_A/` | CRM tiers, Klaviyo export, discount erosion proof |
-| `Recommendation_B/` | Cross-sell flows, bundle ROI, co-purchase heatmaps |
-| `recommendation_systems/` | SKU MBA, 4 recommenders, clustering |
-| `20260616-COGS_Data_Request_LushProtein (1).xlsx` | LP margin data |
-
----
-
-*Lead with Rec A + Rec B. Same story: protect the profit core, grow through product structure — not blanket promos.*
+| Folder | Purpose |
+|--------|---------|
+| `pitch_analysis/` | Hypotheses, new recs, integration demo, prize charts |
+| `margin_analysis/` | COGS proof |
+| `Recommendation_A/` | VIP guardrail |
+| `Recommendation_B/` | Cross-sell flows + bundle |
+| `recommendation_systems/` | SKU MBA + 4 recommenders |
+| `outputs_finals/` | Enriched parquets with true margin |

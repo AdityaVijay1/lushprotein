@@ -51,4 +51,19 @@ Customer acquired in 2021 → excluded completely.
 
 **Do not use for analysis:** `do_not_use_these/*_dq_clean.parquet` (DQ-only reference snapshots).
 
-Re-run: `python EDA/13_build_finals_datasets.py`
+Re-run base: `python EDA/13_build_finals_datasets.py`
+
+## Margin enrichment (LP COGS — June 2026)
+
+After building finals, run: `python EDA/aditya_findings/enrich_finals_with_margin.py`
+
+This joins LP COGS from `aditya_findings/20260616-COGS_Data_Request_LushProtein (1).xlsx` and adds:
+
+| Table | Added columns |
+|-------|---------------|
+| `lines.parquet` | `unit_cost`, `cogs`, `gross_profit`, `margin_pct`, `has_cogs`, `gp_method`, `pack_size` |
+| `orders.parquet` | `order_gp`, `order_cogs`, `order_rev`, `order_margin_pct`, `n_categories` |
+| `customers.parquet` | `true_gross_profit`, `avg_margin_pct`, `cogs_coverage_pct`, `n_categories_ever`, `profit_decile_true`, `freq_decile_true`, `crm_tier` |
+| `products.parquet` | `unit_cost_lp`, `has_lp_cogs` |
+
+Summary: `margin_enrichment_summary.json` (74.7% revenue coverage, 70.5% weighted margin)

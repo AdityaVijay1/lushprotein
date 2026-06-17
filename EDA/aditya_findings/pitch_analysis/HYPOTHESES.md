@@ -1,0 +1,85 @@
+# Data-Backed Hypotheses for LushProtein
+
+**Pool:** 4,290 customers | **Margin:** true COGS hybrid (74.7% coverage)
+
+---
+
+## H1: B (primary) + new C
+
+**Hypothesis:** Customers who add a 2nd product category become disproportionately more valuable — not because they order more often alone, but because each order is richer.
+
+**Pattern:** 1-category buyers: 2,514 customers (59% of pool), avg GP S$59, repeat 17%. 3-category: avg GP S$144 (+S$85), repeat 55%.
+
+**Driver:** Clear and Lean are complementary franchises (65% D1 Lean buyers also buy Clear). Single-category buyers are stuck in 'trial' mode — they found one flavour but not the brand ecosystem.
+
+**Opportunity:** Pool: 2,514 single-category buyers. If 8% (201) add a 2nd category reaching GP S$79: S$3,969 GP/yr. If 5% (125) reach 3 categories (GP S$144): +S$10,693 GP/yr.
+
+**Experiment:** After order 1 ships: email at day 14 with complementary category (Clear->Lean or Lean->Clear based on first purchase). Measure: category attach rate at order 2 vs control. Success = +5pp attach within 60 days. Shopify bundle: Clear+Lean starter at checkout for single-category buyers.
+
+**Prize size:** HIGH
+
+---
+
+## H2: C (NEW — lead recommendation)
+
+**Hypothesis:** Repeat buyers who have NOT subscribed are the largest untapped GP pool — they already proved product fit but LP captures none of the replenishment value.
+
+**Pattern:** Subscribers: 713 customers, avg GP S$134, repeat 62%. Non-subs: 3,577, avg GP S$69, repeat 19%. GP gap per customer: S$66.
+
+**Driver:** Hero SKUs (Clear Peach, Lean TMT) have ~48-54 day reorder windows. Without subscribe-and-save, LP re-acquires the same customer every cycle via paid/email — or loses them.
+
+**Opportunity:** Pool: 689 repeaters not on subscription. Freq D1 non-subs: 228. 5% sub conversion x S$66 GP uplift = S$2,262 GP/yr (conservative). 10% on freq D1 non-subs = S$1,497 GP/yr.
+
+**Experiment:** Klaviyo flow: 2nd order fulfilled + 48 days since purchase -> offer Subscribe & Save on exact SKU/flavour (Peach Clear 500g or TMT Lean 1kg). A/B: 10% first-order discount on sub vs free shipping. Success = 8% sub attach on repeaters within 90 days.
+
+**Prize size:** VERY HIGH
+
+---
+
+## H3: D (NEW — product depth)
+
+**Hypothesis:** Profit concentration is driven by pack size and basket premium — not just frequency. Moving buyers from 500g trial to 1kg loyalty packs increases GP per order without acquiring anyone new.
+
+**Pattern:** D1 avg GP S$357 vs D10 S$6 (69x). D1 avg margin 66%. True COGS margin on hero SKUs: ~70%.
+
+**Driver:** 500g Clear is the acquisition SKU (S$45811 revenue rank 1) but 1kg Lean has higher GP/unit. D1 over-indexes on 1kg packs and multi-flavour baskets.
+
+**Opportunity:** Pool: 170 middle-decile repeaters. If 10% upgrade one 500g->1kg order/yr at +S$15 GP/unit x 2 units: S$12,870 GP/yr.
+
+**Experiment:** At order 2 for 500g Clear buyers: email 'Upgrade to 1kg — 15% more servings, better $/serve' with true savings calc. PDP: show 1kg as default for repeat buyers (logged-in).
+
+**Prize size:** MEDIUM-HIGH
+
+---
+
+## H4: E (NEW — acquisition product mix)
+
+**Hypothesis:** First purchase category determines the ceiling — Collagen-first buyers repeat at 2x the rate of Accessories-first buyers, but LP treats all acquisition paths identically.
+
+**Pattern:** Collagen first-tx: 209 customers, 37% repeat, avg rev S$136. Accessories first-tx: 371 customers, 20% repeat, avg rev S$71. Clear first-tx: 20% repeat.
+
+**Driver:** Accessories-first buyers are shaker-only acquirers with no protein habit. Collagen buyers have supplement ritual already — protein cross-sell is natural.
+
+**Opportunity:** Pool: 371 accessories-first buyers. If 15% convert to protein within 30 days at avg GP S$79: S$4,389 GP.
+
+**Experiment:** Mandatory 30-day protein upsell for accessories-first buyers: single-serve sachet trial pack (Peach Clear 25g + TMT Lean 40g) at S$9.90. Measure: protein purchase within 45 days vs control.
+
+**Prize size:** MEDIUM
+
+---
+
+## H5: A (guardrail, not lead)
+
+**Hypothesis:** Blanket promotions are a margin leak on the VIP base — but the bigger prize is growing the middle, not just protecting the top.
+
+**Pattern:** 429 profit D1 = 41% of true GP. VIP (245) = 26% of GP. But 3,677 Standard tier = 54% of GP with avg S$50 GP.
+
+**Driver:** Site-wide 10% off costs S$14K GP on D1 alone — real but small vs S$50K+ from subscription + category ladder.
+
+**Opportunity:** Rec A is an **operational guardrail** (exclude VIP from site-wide promos) saving S$14-20K GP. Not the lead story.
+
+**Experiment:** Tag VIP/Profit D1 in Klaviyo. Run next site-wide sale with VIP exclusion. Compare D1 margin % pre/post.
+
+**Prize size:** LOW-MEDIUM
+
+---

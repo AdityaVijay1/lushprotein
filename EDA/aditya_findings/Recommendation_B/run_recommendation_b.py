@@ -83,8 +83,10 @@ def main():
         {
             "flow_id": "CS-01",
             "name": "Clear → Lean",
-            "trigger": "2nd order fulfilled, first category = Clear Protein",
+            "trigger": "Order 1 fulfilled — customer bought Clear Protein, no Lean yet",
             "delay_days": 14,
+            "fires_before": "Order 2",
+            "target_for_order": 2,
             "target_product": "Lean Protein (Thai Milk Tea or Taro 1kg)",
             "evidence_pct": co_d1.loc["Clear Protein", "Lean Protein"]
             if "Clear Protein" in co_d1.index else 25.0,
@@ -95,8 +97,10 @@ def main():
         {
             "flow_id": "CS-02",
             "name": "Lean → Clear",
-            "trigger": "2nd order fulfilled, first category = Lean Protein",
+            "trigger": "Order 1 fulfilled — customer bought Lean Protein, no Clear yet",
             "delay_days": 14,
+            "fires_before": "Order 2",
+            "target_for_order": 2,
             "target_product": "Clear Protein (Peach or White Grape 500g)",
             "evidence_pct": co_d1.loc["Lean Protein", "Clear Protein"]
             if "Lean Protein" in co_d1.index else 61.7,
@@ -107,8 +111,10 @@ def main():
         {
             "flow_id": "CS-03",
             "name": "Collagen → Protein",
-            "trigger": "1st order Collagen, no protein yet",
+            "trigger": "Order 1 fulfilled — Collagen only, no protein SKU",
             "delay_days": 21,
+            "fires_before": "Order 2",
+            "target_for_order": 2,
             "target_product": "Clear or Lean starter (500g)",
             "evidence_pct": 30.5,
             "evidence_source": "Collagen first-tx repeat rate 30.5%",

@@ -113,7 +113,23 @@ def attach_true_profit(df: pd.DataFrame, lines: pd.DataFrame) -> pd.DataFrame:
         0,
     )
 
-    out = df.merge(cust_gp, on="customer_id", how="left")
+    if "true_gross_profit" in df.columns and "clean_revenue" not in df.columns:
+        df = df.copy()
+        df["clean_revenue"] = pd.to_numeric(df.get("finals_revenue", df.get("total_revenue")), errors="coerce").fillna(0)
+    if "true_gross_profit" in df.columns and df["true_gross_profit"].notna().any():
+        out = df.copy()
+        if "avg_margin_pct" not in out.columns:
+            out["avg_margin_pct"] = np.where(
+                out["clean_revenue"] > 0,
+                out["true_gross_profit"] / out["clean_revenue"],
+                np.nan,
+            )
+        return out
+
+    out = df.merge(cust_gp, on="customer_id", how="left", suffixes=("", "_y"))
+    for col in ["true_gp_covered", "rev_covered", "rev_total_lines", "cogs_coverage_pct"]:
+        if col not in out.columns:
+            out[col] = 0.0
     out["true_gp_covered"] = out["true_gp_covered"].fillna(0)
     out["rev_covered"] = out["rev_covered"].fillna(0)
     out["cogs_coverage_pct"] = out["cogs_coverage_pct"].fillna(0)
