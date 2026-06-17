@@ -10,24 +10,55 @@ import pandas as pd
 # -- Root of the data drop ------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent   # LushProtein_Project_Data_*
 
-# -- Raw file paths -------------------------------------------------------------
-ORDER_FILES = sorted(
-    (BASE_DIR / "1.customer_transaction").glob("1_*.xlsx")
-)
+# -- Medallion Data Lake (Bronze / Silver / Gold) --------------------------------
+DATA_DIR = BASE_DIR / "data"
+BRONZE_DIR = DATA_DIR / "bronze"
+SILVER_DIR = DATA_DIR / "silver"
+GOLD_DIR = DATA_DIR / "gold"
+GOLD_REFERENCE_DIR = GOLD_DIR / "reference"       # DQ-only snapshots (was do_not_use_these)
+GOLD_ANALYTICS_DIR = GOLD_DIR / "analytics"
+GOLD_ANALYTICS_DECILE = GOLD_ANALYTICS_DIR / "decile"
+GOLD_ANALYTICS_CATEGORY = GOLD_ANALYTICS_DIR / "category"
+GOLD_ANALYTICS_FINDINGS = GOLD_ANALYTICS_DIR / "findings"
 
-PRODUCTS_FILE   = BASE_DIR / "2.product_master"   / "2_1.products_master_20260505.xlsx"
-DISCOUNTS_FILE  = BASE_DIR / "3.Discounts"        / "3_1.discounts_export_20260505 - Copy - Copy - Copy.csv"
-CAMPAIGNS_FILE  = BASE_DIR / "4.Campaigns"        / "4_1.Sessions by referrer_20260505.csv"
+# Bronze raw sources (immutable — never write here from pipeline scripts)
+BRONZE_ORDERS_DIR = BASE_DIR / "1.customer_transaction"
+BRONZE_PRODUCTS_DIR = BASE_DIR / "2.product_master"
+BRONZE_DISCOUNTS_DIR = BASE_DIR / "3.Discounts"
+BRONZE_CAMPAIGNS_DIR = BASE_DIR / "4.Campaigns"
+BRONZE_RECHARGE_DIR = BASE_DIR / "5.Recharge_data"
+BRONZE_SUPPLEMENTAL_DIR = BRONZE_DIR / "supplemental"
 
-RECHARGE_ORDERS     = BASE_DIR / "5.Recharge_data" / "5_1.orders_combined_20260505.xlsx"
-RECHARGE_CHECKOUT   = BASE_DIR / "5.Recharge_data" / "5_2.order_items_checkout_20260505.xlsx"
-RECHARGE_REACTIVATED= BASE_DIR / "5.Recharge_data" / "5_3.subscribers_reactivated_20260505.xlsx"
-RECHARGE_CHURNED    = BASE_DIR / "5.Recharge_data" / "5_4.subscriptions_churned_20260505.xlsx"
-RECHARGE_RECURRING  = BASE_DIR / "5.Recharge_data" / "5_5.order_items_recurring_20260505.xlsx"
+# Legacy raw path aliases (backward compatible)
+ORDER_FILES = sorted(BRONZE_ORDERS_DIR.glob("1_*.xlsx"))
+PRODUCTS_FILE   = BRONZE_PRODUCTS_DIR / "2_1.products_master_20260505.xlsx"
+DISCOUNTS_FILE  = BRONZE_DISCOUNTS_DIR / "3_1.discounts_export_20260505 - Copy - Copy - Copy.csv"
+CAMPAIGNS_FILE  = BRONZE_CAMPAIGNS_DIR / "4_1.Sessions by referrer_20260505.csv"
+RECHARGE_ORDERS     = BRONZE_RECHARGE_DIR / "5_1.orders_combined_20260505.xlsx"
+RECHARGE_CHECKOUT   = BRONZE_RECHARGE_DIR / "5_2.order_items_checkout_20260505.xlsx"
+RECHARGE_REACTIVATED= BRONZE_RECHARGE_DIR / "5_3.subscribers_reactivated_20260505.xlsx"
+RECHARGE_CHURNED    = BRONZE_RECHARGE_DIR / "5_4.subscriptions_churned_20260505.xlsx"
+RECHARGE_RECURRING  = BRONZE_RECHARGE_DIR / "5_5.order_items_recurring_20260505.xlsx"
 
-# -- Output dir -----------------------------------------------------------------
-OUTPUT_DIR = BASE_DIR / "EDA" / "outputs"
-OUTPUT_DIR.mkdir(exist_ok=True)
+# Silver / Gold output dirs (canonical medallion locations)
+OUTPUT_DIR = SILVER_DIR          # Silver: cleaned merged tables + lens CSV exports
+FINALS_DIR = GOLD_DIR          # Gold: finals-filtered parquets + enrichment
+
+# Legacy junction targets (EDA/outputs, EDA/outputs_finals → medallion dirs)
+LEGACY_SILVER_JUNCTION = BASE_DIR / "EDA" / "outputs"
+LEGACY_GOLD_JUNCTION = BASE_DIR / "EDA" / "outputs_finals"
+LEGACY_DECILE_JUNCTION = BASE_DIR / "EDA" / "decile_analysis" / "outputs"
+LEGACY_CATEGORY_JUNCTION = BASE_DIR / "EDA" / "category_analysis" / "outputs"
+
+# Ensure medallion dirs exist
+for _medallion_dir in (
+    BRONZE_DIR, BRONZE_SUPPLEMENTAL_DIR,
+    SILVER_DIR, GOLD_DIR, GOLD_REFERENCE_DIR,
+    GOLD_ANALYTICS_DIR, GOLD_ANALYTICS_DECILE,
+    GOLD_ANALYTICS_CATEGORY, GOLD_ANALYTICS_FINDINGS,
+):
+    _medallion_dir.mkdir(parents=True, exist_ok=True)
+
 
 # -- Hero product classification ------------------------------------------------
 # Map product handle keywords -> clean category label

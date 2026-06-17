@@ -1,0 +1,130 @@
+======================================================================
+LUSHPROTEIN EDA    “  DATA QUALITY & OVERVIEW REPORT
+======================================================================
+
+[1] TABLE DIMENSIONS
+  Orders (order-level):      27,350
+  Line items:                50,963
+  Customers:                 13,780
+  Products:                     167
+  Discount codes:               367
+
+[2] DATE RANGE
+  Earliest order: 2019-12-31
+  Latest order:   2026-03-30
+  Cohort span:    2019   “ 2026
+
+[3] ORDERS BY YEAR
+      orders  customers    revenue_sgd       disc_amt  disc_orders  avg_order_value  disc_rate  disc_pct_orders
+year                                                                                                           
+2019       3          3     108.481818       0.000000            0        36.160606   0.000000         0.000000
+2020    2847       1696  456952.094545       0.000000            0       160.503019   0.000000         0.000000
+2021    6259       3815  847930.017273       0.000000            0       135.473721   0.000000         0.000000
+2022    3710       2299  747586.813939   30072.956970          563       201.505880   0.040227         0.151752
+2023    2253       1399  182037.636667   32418.838485         1337        80.797886   0.178089         0.593431
+2024    4261       2621  284970.730606  127407.735455         2950        66.878838   0.447091         0.692326
+2025    6407       4107  409151.528316  222033.176150         3181        63.860079   0.542667         0.496488
+2026    1610       1230  184214.480000   52251.520000          993       114.418932   0.283645         0.616770
+
+[4] ORDERS BY COUNTRY
+                   orders       revenue
+Shipping: Country                      
+Malaysia            14278  1.387914e+06
+Singapore           11345  1.570337e+06
+Hong Kong             308  1.925937e+04
+Indonesia             263  1.081354e+04
+Japan                  64  1.081830e+03
+Australia              19  1.725320e+03
+Philippines             5  4.297400e+02
+United Kingdom          5  7.077500e+02
+United States           4  3.577300e+02
+Brunei                  2  5.251300e+02
+
+[5] ORDERS BY CHANNEL
+                  orders  customers       revenue       disc_amt         aov  disc_rate
+channel                                                                                
+Direct / Organic   13208       7252  1.370389e+06  267625.767665  103.754453   0.195292
+Subscription       10230       4584  1.465815e+06  121901.998788  143.285883   0.083163
+Marketplace         3268       2126  2.449797e+05   71559.452121   74.963174   0.292104
+Paid Social          473        442  2.112678e+04     659.657879   44.665502   0.031224
+Email                128        123  7.599727e+03    1557.540606   59.372869   0.204947
+Affiliate             40         34  2.877520e+03     879.810000   71.938000   0.305753
+Paid Search            3          3  1.647000e+02       0.000000   54.900000   0.000000
+
+[6] MONTHLY REVENUE TREND (SGD)
+         orders       revenue
+month                        
+2024-04     322  21674.804545
+2024-05     414  28273.836061
+2024-06     311  19628.188485
+2024-07     781  58914.183939
+2024-08     521  26981.904242
+2024-09     424  27556.944242
+2024-10     300  14243.772121
+2024-11     366  29715.475455
+2024-12     212  12850.261515
+2025-01     146  11043.690000
+2025-02     192  14052.616364
+2025-03     335  21490.736364
+2025-04     637  25974.855152
+2025-05     681  30775.763030
+2025-06     654  33559.483636
+2025-07     715  41720.063770
+2025-08     635  34922.910000
+2025-09     566  52343.600000
+2025-10     605  47296.570000
+2025-11     859  60014.030000
+2025-12     382  35957.210000
+2026-01     472  44351.090000
+2026-02     594  56861.250000
+2026-03     544  83002.140000
+
+[7] NULL-RATE AUDIT (order-level key columns)
+  customer_id                            0.0% null
+  order_date                             0.0% null
+  Price: Total                           0.0% null
+  Price: Total Discount                  0.0% null
+  channel                                0.0% null
+  product_category                       0.0% null
+  Shipping: Country                      3.9% null
+  Browser: UTM Source                   94.9% null
+  Tags                                  62.3% null
+
+[8] PAYMENT STATUS
+Payment: Status
+paid                  27231
+partially_refunded      119
+
+[9] FULFILMENT STATUS
+Order Fulfillment Status
+fulfilled    27121
+NaN            207
+partial         22
+
+[10] PRODUCT MASTER   “ active SKUs by category
+category
+Other            17
+Lean Protein      7
+Clear Protein     6
+Collagen Glow     2
+Soy Protein       1
+Accessories       1
+
+[11] DISCOUNT CODE OVERVIEW
+  Total codes:          367
+  Active codes:         149
+  Codes with >0 uses:   163
+  Total redemptions:    2,781
+
+  By Value Type:
+Value Type
+app              359
+fixed_amount     128
+percentage      2294
+
+  By Type:
+Type
+Amount Off       2410
+App Discount      359
+Buy X Get Y         9
+Free Shipping       3

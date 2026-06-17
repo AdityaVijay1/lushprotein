@@ -6,7 +6,7 @@ Mirrors decile_lens1.ipynb + decile_lens2.ipynb logic:
   - Lens 1: profit decile (profit_proxy = revenue × 40%) + frequency decile (clean_orders)
   - Lens 2: 5-tier migration 2022–2023 vs 2024–2025 (both-period customers)
 
-Outputs → EDA/decile_analysis/outputs/
+Outputs → data/gold/analytics/decile/ (legacy: EDA/decile_analysis/outputs/)
 
 Run: python EDA/decile_analysis/run_decile_analysis.py
 """
@@ -22,8 +22,16 @@ import pandas as pd
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 EDA_DIR = SCRIPT_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-OUT_DIR = SCRIPT_DIR / "outputs"
+
+def _load_config():
+    spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+_cfg = _load_config()
+FINALS_DIR = _cfg.FINALS_DIR
+OUT_DIR = _cfg.GOLD_ANALYTICS_DECILE
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MARGIN_RATE = 0.40

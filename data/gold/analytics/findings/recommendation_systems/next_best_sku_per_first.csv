@@ -1,0 +1,37 @@
+first_order_sku,recommended_next_sku,transition_count,first_sku_customers,p_second_given_first
+0724999808361|default,clear-protein|Peach,7,36,0.1944
+0724999810463|Thai Milk Tea,lean-protein|Thai Milk Tea,10,21,0.4762
+0724999810470|Taro,clear-protein|Peach,7,16,0.4375
+better-whey|Cocoa Dinosaur,better-whey|Cocoa Dinosaur,38,90,0.4222
+better-whey|Matchawhey,better-whey|Matchawhey,13,34,0.3824
+better-whey|Natural (Unflavoured),better-whey|Natural (Unflavoured),12,35,0.3429
+better-whey|Teh Tarik,better-whey|Teh Tarik,7,18,0.3889
+better-whey|Vanilla,better-whey|Vanilla,5,16,0.3125
+clear-protein-25g-single-sachet|Peach,lean-protein|Thai Milk Tea,6,25,0.24
+clear-protein-25g-single-sachet|White Grape,lean-protein|Thai Milk Tea,10,28,0.3571
+clear-protein|Peach,clear-protein|Peach,85,182,0.467
+clear-protein|White Grape,clear-protein|White Grape,50,136,0.3676
+collagen-glow|1 x 300g pack (30 servings),collagen-glow|1 x 300g pack (30 servings),7,14,0.5
+collagen-glow|300g,collagen-glow|1 x 300g pack (30 servings),4,12,0.3333
+collagen-glow|300g Pack,collagen-glow|300g Pack,17,38,0.4474
+collagen-glow|300g Pack (30 servings),collagen-glow|300g Pack (30 servings),14,25,0.56
+collagen-glow|Natural (Unflavoured),collagen-glow|Natural (Unflavoured),16,29,0.5517
+collagen-glow|Unflavoured,collagen-glow|Unflavoured,5,12,0.4167
+creatine-monohydrate-sachet|10 x 5g (10 servings) *Most Po,creatine-monohydrate-sachet|10 x 5g (10 servings) *Most Po,4,11,0.3636
+lean-protein|Taro,lean-protein|Taro,43,80,0.5375
+lean-protein|Thai Milk Tea,lean-protein|Thai Milk Tea,68,144,0.4722
+lushprotein-clear-shaker|White,lean-protein|Thai Milk Tea,39,107,0.3645
+lushprotein-clear-shaker|default,clear-protein|Peach,17,82,0.2073
+lushprotein-lean-protein-40g-single-serve|Taro,lean-protein|Taro,20,44,0.4545
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,lean-protein|Thai Milk Tea,21,41,0.5122
+micronized-creatine-monohydrate|1 x 250g Pack (50 servings),micronized-creatine-monohydrate|1 x 250g Pack (50 servings),18,25,0.72
+micronized-creatine-monohydrate|default,micronized-creatine-monohydrate|default,14,38,0.3684
+nan|default,nan|default,214,306,0.6993
+plant-protein|Cocoa Dinosaur,plant-protein|Cocoa Dinosaur,18,38,0.4737
+plant-protein|Natural (Unflavoured),plant-protein|Natural (Unflavoured),7,11,0.6364
+plant-protein|Vanilla,plant-protein|Vanilla,12,23,0.5217
+prime-whey-isolate|1kg,prime-whey-isolate|1kg,9,20,0.45
+prime-whey-isolate|Cocoa Dinosaur,prime-whey-isolate|Cocoa Dinosaur,8,15,0.5333
+prime-whey-isolate|Natural (Unflavoured),prime-whey-isolate|Natural (Unflavoured),11,17,0.6471
+soy-protein-isolate|Natural (Unflavoured),soy-protein-isolate|Natural (Unflavoured),15,39,0.3846
+soy-protein-isolate|Unflavoured,soy-protein-isolate|Unflavoured,9,18,0.5

@@ -57,35 +57,39 @@ Getting first-time buyers to make a **second purchase within 60 days**. The seco
 ```
 LushProtein_Project_Data_20260505/
 |
-├── 1.customer_transaction/          # Shopify order exports (2020–2026, 7 yearly files)
-├── 2.product_master/                # Full product catalogue with SKUs and pricing
-├── 3.Discounts/                     # All promotional codes and redemption data
-├── 4.Campaigns/                     # Pre-aggregated website traffic by referrer/UTM
-├── 5.Recharge_data/                 # Subscription platform data (orders, churn, reactivation)
+├── data/                            # Medallion Data Lake (canonical data)
+│   ├── bronze/                      # Raw source catalog + supplemental refs
+│   ├── silver/                      # Cleaned merged tables (was EDA/outputs/)
+│   ├── gold/                        # Finals cohort + analytics (was EDA/outputs_finals/)
+│   └── pipeline/                    # Bronze→Silver→Gold orchestrators
 |
-├── EDA/                             # Python EDA scripts
-│   ├── 00_config.py                 # Paths, product classifier, channel classifier
-│   ├── 01_load_and_merge.py         # Loads all sources, builds Parquet cache
-│   ├── 02_data_quality.py           # Null audits, data quality report
-│   ├── 03_customer_retention.py     # Cohort retention, time-to-2nd-purchase, RFM
-│   ├── 04_product_analysis.py       # Product stickiness, cross-sell, SKU loyalty
-│   ├── 05_channel_discount.py       # Channel quality, discount sensitivity
-│   ├── 06_subscription_churn.py     # Subscription LTV, churn reasons, win-backs
-│   ├── run_eda.py                   # Orchestrator — runs all scripts in order
-│   └── outputs/                     # Generated CSVs and Parquet files
+├── 1.customer_transaction/          # Bronze: Shopify order exports (gitignored)
+├── 2.product_master/                # Bronze: product catalogue
+├── 3.Discounts/                     # Bronze: promotional codes
+├── 4.Campaigns/                     # Bronze: traffic data (not yet loaded)
+├── 5.Recharge_data/                 # Bronze: subscription platform data
 |
-├── visualizations/                  # Presentation-ready chart scripts
-│   ├── 01_revenue_and_volume.py
-│   ├── 02_retention_overview.py
-│   ├── 03_product_and_crosssell.py
-│   ├── 04_subscription_churn.py
-│   ├── 05_discount_channel.py
-│   ├── run_visualizations.py        # Runs all chart scripts in one command
-│   └── charts/                      # 22 PNG charts (150 dpi, presentation-ready)
+├── EDA/                             # Python analysis scripts (logic layer)
+│   ├── 00_config.py                 # Paths — SILVER_DIR, GOLD_DIR, medallion
+│   ├── 01_load_and_merge.py         # Bronze → Silver
+│   ├── 02–12_*.py                   # Silver exports
+│   ├── 13_build_finals_datasets.py  # Silver → Gold
+│   ├── outputs/                     # Junction → data/silver/
+│   ├── outputs_finals/              # Redirect → data/gold/ (see README there)
+│   ├── decile_analysis/             # Gold analytics scripts
+│   ├── category_analysis/           # Gold analytics scripts
+│   └── aditya_findings/             # Gold analytics + recommendations
 |
-├── LushProtein_Data_Glossary_20260505.xlsx
-├── LushProtein_Source_to_Target_Mapping_Exercise.xlsx
-└── README.md                        # This file
+├── visualizations/                  # Presentation charts (reads Silver/Gold exports)
+```
+
+**Medallion docs:** `data/README.md` · **Run full pipeline:** `python data/pipeline/run_full_pipeline.py`
+
+### Legacy structure (pre-medallion)
+
+```
+├── EDA/outputs/                     # → now data/silver/ (junction)
+├── EDA/outputs_finals/              # → now data/gold/
 ```
 
 ---

@@ -95,7 +95,12 @@ def main():
         sys.exit(1)
     else:
         print("ALL SCRIPTS COMPLETED SUCCESSFULLY")
-        print(f"\nOutputs saved to: {EDA_DIR / 'outputs'}")
+        # Import config for medallion path
+        import importlib.util
+        _spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
+        _cfg = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_cfg)
+        print(f"\nSilver layer saved to: {_cfg.SILVER_DIR}")
 
 if __name__ == "__main__":
     main()

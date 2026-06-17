@@ -1,0 +1,6 @@
+cohort_year,n_customers,avg_first_order_sgd,pct_discounted,avg_discount_depth_pct,top_channel
+2020,1696,124.22,0.0,0.0,Direct / Organic
+2021,3334,96.44,0.0,0.0,Direct / Organic
+2022,1462,130.71,0.1389,0.4107,Direct / Organic
+2023,873,66.13,0.6105,0.2297,Subscription
+2024,2015,59.3,0.8144,0.4297,Subscription

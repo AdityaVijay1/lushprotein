@@ -21,8 +21,19 @@ import seaborn as sns
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 EDA_DIR = SCRIPT_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-OUT = SCRIPT_DIR / "outputs" / "d1_profile"
+
+
+def _load_config():
+    spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_cfg = _load_config()
+FINALS_DIR = _cfg.FINALS_DIR
+OUT_DIR = _cfg.GOLD_ANALYTICS_DECILE
+OUT = OUT_DIR / "d1_profile"
 OUT.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(EDA_DIR / "aditya_findings"))

@@ -30,9 +30,6 @@ MARGIN_RATE = 0.40  # profit proxy — no SKU-level COGS in source data
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 EDA_DIR = SCRIPT_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-OUT_DIR = SCRIPT_DIR / "outputs"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def _load_config():
@@ -43,6 +40,9 @@ def _load_config():
 
 
 cfg = _load_config()
+FINALS_DIR = cfg.FINALS_DIR
+OUT_DIR = cfg.GOLD_ANALYTICS_CATEGORY
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 classify_product = cfg.classify_product
 
 print("=" * 72)

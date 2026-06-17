@@ -1,0 +1,11 @@
+revenue_slice,customers_needed,pct_of_base
+1%-10% of revenue,14,0.001
+11%-20% of revenue,60,0.0044
+21%-30% of revenue,142,0.0103
+31%-40% of revenue,300,0.0218
+41%-50% of revenue,564,0.0409
+51%-60% of revenue,998,0.0724
+61%-70% of revenue,1735,0.1259
+71%-80% of revenue,3084,0.2238
+81%-90% of revenue,5590,0.4057
+91%-100% of revenue,13780,1.0

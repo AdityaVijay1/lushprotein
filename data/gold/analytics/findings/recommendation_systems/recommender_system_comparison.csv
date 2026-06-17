@@ -1,0 +1,5 @@
+system,data_needed,cold_start,personalisation,best_use,build_effort,expected_attach_lift
+1. Rule-based,Category T3 cross-sell table,Excellent — works on 1st purchase,Low — same rules for all,"Klaviyo flows, post-purchase emails",Low (1 day),5-8%
+2. Association rules,Same-order SKU pairs (lines.parquet),Good — needs basket history,Medium — SKU-specific,PDP 'Frequently bought together',Low-Medium (MBA script),2-4% on PDP
+3. Sequential next-best,1st → 2nd order transitions,Medium — needs 1 prior order,High — order-sequence aware,Post-purchase email at order 2,Medium,3-5% on repeat orders
+4. Item-based CF,Customer × SKU purchase matrix,Poor for new SKUs/customers,High — similarity-based,Logged-in 'You may also like',Medium-High,2-3% incremental vs rules

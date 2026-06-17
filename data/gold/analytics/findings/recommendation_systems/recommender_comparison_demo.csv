@@ -1,0 +1,6 @@
+input_sku,input_category,rule_based,association_rules,sequential_next,item_cf_top3
+clear-protein|Peach,Clear Protein,Lean Protein; Accessories,clear-protein|White Grape,clear-protein|Peach,clear-protein|White Grape(0.41); lushprotein-clear-shaker|White(0.22); lean-protein|Thai Milk Tea(0.16)
+clear-protein|White Grape,Clear Protein,Lean Protein; Accessories,clear-protein|Peach,clear-protein|White Grape,clear-protein|Peach(0.41); lushprotein-clear-shaker|White(0.19); lean-protein|Thai Milk Tea(0.14)
+lean-protein|Thai Milk Tea,Lean Protein,Clear Protein; Accessories,,lean-protein|Thai Milk Tea,lean-protein|Taro(0.40); lushprotein-clear-shaker|White(0.30); clear-protein|Peach(0.16)
+lean-protein|Taro,Lean Protein,Clear Protein; Accessories,lean-protein|Thai Milk Tea; lushprotein-clear-shaker|White,lean-protein|Taro,lean-protein|Thai Milk Tea(0.40); lushprotein-clear-shaker|White(0.31); clear-protein|White Grape(0.13)
+collagen-glow|Natural (Unflavoured),Collagen Glow,Clear Protein,,collagen-glow|Natural (Unflavoured),collagen-glow|Unflavoured(0.26); lushprotein-clear-shaker|default(0.18); collagen-glow|300g Pack(0.18)

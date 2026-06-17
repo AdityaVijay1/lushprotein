@@ -14,12 +14,18 @@ import seaborn as sns
 
 FINDINGS_DIR = Path(__file__).resolve().parent
 EDA_DIR = FINDINGS_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-OUT = FINDINGS_DIR / "pitch_analysis" / "outputs"
-OUT.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(FINDINGS_DIR))
-from _shared import MARGIN_PROXY, assign_decile, crm_tier  # noqa: E402
+from _shared import (  # noqa: E402
+    MARGIN_PROXY,
+    assign_decile,
+    crm_tier,
+    FINALS_DIR,
+    DECILE_OUT,
+    findings_output_dir,
+)
+
+OUT = findings_output_dir("pitch_analysis")
 
 plt.rcParams.update({"figure.dpi": 150, "font.size": 10})
 sns.set_theme(style="whitegrid")
@@ -181,7 +187,7 @@ def build_hypotheses(pool, ladder, pack, sub_opp, orders, lines):
     })
 
     # H4 - First product steering
-    dt = pd.read_csv(EDA_DIR / "decile_analysis" / "outputs" / "customers_decile_table.csv")
+    dt = pd.read_csv(DECILE_OUT / "customers_decile_table.csv")
     fp = dt.groupby("first_product_cat").agg(n=("customer_id", "count"), repeat=("is_repeat", "mean"),
                                               avg_rev=("clean_revenue", "mean")).reset_index()
     collagen = fp[fp["first_product_cat"] == "Collagen Glow"]
@@ -292,7 +298,7 @@ def build_scenarios_table(pool, ladder, sub_opp):
 
 def build_integration_demo():
     """Markdown demo of how recommenders plug into email + website."""
-    rules = pd.read_csv(FINDINGS_DIR / "recommendation_systems" / "outputs" / "sku_association_rules.csv")
+    rules = pd.read_csv(findings_output_dir("recommendation_systems") / "sku_association_rules.csv")
     top = rules.head(5)
 
     demo = """# Integration Demo — Recommendation Systems on Website & Email

@@ -12,9 +12,26 @@ import pandas as pd
 
 FINDINGS_DIR = Path(__file__).resolve().parent
 EDA_DIR = FINDINGS_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-DECILE_OUT = EDA_DIR / "decile_analysis" / "outputs"
+
+_cfg_spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
+_cfg = importlib.util.module_from_spec(_cfg_spec)
+_cfg_spec.loader.exec_module(_cfg)
+
+FINALS_DIR = _cfg.FINALS_DIR
+SILVER_DIR = _cfg.SILVER_DIR
+DECILE_OUT = _cfg.GOLD_ANALYTICS_DECILE
+CATEGORY_OUT = _cfg.GOLD_ANALYTICS_CATEGORY
+GOLD_FINDINGS_DIR = _cfg.GOLD_ANALYTICS_FINDINGS
 COGS_FILE = FINDINGS_DIR / "20260616-COGS_Data_Request_LushProtein (1).xlsx"
+# Bronze supplemental copy (same file)
+COGS_BRONZE = _cfg.BRONZE_SUPPLEMENTAL_DIR / "cogs" / COGS_FILE.name
+
+
+def findings_output_dir(module_name: str) -> Path:
+    """Gold analytics output path for an aditya_findings module."""
+    out = GOLD_FINDINGS_DIR / module_name
+    out.mkdir(parents=True, exist_ok=True)
+    return out
 
 MARGIN_PROXY = 0.40
 DECILE_BEST_FIRST = [f"D{i}" for i in range(1, 11)]
@@ -29,10 +46,7 @@ CHART_STYLE = {
 
 
 def load_config():
-    spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+    return _cfg
 
 
 def load_cogs_map() -> dict[str, float]:

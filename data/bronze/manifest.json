@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-06-17T17:33:25.121455+00:00",
+  "architecture": "medallion",
+  "sources": [
+    {
+      "name": "orders",
+      "path": "1.customer_transaction",
+      "files": [
+        "1_1.orders-2020_20260505.xlsx",
+        "1_2.orders-2021_20260505.xlsx",
+        "1_3.orders-2022_20260505.xlsx",
+        "1_4.orders-2023_20260505.xlsx",
+        "1_5.orders-2024_20260505.xlsx",
+        "1_6.orders-2025_20260505.xlsx",
+        "1_7.orders-2026_20260505.xlsx"
+      ],
+      "exists": true
+    },
+    {
+      "name": "products",
+      "path": "2.product_master",
+      "files": [
+        "2_1.products_master_20260505.xlsx"
+      ],
+      "exists": true
+    },
+    {
+      "name": "discounts",
+      "path": "3.Discounts",
+      "files": [
+        "3_1.discounts_export_20260505 - Copy - Copy - Copy.csv"
+      ],
+      "exists": true
+    },
+    {
+      "name": "recharge",
+      "path": "5.Recharge_data",
+      "files": [
+        "5_1.orders_combined_20260505.xlsx",
+        "5_2.order_items_checkout_20260505.xlsx",
+        "5_3.subscribers_reactivated_20260505.xlsx",
+        "5_4.subscriptions_churned_20260505.xlsx",
+        "5_5.order_items_recurring_20260505.xlsx"
+      ],
+      "exists": true
+    }
+  ]
+}

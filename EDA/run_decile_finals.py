@@ -26,7 +26,7 @@ def _load_config():
     return mod
 
 cfg = _load_config()
-FINALS_DIR = cfg.BASE_DIR / "EDA" / "outputs_finals"
+FINALS_DIR = cfg.FINALS_DIR
 MARGIN_RATE = 0.40
 
 PERIOD_1_START = pd.Timestamp("2022-01-01", tz="Asia/Singapore")

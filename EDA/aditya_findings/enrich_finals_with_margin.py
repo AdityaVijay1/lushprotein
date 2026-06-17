@@ -1,5 +1,5 @@
 """
-Enrich outputs_finals parquets with true COGS margin fields.
+Enrich Gold layer parquets (data/gold/) with true COGS margin fields.
 
 Adds to lines.parquet:  unit_cost, cogs, gross_profit, margin_pct, has_cogs
 Adds to orders.parquet: order_gp, order_cogs, order_margin_pct
@@ -18,8 +18,13 @@ import pandas as pd
 
 FINDINGS_DIR = Path(__file__).resolve().parent
 EDA_DIR = FINDINGS_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
 sys.path.insert(0, str(FINDINGS_DIR))
+
+import importlib.util
+_spec = importlib.util.spec_from_file_location("lp_config", EDA_DIR / "00_config.py")
+_cfg = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_cfg)
+FINALS_DIR = _cfg.FINALS_DIR
 
 from _shared import (  # noqa: E402
     MARGIN_PROXY,

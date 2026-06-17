@@ -1,0 +1,15 @@
+segment,category,category_profit_sgd,pct_ever_buying_cat,pct_buying_cat_on_first_trans,n_first_tx_buyers,pct_ever_buyers_on_first_trans,tot_vtd_sgd,avg_vtd_sgd,vtd_index,cohort_avg_vtd_sgd
+all_frequency,Unknown,69576.81,0.3331,0.3214,1379,0.965,96340.65,69.86,135.8,51.46
+all_frequency,Clear Protein,53293.32,0.3177,0.2956,1268,0.9303,62768.31,49.5,96.2,51.46
+all_frequency,Other,52044.46,0.3207,0.2709,1162,0.8445,58308.03,50.18,97.5,51.46
+all_frequency,Lean Protein,36881.95,0.2676,0.235,1008,0.878,43360.42,43.02,83.6,51.46
+all_frequency,Accessories,3136.61,0.2079,0.1809,776,0.87,27377.9,35.28,68.6,51.46
+all_frequency,Collagen Glow,13727.13,0.0958,0.0762,327,0.7956,18711.04,57.22,111.2,51.46
+all_frequency,Soy Protein,4716.15,0.0448,0.0357,153,0.7969,6035.55,39.45,76.7,51.46
+d1_frequency,Unknown,20590.76,0.4825,0.4149,178,0.8599,37247.16,209.25,127.2,164.5
+d1_frequency,Other,20784.0,0.5781,0.3077,132,0.5323,18335.63,138.91,84.4,164.5
+d1_frequency,Clear Protein,13139.93,0.359,0.2331,100,0.6494,15790.02,157.9,96.0,164.5
+d1_frequency,Accessories,450.81,0.3147,0.1702,73,0.5407,8394.7,115.0,69.9,164.5
+d1_frequency,Lean Protein,10755.75,0.3357,0.1585,68,0.4722,9961.08,146.49,89.1,164.5
+d1_frequency,Collagen Glow,6925.99,0.2517,0.1305,56,0.5185,7113.96,127.03,77.2,164.5
+d1_frequency,Soy Protein,1830.21,0.0909,0.0373,16,0.4103,1881.27,117.58,71.5,164.5

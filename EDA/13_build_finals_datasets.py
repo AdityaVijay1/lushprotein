@@ -2,7 +2,7 @@
 13_build_finals_datasets.py
 Build finals-filtered Parquet datasets for downstream analysis.
 
-Does NOT modify EDA/outputs/ (midterm base). Writes to EDA/outputs_finals/.
+Does NOT modify Silver layer. Writes to data/gold/ (FINALS_DIR).
 
 Filter logic (customer-cut LP-F03 — matches 12_finals_deep_dive.py):
   Layer 1 — DQ-02/03/04 on all orders
@@ -11,7 +11,7 @@ Filter logic (customer-cut LP-F03 — matches 12_finals_deep_dive.py):
   Layer 3 — exclude Jul/Nov order months; exclude elite handle from lines
 
 Primary outputs (orders.parquet, lines.parquet, customers.parquet) = all layers applied.
-Reference DQ snapshots → outputs_finals/do_not_use_these/ only.
+Reference DQ snapshots → data/gold/reference/ only.
 
 Run after: python EDA/01_load_and_merge.py  (or full run_eda.py)
 """
@@ -32,8 +32,8 @@ def _load_config():
 
 cfg = _load_config()
 OUT = cfg.OUTPUT_DIR
-FINALS_OUT = cfg.BASE_DIR / "EDA" / "outputs_finals"
-DO_NOT_USE = FINALS_OUT / "do_not_use_these"
+FINALS_OUT = cfg.FINALS_DIR
+DO_NOT_USE = cfg.GOLD_REFERENCE_DIR
 ORDER_FILES = cfg.ORDER_FILES
 
 EXCLUDE_HANDLE = "better-whey-protein-elite"

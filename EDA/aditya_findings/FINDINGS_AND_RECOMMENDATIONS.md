@@ -154,6 +154,15 @@ Accessories-first: 20% repeat. Collagen-first: 37%. Stop shaker-led acquisition;
 ## 7. Regenerate
 
 ```bash
+# Full medallion pipeline
+python data/pipeline/run_full_pipeline.py
+
+# Or layer by layer
+python data/pipeline/run_bronze_to_silver.py
+python data/pipeline/run_silver_to_gold.py
+python data/pipeline/run_gold_analytics.py
+
+# Legacy entry point (Silver scripts only)
 python EDA/aditya_findings/run_all.py
 ```
 
@@ -163,6 +172,7 @@ python EDA/aditya_findings/run_all.py
 
 | Folder | Purpose |
 |--------|---------|
+| `data/` | **Medallion data lake** — bronze/silver/gold + pipeline |
 | `pitch_analysis/` | Hypotheses, new recs, integration demo, prize charts |
 | `margin_analysis/` | COGS proof |
 | `Recommendation_A/` | VIP guardrail |

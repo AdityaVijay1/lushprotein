@@ -1,0 +1,6 @@
+target_tier,customers,avg_ltv,avg_orders
+Tier 1: Loyal + Subscribed,581,907.3378454076045,7.647160068846816
+Tier 2: Loyal Non-Sub,1651,803.6857206444,5.253785584494246
+Tier 3: 2-order,1972,184.90100989612145,2.0
+Tier 4: One-and-done,8597,79.90188817296159,1.0
+Other,979,0.0,0.0

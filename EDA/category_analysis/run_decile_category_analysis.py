@@ -28,9 +28,6 @@ CALENDAR_YEARS = [2022, 2023, 2024, 2025]
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 EDA_DIR = SCRIPT_DIR.parent
-FINALS_DIR = EDA_DIR / "outputs_finals"
-DECILE_CUST_PATH = EDA_DIR / "decile_analysis" / "outputs" / "customers_decile_table.csv"
-OUT_BASE = SCRIPT_DIR / "outputs"
 
 
 def _load_config():
@@ -38,6 +35,12 @@ def _load_config():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
+
+
+_cfg = _load_config()
+FINALS_DIR = _cfg.FINALS_DIR
+DECILE_CUST_PATH = _cfg.GOLD_ANALYTICS_DECILE / "customers_decile_table.csv"
+OUT_BASE = _cfg.GOLD_ANALYTICS_CATEGORY
 
 
 def _load_data():

@@ -1,0 +1,43 @@
+{
+  "generated_by": "EDA/decile_analysis/run_decile_analysis.py",
+  "source": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs_finals",
+  "pool_customers": 4290,
+  "pool_revenue_sgd": 551884.34,
+  "margin_rate": 0.4,
+  "filters": [
+    "outputs_finals customers.parquet (all LP finals filters pre-applied)",
+    "exclude 100% marketplace channel customers",
+    "exclude customers with 0 retained orders"
+  ],
+  "decile_logic": {
+    "profit_decile": "pd.qcut on rank(profit_proxy); D1=highest profit",
+    "freq_decile": "pd.qcut on rank(clean_orders); D1=most frequent",
+    "profit_proxy": "clean_revenue * 0.4"
+  },
+  "lens2_periods": {
+    "period_1": "2022-01-01 to 2023-12-31",
+    "period_2": "2024-01-01 to 2025-12-31",
+    "both_period_customers": 165,
+    "churned_p1_only": 1281
+  },
+  "headline_stats": {
+    "d1_profit_pct_revenue": 0.4437,
+    "d1_freq_pct_transactions": 0.3212,
+    "d1_both_customers": 244,
+    "equal_rev_slice1_customers": 21
+  },
+  "files": {
+    "customers_decile_table.csv": 4290,
+    "profit_decile_summary.csv": 10,
+    "frequency_decile_summary.csv": 10,
+    "decile_overlap_matrix.csv": "10x10",
+    "decile_overlap_summary.csv": 4,
+    "equal_revenue_slicing.csv": 10,
+    "migration_customer_table.csv": 165,
+    "migration_matrix.csv": "5x5",
+    "next_t5_to_t1_jumpers.csv": 5,
+    "next_t1_dropped.csv": 19,
+    "next_churned_customers.csv": 1281,
+    "next_tier_revenue_change.csv": 5
+  }
+}
