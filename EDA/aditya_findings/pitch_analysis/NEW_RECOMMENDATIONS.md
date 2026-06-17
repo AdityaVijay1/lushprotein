@@ -29,25 +29,36 @@ Clear and Lean are complementary (65% D1 Lean buyers also buy Clear). Single-cat
 - 8% add 2nd category: **S$3,969 GP/yr**
 - 8% of middle decile (D5–D7): **S$2,067 GP/yr**
 
-### Experiment
-- **Day 14 after order 1:** email complementary category (Rec B flows)
-- **Day 7 after order 2:** email 3rd category (Collagen or 2nd flavour)
-- **Checkout:** Clear+Lean bundle for single-category buyers
-- **Success metric:** +5pp category attach within 60 days
+### Execution — 4-layer stack (see `FOUNDER_MEETING_PREP.md` Section 2A)
 
-### Execution
-Rec B Phase 1 flows + bundle. **4–6 weeks.**
+**Layer 1 — Klaviyo flows (week 1–2):**
+
+| Flow | Trigger | Delay | Recommend |
+|------|---------|-------|-----------|
+| CS-01 | Order 1 has Clear | Day 14 | Lean TMT/Taro 1kg |
+| CS-02 | Order 1 has Lean | Day 14 | Clear Peach/White Grape 500g |
+| CS-03 | Order 1 Collagen only | Day 21 | Clear Peach starter |
+| CS-04 | Order 2 fulfilled | Day 7 | Collagen or 2nd flavour |
+| CS-05 | Order 2+, D5–D7, 1-cat stuck | Day 7 | Same as CS-04 |
+
+**Layer 2 — Checkout & PDP (week 2–3):** Clear+Lean bundle (S$73.60 true GP), association-rule widgets on top 5 PDPs.
+
+**Layer 3 — Product logic:** `first_to_second_sku_matrix.csv` + `sku_association_rules.csv` — SKU-specific, not generic.
+
+**Layer 4 — Measure at 60 days:** +5pp category attach; 5–8% email click-to-purchase.
+
+**Full playbook:** `FOUNDER_MEETING_PREP.md` · **Mockups:** `INTEGRATION_DEMO.md` · **Flows CSV:** `Recommendation_B/outputs/klaviyo_cross_sell_flows.csv`
 
 **Chart:** `pitch_analysis/outputs/fig_category_ladder.png`
 
 ---
 
-## Recommendation D — Subscribe the repeaters (Product: replenishment SKUs)
+## Recommendation D — Build a subscription growth engine (LEAD)
 
-**One sentence:** 689 customers have ordered 2+ times but never subscribed. Subscribers repeat at **62%** vs **19%** for non-subs.
+**One sentence:** Subscribers repeat at **62%** vs **19%** for non-subs — expand subscription across **four tiers**, not just 689 repeat non-subscribers, to lock replenishment and build D1 customers.
 
 ### Hypothesis
-Repeat non-subscribers proved product fit but LP captures no replenishment value. Hero SKUs (Clear Peach, Lean TMT) have 48–54 day reorder windows.
+Repeat non-subscribers proved product fit but LP captures no replenishment value. Hero SKUs (Clear Peach, Lean TMT) have 35–54 day reorder windows. **38% of D1 ever subscribed** — subscription is a D1 signal, not just a convenience feature.
 
 ### Pattern
 | Segment | N | Avg GP | Repeat rate |
@@ -56,19 +67,31 @@ Repeat non-subscribers proved product fit but LP captures no replenishment value
 | Non-subscriber | 3,577 | S$69 | 19% |
 | **GP gap** | | **S$66/customer** | **3.3× repeat** |
 
-### Driver
-Without Subscribe & Save, LP re-acquires the same customer every cycle via email/ads — or loses them.
+### Four subscription tiers
 
-### Opportunity
-- 5% of 689 repeat non-subs convert: **S$2,262 GP/yr**
-- 10% of 228 Freq D1 non-subs convert: **S$1,497 GP/yr**
-- **Strategic value:** 62% repeat rate compounds over years
+| Tier | Pool | Trigger | Prize |
+|------|------|---------|-------|
+| D1 Repeat non-subs | 689 | Order 2 + 48 days | 5% = **S$2,262/yr** |
+| D2 Freq D1 non-subs | 228 | Order 3 + 35 days | 10% = **S$1,497/yr** |
+| D3 First-time hero buyers | ~400/yr | Order 1 + 42 days | Compounding |
+| D4 Checkout subscribe | New hero SKU orders | At checkout | Lowest-CAC subs |
 
-### Experiment
-Klaviyo flow: 2nd order fulfilled + 48 days → offer Subscribe & Save on **exact SKU/flavour** (Peach Clear 500g or TMT Lean 1kg). A/B: 10% sub discount vs free shipping.
+### Klaviyo flows (SUB-01–04)
+
+| Flow | Trigger | Delay | Segment |
+|------|---------|-------|---------|
+| SUB-01 | Order 2 fulfilled, hero SKU | 48 days | Repeat non-subscriber |
+| SUB-02 | Order 3 fulfilled | 35 days | Freq D1 non-subscriber |
+| SUB-03 | Order 1 fulfilled, Peach/TMT | 42 days | 1 order, no sub |
+| SUB-04 | Subscription started | Day 1 | New subscriber → Collagen cross-sell |
 
 ### Product depth
-Target SKUs with highest loyal-buyer revenue: Clear Peach 500g (171 loyal buyers), Lean TMT 1kg (125 loyal buyers).
+Hero replenishment SKUs: Clear Peach 500g (54-day cycle, 171 loyal buyers), Lean TMT 1kg (35-day cycle, 125 loyal buyers). Pre-check S&S at checkout on PDP — not on shakers or accessories.
+
+### How D + C build D1
+Cross-sell widens basket (2+ categories, index 189). Subscription locks habit (index 258). Together they move customers through the D1 creation journey (Section 3 in `FOUNDER_MEETING_PREP.md`).
+
+**Full playbook:** `FOUNDER_MEETING_PREP.md` Sections 2B + 3 · **D1 profile:** `decile_analysis/D1_CUSTOMER_PROFILE.md`
 
 **Chart:** `pitch_analysis/outputs/fig_prize_by_hypothesis.png`
 
@@ -101,7 +124,7 @@ Mandatory 30-day protein upsell: sachet trial pack (Peach Clear 25g + TMT Lean 4
 | Priority | Rec | Prize (GP/yr) | Ease |
 |----------|-----|---------------|------|
 | **1** | **C** Category ladder | **S$11–17K** | Medium |
-| **2** | **D** Subscription | **S$2–4K** + repeat compounding | Medium |
+| **2** | **D** Subscription engine (4 tiers) | **S$4–5K** + repeat compounding | Medium |
 | **3** | **B** Cross-sell flows (executes C) | Included in C | Medium |
 | **4** | **E** Acquisition mix | **S$4K** | High |
 | **5** | **A** VIP guardrail | **S$14K** protected | High |
