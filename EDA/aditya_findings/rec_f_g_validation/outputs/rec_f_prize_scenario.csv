@@ -1,0 +1,2 @@
+scenario,annual_new_acquirers_assumed,pct_shifted,n_shifted,trap_avg_repeat,hero_avg_repeat,incremental_repeat_lift_assumed,gp_per_new_repeater_sgd,annual_gp_uplift_sgd,note
+Rec F: 5% of new acq shifted from trap to hero entry SKU,4000,0.05,200,0.149,0.276,0.064,79.0,1009.0,Conservative: halfway between trap and hero repeat rates

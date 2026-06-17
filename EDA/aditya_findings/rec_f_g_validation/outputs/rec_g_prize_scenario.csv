@@ -1,0 +1,2 @@
+scenario,pool,pool_definition,conversion_rate,n_converted,gp_uplift_per_customer_2cat,year1_gp_sgd,repeat_lift_1_to_2_cat,follow_on_30pct_reach_3cat
+Rec G: 8% of addressable middle-decile convert to 2nd category,88,"D5-D7, 1 category ever, 2+ orders",0.08,7,19.74,269.0,17% -> 30%,2

@@ -1,0 +1,9 @@
+Cohort size: 5,694 customers
+Cohort avg VTD (profit proxy): S$51.13
+
+[1A] Category penetration saved -> 01_category_penetration.csv
+[1B] Repeat by first product saved -> 01_repeat_by_first_product.csv
+[2] T3 cross-category saved -> 02_t3_cross_category_behavior.csv
+[3] T9 first-transaction index saved -> 03_t9_first_transaction_index.csv
+
+Outputs written to: C:\Users\adity\Documents\Aditya SMU\SMU Sem 5\Lush Protein SMU X\LushProtein_Project_Data_20260505\EDA\category_analysis\outputs

@@ -1,0 +1,2 @@
+n_skus_with_cost,n_lines,lines_with_cogs,pct_lines_covered,total_revenue_sgd,revenue_with_cogs_sgd,pct_revenue_covered,true_gp_covered_sgd,proxy_gp_40pct_sgd,avg_margin_covered_pct,method_note
+129,14448,11628,80.5,794464.23,593601.56,74.7,418262.5,317785.69,70.5,Hybrid customer GP = true COGS on covered lines + 40% proxy on remainder

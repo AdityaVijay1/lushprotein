@@ -1,0 +1,2 @@
+decile,n_customers,pct_customers,avg_profit,avg_orders,aov_decile,avg_cats_ever,avg_handles_ever,avg_units_per_tx,dollars_per_unit,units_per_cat_per_tx,avg_cats_per_tx,total_profit,total_revenue,total_orders
+D1,429,0.1,164.4986247086247,5.081585081585081,80.92885321100917,2.4125874125874125,2.7855477855477857,2.067889908256881,41.30292685058213,1.6071301247771836,1.286697247706422,70569.91,176424.9,2180

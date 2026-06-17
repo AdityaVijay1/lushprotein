@@ -1,0 +1,31 @@
+{
+  "n_lines": 14448,
+  "pct_lines_with_cogs": 80.5,
+  "pct_revenue_with_cogs": 74.7,
+  "weighted_margin_pct": 70.5,
+  "n_customers_with_decile": 5694,
+  "columns_added_lines": [
+    "unit_cost",
+    "cogs",
+    "gross_profit",
+    "margin_pct",
+    "has_cogs",
+    "gp_method",
+    "pack_size"
+  ],
+  "columns_added_orders": [
+    "order_gp",
+    "order_cogs",
+    "order_rev",
+    "order_margin_pct",
+    "n_categories"
+  ],
+  "columns_added_customers": [
+    "true_gross_profit",
+    "avg_margin_pct",
+    "cogs_coverage_pct",
+    "n_categories_ever",
+    "profit_decile_true",
+    "crm_tier"
+  ]
+}

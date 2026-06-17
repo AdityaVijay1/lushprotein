@@ -1,0 +1,47 @@
+antecedent,consequent,support,confidence,lift,pair_orders
+0724999810463|Thai Milk Tea,lushprotein-clear-shaker|White,0.0161,0.929,10.22,144
+0724999810470|Taro,0724999810463|Thai Milk Tea,0.0137,0.9179,53.03,123
+0724999810470|Taro,lushprotein-clear-shaker|White,0.0135,0.903,9.93,121
+0724999810463|Thai Milk Tea,0724999810470|Taro,0.0137,0.7935,53.03,123
+clear-protein-25g-single-sachet|White Grape,clear-protein-25g-single-sachet|Peach,0.017,0.7136,27.66,152
+lushprotein-lean-protein-40g-single-serve|Taro,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.017,0.6786,24.31,152
+clear-protein-25g-single-sachet|Peach,clear-protein-25g-single-sachet|White Grape,0.017,0.658,27.66,152
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,lushprotein-lean-protein-40g-single-serve|Taro,0.017,0.608,24.31,152
+lean-protein|Taro,lean-protein|Thai Milk Tea,0.0286,0.359,2.86,256
+clear-protein|White Grape,clear-protein|Peach,0.0372,0.3561,2.52,333
+lushprotein-lean-protein-40g-single-serve|Taro,lushprotein-clear-shaker|White,0.0088,0.3527,3.88,79
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,lushprotein-clear-shaker|White,0.0088,0.316,3.48,79
+clear-protein-25g-single-sachet|White Grape,lushprotein-clear-shaker|White,0.007,0.2958,3.25,63
+clear-protein-25g-single-sachet|Peach,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.0075,0.29,10.39,67
+clear-protein-25g-single-sachet|Peach,lushprotein-clear-shaker|White,0.007,0.2727,3.0,63
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,clear-protein-25g-single-sachet|Peach,0.0075,0.268,10.39,67
+clear-protein|Peach,clear-protein|White Grape,0.0372,0.263,2.52,333
+clear-protein-25g-single-sachet|White Grape,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.0061,0.2582,9.25,55
+lean-protein|Taro,lushprotein-clear-shaker|White,0.0198,0.2482,2.73,177
+lushprotein-clear-shaker|White,lean-protein|Thai Milk Tea,0.0223,0.2457,1.96,200
+lushprotein-lean-protein-40g-single-serve|Taro,clear-protein-25g-single-sachet|Peach,0.0057,0.2277,8.83,51
+lean-protein|Thai Milk Tea,lean-protein|Taro,0.0286,0.2276,2.86,256
+clear-protein-25g-single-sachet|White Grape,lushprotein-lean-protein-40g-single-serve|Taro,0.0054,0.2254,9.01,48
+clear-protein-25g-single-sachet|Peach,lushprotein-lean-protein-40g-single-serve|Taro,0.0057,0.2208,8.83,51
+lushprotein-clear-shaker|default,clear-protein|Peach,0.0063,0.2205,1.56,56
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,clear-protein-25g-single-sachet|White Grape,0.0061,0.22,9.25,55
+lushprotein-clear-shaker|White,lean-protein|Taro,0.0198,0.2174,2.73,177
+lushprotein-lean-protein-40g-single-serve|Taro,clear-protein-25g-single-sachet|White Grape,0.0054,0.2143,9.01,48
+lushprotein-clear-shaker|White,clear-protein|Peach,0.0164,0.1806,1.28,147
+lean-protein|Thai Milk Tea,lushprotein-clear-shaker|White,0.0223,0.1778,1.96,200
+lushprotein-clear-shaker|White,0724999810463|Thai Milk Tea,0.0161,0.1769,10.22,144
+lushprotein-clear-shaker|White,0724999810470|Taro,0.0135,0.1486,9.93,121
+lushprotein-clear-shaker|White,clear-protein|White Grape,0.0128,0.1413,1.35,115
+clear-protein|White Grape,lushprotein-clear-shaker|White,0.0128,0.123,1.35,115
+clear-protein|Peach,lushprotein-clear-shaker|White,0.0164,0.1161,1.28,147
+lean-protein|Thai Milk Tea,clear-protein|Peach,0.0137,0.1093,0.77,123
+clear-protein|Peach,lean-protein|Thai Milk Tea,0.0137,0.0972,0.77,123
+lushprotein-clear-shaker|White,lushprotein-lean-protein-40g-single-serve|Taro,0.0088,0.0971,3.88,79
+lushprotein-clear-shaker|White,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.0088,0.0971,3.48,79
+clear-protein|White Grape,lean-protein|Thai Milk Tea,0.0088,0.0845,0.67,79
+lushprotein-clear-shaker|White,clear-protein-25g-single-sachet|Peach,0.007,0.0774,3.0,63
+lushprotein-clear-shaker|White,clear-protein-25g-single-sachet|White Grape,0.007,0.0774,3.25,63
+lean-protein|Taro,clear-protein|White Grape,0.0058,0.0729,0.7,52
+lean-protein|Thai Milk Tea,clear-protein|White Grape,0.0088,0.0702,0.67,79
+lean-protein|Taro,clear-protein|Peach,0.0056,0.0701,0.5,50
+clear-protein|White Grape,lean-protein|Taro,0.0058,0.0556,0.7,52

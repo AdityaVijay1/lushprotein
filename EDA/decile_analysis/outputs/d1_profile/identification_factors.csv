@@ -1,0 +1,26 @@
+factor,d1_value,non_d1_value,lift_index,type,diff
+Loyal repeater flag,0.6413,0.0609,1052.4,binary_rate,
+avg_gp,356.55,53.71,663.9,continuous,302.84
+3+ categories,0.4402,0.1015,433.8,binary_rate,
+Is repeat buyer,0.8777,0.2058,426.6,binary_rate,
+avg_orders,4.37,1.32,330.8,continuous,3.05
+avg_aov,210.83,65.98,319.5,continuous,144.85
+Ever bought Collagen Glow,0.2364,0.0826,286.2,binary_rate,
+Ever subscribed,0.3777,0.1464,258.1,binary_rate,
+2+ categories,0.7283,0.3845,189.4,binary_rate,
+avg_categories,2.46,1.51,163.5,continuous,0.96
+dollars_per_unit,61.32,38.32,160.0,continuous,23.0
+Dominant pack = 1kg,0.5054,0.3162,159.9,binary_rate,
+First channel = Subscription,0.5435,0.3468,156.7,binary_rate,
+First product = Collagen Glow,0.0679,0.0469,144.8,binary_rate,
+Ever bought Clear Protein,0.4348,0.3067,141.7,binary_rate,
+Ever bought Lean Protein,0.356,0.2593,137.3,binary_rate,
+avg_disc_pct,0.1,0.09,118.4,continuous,0.02
+First product = Other,0.2201,0.206,106.8,binary_rate,
+avg_margin_pct,0.66,0.64,103.5,continuous,0.02
+First product = Clear Protein,0.1875,0.2086,89.9,binary_rate,
+First channel = Direct / Organic,0.4239,0.562,75.4,binary_rate,
+First product = Lean Protein,0.0924,0.1484,62.3,binary_rate,
+First product = Accessories,0.0543,0.0895,60.7,binary_rate,
+First channel = Paid Social,0.0326,0.0788,41.4,binary_rate,
+First channel = Email,0.0,0.0061,0.0,binary_rate,

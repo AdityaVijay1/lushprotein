@@ -1,0 +1,7 @@
+scenario,pool,pool_explained,conversion_rate,gp_uplift_per_customer,annual_gp_uplift_sgd,priority
+H2: 5% of repeat non-subs convert to subscription,689,Customers with 2+ orders who have never subscribed,5%,66.0,2262.0,1
+H1: 8% of single-category buyers add 2nd category,2514,Customers who have only ever bought from 1 product category (e.g. Clear only),8%,20.0,3970.0,2
+H1: 5% of single-category buyers reach 3 categories,2514,Same pool — deeper cross-sell to 3rd category (e.g. Clear + Lean + Collagen),5%,85.0,10693.0,3
+H2: 10% of Freq D1 non-subs start subscription,228,Most frequent buyers (top 10% by order count) not yet on Subscribe & Save,10%,66.0,1497.0,4
+H1: 8% of middle decile (D5-D7) add 2nd category,1309,"Middle-value customers (deciles 5-7) — moveable, not yet D1",8%,20.0,2067.0,5
+H5: Exclude D1 from 10% site-wide promo (Rec A guardrail),429,Top 10% profit decile customers,100% protected,S$33 avg,14000.0,6

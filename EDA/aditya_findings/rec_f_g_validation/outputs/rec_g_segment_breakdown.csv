@@ -1,0 +1,5 @@
+segment,n,avg_categories,avg_orders,pct_1_category
+D5-D7 all,1309,1.3514132925897633,1.161955691367456,0.7051184110007639
+"D5-D7, 1-cat, 2+ orders (Rec G pool)",88,1.0,2.3068181818181817,1.0
+"D5-D7, 1-cat, exactly 2 orders",67,1.0,2.0,1.0
+"D5-D7, 1-cat, 3+ orders (stuck repeaters)",21,1.0,3.2857142857142856,1.0

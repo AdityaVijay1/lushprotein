@@ -2,20 +2,21 @@
   "generated_by": "EDA/13_build_finals_datasets.py",
   "source_dir": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs",
   "output_dir": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs_finals",
-  "approach": "Order-window: LP-F03 drops pre-2022 ORDERS (not customers). Pre-2022 joiners kept if they have 2022+ activity.",
+  "approach": "Customer-cut LP-F03: exclude customers whose lifetime first_order_date < 2022-01-01. Retained customers keep all 2022+ orders. Order window + Jul/Nov order-month filter applied at order level.",
   "filters_applied": {
-    "layer0_window": {
-      "LP-F03": "order_date >= 2022-01-01 \u2014 pre-2022 orders discarded, not customers"
-    },
     "layer1_dq": {
       "DQ-02": "Price: Total = 0 AND Price: Total Discount = 0",
       "DQ-03": "Price: Total = 0 AND Price: Total Discount > 0",
       "DQ-04": "Tags contains wholesale-sale OR Price: Total > 5000 SGD"
     },
-    "layer2_lp": {
-      "LP-F01": "Exclude customers who bought better-whey-protein-elite (in 2022+ window)",
-      "LP-F02": "Exclude customers whose first 2022+ order was in July or November",
-      "LP-F04": "Exclude first 2022+ order with discount depth 51%+"
+    "layer2_lp_customer": {
+      "LP-F03": "lifetime first_order_date >= 2022-01-01 \u2014 entire customer excluded if acquired pre-2022",
+      "LP-F01": "Exclude customers who bought better-whey-protein-elite",
+      "LP-F02": "Exclude customers acquired in July or November (lifetime acq month)",
+      "LP-F04": "Exclude first retained order with discount depth 51%+"
+    },
+    "layer0_order_window": {
+      "rule": "order_date >= 2022-01-01 on finals-eligible customers"
     },
     "layer3": {
       "rules": [
@@ -31,6 +32,7 @@
       ]
     }
   },
+  "reference_files_dir": "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs_finals\\do_not_use_these",
   "row_counts": {
     "base_midterm": {
       "orders": 27350,
@@ -44,25 +46,25 @@
       "rc_reactivated": 50,
       "rc_recurring": 650
     },
-    "layer1_dq_clean_2022plus": {
-      "orders_dq_clean.parquet": 16753,
-      "lines_dq_clean.parquet": 28287,
-      "customers_dq_clean.parquet": 9024
+    "reference_dq_only_in_do_not_use_these": {
+      "orders_dq_clean.parquet": 25658,
+      "lines_dq_clean.parquet": 46280,
+      "customers_dq_clean.parquet": 12801
     },
     "primary_all_layers": {
-      "orders.parquet": 11245,
-      "lines.parquet": 18144,
-      "customers.parquet": 6520,
-      "lines_sku_analysis.parquet": 18144
+      "orders.parquet": 8955,
+      "lines.parquet": 14448,
+      "customers.parquet": 5694,
+      "lines_sku_analysis.parquet": 14448
     },
     "reference": {
       "products.parquet": 167,
       "discounts.parquet": 367,
-      "rc_orders.parquet": 907,
-      "rc_checkout.parquet": 786,
-      "rc_churned.parquet": 386,
-      "rc_reactivated.parquet": 36,
-      "rc_recurring.parquet": 476
+      "rc_orders.parquet": 785,
+      "rc_checkout.parquet": 712,
+      "rc_churned.parquet": 344,
+      "rc_reactivated.parquet": 28,
+      "rc_recurring.parquet": 395
     }
   }
 }

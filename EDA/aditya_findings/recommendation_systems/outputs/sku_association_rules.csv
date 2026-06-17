@@ -1,0 +1,21 @@
+antecedent,consequent,support,confidence,lift,pair_orders
+0724999810463|Thai Milk Tea,lushprotein-clear-shaker|White,0.0161,0.929,10.22,144
+0724999810470|Taro,0724999810463|Thai Milk Tea,0.0137,0.9179,53.03,123
+0724999810470|Taro,lushprotein-clear-shaker|White,0.0135,0.903,9.93,121
+0724999810463|Thai Milk Tea,0724999810470|Taro,0.0137,0.7935,53.03,123
+clear-protein-25g-single-sachet|White Grape,clear-protein-25g-single-sachet|Peach,0.017,0.7136,27.66,152
+lushprotein-lean-protein-40g-single-serve|Taro,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.017,0.6786,24.31,152
+clear-protein-25g-single-sachet|Peach,clear-protein-25g-single-sachet|White Grape,0.017,0.658,27.66,152
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,lushprotein-lean-protein-40g-single-serve|Taro,0.017,0.608,24.31,152
+lean-protein|Taro,lean-protein|Thai Milk Tea,0.0286,0.359,2.86,256
+clear-protein|White Grape,clear-protein|Peach,0.0372,0.3561,2.52,333
+lushprotein-lean-protein-40g-single-serve|Taro,lushprotein-clear-shaker|White,0.0088,0.3527,3.88,79
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,lushprotein-clear-shaker|White,0.0088,0.316,3.48,79
+clear-protein-25g-single-sachet|White Grape,lushprotein-clear-shaker|White,0.007,0.2958,3.25,63
+clear-protein-25g-single-sachet|Peach,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.0075,0.29,10.39,67
+clear-protein-25g-single-sachet|Peach,lushprotein-clear-shaker|White,0.007,0.2727,3.0,63
+lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,clear-protein-25g-single-sachet|Peach,0.0075,0.268,10.39,67
+clear-protein|Peach,clear-protein|White Grape,0.0372,0.263,2.52,333
+clear-protein-25g-single-sachet|White Grape,lushprotein-lean-protein-40g-single-serve|Thai Milk Tea,0.0061,0.2582,9.25,55
+lean-protein|Taro,lushprotein-clear-shaker|White,0.0198,0.2482,2.73,177
+lushprotein-clear-shaker|White,lean-protein|Thai Milk Tea,0.0223,0.2457,1.96,200
