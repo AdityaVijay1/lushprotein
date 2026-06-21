@@ -41,6 +41,23 @@
 
 ---
 
+## T4 — D1 vs All Category Decomposition (Profit Decile)
+
+| Category | % Active (All / D1) | ACOF (All / D1) | ACOV (All / D1) | Units/Order (All / D1) | $/Unit (All / D1) | Margin (All / D1) | $/Cust Profit (All / D1) | Index | Share (All / D1) |
+|---|---|---|---|---|---|---|---|---|---|
+| Lean Protein | 26.8% / 30% | 0.3 / 0.6 | $60 / $80 | 1.5 / 1.5 | $40 / $54 | 40% / 40% | $32 / $88 | 275 | 22.5% / 19.9% |
+| Clear Protein | 31.8% / 34% | 0.2 / 0.5 | $78 / $105 | 1.5 / 1.7 | $52 / $63 | 40% / 40% | $39 / $104 | 265 | 32.5% / 27.0% |
+| Other | 32.1% / 52% | 0.3 / 0.6 | $61 / $78 | 1.6 / 2.0 | $38 / $40 | 40% / 40% | $38 / $98 | 259 | 31.8% / 38.5% |
+| Soy Protein | 4.5% / 7% | 0.3 / 0.5 | $44 / $55 | 1.4 / 1.7 | $32 / $33 | 40% / 40% | $25 / $52 | 212 | 2.9% / 2.7% |
+| Collagen Glow | 9.6% / 22% | 0.3 / 0.6 | $49 / $57 | 1.5 / 1.7 | $34 / $33 | 40% / 40% | $33 / $67 | 202 | 8.4% / 11.1% |
+| Accessories | 20.8% / 24% | 0.2 / 0.3 | $8 / $9 | 1.1 / 1.1 | $8 / $8 | 40% / 40% | $4 / $4 | 127 | 1.9% / 0.8% |
+
+*Index = D1 profit per customer ÷ All profit per customer × 100 (100 = pool average). Share = category % of total profit among mapped categories. Unknown excluded. Profit proxy: 40% margin · 4,290 customers · profit decile.*
+
+![T4 chart](charts/by_profit_decile/t4_d1_index_and_acov.png)
+
+---
+
 ## 4. Prioritise hero proteins in D1 strategy (T4)
 
 - **Lean Protein:** D1 index **275** | D1 ACOV S$80 vs All S$60 | D1 penetration 30% vs 27%

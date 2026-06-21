@@ -8,7 +8,7 @@ all_profit,Collagen Glow,411,0.2482,2.45,0.3841,Other,0.4185
 all_profit,Soy Protein,192,0.3438,2.23,0.2866,Other,0.4115
 d1_profit,Unknown,244,0.4057,2.16,0.6525,Other,0.459
 d1_profit,Other,223,0.0852,2.91,0.421,Unknown,0.5022
-d1_profit,Clear Protein,148,0.1014,3.05,0.5165,Other,0.5338
+d1_profit,Clear Protein,148,0.1014,3.05,0.5165,Lean Protein,0.5338
 d1_profit,Lean Protein,128,0.0781,3.25,0.435,Clear Protein,0.6172
 d1_profit,Accessories,104,0.0,3.56,0.0216,Other,0.7308
 d1_profit,Collagen Glow,94,0.0638,3.32,0.3101,Other,0.6277

@@ -122,6 +122,57 @@ def chart_t4(t4: pd.DataFrame, chart_dir: Path, label: str):
     save_fig(fig, chart_dir / "t4_d1_index_and_acov.png")
 
 
+def build_t4_deck_table_markdown(t4: pd.DataFrame) -> str:
+    """T4 slide table as plain markdown (All / D1 in each cell)."""
+    plot = t4[~t4["category"].isin(["Unknown"])].copy()
+    plot = plot.sort_values("d1_index", ascending=False)
+    total_all = plot["profit_share_all"].sum()
+    total_d1 = plot["profit_share_d1"].sum()
+
+    def pct_pair(a, d):
+        return f"{a * 100:.1f}% / {d * 100:.0f}%"
+
+    def num_pair(a, d):
+        return f"{a:.1f} / {d:.1f}"
+
+    def money_pair(a, d):
+        return f"${a:.0f} / ${d:.0f}"
+
+    def margin_pair(m):
+        p = int(round(m * 100))
+        return f"{p}% / {p}%"
+
+    header = (
+        "| Category | % Active (All / D1) | ACOF (All / D1) | ACOV (All / D1) | "
+        "Units/Order (All / D1) | $/Unit (All / D1) | Margin (All / D1) | "
+        "$/Cust Profit (All / D1) | Index | Share (All / D1) |"
+    )
+    sep = "|---|" + "---|" * 9
+    rows = []
+    for _, r in plot.iterrows():
+        sa = r["profit_share_all"] / total_all * 100
+        sd = r["profit_share_d1"] / total_d1 * 100
+        rows.append(
+            f"| {r['category']} "
+            f"| {pct_pair(r['pct_active_all'], r['pct_active_d1'])} "
+            f"| {num_pair(r['acof_all'], r['acof_d1'])} "
+            f"| {money_pair(r['acov_all'], r['acov_d1'])} "
+            f"| {num_pair(r['units_per_order_all'], r['units_per_order_d1'])} "
+            f"| {money_pair(r['dollars_per_unit_all'], r['dollars_per_unit_d1'])} "
+            f"| {margin_pair(r['margin_pct'])} "
+            f"| {money_pair(r['profit_per_customer_all'], r['profit_per_customer_d1'])} "
+            f"| {r['d1_index']:.0f} "
+            f"| {sa:.1f}% / {sd:.1f}% |"
+        )
+
+    footnote = (
+        "\n\n*Index = D1 profit per customer ÷ All profit per customer × 100 "
+        "(100 = pool average). Share = category % of total profit among mapped categories. "
+        "Unknown excluded. Profit proxy: 40% margin · 4,290 customers · profit decile.*"
+    )
+    return "\n".join([header, sep] + rows) + footnote
+
+
 def chart_t5_pivot(pivot: pd.DataFrame, chart_dir: Path, label: str):
     year_cols = [c for c in pivot.columns if str(c).isdigit()]
     if not year_cols:
@@ -294,6 +345,14 @@ def build_insights(profit_dir: Path, freq_dir: Path) -> str:
         "- **Year 1→2 cross-sell window:** email lean/clear buyers with complementary category (Collagen, Soy) within 60 days of 2nd order.",
         f"- Post-purchase flows: 'Customers who bought Clear also bought Lean' — only **{sole_clear:.0f}%** stay in one category.",
         "- Incentivise **2nd category by order 3**, not just 2nd order.",
+        "",
+        "---",
+        "",
+        "## T4 — D1 vs All Category Decomposition (Profit Decile)",
+        "",
+        build_t4_deck_table_markdown(t4p),
+        "",
+        "![T4 chart](charts/by_profit_decile/t4_d1_index_and_acov.png)",
         "",
         "---",
         "",
