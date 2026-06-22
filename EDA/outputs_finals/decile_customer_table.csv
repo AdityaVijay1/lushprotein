@@ -1,4 +1,4 @@
-customer_id,finals_orders,finals_revenue,true_gross_profit,avg_margin_pct,cogs_coverage_pct,contribution_margin_decile,order_freq_decile,first_channel,first_product_cat,first_store,ever_subscribed,cohort_month,acq_year,n_categories_ever,is_top_cm,is_top_freq,is_top_both
+customer_id,finals_orders,finals_revenue,true_gross_profit,avg_margin_pct,cogs_coverage_pct,profit_decile,order_freq_decile,first_channel,first_product_cat,first_store,ever_subscribed,cohort_month,acq_year,n_categories_ever,is_top_cm,is_top_freq,is_top_both
 7756044599551,2,46.52,18.61,40.0,0.0,D5,D1,Direct / Organic,Unknown,MY,False,2022-01,2022,1,False,True,False
 7756032868607,1,49.23,18.6,37.8,0.0,D5,D4,Direct / Organic,Unknown,MY,False,2022-06,2022,1,False,False,False
 8712766128383,1,28.27,18.58,65.7,100.0,D5,D2,Direct / Organic,Clear Protein,SG,False,2026-01,2026,2,False,False,False
