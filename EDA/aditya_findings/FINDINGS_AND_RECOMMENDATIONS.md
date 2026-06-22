@@ -475,6 +475,7 @@ python EDA/aditya_findings/recommendation_systems/build_recommenders.py
 | Folder / file | Purpose |
 |---------------|---------|
 | `FINDINGS_AND_RECOMMENDATIONS.md` | **This file** — founder-facing consolidated recs |
+| `PRESENTATION.md` | **Final deck guide** — 10 slides + cover |
 | `RECOMMENDATION_1_CUSTOMER_SEGREGATION_AND_INCENTIVES.md` | **Deck doc** — segregation, profit margin budgets, incentives |
 | `RECOMMENDATION_2_ENGINE_AND_SUBSCRIPTION.md` | **Deck doc** — 4-layer engine, Shopify justification, subscription |
 | `new_potential_analysis.md` | Exploratory analysis of LP's additional ideas |
