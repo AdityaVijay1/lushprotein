@@ -9,21 +9,21 @@
 
 > *"How should LushProtein treat different customers differently, how much should they spend on retention, and when/how should they cross-sell?"*
 
-**Overall verdict:** **~85% addressed.** Segmentation, CM formula, MBA, cross-sell timing, sample strategy, and subscription connection are substantiated with data. Gaps are mainly **operational** (single T1–T5 export), **loyalty programme specifics** (HYROX-style rewards), **forward LTV modelling**, and **per-customer discount depth** in tier logic.
+**Overall verdict:** **~85% addressed.** Segmentation, profit margin formula, MBA, cross-sell timing, sample strategy, and subscription connection are substantiated with data. Gaps are mainly **operational** (single T1–T5 export), **loyalty programme specifics** (HYROX-style rewards), **forward LTV modelling**, and **per-customer discount depth** in tier logic.
 
 ---
 
 # Founder Requirement Mapping
 
-## PART 1 — Customer Segregation + Contribution Margin
+## PART 1 — Customer Segregation + Profit Margin
 
 ---
 
-### R1.1 — Customer value definition (CM formula)
+### R1.1 — Customer value definition (profit margin formula)
 
 | | |
 |---|---|
-| **Founder asked** | Define contribution margin per customer: Revenue − COGS; understand discount, refund, and LTV impact |
+| **Founder asked** | Define profit margin per customer: Revenue − COGS; understand discount, refund, and LTV impact |
 | **Evidence** | `margin_analysis/MARGIN_ANALYSIS.md` · `enrich_finals_with_margin.py` · `lushprotein_decile.ipynb` · `FINDINGS_AND_RECOMMENDATIONS.md` §Rec 1 |
 | **Current status** | ✅ **Mostly met** |
 
@@ -42,11 +42,11 @@ Customer CM = SUM(line GP)  →  column: true_gross_profit
 | Revenue | ✅ | `Line: Total` / `Price: Total` — **net of discounts** (Shopify export format) |
 | COGS | ✅ | 129 SKUs from LP Excel; 80.5% line coverage |
 | Discount impact | ⚠️ Partial | Discounts **already netted into revenue** — documented. Separate **margin leakage** model for *future* promos (`margin_leakage_scenarios.csv`: 10% site-wide on D1 = S$14K/yr). No per-customer historical discount depth in tier assignment. |
-| Refund impact | ❌ Gap | Refunds **excluded** — no per-order refund amount in export. `partially_refunded` orders (0.4%) kept at load; CM does not subtract refund value. Documented as limitation. |
+| Refund impact | ❌ Gap | Refunds **excluded** — no per-order refund amount in export. `partially_refunded` orders (0.4%) kept at load; profit margin does not subtract refund value. Documented as limitation. |
 | LTV impact | ⚠️ Partial | Historical CM used for tiers. Budget framework references "expected future CM (LTV proxy)" but **no forward LTV model** per customer. Full-base LTV exists in `EDA/outputs/12_ltv_by_first_channel.csv` — not merged into v2 decile table. |
 | True CM vs proxy | ✅ | Labelled *"CM (hybrid COGS coverage)"* — not audited net profit. 25.3% of revenue uses 40% fallback. |
 
-| **Gap** | Refunds not in CM; forward LTV not computed per customer; historical discount depth not a tier input |
+| **Gap** | Refunds not in profit margin; forward LTV not computed per customer; historical discount depth not a tier input |
 | **Recommended improvement** | (1) Add one-slide caveat: "CM excludes refunds and fulfilment — conservative." (2) Merge `total_revenue` LTV from `customers.parquet` into `decile_customer_table.csv` for budget examples. (3) Ask LP for refund report if they want true net CM. |
 | **Next Monday** | Use current CM for segmentation — sufficient for relative tier ranking. Flag refund caveat in deck footnote. |
 
@@ -64,34 +64,34 @@ Customer CM = SUM(line GP)  →  column: true_gross_profit
 
 | Dimension | In analysis? | Evidence (v2 pool) |
 |-----------|--------------|-------------------|
-| Total CM | ✅ | `true_gross_profit`; CM D1 avg **S$230** |
+| Total profit margin | ✅ | `true_gross_profit`; PM D1 avg **S$230** |
 | Order frequency (AOF) | ✅ | `finals_orders`; Freq D1 avg **3.6 orders** |
-| AOV | ⚠️ Implicit | Computable: CM D1 AOV **S$160**; `is_top_both` AOV **S$109**; in `klaviyo_crm_tiers.csv` as `aov` — **not a tier gate** |
+| AOV | ⚠️ Implicit | Computable: PM D1 AOV **S$160**; `is_top_both` AOV **S$109**; in `klaviyo_crm_tiers.csv` as `aov` — **not a tier gate** |
 | Categories purchased | ✅ | `n_categories_ever`; D1 both avg **2.50** cats |
 | Subscription | ✅ | `ever_subscribed`; D1 both **51%** subscribed |
 
 **VIP anchor (founder criteria met):**
 
-| Segment | N | Avg CM | AOF | AOV | Categories | Sub rate |
+| Segment | N | Avg profit margin | AOF | AOV | Categories | Sub rate |
 |---------|---|--------|-----|-----|------------|----------|
 | **`is_top_both`** | **500** | S$265 | 4.3 | S$109 | 2.50 | 51% |
-| CM D1 only | 358 | S$181 | 2.5 | — | — | — |
+| PM D1 only | 358 | S$181 | 2.5 | — | — | — |
 | Freq D1 only | 358 | S$62 | 3.6 | S$82 | 2.22 | 48% |
 
 **Recommended 5-tier framework — status:**
 
 | Tier | Criteria in docs | N (approx.) | Supported by data? |
 |------|------------------|-------------|-------------------|
-| **T1 VIP Champions** | `is_top_both` OR CM D1 + subscribed | 500–550 | ✅ |
-| **T2 High-Value Repeaters** | CM D1 only / Freq D1 only / CM D2 + ≥2 orders | ~950 | ✅ |
-| **T3 Growth Customers** | 2 orders, CM D3–D4 | ~400 | ✅ |
-| **T4 First Purchasers** | 1 order, CM D2–D4 | ~2,350 | ✅ |
-| **T5 Low Value** | CM D5 or 1 order + CM < S$15 | ~850 | ✅ |
+| **T1 VIP Champions** | `is_top_both` OR PM D1 + subscribed | 500–550 | ✅ |
+| **T2 High-Value Repeaters** | PM D1 only / Freq D1 only / PM D2 + ≥2 orders | ~950 | ✅ |
+| **T3 Growth Customers** | 2 orders, PM D3–D4 | ~400 | ✅ |
+| **T4 First Purchasers** | 1 order, PM D2–D4 | ~2,350 | ✅ |
+| **T5 Low Value** | PM D5 or 1 order + CM < S$15 | ~850 | ✅ |
 
 **Thresholds:** v2 uses **equal-sized quintiles** (top 20% = D1) via `pd.qcut` — reproducible, not arbitrary.
 
 | **Gap** | T1–T5 labels exist in `FINDINGS_AND_RECOMMENDATIONS.md` but **no single CSV** with `crm_treatment_tier` (T1–T5). `klaviyo_crm_tiers.csv` uses old 4-tier Rec A schema (VIP / Profit_D1 / Freq_D1 / Standard). AOV not used as explicit tier gate. |
-| **Recommended improvement** | Create `outputs_finals/crm_treatment_tiers.csv` merging v2 decile + T1–T5 logic (script only — no re-analysis). Add AOV as secondary sort within CM D2. |
+| **Recommended improvement** | Create `outputs_finals/crm_treatment_tiers.csv` merging v2 decile + T1–T5 logic (script only — no re-analysis). Add AOV as secondary sort within PM D2. |
 | **Next Monday** | Export `decile_customer_table.csv` to Klaviyo; tag `is_top_both` = VIP immediately. Map T2–T5 manually from decile columns until unified export is built. |
 
 ---
@@ -117,11 +117,11 @@ Max retention investment = X% × Customer CM
 |---------|-----|-------|--------|-----|
 | `is_top_both` (median) | S$189 | S$9 | S$19 | Partner gift — not % off |
 | Rec A VIP (n=245) | S$358 | S$18 | S$36 | Premium experience |
-| T2 CM D1 only | S$181 | S$9 | S$18 | Sub first-month incentive |
+| T2 PM D1 only | S$181 | S$9 | S$18 | Sub first-month incentive |
 | T4 first purchaser | S$40 | S$2 | S$4 | Sachet sample cap |
 | T5 one-and-done | S$9 | S$0.45 | S$0.90 | Email only |
 
-**Why VIP deserves higher budget:** D1 both generate **57.7%** of pool CM from **20%** of customers; blanket 10% promo costs **S$14K/yr** on D1 with no retention gain.
+**Why VIP deserves higher budget:** D1 both generate **57.7%** of pool profit margin from **20%** of customers; blanket 10% promo costs **S$14K/yr** on D1 with no retention gain.
 
 | **Gap** | No founder-signed X% yet. Example uses S$358 VIP, not S$900 — S$900 would be top-decile whale (max CM in table = **S$2,797**). No automated "budget_per_customer" column in export. |
 | **Recommended improvement** | Add column `suggested_budget_5pct` / `suggested_budget_10pct` to CRM export. Founder workshop: pick X% by tier (T1: experiences not cash; T4: sample COGS cap). |
@@ -143,7 +143,7 @@ Max retention investment = X% × Customer CM
 
 **Category ladder (business value proven):**
 
-| Categories | Customers | Avg CM | Repeat |
+| Categories | Customers | Avg profit margin | Repeat |
 |------------|-----------|--------|--------|
 | 1 | 2,514 (59%) | S$59 | 17% |
 | 2 | 1,216 (28%) | S$79 | 30% |
@@ -152,7 +152,7 @@ Max retention investment = X% × Customer CM
 
 **MBA rules (same cart):** Peach↔W.Grape 36% conf (333 orders) · Lean TMT→shaker 93%
 
-**Cross-category (order 2):** Clear→Lean 53% among CM D1 · Lean→Clear 65%
+**Cross-category (order 2):** Clear→Lean 53% among PM D1 · Lean→Clear 65%
 
 **Category penetration goal:** 1 → 2 → 3 categories. Prize: 5% reach 3 cats = **S$10,693 GP/yr**.
 
@@ -263,7 +263,7 @@ Max retention investment = X% × Customer CM
 |------------------|---------------|-------------------------|--------|----------------|
 | Who are valuable customers? | `decile_customer_table.csv`, 500 `is_top_both` | Top 20% = 57.7% CM | T1 VIP programme | Tag in Klaviyo |
 | How to treat differently? | T1–T5 framework | Discounts hurt VIPs | Different promo policy per tier | Rec A guardrail |
-| How much to spend on retention? | CM × X% framework | S$9–36 range by tier | Founder sets X% | Budget column in export |
+| How much to spend on retention? | profit margin × X% framework | S$9–36 range by tier | Founder sets X% | Budget column in export |
 | When to cross-sell? | Day 14 / day 7 / pre-reorder | After experience, before reorder | CS-01–04 flows | Klaviyo week 1 |
 | What to recommend? | MBA + co-purchase matrix | Category ladder | Rule + association deploy | PDP + email |
 | When to sample? | Stage matrix | CM-budgeted investment | Sachet A/B test | Fulfilment insert |
@@ -274,12 +274,12 @@ Max retention investment = X% × Customer CM
 
 # Final Actionable Insights
 
-## Insight 1: Contribution Margin Driven Customer Segmentation
+## Insight 1: Profit Margin Driven Customer Segmentation
 
 ### Formula (use in deck)
 
 ```
-Contribution Margin (hybrid) = Σ line_revenue − COGS   [where known]
+Profit Margin (hybrid) = Σ line_revenue − COGS   [where known]
                              = Σ line_revenue × 40%   [proxy fallback]
 Discounts: already in net revenue
 Refunds: NOT subtracted (disclose as limitation)
@@ -288,13 +288,13 @@ Label: "CM proxy using hybrid COGS coverage"
 
 ### Tiers and thresholds
 
-| Tier | Gate | N | Avg CM | Treatment |
+| Tier | Gate | N | Avg profit margin | Treatment |
 |------|------|---|--------|-----------|
 | T1 | `is_top_both` | 500 | S$265 | Partner rewards, early access — **no % off** |
-| T2 | CM D1 or Freq D1, not both | 716 | S$62–181 | Subscribe & Save, bundles |
+| T2 | PM D1 or Freq D1, not both | 716 | S$62–181 | Subscribe & Save, bundles |
 | T3 | 2 orders, mid CM | ~400 | S$50 | Day-14 cross-sell, samples |
 | T4 | 1 order, trial | ~2,350 | S$30–50 | Onboarding, 2nd purchase journey |
-| T5 | CM D5 / one-and-done | ~850 | S$9 | Low-cost automation only |
+| T5 | PM D5 / one-and-done | ~850 | S$9 | Low-cost automation only |
 
 ### Incentive budget (founder sets X%)
 

@@ -8,39 +8,39 @@
 > 1. *Who do I treat differently, why, when, and how much can I afford to spend?*
 > 2. *How do recommendations + subscriptions increase retention and lifetime value?*
 
-**Deck structure:** Lead with **Recommendation 1** (segmentation + CM) and **Recommendation 2** (recommendation engine + subscription). Legacy Rec A–E are folded into these two pillars — see Section 5.
+**Deck structure:** Lead with **Recommendation 1** (segmentation + profit margin) and **Recommendation 2** (recommendation engine + subscription). Standalone deck docs: `RECOMMENDATION_1_CUSTOMER_SEGREGATION_AND_INCENTIVES.md` · `RECOMMENDATION_2_ENGINE_AND_SUBSCRIPTION.md`. Legacy Rec A–E are folded into these two pillars — see Section 5.
 
 ---
 
 ## Executive summary
 
-**67.6% of customers buy once and never return.** Revenue and contribution margin are concentrated: the top 20% of customers (CM D1) generate **57.7%** of total contribution margin. **500 customers** are D1 on *both* contribution margin and order frequency — the highest-confidence VIP segment.
+**67.6% of customers buy once and never return.** Revenue and profit margin are concentrated: the top 20% of customers (PM D1) generate **57.7%** of total profit margin. **500 customers** are D1 on *both* profit margin and order frequency — the highest-confidence VIP segment.
 
 The fix is not treating every customer the same. LushProtein should:
 
-1. **Segment by economic value** (contribution margin) and **behaviour** (order frequency, categories, subscription) — then assign different CRM treatment and incentive budgets per tier.
+1. **Segment by economic value** (profit margin) and **behaviour** (order frequency, categories, subscription) — then assign different CRM treatment and incentive budgets per tier.
 2. **Deploy a 4-layer recommendation engine** tied to the customer lifecycle — cold-start rules → same-cart MBA → timed post-purchase cross-sell → logged-in personalisation — with **Subscribe & Save** as the end-state for proven repeaters.
 
 **Combined measurable opportunity (existing prize models):** **S$30–35K GP/yr** from category ladder + subscription + acquisition fixes, plus **S$14K GP protected** by excluding VIPs from blanket discounts.
 
 ---
 
-## Recommendation 1: Customer Value Segmentation + Contribution Margin Driven CRM
+## Recommendation 1: Customer Value Segmentation + Profit Margin Driven CRM
 
 ### The core insight
 
 > *"We should stop treating every customer equally."*
 
-A one-time buyer averaging **S$9** contribution margin should not receive the same promotions as a **500-customer VIP cohort** averaging **S$265** CM with **51%** already subscribed. Blanket 10% site-wide discounts cost **S$14K GP/yr** if they hit profit D1 customers — with no retention gain.
+A one-time buyer averaging **S$9** profit margin should not receive the same promotions as a **500-customer VIP cohort** averaging **S$265** CM with **51%** already subscribed. Blanket 10% site-wide discounts cost **S$14K GP/yr** if they hit profit D1 customers — with no retention gain.
 
 ---
 
-### Contribution margin — definition and formula
+### Profit margin — definition and formula
 
 **Founder-scoped formula:**
 
 ```
-Contribution Margin = Net Revenue − COGS
+Profit Margin = Net Revenue − COGS
 ```
 
 Variable fulfillment costs and refunds are excluded (no reliable per-order data). Discounts are already netted in Shopify revenue.
@@ -52,9 +52,9 @@ Variable fulfillment costs and refunds are excluded (no reliable per-order data)
 | COGS known (74.7% of revenue) | `line_revenue − quantity × unit_cost` |
 | COGS missing | `line_revenue × 40%` (proxy fallback) |
 
-**Customer contribution margin** = SUM(line gross profit)
+**Customer profit margin** = SUM(line gross profit)
 
-**Label in all founder materials:** *Contribution Margin (CM — hybrid COGS coverage)*. Do not call this audited net profit.
+**Label in all founder materials:** *Profit Margin (profit margin — hybrid COGS coverage)*. Do not call this audited net profit.
 
 **Coverage:** 129 SKUs with unit cost · **80.5%** of line items · **70.5%** measured margin on covered lines (vs 40% assumed proxy).
 
@@ -69,23 +69,23 @@ Variable fulfillment costs and refunds are excluded (no reliable per-order data)
 
 | Ranking | Metric | D1 = | Customers/tier |
 |---------|--------|------|----------------|
-| **Contribution Margin Decile** | `true_gross_profit` | Highest CM | ~858 each (D1–D5) |
+| **Profit Margin Decile** | `true_gross_profit` | Highest CM | ~858 each (D1–D5) |
 | **Order Frequency (AOF) Decile** | `finals_orders` | Most orders | ~858 each (D1–D5) |
 
 **Why 5 tiers not 10:** Founder meeting ask — simpler for CRM and non-technical stakeholders. ~858 customers per tier is large enough for reliable analysis.
 
 #### Headline v2 stats
 
-| Segment | N | Avg CM | Avg orders | Key share |
+| Segment | N | Avg profit margin | Avg orders | Key share |
 |---------|---|--------|------------|-----------|
-| **CM D1** | 858 | **S$230** | 3.1 | **57.7%** of pool CM |
-| CM D5 | 858 | S$9 | 1.1 | 2.2% of pool CM |
+| **PM D1** | 858 | **S$230** | 3.1 | **57.7%** of pool profit margin |
+| PM D5 | 858 | S$9 | 1.1 | 2.2% of pool profit margin |
 | **Freq D1** | 858 | S$181 | **3.6** | **45.4%** of pool orders |
 | **`is_top_both`** | **500** | **S$265** | ~3.4 | **11.7%** of pool — VIP core |
-| CM D1 only | 358 | S$181 | ~2.5 | High value, lower frequency |
+| PM D1 only | 358 | S$181 | ~2.5 | High value, lower frequency |
 | Freq D1 only | 358 | S$62 | 3.6 | Loyal but lower spend |
 
-**Overlap insight:** CM D1 and Freq D1 are *not* the same people. Only **500** (58% of each D1 group) rank D1 on both — use `is_top_both` as the VIP anchor.
+**Overlap insight:** PM D1 and Freq D1 are *not* the same people. Only **500** (58% of each D1 group) rank D1 on both — use `is_top_both` as the VIP anchor.
 
 **D1 vs D2 gap (CM):** D1 avg **S$230** vs D2 **S$81** (2.8×). Margin *rates* are similar (~69–70%) — the gap is **order count** (3.1 vs 1.5) and **category breadth** (2.26 vs 1.68 categories). D2 is a frequency + breadth problem, not a discount problem.
 
@@ -98,13 +98,13 @@ Variable fulfillment costs and refunds are excluded (no reliable per-order data)
 
 Map v2 deciles + behaviour into **actionable Klaviyo/Shopify segments**:
 
-| CRM Tier | Name | Criteria (implementable) | N (approx.) | Avg CM |
+| CRM Tier | Name | Criteria (implementable) | N (approx.) | Avg profit margin |
 |----------|------|------------------------|-------------|--------|
-| **T1** | **VIP Champions** | `is_top_both = True` OR (CM D1 + ever_subscribed) | **500–550** | S$265+ |
-| **T2** | **High-Value Repeaters** | CM D1 only OR Freq D1 only OR (CM D2 + ≥2 orders) | **~950** | S$80–181 |
-| **T3** | **Growth Customers** | Exactly 2 orders, CM D3–D4, not D1 on either axis | **~400** | S$50 |
-| **T4** | **First Purchasers** | 1 order, CM D2–D4 (trial mode) | **~2,350** | S$30–50 |
-| **T5** | **Low Value / One-and-Done** | CM D5 OR 1 order + CM < S$15 | **~850** | S$9 |
+| **T1** | **VIP Champions** | `is_top_both = True` OR (PM D1 + ever_subscribed) | **500–550** | S$265+ |
+| **T2** | **High-Value Repeaters** | PM D1 only OR Freq D1 only OR (PM D2 + ≥2 orders) | **~950** | S$80–181 |
+| **T3** | **Growth Customers** | Exactly 2 orders, PM D3–D4, not D1 on either axis | **~400** | S$50 |
+| **T4** | **First Purchasers** | 1 order, PM D2–D4 (trial mode) | **~2,350** | S$30–50 |
+| **T5** | **Low Value / One-and-Done** | PM D5 OR 1 order + CM < S$15 | **~850** | S$9 |
 
 #### Treatment by tier
 
@@ -120,7 +120,7 @@ Map v2 deciles + behaviour into **actionable Klaviyo/Shopify segments**:
 
 **Full founder guide:** `CRM_AND_INCENTIVES.md`
 
-**Legacy guardrail (Rec A):** Exclude T1/T2 CM D1 from site-wide % promos → **S$14K GP/yr protected**. See `Recommendation_A/RECOMMENDATION_A.md`.
+**Legacy guardrail (Rec A):** Exclude T1/T2 PM D1 from site-wide % promos → **S$14K GP/yr protected**. See `Recommendation_A/RECOMMENDATION_A.md`.
 
 ---
 
@@ -132,7 +132,7 @@ This is a **CRM decision framework**, not a fixed percentage. LP should set X% b
 
 ```
 Maximum retention investment per customer
-  = X% × Customer Contribution Margin
+  = X% × Customer Profit Margin
   OR
   = X% × Expected future CM (LTV proxy)
 ```
@@ -140,7 +140,7 @@ Maximum retention investment per customer
 | Input | How to get it |
 |-------|---------------|
 | Customer CM | `decile_customer_table.csv` → `true_gross_profit` |
-| Expected future CM | CM × projected orders (use reorder intervals + category ladder uplift) |
+| Expected future CM | profit margin × projected orders (use reorder intervals + category ladder uplift) |
 | X% | Founder sets by tier — higher for T1 retention, lower for T4 acquisition |
 
 #### Worked examples (illustrative — LP sets final X%)
@@ -150,13 +150,13 @@ Maximum retention investment per customer
 | T1 VIP (`is_top_both`, median) | S$189 | S$9 | S$19 | Partner gift, exclusive sample — **not** % off |
 | T1 VIP (top quartile) | S$289+ | S$14 | S$29 | Event invite, loyalty credit |
 | Legacy VIP tier (Rec A, n=245) | S$358 avg | S$18 | S$36 | Premium experience budget |
-| T2 CM D1 only | S$181 | S$9 | S$18 | Subscribe & Save first-month incentive |
+| T2 PM D1 only | S$181 | S$9 | S$18 | Subscribe & Save first-month incentive |
 | T4 first purchaser | S$40 | S$2 | S$4 | Sachet sample cost cap |
 | T5 one-and-done | S$9 | S$0.45 | S$0.90 | Win-back email only — no product gift |
 
 #### Automated dollar budgets (from `cm_decile_incentive_budgets.csv`)
 
-| CM Decile | Avg CM | **5% give-away** | **10% give-away** |
+| CM Decile | Avg profit margin | **5% give-away** | **10% give-away** |
 |-----------|--------|------------------|-------------------|
 | **D1** | S$230 | **S$11.50** | **S$23.01** |
 | D2 | S$81 | S$4.06 | S$8.12 |
@@ -183,7 +183,7 @@ Maximum retention investment per customer
 
 **Category ladder source:** `pitch_analysis/outputs/category_ladder_gp.csv`
 
-| Categories ever purchased | Customers | % pool | Avg CM | Repeat rate |
+| Categories ever purchased | Customers | % pool | Avg profit margin | Repeat rate |
 |----------------------------|-----------|--------|--------|-------------|
 | 1 | 2,514 | **59%** | S$59 | 17% |
 | 2 | 1,216 | 28% | S$79 | 30% |
@@ -202,7 +202,7 @@ Protein only  →  Protein + 2nd category  →  Protein + 3rd category
 
 | Pattern | Evidence | Action |
 |---------|----------|--------|
-| Clear ↔ Lean co-purchase | 53–65% among CM D1 buyers | Cross-sell other protein on order 2 |
+| Clear ↔ Lean co-purchase | 53–65% among PM D1 buyers | Cross-sell other protein on order 2 |
 | Peach ↔ White Grape same cart | 36% confidence, 333 orders | PDP bundle widget |
 | More categories → higher CM | 2.4× CM, 3× repeat at 3 cats | Tier T3/T4 get category discovery |
 | Accessories-first acquisition | 20% repeat vs Collagen 37% | **Do not** use shaker as lead product |
@@ -219,7 +219,7 @@ Protein only  →  Protein + 2nd category  →  Protein + 3rd category
 |------|--------|-------|--------|
 | 1 | Import `crm_treatment_tiers.csv` → Klaviyo T1–T5 | CRM | 4,290 tagged |
 | 1 | Exclude T1/T2 from site-wide % promos (Rec A) | Marketing | S$14K protected |
-| 2 | Set CM-based incentive caps per tier (founder signs off X%) | Founder + CRM | Budget table |
+| 2 | Set profit-margin-based incentive caps per tier (founder signs off X%) | Founder + CRM | Budget table |
 | 2–4 | Launch CS-01–03 cross-sell flows for T4 (day 14) | CRM | 2nd category on order 2 |
 | 4+ | VIP programme for T1 (`is_top_both`) — no discounts | Brand | Exclusive access |
 
@@ -233,7 +233,7 @@ Protein only  →  Protein + 2nd category  →  Protein + 3rd category
 
 > *The goal is not only cross-selling — it is increasing customer lifetime value through the right product, at the right time, for the right segment.*
 
-Subscriptions prove the point: subscribers repeat at **62%** vs **19%** for non-subscribers (S$134 vs S$69 avg CM). The recommendation engine moves customers through the category ladder; the subscription engine **locks in** proven repeaters.
+Subscriptions prove the point: subscribers repeat at **62%** vs **19%** for non-subscribers (S$134 vs S$69 avg profit margin). The recommendation engine moves customers through the category ladder; the subscription engine **locks in** proven repeaters.
 
 ---
 
@@ -241,7 +241,7 @@ Subscriptions prove the point: subscribers repeat at **62%** vs **19%** for non-
 
 | Capability | Shopify "Recommended products" | Lush Protein 4-layer engine |
 |------------|-------------------------------|----------------------------|
-| Data source | Generic storefront co-views | **8,955 finals orders** + COGS-enriched CM tiers |
+| Data source | Generic storefront co-views | **8,955 finals orders** + COGS-enriched profit margin tiers |
 | Category cross-sell | No category ladder | **Clear→Lean→Collagen** sequence from co-purchase matrix |
 | Timing | Shows at PDP always | **Day 14 email** + **day 44 sample** before 54d Clear reorder |
 | VIP treatment | Same recs for everyone | **T1** gets experiences; **T5** gets email only |
@@ -276,8 +276,8 @@ Each layer solves a different problem. Do not use one algorithm for everything.
 
 | If first purchase contains… | Recommend | Evidence |
 |----------------------------|-----------|----------|
-| Clear Protein | Lean Protein (TMT/Taro 1kg) | 53% CM D1 co-purchase |
-| Lean Protein | Clear Protein (Peach/W.Grape 500g) | 65% CM D1 co-purchase |
+| Clear Protein | Lean Protein (TMT/Taro 1kg) | 53% PM D1 co-purchase |
+| Lean Protein | Clear Protein (Peach/W.Grape 500g) | 65% PM D1 co-purchase |
 | Collagen only | Clear or Lean starter 500g | 30.5% first-tx repeat for Collagen |
 | Accessories only | Protein starter (not another accessory) | 20% repeat vs 37% Collagen-first |
 
@@ -380,7 +380,7 @@ Physical cross-category samples ship **before the reorder window**, not in the f
 
 ### Subscription growth engine (connects to Recommendation 2)
 
-**Why subscription is the end-state:** Subscribers repeat **62%** vs **19%**; avg CM **S$134** vs **S$69**. **51%** of `is_top_both` VIPs already subscribe — subscription is a D1 signal.
+**Why subscription is the end-state:** Subscribers repeat **62%** vs **19%**; avg profit margin **S$134** vs **S$69**. **51%** of `is_top_both` VIPs already subscribe — subscription is a D1 signal.
 
 | Tier | Pool | Trigger | Treatment |
 |------|------|---------|-----------|
@@ -459,11 +459,11 @@ python EDA/aditya_findings/recommendation_systems/build_recommenders.py
 
 ## Data sources and decile systems (do not mix)
 
-| System | File | Tiers | CM metric | Use for |
+| System | File | Tiers | profit margin metric | Use for |
 |--------|------|-------|-----------|---------|
 | **v2 (founder CRM)** | `outputs_finals/decile_customer_table.csv` | D1–D5 | `true_gross_profit` | **Rec 1 tiers, this doc** |
 | v1 (category T1–T9) | `decile_analysis/outputs/customers_decile_table.csv` | D1–D10 | 40% proxy | Category analysis tables only |
-| 10-tier true CM | `margin_analysis/outputs/true_profit_decile_summary.csv` | D1–D10 | true GP | Margin leakage, Rec A proof |
+| 10-tier true profit margin | `margin_analysis/outputs/true_profit_decile_summary.csv` | D1–D10 | true GP | Margin leakage, Rec A proof |
 
 **Primary data (always):** `outputs_finals/customers.parquet` · `orders.parquet` · `lines.parquet`  
 **Do NOT use:** `do_not_use_these/` for recommendations.
@@ -475,13 +475,17 @@ python EDA/aditya_findings/recommendation_systems/build_recommenders.py
 | Folder / file | Purpose |
 |---------------|---------|
 | `FINDINGS_AND_RECOMMENDATIONS.md` | **This file** — founder-facing consolidated recs |
+| `RECOMMENDATION_1_CUSTOMER_SEGREGATION_AND_INCENTIVES.md` | **Deck doc** — segregation, profit margin budgets, incentives |
+| `RECOMMENDATION_2_ENGINE_AND_SUBSCRIPTION.md` | **Deck doc** — 4-layer engine, Shopify justification, subscription |
+| `new_potential_analysis.md` | Exploratory analysis of LP's additional ideas |
+| `outputs/charts/r1_*.png` · `r2_*.png` | Presentation charts (`build_presentation_charts.py`) |
 | `CRM_AND_INCENTIVES.md` | **T1–T5 thresholds + dollar budgets + sample timing** |
 | `FOUNDER_MEETING_PREP.md` | Meeting prep + Klaviyo flow copy |
 | `FOUNDER_FEEDBACK_VERIFICATION.md` | Requirement audit vs founder meeting |
 | `build_crm_tiers_and_timing.py` | Generates CRM export + timing CSVs |
 | `outputs_finals/crm_treatment_tiers.csv` | Klaviyo import (4,290 customers) |
 | `outputs/cross_sell_timing_and_samples.csv` | Per-category email day + sample day + product |
-| `lushprotein_decile.ipynb` | v2 CM + AOF decile build |
+| `lushprotein_decile.ipynb` | v2 profit margin + AOF decile build |
 | `decile_summary.ipynb` | Slide charts + D1/D2 profiling handoff |
 | `margin_analysis/` | COGS proof + margin leakage |
 | `Recommendation_A/` | VIP guardrail + Klaviyo tier export |
@@ -498,5 +502,6 @@ python EDA/aditya_findings/recommendation_systems/build_recommenders.py
 python EDA/aditya_findings/enrich_finals_with_margin.py
 # Run lushprotein_decile.ipynb for v2 deciles
 python EDA/aditya_findings/build_crm_tiers_and_timing.py
+python EDA/aditya_findings/build_presentation_charts.py
 python EDA/aditya_findings/run_all.py
 ```

@@ -4,14 +4,14 @@
 **Exports:** `outputs_finals/crm_treatment_tiers.csv` (4,290 customers, Klaviyo-ready)
 
 **Answers founder questions:**
-1. How much can we give each customer? (CM × 5%/10% by tier and decile)
+1. How much can we give each customer? (profit margin × 5%/10% by tier and decile)
 2. When and what to recommend/sample for cross-category selling?
 
 ---
 
 ## 1. Why treat customers differently
 
-67.6% buy once. The top 20% (CM D1) generate **57.7%** of contribution margin. A T5 customer averages **S$9 CM**; a T1 VIP averages **S$258 CM** with **4.1 orders** and **54% subscribed**.
+67.6% buy once. The top 20% (PM D1) generate **57.7%** of profit margin. A T5 customer averages **S$9 CM**; a T1 VIP averages **S$258 CM** with **4.1 orders** and **54% subscribed**.
 
 Treating them the same — same discounts, same emails, same samples — **costs S$14K/yr** in VIP margin leakage and misses **S$11–17K/yr** in category-ladder uplift.
 
@@ -23,25 +23,25 @@ Treating them the same — same discounts, same emails, same samples — **costs
 
 Assigned in `crm_treatment_tiers.csv` by `build_crm_tiers_and_timing.py`:
 
-| Tier | Automated criteria | N | Avg CM | Why they deserve different treatment |
+| Tier | Automated criteria | N | Avg profit margin | Why they deserve different treatment |
 |------|-------------------|---|--------|--------------------------------------|
-| **T1 VIP Champions** | `is_top_both` OR (CM D1 + subscribed) | **532** | **S$258** | Top CM **and** loyalty — protect and reward |
-| **T2 High-Value Repeaters** | CM D1 only, Freq D1 only, or CM D2 + ≥2 orders | **744** | **S$117** | Proven value — convert to sub + 2nd category |
-| **T3 Growth Customers** | Exactly 2 orders, CM D3–D4 | **63** | **S$41** | One nudge from becoming T2 |
-| **T4 First Purchasers** | 1 order, CM D2–D4 | **2,120** | **S$51** | Trial mode — onboarding + 2nd purchase |
-| **T5 Low Value** | CM D5 or 1 order + CM < S$15 | **831** | **S$9** | Low ROI — automation only |
+| **T1 VIP Champions** | `is_top_both` OR (PM D1 + subscribed) | **532** | **S$258** | Top CM **and** loyalty — protect and reward |
+| **T2 High-Value Repeaters** | PM D1 only, Freq D1 only, or PM D2 + ≥2 orders | **744** | **S$117** | Proven value — convert to sub + 2nd category |
+| **T3 Growth Customers** | Exactly 2 orders, PM D3–D4 | **63** | **S$41** | One nudge from becoming T2 |
+| **T4 First Purchasers** | 1 order, PM D2–D4 | **2,120** | **S$51** | Trial mode — onboarding + 2nd purchase |
+| **T5 Low Value** | PM D5 or 1 order + CM < S$15 | **831** | **S$9** | Low ROI — automation only |
 
 ---
 
-## 3. Dollar incentive budgets (by CM decile)
+## 3. Dollar incentive budgets (by profit margin decile)
 
-**Formula:** `retention_budget = CM × 5%` (conservative) or `CM × 10%` (generous)
+**Formula:** `retention_budget = profit margin × 5%` (conservative) or `profit margin × 10%` (generous)
 
 Per-customer columns in export: `retention_budget_5pct_sgd`, `retention_budget_10pct_sgd`, `max_sample_cost_sgd`
 
-### By contribution margin decile (pool average)
+### By profit margin decile (pool average)
 
-| CM Decile | Customers | Avg CM | **5% budget** | **10% budget** | Max sample cap |
+| CM Decile | Customers | Avg profit margin | **5% budget** | **10% budget** | Max sample cap |
 |-----------|-----------|--------|---------------|----------------|----------------|
 | **D1** | 858 | S$230 | **S$11.50** | **S$23.01** | S$23 |
 | D2 | 858 | S$81 | S$4.06 | S$8.12 | S$5 |
@@ -56,12 +56,12 @@ Per-customer columns in export: `retention_budget_5pct_sgd`, `retention_budget_1
 | **T1** | **S$12.91** | **S$25.82** | HYROX tickets, massage vouchers, early access, partner merch |
 | **T2** | S$5.85 | S$11.69 | Subscribe & Save first month, shaker/merch bundle |
 | **T3** | S$2.06 | S$4.12 | Cross-category sachet (COGS ~S$2–4) |
-| **T4** | S$2.54 | S$5.08 | Single-serve sachet insert (cap at 5% CM) |
+| **T4** | S$2.54 | S$5.08 | Single-serve sachet insert (cap at 5% profit margin) |
 | **T5** | S$0.44 | S$0.88 | Email only — no product gift |
 
 **Example (founder S$900 whale):** Top CM in pool = **S$2,797**. At 5% = **S$140**; at 10% = **S$280** for a one-off VIP experience. Median T1 VIP (S$184 CM) = **S$9–18** per touchpoint — enough for a sachet pack or partner perk, not a deep discount.
 
-**Rule:** Spend ≤ `max_sample_cost_sgd` from CSV. Never exceed 10% CM on T1–T2 without founder approval.
+**Rule:** Spend ≤ `max_sample_cost_sgd` from CSV. Never exceed 10% profit margin on T1–T2 without founder approval.
 
 ---
 
@@ -118,7 +118,7 @@ See `outputs/cross_sell_timing_and_samples.csv`:
 |------------|---------|------|------|
 | **1st** | Yes (T4/T3) | Cross-category **sachet** | Pre-reorder window (table above) — **not** in order 1 box by default |
 | **2nd** | Yes (T3) | **3rd category** sachet (Collagen) | Day 7 after order 2 ships |
-| **3rd+** | VIP only (T1) | Merch, shaker, partner gift | Budget = 10% CM (S$26 avg) |
+| **3rd+** | VIP only (T1) | Merch, shaker, partner gift | Budget = 10% profit margin (S$26 avg) |
 
 ---
 
@@ -127,7 +127,7 @@ See `outputs/cross_sell_timing_and_samples.csv`:
 Shopify "Recommended products" uses generic co-occurrence across all merchants. It does **not** know:
 
 - Lush Protein's **category ladder** (1→2→3 categories)
-- **CM tier** (VIP vs one-and-done)
+- **profit margin tier** (VIP vs one-and-done)
 - **Day 14 vs day 44** timing
 - **Collagen sachet for Clear buyers** before reorder at day 44
 

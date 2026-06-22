@@ -50,7 +50,7 @@
 
 ### L1. Rule-based — measured co-purchase rates
 
-From `Recommendation_B/outputs/co_purchase_matrix_d1.csv` (CM D1 buyers):
+From `Recommendation_B/outputs/co_purchase_matrix_d1.csv` (PM D1 buyers):
 
 | If bought | Recommend | Co-purchase % |
 |-----------|-----------|---------------|

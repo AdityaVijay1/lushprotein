@@ -18,7 +18,7 @@ It **cannot** replace this project's engine because LP's goals require **your** 
 |-------------|-----------------|-------------------|-----------------|
 | Cross-**category** push (Clear→Lean) | No category model | L1 rules + L3 day-14 email | 53% D1 co-purchase |
 | **When** to nudge (not just what) | Always on PDP | Day 14 email, day 44 sample, pre-reorder | 54d Clear median reorder |
-| **Who** gets promos | Everyone | T1–T5 CM tiers | D1 = 57.7% of CM |
+| **Who** gets promos | Everyone | T1–T5 profit margin tiers | D1 = 57.7% of CM |
 | Single-serve **sample** timing | Not supported | `cross_sell_timing_and_samples.csv` | Per first-category |
 | Subscription after fit | Separate app | SUB-01 at order 2 + 48d | 62% vs 19% repeat |
 | VIP "feel special" | Same experience | T1 partner rewards, no % off | 532 VIPs, S$26 budget |
@@ -82,10 +82,10 @@ Parallel track: **Subscription engine** fires when L3 proves repeat intent (orde
 New customer has zero purchase history. Collaborative filtering and ML need data that doesn't exist yet.
 
 ### Method
-**Rule-based** recommendations from observed co-purchase rates among CM D1 buyers.
+**Rule-based** recommendations from observed co-purchase rates among PM D1 buyers.
 
 ### Why this method
-- **Evidence-based:** 53% of CM D1 Clear buyers also buy Lean; 65% vice versa — measured on your customers, not industry benchmarks.
+- **Evidence-based:** 53% of PM D1 Clear buyers also buy Lean; 65% vice versa — measured on your customers, not industry benchmarks.
 - **Interpretable:** Founder and CRM team can audit every rule.
 - **Fast:** Deploy in Klaviyo week 1 without engineering.
 
@@ -266,7 +266,7 @@ Week 6+ after Layers 1–3 are live and measured.
 | Freq D1, not subscribed | 228 | Replenishment sub | Highest order frequency |
 | `is_top_both` VIP | 500 | VIP sub tier (no discount) | 51% already subscribed — grow the rest |
 
-**Evidence:** Subscribers repeat **62%** vs **19%** · avg CM **S$134** vs **S$69**
+**Evidence:** Subscribers repeat **62%** vs **19%** · avg profit margin **S$134** vs **S$69**
 
 **Prize:** 5% of 689 = **S$2,262 GP/yr** (direct) + compounding
 
