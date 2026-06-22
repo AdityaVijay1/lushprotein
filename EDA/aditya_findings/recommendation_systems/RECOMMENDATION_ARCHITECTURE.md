@@ -8,6 +8,37 @@
 
 ---
 
+## Lush Protein engine vs Shopify "Recommended products"
+
+Shopify's native recommender uses **storefront-level** product co-occurrence (often "customers who viewed X also viewed Y"). It is a reasonable default for generic PDP widgets.
+
+It **cannot** replace this project's engine because LP's goals require **your** data patterns:
+
+| Requirement | Shopify default | Our 4-layer engine | Your data proof |
+|-------------|-----------------|-------------------|-----------------|
+| Cross-**category** push (Clear→Lean) | No category model | L1 rules + L3 day-14 email | 53% D1 co-purchase |
+| **When** to nudge (not just what) | Always on PDP | Day 14 email, day 44 sample, pre-reorder | 54d Clear median reorder |
+| **Who** gets promos | Everyone | T1–T5 CM tiers | D1 = 57.7% of CM |
+| Single-serve **sample** timing | Not supported | `cross_sell_timing_and_samples.csv` | Per first-category |
+| Subscription after fit | Separate app | SUB-01 at order 2 + 48d | 62% vs 19% repeat |
+| VIP "feel special" | Same experience | T1 partner rewards, no % off | 532 VIPs, S$26 budget |
+
+**Use Shopify for:** Layer 2 PDP/cart widgets (association rules).  
+**Use Klaviyo + our CSVs for:** Layers 1, 3, 4, samples, subscriptions — **this cannot be done via Shopify alone.**
+
+### How layers were designed
+
+Each layer maps to a **customer lifecycle moment** where a different algorithm wins:
+
+1. **L1 Rule-based** — *before history exists* (67% one-and-done). Rules = D1 co-purchase %.
+2. **L2 MBA** — *during active cart* (same-order pairs). Rules = confidence from 8,955 orders.
+3. **L3 Sequential + clock** — *between orders* (category ladder). Rules = day 14/7 + reorder medians.
+4. **L4 Item-CF** — *after 3+ orders* (personalisation). Matrix = 4,290 × 83 SKUs.
+
+Parallel track: **Subscription engine** fires when L3 proves repeat intent (order 2).
+
+---
+
 ## Why a 4-layer architecture (not one model)
 
 | If you use… | What breaks |

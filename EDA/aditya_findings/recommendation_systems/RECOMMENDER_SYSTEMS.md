@@ -143,7 +143,10 @@ All pairs from `sku_association_rules.csv` — not invented.
 ```bash
 python EDA/aditya_findings/recommendation_systems/sku_market_basket.py
 python EDA/aditya_findings/recommendation_systems/build_recommenders.py
+python EDA/aditya_findings/build_crm_tiers_and_timing.py
 ```
+
+**Timing matrix:** `outputs/cross_sell_timing_and_samples.csv`
 
 ---
 
