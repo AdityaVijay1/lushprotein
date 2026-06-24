@@ -2,6 +2,8 @@
 
 **Purpose:** Justify the custom recommendation engine over Shopify defaults; define *when* to cross-sell, *what* samples to send, and *how* the decile study drives subscriber growth.
 
+**How to present Rec 2:** `REC2_PRESENTATION_GUIDE.md` — problem → gap → solution → charts → conservative numbers → implementation map
+
 **Data:** 8,955 finals orders · 4,290 customers · co-purchase + reorder intervals  
 **Charts:** `outputs/charts/r2_*.png` · regenerate via `python EDA/aditya_findings/build_presentation_charts.py`
 
@@ -310,6 +312,7 @@ python EDA/aditya_findings/build_presentation_charts.py
 
 | File | Purpose |
 |------|---------|
+| `REC2_PRESENTATION_GUIDE.md` | **How to present Rec 2** — story arc, charts, conservative prize, implementation |
 | `PRESENTATION.md` | **10-slide deck guide** (cover + content, figures, speaker notes) |
 | `recommendation_systems/RECOMMENDATION_ARCHITECTURE.md` | Full technical architecture |
 | `recommendation_systems/RECOMMENDER_SYSTEMS.md` | Evidence tables + system comparison |
