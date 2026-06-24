@@ -336,6 +336,125 @@ The sequencing is deliberate — easiest and highest-impact first:
 
 ---
 
+## Appendix — Free Shipping Threshold Analysis
+
+> **Question:** At what basket size does it make economic sense to offer free shipping — and should the threshold differ by customer segment?
+
+### Data baseline
+
+| Metric | Value |
+|--------|-------|
+| Total orders analysed | 8,955 |
+| Already getting free shipping | 6,218 (69%) |
+| Paying for shipping | 2,737 (31%) |
+| Avg shipping fee charged | S$4.01 |
+| Avg basket on paid-shipping orders | S$64.51 |
+| Median basket on paid-shipping orders | S$56.30 |
+| Avg GP margin across all orders | 63.6% |
+
+69% of orders are already shipping-free — so this is a precision lever, not a blanket cost.
+
+---
+
+### The economics of a threshold
+
+**Mechanic:** Set a minimum order value. Customers below it are shown "Add S$X to get free shipping." Some will add items (basket bump). You earn GP on the bump; you absorb the S$4 shipping cost.
+
+**Breakeven condition:**
+
+```
+(Avg gap to threshold) × (GP margin) × (Bump rate) >= Shipping cost
+```
+
+At 63.6% margin and avg shipping of S$4.01:
+- A customer needs to add only **S$6.31** in items with a 100% bump rate, or **S$21** with a 30% bump rate, for the shipping giveaway to break even.
+- The current median paid-order basket is S$56.30 — so a threshold of S$80 requires only a S$23.70 average add.
+
+---
+
+### Threshold comparison (paid-shipping orders, 30% conservative bump rate)
+
+| Threshold | Orders below | Avg gap needed | GP from bumps | Shipping absorbed | Net GP impact |
+|-----------|-------------|----------------|---------------|-------------------|---------------|
+| S$60 | 1,802 (66%) | S$20.03 | — | S$4,208/yr | Low uplift |
+| **S$70** | 2,147 (78%) | S$25.83 | — | S$2,717/yr | Moderate |
+| **S$80** | 2,295 (84%) | S$33.78 | S$14,138 | S$9,201 | **+S$4,937/yr net** |
+| S$100 | 2,471 (90%) | S$50.58 | — | S$1,221/yr | Diminishing |
+
+**S$80 is the breakeven sweet spot:**
+- 84% of paid-shipping orders are below it (maximum coverage)
+- At 30% bump rate: **628 orders bump up, generating S$14,138 GP vs S$9,201 shipping cost = +S$4,937/yr net**
+- The S$23.70 average gap is achievable — it's roughly the price of one sachet, one collagen pouch, or adding a 500g to a 1kg order
+
+---
+
+### Basket-based vs customer-segmented — which is right?
+
+**Short answer: flat S$80 threshold for all customers, with one override for T1/T2 VIPs.**
+
+| Approach | Pros | Cons | Verdict |
+|----------|------|------|---------|
+| **Flat threshold (S$80)** | Simple, no CRM integration, transparent to customer | Doesn't reward loyalty | Best default |
+| **Tiered by CRM segment** | Feels premium for VIPs | Complex, small shipping cost doesn't justify infra | Only for T1/T2 perk |
+| **Always free above S$60** | High coverage | S$4,208/yr absorbed, lower bump incentive | Too early, no urgency |
+
+**Why tiered isn't worth it for the threshold itself:**
+
+The breakeven thresholds per tier are surprisingly close:
+
+| CRM Tier | Median basket | Margin | Breakeven threshold | Profitable from (30% bump) |
+|----------|--------------|--------|---------------------|---------------------------|
+| Standard (bulk of customers) | S$55 | 62% | S$62 | S$55 |
+| Freq_D1 (high-frequency) | S$45 | 55% | S$52 | S$65 |
+| VIP | S$66 | 60% | S$73 | S$80 |
+| Profit_D1 (largest baskets) | S$239 | 67% | S$247 | Already above any threshold |
+
+The spread is only S$10-25 across tiers — not wide enough to justify separate thresholds and added tech complexity.
+
+---
+
+### Recommended implementation
+
+**Rule 1 — Flat threshold:** Free shipping on all web orders S$80+.
+
+**Rule 2 — T1/T2 override (connect to Rec 1 CRM tiers):** VIP and Profit_D1 customers always get free shipping unconditionally. This is a loyalty signal, not a basket game. These customers generate S$134–305 avg GP per order — charging S$4 shipping is a false economy that erodes goodwill.
+
+**Rule 3 — Subscription orders:** Free shipping always. Subscriber median basket is S$47, below the S$80 threshold, and locking in subscription habit is more valuable than S$4.19 recovered per order. Do not risk churn over shipping fees on subscribers.
+
+```
+Customer places order
+        |
+        ├── T1 / T2 (VIP, Profit D1)?  → Free shipping always
+        ├── Subscription order?         → Free shipping always
+        └── Everyone else:
+               ├── Basket >= S$80?     → Free shipping
+               └── Basket < S$80?      → Charge S$4–5 + show "Add S$X for free shipping"
+```
+
+---
+
+### The S$80 threshold also unlocks cross-sell
+
+The free shipping nudge ("Add S$23 for free shipping") is a natural prompt to introduce a second SKU — not just any item, but the L1/L2 recommendation engine's top suggestion for that customer. Example nudge:
+
+> *"You're S$21 away from free shipping. Customers who bought Clear Peach also love Lean TMT 1kg (S$49.90) — add it and ship free."*
+
+This turns the shipping threshold into a cross-sell trigger, compounding with the recommendation engine (Rec 2) rather than sitting as a separate lever.
+
+---
+
+### What this does NOT cover
+
+- **Actual shipping cost to LP** (the S$4 figure is what customers pay — LP's carrier cost may differ slightly by weight/zone). Validate with fulfilment provider before finalising.
+- **International orders** — the S$28 max in the data suggests some overseas shipping; a separate higher threshold (e.g. S$150) may apply.
+- **Seasonal bump rates** — 30% is conservative. In practice, conversion on "free shipping nudge" banners runs 20–40%; test for 60 days to get a live rate.
+
+---
+
+*Data source: `EDA/outputs_finals/orders.parquet` × `customers.parquet`, finals-eligible cohort only. Analysis script: `EDA/aditya_findings/calc_free_shipping.py`*
+
+---
+
 ## Output files already built (hand these over)
 
 | What | File | Use for |
