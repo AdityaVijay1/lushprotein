@@ -326,9 +326,9 @@ def chart_r2_four_layers():
     ax.axhline(7.0, xmin=0.03, xmax=0.97, color="#ccc", linewidth=1)
 
     layers = [
-        ("L1  Rule-based", "1st purchase\n(cold start — 67% one-and-done)", "Klaviyo welcome email\n+ order confirm page", PALETTE["T4"]),
+        ("L1  Rule-based", "1st purchase\n(cold start — 67% one-and-done)", "Post-purchase email\n+ order confirm page", PALETTE["T4"]),
         ("L2  MBA", "Same cart / on PDP", "Shopify 'Frequently Bought\nTogether' widget", PALETTE["T3"]),
-        ("L3  Sequential", "Between orders\n(day 14 email, day 44 sachet)", "Klaviyo CS-01–04 flows", PALETTE["accent"]),
+        ("L3  Sequential", "Between orders\n(day 14 email, day 44 sachet)", "Automated email flows\nCS-01 to CS-04", PALETTE["accent"]),
         ("L4  Item-CF", "Logged in — 3+ orders\n(proven repeater)", "Account page\n'Recommended for you'", PALETTE["T2"]),
     ]
 
@@ -393,7 +393,7 @@ def chart_r2_shopify_vs_custom():
                 color=PALETTE["sub"], fontweight="bold")
     ax.text(0.5, -0.14,
             "Shopify 'Recommended products' works for Layer 2 (same-cart). "
-            "Layers 1, 3, 4 + Sub timing require custom Klaviyo rules from this analysis.",
+            "Layers 1, 3, 4 + Sub timing require custom automated email rules from this analysis.",
             transform=ax.transAxes, ha="center", fontsize=9, style="italic", color="#444")
     fig.tight_layout()
     _save(fig, "r2_shopify_vs_custom_engine.png")
