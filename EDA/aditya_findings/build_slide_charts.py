@@ -33,7 +33,7 @@ OUT   = "EDA/aditya_findings/outputs/charts"
 def chart_slide1_problem():
     fig, axes = plt.subplots(1, 3, figsize=(16, 7), facecolor="white")
     fig.suptitle(
-        "The Three Retention Gaps — Why Lush Protein Needs a Recommendation Engine",
+        "The Three Retention Gaps - Why Lush Protein Needs a Recommendation Engine",
         fontsize=15, fontweight="bold", color=DARK, y=1.01
     )
 
@@ -53,17 +53,17 @@ def chart_slide1_problem():
                 color=bar.get_facecolor())
     ax.text(0, 40, "Founder's\n#1 worry", ha="center", va="center",
             fontsize=10, color="white", fontweight="bold")
-    ax.set_title("Gap 1 — Retention\n5,694 total customers", fontsize=12,
+    ax.set_title("Gap 1 - Retention\n5,694 total customers", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.14,
+    ax.text(0.5, -0.18,
             "Most customers never come back.\n"
-            "Shopify's default recs show them the same\nproducts — no nudge, no timing.",
+            "Shopify's default recs show them the same\nproducts - no nudge, no timing.",
             ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
 
     # Panel 2: Category ladder
     ax = axes[1]
     ax.set_facecolor("white")
-    cat_labels = ["1 category\n(3,681 custs)", "2 categories\n(1,411)", "3+ categories\n(602)"]
+    cat_labels = ["1 category\n3,681 customers\n65%", "2 categories\n1,411 customers\n25%", "3+ categories\n602 customers\n11%"]
     repeat_rates = [13, 30, 63]
     gps = [64, 92, 223]
     x = np.arange(len(cat_labels))
@@ -77,7 +77,7 @@ def chart_slide1_problem():
     ax.set_ylabel("Repeat rate (%)", color=MID, fontsize=10)
     ax2r.set_ylabel("Avg gross profit (S$)", color=MID, fontsize=10)
     ax.set_xticks(x)
-    ax.set_xticklabels(cat_labels, fontsize=9)
+    ax.set_xticklabels(cat_labels, fontsize=9, linespacing=1.5)
     ax.tick_params(colors=MID)
     ax2r.tick_params(colors=MID)
     ax2r.spines["right"].set_visible(True)
@@ -88,9 +88,9 @@ def chart_slide1_problem():
     for bar, val in zip(b2, gps):
         ax2r.text(bar.get_x() + bar.get_width()/2, val + 5,
                   f"S${val}", ha="center", fontsize=10, color=DARK)
-    ax.set_title("Gap 2 — Category Depth\n59% stuck at one product type", fontsize=12,
+    ax.set_title("Gap 2 - Category Depth\n65% stuck at one product type", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.14,
+    ax.text(0.5, -0.26,
             "More categories = higher GP & stronger repeat.\n"
             "The cross-sell opportunity is right here in the data.",
             ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
@@ -117,14 +117,14 @@ def chart_slide1_problem():
     ax.text(0.5, 42, "3.6x repeat\ngap", ha="center", fontsize=10,
             fontweight="bold", color=DARK,
             bbox=dict(boxstyle="round,pad=0.3", facecolor=LGREY, edgecolor=DARK, lw=1))
-    ax.set_title("Gap 3 — Subscription\nSubscribers 3.6x more likely to return", fontsize=12,
+    ax.set_title("Gap 3 - Subscription\nSubscribers 3.6x more likely to return", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.14,
+    ax.text(0.5, -0.18,
             "Subscribers behave completely differently.\n"
             "Converting repeat buyers = highest ROI move.",
             ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
 
-    plt.tight_layout(rect=[0, 0.07, 1, 1])
+    plt.tight_layout(rect=[0, 0.13, 1, 1])
     fig.text(0.5, 0.01,
              "WHAT'S WORKING:  D1 customers (top 10% by profit) = 57.7% of total GP  |  "
              "VIP avg GP = S$476  |  Collagen-first buyers repeat at 30% vs 18% accessories-first",
