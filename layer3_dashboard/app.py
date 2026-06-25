@@ -2,258 +2,409 @@
 
 from __future__ import annotations
 
-import streamlit as st
+from datetime import datetime
+
+import pandas as pd
 import plotly.graph_objects as go
+import streamlit as st
 
 from l3_engine import DEMO_TODAY, LOOKBACK_DAYS, get_eligible_customer_ids, lookup_customer
 
 st.set_page_config(
-    page_title="LushProtein Layer 3 Dashboard",
+    page_title="LushProtein | Layer 3 CRM",
     page_icon="🥛",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-CUSTOM_CSS = """
+COLORS = {
+    "dark": "#1C2B3A",
+    "teal": "#2A7F7F",
+    "coral": "#E8603C",
+    "gold": "#F0A500",
+    "blue": "#3B6EA5",
+    "green": "#4CAF7D",
+    "bg": "#F8FAFC",
+    "border": "#E2E8F0",
+}
+
+CUSTOM_CSS = f"""
 <style>
-    .main-header {
-        font-size: 2rem;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    html, body, [class*="css"] {{
+        font-family: 'Inter', sans-serif;
+    }}
+    .block-container {{
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+        max-width: 1200px;
+    }}
+    .hero {{
+        background: linear-gradient(135deg, {COLORS['dark']} 0%, #2A3F54 55%, {COLORS['teal']} 100%);
+        border-radius: 16px;
+        padding: 1.75rem 2rem;
+        color: white;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 8px 24px rgba(28,43,58,0.18);
+    }}
+    .hero h1 {{
+        font-size: 1.75rem;
         font-weight: 700;
-        color: #1C2B3A;
-        margin-bottom: 0.2rem;
-    }
-    .sub-header {
-        color: #64748B;
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .card {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 1.25rem 1.5rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-        margin-bottom: 1rem;
-    }
-    .card-title {
-        font-size: 0.85rem;
+        margin: 0 0 0.35rem 0;
+        color: white;
+    }}
+    .hero p {{
+        margin: 0;
+        opacity: 0.92;
+        font-size: 0.95rem;
+    }}
+    .hero-badge {{
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
         font-weight: 600;
+        margin-top: 0.75rem;
+        margin-right: 0.5rem;
+    }}
+    .card {{
+        background: #FFFFFF;
+        border: 1px solid {COLORS['border']};
+        border-radius: 14px;
+        padding: 1.25rem 1.4rem;
+        box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+        height: 100%;
+    }}
+    .card-accent {{
+        border-top: 4px solid {COLORS['teal']};
+    }}
+    .card-rec {{
+        border-top: 4px solid {COLORS['coral']};
+    }}
+    .card-title {{
+        font-size: 0.72rem;
+        font-weight: 700;
         color: #64748B;
         text-transform: uppercase;
-        letter-spacing: 0.04em;
-        margin-bottom: 0.75rem;
-    }
-    .metric-label {
-        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.85rem;
+    }}
+    .field-label {{
+        font-size: 0.78rem;
         color: #94A3B8;
-    }
-    .metric-value {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: #1C2B3A;
-    }
-    .disclaimer {
-        background: #FFF7ED;
-        border: 1px solid #FDBA74;
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        color: #9A3412;
-        font-size: 0.85rem;
-    }
-    .pill {
-        display: inline-block;
-        background: #E8F5EE;
-        color: #2A7F7F;
-        border-radius: 999px;
-        padding: 0.2rem 0.75rem;
-        font-size: 0.8rem;
+        margin-bottom: 0.1rem;
+    }}
+    .field-value {{
+        font-size: 1rem;
         font-weight: 600;
-    }
-    div[data-testid="stMetricValue"] {
-        font-size: 1.4rem;
-    }
+        color: {COLORS['dark']};
+        margin-bottom: 0.75rem;
+    }}
+    .field-value-lg {{
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: {COLORS['teal']};
+    }}
+    .disclaimer {{
+        background: #FFFBEB;
+        border: 1px solid #FDE68A;
+        border-radius: 10px;
+        padding: 0.7rem 1rem;
+        color: #92400E;
+        font-size: 0.82rem;
+        margin-bottom: 1rem;
+    }}
+    .action-step {{
+        background: {COLORS['bg']};
+        border-left: 4px solid {COLORS['teal']};
+        border-radius: 0 10px 10px 0;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.6rem;
+    }}
+    .action-step strong {{
+        color: {COLORS['dark']};
+    }}
+    div[data-testid="stMetric"] {{
+        background: white;
+        border: 1px solid {COLORS['border']};
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+    }}
+    div[data-testid="stSidebar"] {{
+        background: #F1F5F9;
+    }}
+    .stButton > button[kind="primary"] {{
+        background: {COLORS['teal']};
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+    }}
 </style>
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 
-def render_timeline(result: dict) -> None:
-    purchase_day = 0
-    email_day = result["email_day"]
-    sample_day = result["time_to_send_sample_days"]
-    reorder_day = result["estimated_reorder_days"]
+def render_hero() -> None:
+    st.markdown(
+        f"""
+        <div class="hero">
+            <h1>LushProtein Layer 3 Customer Recommendation Dashboard</h1>
+            <p>Post-purchase CRM intelligence — who to recommend, what sample to ship, and when to act before reorder</p>
+            <span class="hero-badge">Layer 3 · Sequential Timed Journey</span>
+            <span class="hero-badge">First-time buyers · Last {LOOKBACK_DAYS} days</span>
+            <span class="hero-badge">Demo · {DEMO_TODAY.strftime('%d %b %Y')}</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
+
+def render_timeline(result: dict) -> None:
     events = [
-        ("Purchase", purchase_day, "#E8603C"),
-        ("Cross-sell Email", email_day, "#3B6EA5"),
-        ("Sample Ships", sample_day, "#F0A500"),
-        ("Expected Reorder", reorder_day, "#2A7F7F"),
+        ("Purchase", 0, COLORS["coral"], "Order fulfilled"),
+        ("Cross-sell Email", result["email_day"], COLORS["blue"], result["email_date"]),
+        ("Sample Ships", result["time_to_send_sample_days"], COLORS["gold"], result["sample_date"]),
+        ("Expected Reorder", result["estimated_reorder_days"], COLORS["teal"], result["reorder_date"]),
     ]
 
     fig = go.Figure()
     xs = [e[1] for e in events]
-    labels = [f"{e[0]}<br>Day {e[1]}" for e in events]
     colors = [e[2] for e in events]
+    hover = [f"<b>{e[0]}</b><br>Day {e[1]}<br>{e[3]}" for e in events]
 
     fig.add_trace(
         go.Scatter(
             x=xs,
             y=[0] * len(xs),
             mode="markers+lines+text",
-            line=dict(color="#CBD5E1", width=2),
-            marker=dict(size=16, color=colors),
-            text=labels,
+            line=dict(color="#CBD5E1", width=3),
+            marker=dict(size=20, color=colors, line=dict(width=2, color="white")),
+            text=[f"<b>{e[0]}</b><br>Day {e[1]}" for e in events],
             textposition="top center",
-            textfont=dict(size=11, color="#1C2B3A"),
-            hovertemplate="Day %{x}<extra></extra>",
+            textfont=dict(size=11, color=COLORS["dark"]),
+            hovertext=hover,
+            hoverinfo="text",
         )
     )
+
+    buffer_start = max(0, result["estimated_reorder_days"] - 10)
+    fig.add_vrect(
+        x0=buffer_start,
+        x1=result["estimated_reorder_days"],
+        fillcolor="rgba(42,127,127,0.08)",
+        line_width=0,
+        annotation_text="Reorder window",
+        annotation_position="top left",
+        annotation_font_size=10,
+        annotation_font_color=COLORS["teal"],
+    )
+
     fig.update_layout(
-        height=240,
-        margin=dict(l=20, r=20, t=20, b=20),
-        xaxis=dict(title="Days after first delivery", showgrid=True, gridcolor="#F1F5F9"),
-        yaxis=dict(visible=False, range=[-0.6, 0.9]),
+        height=280,
+        margin=dict(l=10, r=10, t=30, b=10),
+        xaxis=dict(title="Days after first delivery", showgrid=True, gridcolor="#F1F5F9", zeroline=False),
+        yaxis=dict(visible=False, range=[-0.75, 1.0]),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
     )
     st.plotly_chart(fig, use_container_width=True)
 
 
-def main() -> None:
-    st.markdown('<p class="main-header">LushProtein Layer 3 Customer Recommendation Dashboard</p>', unsafe_allow_html=True)
+def render_profile_card(result: dict) -> None:
+    st.markdown('<div class="card card-accent">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Customer Profile</div>', unsafe_allow_html=True)
+    fields = [
+        ("Name", result["name"]),
+        ("Customer ID", result["customer_id_display"]),
+        ("Area", result["address_area"]),
+        ("Last Purchase", result["last_product"]),
+        ("Category", result["last_product_category"]),
+        ("Transaction Date", result["transaction_date"]),
+        ("Order Count", f"{result['order_count']} — first-time buyer"),
+    ]
+    for label, value in fields:
+        st.markdown(f'<div class="field-label">{label}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="field-value">{value}</div>', unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def render_recommendation_card(result: dict) -> None:
+    st.markdown('<div class="card card-rec">', unsafe_allow_html=True)
+    st.markdown('<div class="card-title">Layer 3 Recommendation</div>', unsafe_allow_html=True)
+    st.markdown('<div class="field-label">Recommended Product</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="field-value-lg">{result["recommended_product"]}</div>', unsafe_allow_html=True)
+    st.markdown('<div class="field-label">Sample To Ship</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="field-value">{result["sample_to_ship"]}</div>', unsafe_allow_html=True)
     st.markdown(
-        '<p class="sub-header">Post-purchase intelligence for first-time buyers — recommend, sample, and time outreach before reorder</p>',
+        f'<div class="field-label">Timing</div>'
+        f'<div class="field-value">Email Day {result["email_day"]} · '
+        f'Sample Day {result["time_to_send_sample_days"]} · '
+        f'Reorder Day {result["estimated_reorder_days"]}</div>',
         unsafe_allow_html=True,
     )
+    st.caption(result["co_purchase_note"])
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def render_action_checklist(result: dict) -> None:
+    steps = [
+        f"Day {result['email_day']}: Send cross-sell email recommending <strong>{result['recommended_product']}</strong>",
+        f"Day {result['time_to_send_sample_days']}: Dispatch <strong>{result['sample_to_ship']}</strong> (separate shipment, not in first order box)",
+        f"Day {result['estimated_reorder_days']}: Customer enters expected reorder window — monitor for conversion",
+        "After Order 2: Trigger Subscribe & Save offer (SUB-01) at Day 48",
+    ]
+    for step in steps:
+        st.markdown(f'<div class="action-step">{step}</div>', unsafe_allow_html=True)
+
+
+def main() -> None:
+    render_hero()
+
+    eligible = get_eligible_customer_ids()
 
     with st.sidebar:
         st.markdown("### Demo Controls")
-        st.markdown(
-            f'<span class="pill">Reference date: {DEMO_TODAY.strftime("%d %b %Y")}</span>',
-            unsafe_allow_html=True,
-        )
-        st.caption(f"Eligible pool: first-time buyers with 1 order in last {LOOKBACK_DAYS} days")
-
-        eligible = get_eligible_customer_ids()
         st.metric("Eligible customers", len(eligible))
+        st.caption(f"First order in last {LOOKBACK_DAYS} days · reference {DEMO_TODAY.strftime('%d %b %Y')}")
 
         st.markdown("---")
         st.markdown("**Quick lookup**")
+        sample_id = None
         if eligible:
             sample_id = st.selectbox(
                 "Pick a demo Customer ID",
                 options=eligible,
-                format_func=lambda x: x,
+                format_func=lambda x: f"{int(x):,}",
                 label_visibility="collapsed",
             )
+            if st.button("Load selected ID", use_container_width=True):
+                st.session_state["lookup_id"] = sample_id
+                st.session_state["do_search"] = True
+                st.rerun()
         else:
-            sample_id = None
-            st.warning("No demo data found. Run build_demo_data.py first.")
+            st.warning("Run `python scripts/build_demo_data.py` to create demo data.")
 
         st.markdown("---")
+        st.markdown("**Layer 3 actions**")
         st.markdown(
             """
-            **Layer 3 actions**
-            - Cross-sell email after delivery
-            - Physical sample before reorder window
-            - Subscribe trigger after order 2
+            1. Cross-sell email after delivery  
+            2. Physical sample before reorder  
+            3. Subscribe trigger after order 2
             """
         )
+        st.markdown("---")
+        st.markdown("**Live demo tip**")
+        st.info("Pick a Clear Protein buyer to show the 54-day reorder / 44-day sample story.")
 
     st.markdown(
-        '<div class="disclaimer">Demo environment — customer names and areas are anonymised. '
-        "Lookup only returns data for eligible first-time buyers. Do not use for production CRM.</div>",
+        '<div class="disclaimer">Demo environment — names and areas are anonymised. '
+        "Lookup only returns eligible first-time buyers. Not for production CRM.</div>",
         unsafe_allow_html=True,
     )
-    st.write("")
 
     if "lookup_id" not in st.session_state:
         st.session_state["lookup_id"] = sample_id or ""
+    if "do_search" not in st.session_state:
+        st.session_state["do_search"] = False
 
-    col_search, col_btn = st.columns([4, 1])
-    with col_search:
+    search_col, btn_col = st.columns([5, 1])
+    with search_col:
         customer_input = st.text_input(
             "Enter Customer ID",
             value=st.session_state.get("lookup_id", ""),
-            placeholder="e.g. 6329694552319",
-            help="Use the full Customer ID from the sidebar. Shopify Excel exports may truncate IDs in scientific notation.",
+            placeholder="e.g. 8906250879231",
+            help="Use the full numeric ID from the sidebar dropdown.",
             key="customer_id_input",
         )
-    with col_btn:
+    with btn_col:
         st.write("")
         st.write("")
-        search = st.button("Look up customer", type="primary", use_container_width=True)
+        search_clicked = st.button("Look up", type="primary", use_container_width=True)
 
-    if not search and not customer_input:
-        st.info("Enter a Customer ID above or pick one from the sidebar to generate Layer 3 CRM actions.")
+    if search_clicked:
+        st.session_state["lookup_id"] = customer_input
+        st.session_state["do_search"] = True
+
+    if not st.session_state.get("do_search"):
+        st.markdown("### Getting started")
+        st.markdown(
+            "Enter a **Customer ID** above or select one from the sidebar, then click **Look up** "
+            "to generate Layer 3 CRM actions for a first-time buyer."
+        )
         if eligible:
-            st.markdown("#### Sample eligible IDs")
-            preview = eligible[:8]
-            cols = st.columns(4)
+            st.markdown("#### Sample customers")
+            preview = eligible[:6]
+            cols = st.columns(3)
             for i, cid in enumerate(preview):
-                with cols[i % 4]:
-                    if st.button(cid, key=f"btn_{cid}"):
+                with cols[i % 3]:
+                    if st.button(f"Demo: {int(cid):,}", key=f"quick_{cid}", use_container_width=True):
                         st.session_state["lookup_id"] = cid
+                        st.session_state["do_search"] = True
                         st.rerun()
         return
 
-    if not search:
-        return
-
-    st.session_state["lookup_id"] = customer_input
-
-    result = lookup_customer(customer_input)
+    result = lookup_customer(st.session_state.get("lookup_id", customer_input))
     if not result.get("found"):
         st.error(result.get("error", "Customer not found."))
+        st.session_state["do_search"] = False
         return
 
-    st.success(f"Layer 3 recommendation generated for {result['name']}")
+    st.success(f"Layer 3 recommendation ready for **{result['name']}**")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown('<div class="card"><div class="card-title">Customer Profile</div>', unsafe_allow_html=True)
-        st.markdown(f"**Name:** {result['name']}")
-        st.markdown(f"**Customer ID:** `{result['customer_id_display']}`")
-        st.markdown(f"**Area:** {result['address_area']}")
-        st.markdown(f"**Last purchase:** {result['last_product']}")
-        st.markdown(f"**Transaction date:** {result['transaction_date']}")
-        st.markdown(f"**Order count:** {result['order_count']} (first-time buyer)")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    with c2:
-        st.markdown('<div class="card"><div class="card-title">Layer 3 Recommendation</div>', unsafe_allow_html=True)
-        st.markdown(f"**Recommended product:** {result['recommended_product']}")
-        st.markdown(f"**Sample to ship:** {result['sample_to_ship']}")
-        st.markdown(f"**Send sample on day:** {result['time_to_send_sample_days']} after delivery")
-        st.markdown(f"**Estimated reorder window:** {result['estimated_reorder_days']} days")
-        st.markdown(f"**Cross-sell email on day:** {result['email_day']} after delivery")
-        st.caption(result["co_purchase_note"])
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown("#### CRM Action Timeline")
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("Days until sample", result["days_until_sample"])
     m2.metric("Days until reorder", result["days_until_reorder"])
     m3.metric("Sample ships", result["sample_date"])
     m4.metric("Expected reorder", result["reorder_date"])
 
+    left, right = st.columns(2)
+    with left:
+        render_profile_card(result)
+    with right:
+        render_recommendation_card(result)
+
+    st.markdown("### CRM Journey Timeline")
     render_timeline(result)
 
-    st.markdown("#### CRM Action Summary")
-    summary = {
-        "Customer ID": result["customer_id_display"],
-        "Name": result["name"],
-        "Last Bought Product": result["last_product"],
-        "Transaction Date": result["transaction_date"],
-        "Recommended Product": result["recommended_product"],
-        "Sample To Ship": result["sample_to_ship"],
-        "Time To Send Sample (days)": result["time_to_send_sample_days"],
-        "Estimated Time Till Reorder (days)": result["estimated_reorder_days"],
-        "Cross-sell Email Date": result["email_date"],
-        "Sample Ship Date": result["sample_date"],
-        "Expected Reorder Date": result["reorder_date"],
-    }
-    st.table(summary)
+    st.markdown("### Recommended CRM Actions")
+    render_action_checklist(result)
+
+    with st.expander("Full CRM action summary", expanded=False):
+        summary = pd.DataFrame(
+            {
+                "Field": [
+                    "Customer ID",
+                    "Name",
+                    "Last Bought Product",
+                    "Transaction Date",
+                    "Recommended Product",
+                    "Sample To Ship",
+                    "Time To Send Sample (days)",
+                    "Estimated Time Till Reorder (days)",
+                    "Cross-sell Email Date",
+                    "Sample Ship Date",
+                    "Expected Reorder Date",
+                ],
+                "Value": [
+                    result["customer_id_display"],
+                    result["name"],
+                    result["last_product"],
+                    result["transaction_date"],
+                    result["recommended_product"],
+                    result["sample_to_ship"],
+                    result["time_to_send_sample_days"],
+                    result["estimated_reorder_days"],
+                    result["email_date"],
+                    result["sample_date"],
+                    result["reorder_date"],
+                ],
+            }
+        )
+        st.dataframe(summary, hide_index=True, use_container_width=True)
 
 
 if __name__ == "__main__":

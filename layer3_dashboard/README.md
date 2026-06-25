@@ -116,7 +116,76 @@ And writes anonymised demo CSVs into `data/`. Real names are replaced with demo 
 
 ---
 
-## Deployment (Free)
+## Deployment (Free & Permanent)
+
+### Option 1: Streamlit Community Cloud — **recommended for permanent hosting**
+
+Free, always-on public URL. Best for founder demos and portfolio links.
+
+1. **Prepare the repo**
+   - Commit `layer3_dashboard/` including `data/customers_demo.csv`, `data/transactions_demo.csv`, `data/cross_sell_rules.csv`
+   - Do **not** commit `customers_export_20260622.xlsx` or any raw PII
+
+2. **Push to GitHub**
+   ```bash
+   git add layer3_dashboard/
+   git commit -m "Add Layer 3 demo dashboard"
+   git push origin main
+   ```
+
+3. **Deploy**
+   - Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub
+   - Click **Create app**
+   - Repository: your repo
+   - Branch: `main`
+   - **Main file path:** `layer3_dashboard/app.py`
+   - Click **Deploy**
+
+4. **Result:** Permanent URL like `https://lushprotein-l3-demo.streamlit.app`
+   - Survives as long as the repo exists and Streamlit Cloud account is active
+   - Optional custom subdomain in app settings
+
+**Requirements file:** Streamlit Cloud auto-detects `layer3_dashboard/requirements.txt` if you set the app root to `layer3_dashboard/`, or add a root `requirements.txt` pointing to the same deps.
+
+---
+
+### Option 2: Hugging Face Spaces (free, permanent)
+
+1. Create a new **Streamlit Space** at [huggingface.co/spaces](https://huggingface.co/spaces)
+2. Upload `layer3_dashboard/` files or connect GitHub
+3. Set SDK to Streamlit, entry file `app.py`
+4. URL: `https://huggingface.co/spaces/yourname/lushprotein-l3`
+
+Good alternative if Streamlit Cloud has queue limits during demo day.
+
+---
+
+### Option 3: Render (free tier — not truly permanent)
+
+- Free web service spins down after 15 min inactivity
+- First visitor after sleep waits ~30–60s cold start
+- Fine for testing; not ideal for live founder demo without paid tier ($7/mo)
+
+---
+
+### Option 4: Railway / Fly.io (paid for always-on)
+
+- Railway removed generous free tier — expect ~$5–10/mo for always-on
+- Use only if you need custom backend beyond Streamlit
+
+---
+
+### Recommended setup for your presentation
+
+| Use case | Platform |
+|----------|----------|
+| Permanent demo link for founders | **Streamlit Community Cloud** |
+| Backup if Streamlit is slow | Hugging Face Spaces |
+| Local rehearsal | `python run_dashboard.py` |
+
+---
+
+## Deployment (legacy quick reference)
 
 ### Option 1: Streamlit Community Cloud (Recommended)
 
