@@ -18,6 +18,17 @@ DEMO_TODAY = datetime(2026, 6, 26)
 LOOKBACK_DAYS = 30
 SAMPLE_BUFFER_DAYS = 10
 
+# D1 co-purchase evidence (from Recommendation_B co_purchase_matrix_d1.csv)
+CO_PURCHASE_EVIDENCE = {
+    "Clear Protein": "53% of D1 Clear buyers also buy Lean",
+    "Lean Protein": "65% of D1 Lean buyers also buy Clear",
+    "Collagen Glow": "Collagen-first buyers need protein attach — 30.5% repeat",
+    "Accessories": "41% of Accessories buyers move to Lean — do not send another shaker",
+    "Soy Protein": "Low co-purchase — push hero Clear/Lean protein",
+    "Other": "Default to hero protein ladder",
+    "Unknown": "Fallback rule — map SKU in product catalogue",
+}
+
 DEFAULT_RULES = pd.DataFrame(
     [
         {
@@ -113,16 +124,8 @@ def format_customer_id_display(customer_id: str) -> str:
 def load_rules() -> pd.DataFrame:
     if RULES_FILE.exists():
         rules = pd.read_csv(RULES_FILE)
-        rules = rules.rename(
-            columns={
-                "first_product_category": "first_product_category",
-                "cross_sell_category": "cross_sell_category",
-                "sample_product_suggestion": "sample_product_suggestion",
-                "email_cross_sell_day_after_delivery": "email_cross_sell_day_after_delivery",
-                "physical_sample_day_after_delivery": "physical_sample_day_after_delivery",
-                "median_reorder_days": "median_reorder_days",
-            }
-        )
+        for col in rules.select_dtypes(include="object").columns:
+            rules[col] = rules[col].astype(str).str.strip()
         return rules
     return DEFAULT_RULES.copy()
 
@@ -137,7 +140,7 @@ def load_transactions(reference_date: datetime | None = None) -> pd.DataFrame:
     ref = reference_date or DEMO_TODAY
     cutoff = ref - timedelta(days=LOOKBACK_DAYS)
 
-    df = pd.read_csv(TRANSACTIONS_FILE)
+    df = pd.read_csv(TRANSACTIONS_FILE, dtype={"customer_id": str})
     df["customer_id"] = df["customer_id"].apply(normalize_customer_id)
     df["order_date"] = pd.to_datetime(df["order_date"]).dt.tz_localize(None)
     df = df.dropna(subset=["customer_id"])
@@ -149,6 +152,18 @@ def get_eligible_customer_ids(reference_date: datetime | None = None) -> list[st
     tx = load_transactions(reference_date)
     one_order = tx.groupby("customer_id").filter(lambda g: len(g) == 1)
     return sorted(one_order["customer_id"].unique().tolist())
+
+
+def get_demo_customer_summaries(reference_date: datetime | None = None) -> pd.DataFrame:
+    """Join customers + transactions for sidebar / quick-pick labels."""
+    customers = load_customers()
+    tx = load_transactions(reference_date)
+    tx = tx.groupby("customer_id").filter(lambda g: len(g) == 1)
+    merged = tx.merge(customers, on="customer_id", how="inner")
+    merged = merged.sort_values("name")
+    return merged[
+        ["customer_id", "name", "address_area", "product_category", "product_name", "order_date"]
+    ]
 
 
 def lookup_customer(
@@ -241,6 +256,8 @@ def lookup_customer(
         "email_date": email_date.strftime("%d/%m/%Y"),
         "days_until_sample": days_until_sample,
         "days_until_reorder": days_until_reorder,
-        "co_purchase_note": f"Rule derived from D1 co-purchase behaviour for {category} first buyers.",
+        "co_purchase_note": CO_PURCHASE_EVIDENCE.get(
+            category, f"Rule derived from D1 co-purchase behaviour for {category} first buyers."
+        ),
         "order_count": 1,
     }

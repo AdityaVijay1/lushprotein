@@ -2,13 +2,19 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+import html as html_lib
 
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from l3_engine import DEMO_TODAY, LOOKBACK_DAYS, get_eligible_customer_ids, lookup_customer
+from l3_engine import (
+    DEMO_TODAY,
+    LOOKBACK_DAYS,
+    get_demo_customer_summaries,
+    get_eligible_customer_ids,
+    lookup_customer,
+)
 
 st.set_page_config(
     page_title="LushProtein | Layer 3 CRM",
@@ -147,6 +153,28 @@ CUSTOM_CSS = f"""
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 
+def esc(text: object) -> str:
+    return html_lib.escape(str(text) if text is not None else "")
+
+
+def init_session() -> None:
+    if "lookup_id" not in st.session_state:
+        st.session_state.lookup_id = ""
+    if "do_search" not in st.session_state:
+        st.session_state.do_search = False
+
+
+def trigger_lookup(customer_id: str) -> None:
+    st.session_state.lookup_id = customer_id
+    st.session_state.do_search = True
+    st.rerun()
+
+
+def sidebar_label(row: pd.Series) -> str:
+    tail = str(row["customer_id"])[-4:]
+    return f"{row['name']} - {row['product_category']} (...{tail})"
+
+
 def render_hero() -> None:
     st.markdown(
         f"""
@@ -162,9 +190,17 @@ def render_hero() -> None:
     )
 
 
+def render_context_metrics() -> None:
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("One-and-done rate", "77.3%")
+    c2.metric("Single category", "65%")
+    c3.metric("Subscriber repeat gap", "3.6×")
+    c4.metric("L3 prize (conservative)", "S$17–30K/yr")
+
+
 def render_timeline(result: dict) -> None:
     events = [
-        ("Purchase", 0, COLORS["coral"], "Order fulfilled"),
+        ("Purchase", 0, COLORS["coral"], result["transaction_date"]),
         ("Cross-sell Email", result["email_day"], COLORS["blue"], result["email_date"]),
         ("Sample Ships", result["time_to_send_sample_days"], COLORS["gold"], result["sample_date"]),
         ("Expected Reorder", result["estimated_reorder_days"], COLORS["teal"], result["reorder_date"]),
@@ -210,7 +246,7 @@ def render_timeline(result: dict) -> None:
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
 def render_profile_card(result: dict) -> None:
@@ -226,8 +262,8 @@ def render_profile_card(result: dict) -> None:
         ("Order Count", f"{result['order_count']} — first-time buyer"),
     ]
     for label, value in fields:
-        st.markdown(f'<div class="field-label">{label}</div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="field-value">{value}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="field-label">{esc(label)}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="field-value">{esc(value)}</div>', unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -235,9 +271,9 @@ def render_recommendation_card(result: dict) -> None:
     st.markdown('<div class="card card-rec">', unsafe_allow_html=True)
     st.markdown('<div class="card-title">Layer 3 Recommendation</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-label">Recommended Product</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="field-value-lg">{result["recommended_product"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="field-value-lg">{esc(result["recommended_product"])}</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-label">Sample To Ship</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="field-value">{result["sample_to_ship"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="field-value">{esc(result["sample_to_ship"])}</div>', unsafe_allow_html=True)
     st.markdown(
         f'<div class="field-label">Timing</div>'
         f'<div class="field-value">Email Day {result["email_day"]} · '
@@ -251,8 +287,8 @@ def render_recommendation_card(result: dict) -> None:
 
 def render_action_checklist(result: dict) -> None:
     steps = [
-        f"Day {result['email_day']}: Send cross-sell email recommending <strong>{result['recommended_product']}</strong>",
-        f"Day {result['time_to_send_sample_days']}: Dispatch <strong>{result['sample_to_ship']}</strong> (separate shipment, not in first order box)",
+        f"Day {result['email_day']}: Send cross-sell email recommending <strong>{esc(result['recommended_product'])}</strong>",
+        f"Day {result['time_to_send_sample_days']}: Dispatch <strong>{esc(result['sample_to_ship'])}</strong> (separate shipment, not in first order box)",
         f"Day {result['estimated_reorder_days']}: Customer enters expected reorder window — monitor for conversion",
         "After Order 2: Trigger Subscribe & Save offer (SUB-01) at Day 48",
     ]
@@ -260,10 +296,8 @@ def render_action_checklist(result: dict) -> None:
         st.markdown(f'<div class="action-step">{step}</div>', unsafe_allow_html=True)
 
 
-def main() -> None:
-    render_hero()
-
-    eligible = get_eligible_customer_ids()
+def render_sidebar(summaries: pd.DataFrame, eligible: list[str]) -> None:
+    id_to_label = {row["customer_id"]: sidebar_label(row) for _, row in summaries.iterrows()}
 
     with st.sidebar:
         st.markdown("### Demo Controls")
@@ -272,18 +306,15 @@ def main() -> None:
 
         st.markdown("---")
         st.markdown("**Quick lookup**")
-        sample_id = None
         if eligible:
             sample_id = st.selectbox(
-                "Pick a demo Customer ID",
+                "Pick a demo customer",
                 options=eligible,
-                format_func=lambda x: f"{int(x):,}",
+                format_func=lambda x: id_to_label.get(x, f"{int(x):,}"),
                 label_visibility="collapsed",
             )
-            if st.button("Load selected ID", use_container_width=True):
-                st.session_state["lookup_id"] = sample_id
-                st.session_state["do_search"] = True
-                st.rerun()
+            if st.button("Load selected customer", use_container_width=True, type="primary"):
+                trigger_lookup(sample_id)
         else:
             st.warning("Run `python scripts/build_demo_data.py` to create demo data.")
 
@@ -297,8 +328,45 @@ def main() -> None:
             """
         )
         st.markdown("---")
-        st.markdown("**Live demo tip**")
-        st.info("Pick a Clear Protein buyer to show the 54-day reorder / 44-day sample story.")
+        st.info("Try **Aditya Vijay — Clear Protein** for the 54-day reorder / 44-day sample demo.")
+
+
+def render_landing(summaries: pd.DataFrame, eligible: list[str]) -> None:
+    st.markdown("### Getting started")
+    st.markdown(
+        "Enter a **Customer ID** above or select one from the sidebar, then click **Look up** "
+        "to generate Layer 3 CRM actions for a first-time buyer."
+    )
+
+    if not eligible:
+        return
+
+    st.markdown("#### Quick demo by category")
+    featured_cats = ["Clear Protein", "Lean Protein", "Collagen Glow", "Accessories", "Other"]
+    picks: list[pd.Series] = []
+    for cat in featured_cats:
+        rows = summaries[summaries["product_category"] == cat]
+        if not rows.empty:
+            picks.append(rows.iloc[0])
+
+    if picks:
+        cols = st.columns(len(picks))
+        for col, row in zip(cols, picks):
+            short = row["product_category"].replace(" Protein", "")
+            label = f"{row['name'].split()[0]} · {short}"
+            with col:
+                if st.button(label, key=f"quick_{row['customer_id']}", use_container_width=True):
+                    trigger_lookup(row["customer_id"])
+
+
+def main() -> None:
+    init_session()
+    summaries = get_demo_customer_summaries()
+    eligible = get_eligible_customer_ids()
+
+    render_hero()
+    render_context_metrics()
+    render_sidebar(summaries, eligible)
 
     st.markdown(
         '<div class="disclaimer">Demo environment — names and areas are anonymised. '
@@ -306,19 +374,13 @@ def main() -> None:
         unsafe_allow_html=True,
     )
 
-    if "lookup_id" not in st.session_state:
-        st.session_state["lookup_id"] = sample_id or ""
-    if "do_search" not in st.session_state:
-        st.session_state["do_search"] = False
-
     search_col, btn_col = st.columns([5, 1])
     with search_col:
         customer_input = st.text_input(
             "Enter Customer ID",
-            value=st.session_state.get("lookup_id", ""),
+            value=st.session_state.lookup_id,
             placeholder="e.g. 8906250879231",
             help="Use the full numeric ID from the sidebar dropdown.",
-            key="customer_id_input",
         )
     with btn_col:
         st.write("")
@@ -326,31 +388,17 @@ def main() -> None:
         search_clicked = st.button("Look up", type="primary", use_container_width=True)
 
     if search_clicked:
-        st.session_state["lookup_id"] = customer_input
-        st.session_state["do_search"] = True
+        trigger_lookup(customer_input.strip())
 
-    if not st.session_state.get("do_search"):
-        st.markdown("### Getting started")
-        st.markdown(
-            "Enter a **Customer ID** above or select one from the sidebar, then click **Look up** "
-            "to generate Layer 3 CRM actions for a first-time buyer."
-        )
-        if eligible:
-            st.markdown("#### Sample customers")
-            preview = eligible[:6]
-            cols = st.columns(3)
-            for i, cid in enumerate(preview):
-                with cols[i % 3]:
-                    if st.button(f"Demo: {int(cid):,}", key=f"quick_{cid}", use_container_width=True):
-                        st.session_state["lookup_id"] = cid
-                        st.session_state["do_search"] = True
-                        st.rerun()
+    if not st.session_state.do_search:
+        render_landing(summaries, eligible)
         return
 
-    result = lookup_customer(st.session_state.get("lookup_id", customer_input))
+    result = lookup_customer(st.session_state.lookup_id)
     if not result.get("found"):
         st.error(result.get("error", "Customer not found."))
-        st.session_state["do_search"] = False
+        st.session_state.do_search = False
+        render_landing(summaries, eligible)
         return
 
     st.success(f"Layer 3 recommendation ready for **{result['name']}**")

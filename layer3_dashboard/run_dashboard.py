@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -54,6 +55,7 @@ def ensure_demo_data() -> None:
 
 
 def launch_streamlit() -> None:
+    os.chdir(ROOT)
     print("\nStarting LushProtein Layer 3 Dashboard...")
     print("Open: http://localhost:8501\n")
     subprocess.check_call(

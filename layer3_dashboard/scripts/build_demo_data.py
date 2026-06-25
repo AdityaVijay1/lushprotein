@@ -78,9 +78,9 @@ def main() -> None:
     demo_customers = []
     demo_transactions = []
 
-    for i, row in pool.iterrows():
+    for idx, (_, row) in enumerate(pool.iterrows()):
         cid = row["customer_id"]
-        name, area = DEMO_NAMES[i % len(DEMO_NAMES)]
+        name, area = DEMO_NAMES[idx % len(DEMO_NAMES)]
         demo_customers.append(
             {
                 "customer_id": cid,
@@ -101,8 +101,13 @@ def main() -> None:
             }
         )
 
-    pd.DataFrame(demo_customers).to_csv(DATA_DIR / "customers_demo.csv", index=False)
-    pd.DataFrame(demo_transactions).to_csv(DATA_DIR / "transactions_demo.csv", index=False)
+    customers_df = pd.DataFrame(demo_customers)
+    customers_df["customer_id"] = customers_df["customer_id"].astype(str)
+    customers_df.to_csv(DATA_DIR / "customers_demo.csv", index=False)
+
+    tx_df = pd.DataFrame(demo_transactions)
+    tx_df["customer_id"] = tx_df["customer_id"].astype(str)
+    tx_df.to_csv(DATA_DIR / "transactions_demo.csv", index=False)
 
     if RULES_SRC.exists():
         rules = pd.read_csv(RULES_SRC)
