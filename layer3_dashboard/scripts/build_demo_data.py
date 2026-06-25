@@ -12,7 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT.parent
 sys.path.insert(0, str(ROOT))
 
-from l3_engine import DEMO_TODAY, LOOKBACK_DAYS, format_customer_id_display, normalize_customer_id
+from l3_engine import (
+    DEMO_TODAY,
+    LOOKBACK_DAYS,
+    format_customer_id_display,
+    normalize_customer_id,
+)
 
 DATA_DIR = ROOT / "data"
 CUSTOMERS_SRC = PROJECT / "1.customer_transaction" / "customers_export_20260622.xlsx"
@@ -36,6 +41,46 @@ DEMO_NAMES = [
     ("Mei Lin Chen", "Queenstown"),
     ("Omar Ibrahim", "Pasir Ris"),
 ]
+
+
+# Target days-until-sample for presentation (varied so demos look realistic)
+DAYS_UNTIL_SAMPLE_TARGETS = [18, 12, 24, 9, 15, 21, 10, 16, 22, 8, 14, 20, 26, 11, 17, 19, 13, 23, 7, 25]
+MIN_DAYS_UNTIL_SAMPLE = 7
+
+
+def sample_day_for_category(category: str, rules: pd.DataFrame) -> int:
+    row = rules[rules["first_product_category"] == category]
+    if row.empty:
+        row = rules[rules["first_product_category"] == "Unknown"]
+    return int(row.iloc[0]["physical_sample_day_after_delivery"])
+
+
+def assign_demo_order_date(
+    category: str,
+    rules: pd.DataFrame,
+    ref: datetime,
+    cutoff: datetime,
+    slot: int,
+) -> datetime:
+    """
+    Pick an order date inside the 30-day window so the sample ship date
+    is still in the future (looks good in live demo KPIs).
+    """
+    sample_day = sample_day_for_category(category, rules)
+    target_days = DAYS_UNTIL_SAMPLE_TARGETS[slot % len(DAYS_UNTIL_SAMPLE_TARGETS)]
+    target_days = max(MIN_DAYS_UNTIL_SAMPLE, target_days)
+
+    # order_date + sample_day = sample_date  →  days_until = sample_day - (ref - order_date)
+    order = ref - timedelta(days=sample_day - target_days)
+    order = max(cutoff, min(ref, order))
+
+    days_until = (order + timedelta(days=sample_day) - ref).days
+    if days_until < MIN_DAYS_UNTIL_SAMPLE:
+        # Move purchase more recent → sample further out
+        shift = MIN_DAYS_UNTIL_SAMPLE - days_until
+        order = min(ref, order + timedelta(days=shift))
+
+    return order
 
 
 def main() -> None:
@@ -62,10 +107,24 @@ def main() -> None:
     if pool.empty:
         raise SystemExit("No eligible customers found in order data.")
 
-    # Spread purchase dates across last 30 days for demo realism
-    n = len(pool)
-    demo_dates = [ref - timedelta(days=int(i * (LOOKBACK_DAYS - 1) / max(n - 1, 1))) for i in range(n)]
     pool = pool.reset_index(drop=True)
+
+    # Load L3 rules so order dates align with each category's sample timing
+    if RULES_SRC.exists():
+        rules_src = pd.read_csv(RULES_SRC)
+    else:
+        from l3_engine import DEFAULT_RULES
+
+        rules_src = DEFAULT_RULES.copy()
+
+    category_slots: dict[str, int] = {}
+    demo_dates: list[datetime] = []
+    for idx, row in pool.iterrows():
+        cat = row.get("product_category") or "Unknown"
+        slot = category_slots.get(cat, 0)
+        category_slots[cat] = slot + 1
+        demo_dates.append(assign_demo_order_date(cat, rules_src, ref, cutoff, slot))
+
     pool["demo_order_date"] = demo_dates
 
     # Load customer export for join (names anonymized regardless)
@@ -109,8 +168,9 @@ def main() -> None:
     tx_df["customer_id"] = tx_df["customer_id"].astype(str)
     tx_df.to_csv(DATA_DIR / "transactions_demo.csv", index=False)
 
+    rules = rules_src
     if RULES_SRC.exists():
-        rules = pd.read_csv(RULES_SRC)
+        rules_out = pd.read_csv(RULES_SRC)
         keep = [
             "first_product_category",
             "cross_sell_category",
@@ -119,14 +179,25 @@ def main() -> None:
             "physical_sample_day_after_delivery",
             "median_reorder_days",
         ]
-        rules[keep].to_csv(DATA_DIR / "cross_sell_rules.csv", index=False)
+        rules_out[keep].to_csv(DATA_DIR / "cross_sell_rules.csv", index=False)
     else:
         from l3_engine import DEFAULT_RULES
 
         DEFAULT_RULES.to_csv(DATA_DIR / "cross_sell_rules.csv", index=False)
 
+    # Summary stats for presentation QA
+    rule_map = rules_src.set_index("first_product_category")["physical_sample_day_after_delivery"].to_dict()
+    until_samples = []
+    for _, row in pool.iterrows():
+        cat = row.get("product_category") or "Unknown"
+        sd = int(rule_map.get(cat, 40))
+        od = row["demo_order_date"]
+        until_samples.append(max(0, (od + timedelta(days=sd) - ref).days))
+
     print(f"Built {len(demo_customers)} demo customers -> {DATA_DIR / 'customers_demo.csv'}")
     print(f"Built {len(demo_transactions)} transactions -> {DATA_DIR / 'transactions_demo.csv'}")
+    print(f"Days until sample: min={min(until_samples)}, max={max(until_samples)}, "
+          f"at zero={sum(1 for x in until_samples if x == 0)}")
     print(f"Sample lookup IDs:")
     for c in demo_customers[:5]:
         print(f"  {c['customer_id_display']}  ({c['name']})")
