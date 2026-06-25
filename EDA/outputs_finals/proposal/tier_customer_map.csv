@@ -1,0 +1,1717 @@
+customer_id,tier,profit_decile,order_freq_decile,finals_orders,finals_revenue,true_gross_profit,avg_margin_pct,cogs_coverage_pct,ever_subscribed,n_categories_ever,first_channel,first_product_cat,acq_year,days_to_second,lifespan_days,recency_days,recency_status
+7755957895423,Tier 1,D1,D1,38,4995.46,2796.69,56.0,62.9,True,4,Direct / Organic,Unknown,2022,48.0,1442,52,Active
+6336728531199,Tier 1,D1,D1,3,5542.97,2215.23,40.0,0.0,False,1,Subscription,Unknown,2022,2.0,4,1427,Likely churned
+6558688313599,Tier 1,D1,D1,10,2783.08,1824.82,65.6,53.4,True,3,Direct / Organic,Unknown,2022,115.0,1401,51,Active
+7756000690431,Tier 1,D1,D1,4,3612.43,1817.95,50.3,29.9,False,2,Direct / Organic,Unknown,2022,86.0,142,1282,Likely churned
+7756026904831,Tier 1,D1,D1,5,4306.38,1722.55,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,72,1455,Likely churned
+6336747438335,Tier 1,D1,D1,5,3180.03,1544.83,48.6,28.1,False,4,Subscription,Unknown,2022,2.0,1117,227,Likely churned
+8081852530943,Tier 1,D1,D1,7,1933.2,1500.97,77.6,100.0,False,3,Direct / Organic,Clear Protein,2025,21.0,254,84,Active
+6329689735423,Tier 1,D1,D1,13,2177.98,1431.6,65.7,57.9,False,4,Direct / Organic,Unknown,2022,1.0,817,702,Likely churned
+7476721352959,Tier 1,D1,D1,11,1575.37,1089.58,69.2,100.0,True,2,Subscription,Clear Protein,2024,56.0,526,80,Active
+6334073602303,Tier 1,D1,D1,6,1960.53,1080.55,55.1,49.5,False,3,Subscription,Unknown,2022,221.0,641,702,Likely churned
+6327679418623,Tier 1,D1,D1,11,1670.91,1006.53,60.2,100.0,True,3,Subscription,Other,2022,110.0,665,634,Likely churned
+6328214618367,Tier 1,D1,D1,14,1411.24,931.01,66.0,87.5,True,3,Subscription,Unknown,2022,101.0,833,584,Likely churned
+8235052826879,Tier 1,D1,D1,4,1037.77,928.64,89.5,100.0,False,4,Direct / Organic,Lean Protein,2025,36.0,90,181,Likely churned
+7756002066687,Tier 1,D1,D1,12,2010.06,923.13,45.9,50.8,True,5,Direct / Organic,Unknown,2022,23.0,907,580,Likely churned
+6327501881599,Tier 1,D1,D1,4,2176.18,870.47,40.0,0.0,False,1,Subscription,Unknown,2022,28.0,94,1456,Likely churned
+6590570627327,Tier 1,D1,D1,14,1125.32,827.42,73.5,100.0,True,3,Subscription,Other,2023,80.0,1053,101,At-risk
+7756013306111,Tier 1,D1,D1,9,1232.96,768.5,62.3,98.2,True,4,Direct / Organic,Unknown,2022,54.0,532,700,Likely churned
+6327806263551,Tier 1,D1,D1,3,1898.63,759.45,40.0,0.0,False,1,Subscription,Unknown,2022,21.0,22,1533,Likely churned
+7916487934207,Tier 1,D1,D1,10,1045.9,750.08,71.7,100.0,True,2,Paid Social,Clear Protein,2025,37.0,318,87,Active
+6329711493375,Tier 1,D1,D1,9,955.73,739.11,77.3,100.0,True,2,Subscription,Other,2024,28.0,420,190,Likely churned
+7756006097151,Tier 1,D1,D1,5,1501.0,728.5,48.5,17.5,False,2,Direct / Organic,Unknown,2022,2.0,258,1202,Likely churned
+7033655099647,Tier 1,D1,D1,17,889.29,727.87,81.8,100.0,True,2,Subscription,Unknown,2024,44.0,687,139,At-risk
+6327607623935,Tier 1,D1,D1,12,1102.89,724.77,65.7,100.0,True,3,Subscription,Collagen Glow,2024,42.0,563,70,Active
+6336754647295,Tier 1,D1,D1,4,754.9,642.22,85.1,88.7,True,3,Subscription,Unknown,2022,60.0,1112,228,Likely churned
+6328289657087,Tier 1,D1,D1,3,1382.72,632.64,45.8,0.0,False,1,Subscription,Unknown,2022,154.0,180,1313,Likely churned
+8403609026815,Tier 1,D1,D1,3,870.41,611.2,70.2,94.7,False,5,Direct / Organic,Other,2025,10.0,61,137,At-risk
+7755915886847,Tier 1,D1,D1,5,1527.63,609.96,39.9,0.0,False,1,Direct / Organic,Unknown,2022,55.0,55,1516,Likely churned
+7338895868159,Tier 1,D1,D1,4,896.8,601.87,67.1,100.0,True,1,Subscription,Clear Protein,2024,210.0,462,221,Likely churned
+7756011536639,Tier 1,D1,D1,9,1303.28,597.75,45.9,41.9,False,2,Direct / Organic,Unknown,2022,30.0,747,682,Likely churned
+7756430016767,Tier 1,D1,D1,5,797.92,580.55,72.8,100.0,True,1,Direct / Organic,Clear Protein,2024,32.0,275,428,Likely churned
+6970579321087,Tier 1,D1,D1,15,817.21,573.9,70.2,100.0,True,2,Subscription,Other,2023,465.0,821,38,Active
+7700304986367,Tier 1,D1,D1,13,825.25,565.43,68.5,100.0,True,3,Subscription,Other,2024,28.0,456,49,Active
+7677544628479,Tier 1,D1,D1,4,605.62,547.29,90.4,100.0,True,3,Subscription,Clear Protein,2024,61.0,430,82,Active
+7756011569407,Tier 1,D1,D1,8,749.43,546.21,72.9,100.0,True,2,Subscription,Soy Protein,2023,168.0,1006,109,At-risk
+7756260311295,Tier 1,D1,D1,13,1066.28,537.06,50.4,73.7,False,3,Direct / Organic,Unknown,2022,5.0,486,758,Likely churned
+7999782879487,Tier 1,D1,D1,11,748.0,528.1,70.6,100.0,True,1,Direct / Organic,Clear Protein,2025,34.0,303,52,Active
+7756034539775,Tier 1,D1,D1,8,1102.08,519.5,47.1,47.5,True,2,Direct / Organic,Unknown,2022,106.0,1244,308,Likely churned
+8048350658815,Tier 1,D1,D1,9,619.3,514.63,83.1,100.0,True,3,Subscription,Collagen Glow,2025,104.0,290,60,Active
+7756030181631,Tier 1,D1,D1,6,1280.09,509.86,39.8,0.0,False,1,Direct / Organic,Unknown,2022,72.0,127,1410,Likely churned
+7475324551423,Tier 1,D1,D1,9,680.14,505.22,74.3,100.0,True,3,Subscription,Lean Protein,2024,24.0,419,188,Likely churned
+7755978309887,Tier 1,D1,D1,7,996.29,487.8,49.0,46.6,False,4,Direct / Organic,Unknown,2022,199.0,870,690,Likely churned
+7756000854271,Tier 1,D1,D1,6,675.75,483.97,71.6,88.7,True,4,Direct / Organic,Unknown,2022,25.0,871,467,Likely churned
+7835384873215,Tier 1,D1,D1,4,661.94,477.37,72.1,100.0,True,3,Direct / Organic,Lean Protein,2025,30.0,368,79,Active
+7142554403071,Tier 1,D1,D1,8,542.94,471.74,86.9,100.0,True,3,Subscription,Other,2024,31.0,653,110,At-risk
+7756396953855,Tier 1,D1,D1,14,892.75,467.62,52.4,85.7,True,4,Subscription,Unknown,2023,30.0,507,367,Likely churned
+7756468977919,Tier 1,D1,D1,11,642.59,466.16,72.5,100.0,True,4,Direct / Organic,Clear Protein,2024,20.0,509,69,Active
+7521981661439,Tier 1,D1,D1,13,709.64,465.53,65.6,100.0,True,2,Subscription,Lean Protein,2024,28.0,373,205,Likely churned
+6329604407551,Tier 1,D1,D1,9,664.01,446.03,67.2,100.0,True,2,Subscription,Clear Protein,2024,28.0,203,564,Likely churned
+6329874153727,Tier 1,D1,D1,7,799.78,443.87,55.5,50.6,True,3,Subscription,Unknown,2022,2.0,749,672,Likely churned
+6336693305599,Tier 1,D1,D1,7,664.11,443.0,66.7,100.0,True,4,Subscription,Collagen Glow,2024,78.0,583,266,Likely churned
+7755925979391,Tier 1,D1,D1,7,1078.24,442.9,41.1,4.5,False,1,Direct / Organic,Unknown,2022,123.0,262,1282,Likely churned
+8264846573823,Tier 1,D1,D1,5,618.6,432.07,69.8,100.0,True,4,Subscription,Clear Protein,2025,34.0,157,97,At-risk
+7756437455103,Tier 1,D1,D1,4,593.09,426.38,71.9,100.0,False,1,Direct / Organic,Clear Protein,2024,48.0,234,447,Likely churned
+8134241386751,Tier 1,D1,D1,5,623.75,425.82,68.3,100.0,True,2,Subscription,Other,2025,84.0,254,65,Active
+7497109635327,Tier 1,D1,D1,5,603.1,421.67,69.9,100.0,True,4,Subscription,Other,2024,21.0,263,329,Likely churned
+7756005474559,Tier 1,D1,D1,8,823.69,408.36,49.6,18.6,False,2,Direct / Organic,Unknown,2022,17.0,235,1296,Likely churned
+7755988041983,Tier 1,D1,D1,6,877.82,407.79,46.5,36.3,False,2,Direct / Organic,Unknown,2022,17.0,330,1110,Likely churned
+6328258035967,Tier 1,D1,D1,6,592.93,405.51,68.4,95.2,False,2,Subscription,Unknown,2022,69.0,783,578,Likely churned
+8098552250623,Tier 1,D1,D1,4,475.34,404.1,85.0,100.0,False,5,Direct / Organic,Collagen Glow,2025,76.0,252,79,Active
+7124600881407,Tier 1,D1,D1,5,585.83,403.18,68.8,100.0,True,4,Subscription,Other,2024,352.0,464,314,Likely churned
+6327682236671,Tier 1,D1,D1,7,905.92,402.55,44.4,4.5,False,2,Subscription,Unknown,2022,45.0,384,1108,Likely churned
+7971386065151,Tier 1,D1,D1,8,582.05,402.48,69.1,100.0,True,4,Direct / Organic,Unknown,2025,10.0,290,83,Active
+7475231457535,Tier 1,D1,D1,4,468.8,398.62,85.0,100.0,False,3,Subscription,Lean Protein,2024,5.0,96,511,Likely churned
+7756421300479,Tier 1,D1,D1,13,632.86,392.21,62.0,100.0,True,2,Subscription,Clear Protein,2024,28.0,392,342,Likely churned
+7522571616511,Tier 1,D1,D1,5,534.27,392.15,73.4,100.0,True,3,Subscription,Lean Protein,2024,160.0,321,256,Likely churned
+8706965569791,Tier 1,D1,D1,2,514.1,391.18,76.1,100.0,True,3,Subscription,Accessories,2026,54.0,54,45,Active
+7922399772927,Tier 1,D1,D1,10,593.12,389.43,65.7,100.0,True,1,Direct / Organic,Lean Protein,2025,30.0,346,55,Active
+6327607918847,Tier 1,D1,D1,3,740.0,388.56,52.5,33.6,False,2,Subscription,Unknown,2022,443.0,745,757,Likely churned
+8332113117439,Tier 1,D1,D1,2,480.19,387.16,80.6,100.0,False,5,Paid Social,Other,2025,94.0,94,132,At-risk
+6420678377727,Tier 1,D1,D1,3,687.93,381.56,55.5,100.0,False,1,Subscription,Unknown,2022,301.0,344,1121,Likely churned
+8438298673407,Tier 1,D1,D1,4,542.12,381.43,70.4,100.0,True,6,Direct / Organic,Accessories,2025,4.0,151,41,Active
+7756359336191,Tier 1,D1,D1,11,777.35,381.17,49.0,100.0,True,1,Subscription,Other,2023,56.0,430,668,Likely churned
+7756033753343,Tier 1,D1,D1,2,831.87,380.39,45.7,26.6,False,2,Direct / Organic,Unknown,2022,270.0,270,1170,Likely churned
+7756261130495,Tier 1,D1,D1,2,549.01,378.46,68.9,100.0,False,3,Direct / Organic,Collagen Glow,2022,534.0,534,701,Likely churned
+8337105322239,Tier 1,D1,D1,3,408.0,372.52,91.3,100.0,False,4,Direct / Organic,Accessories,2025,17.0,17,206,Likely churned
+6327697834239,Tier 1,D1,D1,10,674.14,371.17,55.1,72.1,True,5,Direct / Organic,Unknown,2022,669.0,1326,101,At-risk
+7756002328831,Tier 1,D1,D1,4,487.51,368.31,75.5,46.8,False,2,Direct / Organic,Unknown,2022,48.0,436,1089,Likely churned
+7971501867263,Tier 1,D1,D1,5,518.05,367.38,70.9,100.0,False,3,Direct / Organic,Lean Protein,2025,15.0,180,193,Likely churned
+6327531176191,Tier 1,D1,D1,5,549.32,362.26,65.9,100.0,True,2,Subscription,Clear Protein,2024,56.0,314,428,Likely churned
+6327522361599,Tier 1,D1,D1,8,599.82,358.14,59.7,89.8,True,4,Subscription,Unknown,2022,209.0,1085,255,Likely churned
+7968977092863,Tier 1,D1,D1,5,539.82,356.94,66.1,100.0,True,4,Subscription,Clear Protein,2025,0.0,170,205,Likely churned
+6765611876607,Tier 1,D1,D1,10,679.2,356.1,52.4,100.0,True,1,Subscription,Other,2023,28.0,420,578,Likely churned
+7756404064511,Tier 1,D1,D1,5,441.81,355.56,80.5,100.0,False,5,Direct / Organic,Other,2024,38.0,562,264,Likely churned
+7756473499903,Tier 1,D1,D1,9,521.67,353.56,67.8,100.0,True,4,Subscription,Other,2024,16.0,488,77,Active
+7988268073215,Tier 1,D1,D1,4,549.82,351.42,63.9,100.0,True,4,Paid Social,Unknown,2025,5.0,131,234,Likely churned
+7756048630015,Tier 1,D1,D1,2,881.7,350.25,39.7,0.0,False,1,Direct / Organic,Unknown,2021,4.0,4,1576,Likely churned
+7136686768383,Tier 1,D1,D1,4,456.12,347.32,76.1,100.0,False,4,Subscription,Other,2024,36.0,563,210,Likely churned
+7755942527231,Tier 1,D1,D1,4,845.28,344.61,40.8,7.2,False,2,Direct / Organic,Unknown,2022,71.0,692,869,Likely churned
+6423228776703,Tier 1,D1,D1,3,859.5,343.8,40.0,0.0,False,1,Subscription,Unknown,2022,0.0,0,1440,Likely churned
+8305913921791,Tier 1,D1,D1,2,397.0,338.28,85.2,100.0,False,4,Direct / Organic,Other,2025,172.0,172,65,Active
+8463938388223,Tier 1,D1,D1,3,438.5,337.35,76.9,100.0,False,3,Direct / Organic,Unknown,2025,53.0,80,108,At-risk
+7122726191359,Tier 1,D1,D1,5,487.2,336.77,69.1,100.0,True,5,Subscription,Clear Protein,2024,42.0,715,64,Active
+7756462293247,Tier 1,D1,D1,3,409.85,336.06,82.0,100.0,False,2,Direct / Organic,Accessories,2024,25.0,187,418,Likely churned
+7756430639359,Tier 1,D1,D1,4,451.26,335.31,74.3,100.0,True,5,Subscription,Clear Protein,2024,32.0,297,404,Likely churned
+7756431556863,Tier 1,D1,D1,6,472.66,333.07,70.5,99.5,False,2,Direct / Organic,Collagen Glow,2024,31.0,369,331,Likely churned
+7756038406399,Tier 1,D1,D1,2,832.0,332.8,40.0,0.0,False,1,Direct / Organic,Unknown,2022,5.0,5,1488,Likely churned
+8345035243775,Tier 1,D1,D1,3,387.0,331.62,85.7,100.0,False,2,Direct / Organic,Accessories,2025,0.0,0,218,Likely churned
+6850481160447,Tier 1,D1,D1,9,602.23,330.91,54.9,100.0,True,2,Subscription,Unknown,2023,84.0,725,202,Likely churned
+7476798292223,Tier 1,D1,D1,3,357.65,329.57,92.1,100.0,False,5,Subscription,Clear Protein,2024,28.0,540,66,Active
+7756349112575,Tier 1,D1,D1,9,574.15,327.51,57.0,95.4,True,3,Direct / Organic,Collagen Glow,2023,45.0,1089,72,Active
+7756023529727,Tier 1,D1,D1,3,818.16,327.26,40.0,0.0,False,1,Direct / Organic,Unknown,2021,0.0,30,1550,Likely churned
+6327639572735,Tier 1,D1,D1,6,523.45,324.88,62.1,100.0,True,3,Subscription,Other,2024,42.0,432,332,Likely churned
+7143014727935,Tier 1,D1,D1,4,453.92,324.6,71.5,100.0,False,2,Subscription,Clear Protein,2024,21.0,419,350,Likely churned
+7756016484607,Tier 1,D1,D1,4,736.98,324.4,44.0,28.2,True,2,Direct / Organic,Unknown,2022,92.0,387,1043,Likely churned
+7755980079359,Tier 1,D1,D1,21,593.81,320.19,53.9,89.0,True,5,Direct / Organic,Unknown,2022,97.0,1222,336,Likely churned
+7991231217919,Tier 1,D1,D1,4,426.4,317.82,74.5,100.0,True,3,Direct / Organic,Clear Protein,2025,31.0,326,38,Active
+8335039529215,Tier 1,D1,D1,2,430.0,317.63,73.9,100.0,False,3,Direct / Organic,Lean Protein,2025,18.0,18,206,Likely churned
+7756374442239,Tier 1,D1,D1,4,479.36,312.03,65.1,90.5,False,5,Direct / Organic,Unknown,2023,106.0,457,484,Likely churned
+7236677632255,Tier 1,D1,D1,8,477.6,310.67,65.0,100.0,True,3,Subscription,Clear Protein,2024,43.0,322,412,Likely churned
+7145852895487,Tier 1,D1,D1,5,476.68,310.62,65.2,100.0,True,2,Subscription,Collagen Glow,2024,1.0,638,129,At-risk
+7756015337727,Tier 1,D1,D1,5,786.05,310.05,39.4,0.0,False,1,Direct / Organic,Unknown,2022,7.0,145,1322,Likely churned
+8404134985983,Tier 1,D1,D1,2,382.56,308.98,80.8,100.0,False,3,Direct / Organic,Clear Protein,2025,0.0,0,198,Likely churned
+8308809007359,Tier 1,D1,D1,2,378.0,306.91,81.2,100.0,False,3,Direct / Organic,Other,2025,50.0,50,186,Likely churned
+8002930802943,Tier 1,D1,D1,4,435.1,300.32,69.0,100.0,True,2,Paid Social,Lean Protein,2025,7.0,115,248,Likely churned
+6327689576703,Tier 1,D1,D1,5,716.9,299.97,41.8,8.6,False,2,Subscription,Unknown,2022,33.0,1165,305,Likely churned
+8339756974335,Tier 1,D1,D1,4,412.4,299.92,72.7,100.0,False,4,Paid Social,Accessories,2025,16.0,142,79,Active
+7756386042111,Tier 1,D1,D1,8,482.23,296.13,61.4,100.0,True,4,Subscription,Other,2024,70.0,749,82,Active
+7883697324287,Tier 1,D1,D1,2,404.9,293.51,72.5,100.0,False,2,Direct / Organic,Clear Protein,2025,63.0,63,360,Likely churned
+7467076026623,Tier 1,D1,D1,7,462.7,293.37,63.4,100.0,False,2,Subscription,Lean Protein,2024,41.0,217,385,Likely churned
+6329600803071,Tier 1,D1,D1,5,473.99,293.36,61.9,53.3,False,2,Subscription,Unknown,2022,14.0,345,1190,Likely churned
+6453495759103,Tier 1,D1,D1,4,425.23,291.4,68.5,93.9,False,2,Subscription,Other,2022,34.0,567,672,Likely churned
+8339720569087,Tier 1,D1,D1,6,387.95,290.93,75.0,100.0,True,2,Direct / Organic,Accessories,2025,20.0,188,33,Active
+7756003279103,Tier 1,D1,D1,8,530.68,290.74,54.8,65.8,False,4,Direct / Organic,Unknown,2022,155.0,1094,370,Likely churned
+7756484346111,Tier 1,D1,D1,7,418.09,289.36,69.2,100.0,True,1,Subscription,Clear Protein,2024,28.0,168,338,Likely churned
+7940749426943,Tier 1,D1,D1,2,373.77,288.61,77.2,100.0,False,5,Direct / Organic,Accessories,2025,336.0,336,52,Active
+6328247255295,Tier 1,D1,D1,3,559.52,288.56,51.6,37.1,False,2,Subscription,Unknown,2022,5.0,307,1218,Likely churned
+7756263522559,Tier 1,D1,D1,7,513.87,286.65,55.8,91.3,True,3,Direct / Organic,Other,2022,23.0,908,311,Likely churned
+7167085084927,Tier 1,D1,D1,4,334.3,284.27,85.0,100.0,False,1,Subscription,Clear Protein,2024,13.0,55,702,Likely churned
+7486364188927,Tier 1,D1,D1,4,398.91,282.49,70.8,100.0,False,4,Subscription,Clear Protein,2024,266.0,376,224,Likely churned
+7962798620927,Tier 1,D1,D1,9,451.07,280.88,62.3,100.0,True,2,Paid Social,Lean Protein,2025,60.0,328,51,Active
+7144399864063,Tier 1,D1,D1,3,334.1,280.54,84.0,100.0,True,5,Subscription,Clear Protein,2024,63.0,695,68,Active
+8234418274559,Tier 1,D1,D1,2,433.9,277.83,64.0,100.0,False,3,Direct / Organic,Collagen Glow,2025,78.0,78,189,Likely churned
+6327752720639,Tier 1,D1,D1,4,649.48,276.04,42.5,20.2,True,2,Subscription,Unknown,2022,19.0,720,835,Likely churned
+6328228872447,Tier 1,D1,D1,3,697.78,275.19,39.4,0.0,False,1,Subscription,Unknown,2022,17.0,22,1506,Likely churned
+8273287708927,Tier 1,D1,D1,2,347.9,272.83,78.4,100.0,False,3,Direct / Organic,Lean Protein,2025,32.0,32,222,Likely churned
+8341243035903,Tier 1,D1,D1,3,320.8,271.02,84.5,95.7,False,4,Direct / Organic,Other,2025,8.0,98,122,At-risk
+6601910747391,Tier 1,D1,D1,4,342.45,271.0,79.1,91.5,False,4,Subscription,Other,2023,329.0,512,578,Likely churned
+7756414583039,Tier 1,D1,D1,3,481.35,269.33,56.0,100.0,False,1,Direct / Organic,Collagen Glow,2024,56.0,147,612,Likely churned
+7182675083519,Tier 1,D1,D1,3,375.61,266.87,71.0,100.0,False,3,Subscription,Clear Protein,2024,180.0,245,501,Likely churned
+7956357021951,Tier 1,D1,D1,8,428.18,265.69,62.1,100.0,True,3,Paid Social,Lean Protein,2025,18.0,312,71,Active
+6424544575743,Tier 1,D1,D1,3,342.81,262.29,76.5,100.0,False,2,Subscription,Clear Protein,2023,133.0,647,218,Likely churned
+7756485361919,Tier 1,D1,D1,6,365.0,262.14,71.8,100.0,True,2,Direct / Organic,Accessories,2024,18.0,164,338,Likely churned
+7756348162303,Tier 1,D1,D1,7,477.53,262.0,54.9,100.0,True,4,Direct / Organic,Other,2023,36.0,594,577,Likely churned
+7756316672255,Tier 1,D1,D1,14,463.64,261.94,56.5,96.6,True,4,Subscription,Collagen Glow,2023,42.0,918,199,Likely churned
+7756486934783,Tier 1,D1,D1,3,371.56,261.51,70.4,100.0,True,4,Direct / Organic,Clear Protein,2024,85.0,176,317,Likely churned
+8244807008511,Tier 1,D1,D1,3,373.61,260.9,69.8,100.0,True,2,Direct / Organic,Other,2025,82.0,153,112,At-risk
+6423240835327,Tier 1,D1,D1,5,446.35,260.76,58.4,72.3,True,3,Subscription,Unknown,2022,369.0,1094,337,Likely churned
+7168635830527,Tier 1,D1,D1,5,283.81,260.28,91.7,100.0,True,2,Subscription,Other,2024,30.0,179,577,Likely churned
+7756045648127,Tier 1,D1,D1,2,635.02,257.04,40.5,12.2,True,2,Direct / Organic,Unknown,2022,522.0,522,1040,Likely churned
+7755945574655,Tier 1,D1,D1,4,500.03,255.88,51.2,34.5,True,4,Direct / Organic,Unknown,2021,19.0,1514,66,Active
+6423604723967,Tier 1,D1,D1,3,403.72,254.95,63.2,75.7,False,2,Subscription,Unknown,2022,472.0,695,843,Likely churned
+6329831588095,Tier 1,D1,D1,7,391.2,254.93,65.2,100.0,False,4,Subscription,Other,2024,89.0,547,45,Active
+8054880207103,Tier 1,D1,D1,3,339.6,254.38,74.9,100.0,False,3,Direct / Organic,Lean Protein,2025,208.0,285,63,Active
+6329602670847,Tier 1,D1,D1,4,401.2,254.08,63.3,100.0,True,1,Subscription,Clear Protein,2024,28.0,85,689,Likely churned
+7151938994431,Tier 1,D1,D1,8,411.84,253.59,61.6,100.0,True,3,Subscription,Other,2024,42.0,462,303,Likely churned
+8350900257023,Tier 1,D1,D1,2,349.8,253.4,72.4,100.0,True,2,Subscription,Other,2025,171.0,171,43,Active
+6772333609215,Tier 1,D1,D1,5,405.71,252.35,62.2,100.0,False,4,Subscription,Other,2023,38.0,364,628,Likely churned
+7155206750463,Tier 1,D1,D1,3,295.51,251.32,85.0,100.0,False,2,Subscription,Clear Protein,2024,151.0,205,556,Likely churned
+7756008358143,Tier 1,D1,D1,6,452.7,251.09,55.5,60.5,False,3,Direct / Organic,Unknown,2022,22.0,1470,61,Active
+7756420251903,Tier 1,D1,D1,3,328.71,250.16,76.1,100.0,True,2,Direct / Organic,Other,2024,181.0,237,502,Likely churned
+7756000067839,Tier 1,D1,D1,3,295.15,249.42,84.5,100.0,True,3,Direct / Organic,Other,2022,595.0,1012,303,Likely churned
+7756376408319,Tier 1,D1,D1,6,484.24,249.42,51.5,100.0,True,1,Direct / Organic,Other,2023,426.0,650,344,Likely churned
+7756004458751,Tier 1,D1,D1,5,466.96,246.65,52.8,15.0,False,1,Direct / Organic,Unknown,2022,51.0,189,1303,Likely churned
+7756349440255,Tier 1,D1,D1,10,500.8,245.8,49.1,92.3,True,4,Subscription,Unknown,2023,22.0,770,387,Likely churned
+8653246890239,Tier 1,D1,D1,2,273.38,244.38,89.4,100.0,False,1,Direct / Organic,Lean Protein,2025,42.0,42,82,Active
+7295407227135,Tier 1,D1,D1,4,349.9,243.05,69.5,100.0,False,1,Subscription,Clear Protein,2024,243.0,442,268,Likely churned
+7427694067967,Tier 1,D1,D1,3,324.15,243.05,75.0,100.0,False,1,Subscription,Clear Protein,2024,86.0,191,443,Likely churned
+7756438634751,Tier 1,D1,D1,2,389.45,240.75,61.8,100.0,True,2,Subscription,Accessories,2024,50.0,50,626,Likely churned
+8758023454975,Tier 1,D1,D1,2,351.99,240.36,68.3,100.0,True,2,Subscription,Lean Protein,2026,31.0,31,53,Active
+7851775066367,Tier 1,D1,D1,5,346.0,239.25,69.1,100.0,True,1,Direct / Organic,Clear Protein,2025,38.0,380,57,Active
+8037245124863,Tier 1,D1,D1,5,330.55,239.24,72.4,100.0,True,5,Subscription,Lean Protein,2025,43.0,257,96,At-risk
+7691249844479,Tier 1,D1,D1,3,315.81,239.16,75.7,100.0,False,2,Subscription,Other,2024,178.0,299,209,Likely churned
+7756266340607,Tier 1,D1,D1,6,570.94,239.15,41.9,100.0,True,1,Direct / Organic,Other,2023,26.0,141,1050,Likely churned
+7756429525247,Tier 1,D1,D1,4,342.58,239.09,69.8,100.0,True,3,Subscription,Lean Protein,2025,84.0,275,38,Active
+6424573640959,Tier 1,D1,D1,3,347.26,238.73,68.7,100.0,False,3,Subscription,Other,2023,145.0,192,780,Likely churned
+7756423299327,Tier 1,D1,D1,2,292.74,237.41,81.1,95.4,False,4,Direct / Organic,Other,2024,30.0,30,700,Likely churned
+6559129141503,Tier 1,D1,D1,6,367.1,236.8,64.5,100.0,False,2,Subscription,Other,2023,67.0,1051,114,At-risk
+7756000133375,Tier 1,D1,D1,6,498.84,235.16,47.1,15.8,False,1,Direct / Organic,Unknown,2022,0.0,130,1315,Likely churned
+8474687602943,Tier 1,D1,D1,3,314.67,233.89,74.3,100.0,False,1,Direct / Organic,Lean Protein,2025,41.0,79,108,At-risk
+7756433686783,Tier 1,D1,D1,2,306.33,233.73,76.3,96.7,False,5,Direct / Organic,Unknown,2024,475.0,475,222,Likely churned
+7756354257151,Tier 1,D1,D1,5,393.18,232.82,59.2,97.9,True,3,Direct / Organic,Other,2023,15.0,199,938,Likely churned
+6804197376255,Tier 1,D1,D1,3,305.04,231.96,76.0,100.0,True,2,Subscription,Other,2023,168.0,387,577,Likely churned
+7756457443583,Tier 1,D1,D1,4,329.47,231.95,70.4,100.0,False,2,Direct / Organic,Clear Protein,2024,30.0,141,483,Likely churned
+7756485951743,Tier 1,D1,D1,4,323.02,231.43,71.6,100.0,False,4,Direct / Organic,Accessories,2024,2.0,433,67,Active
+7756439748863,Tier 1,D1,D1,6,442.1,231.31,52.3,100.0,True,3,Direct / Organic,Collagen Glow,2024,2.0,170,501,Likely churned
+7756006064383,Tier 1,D1,D1,5,312.25,229.96,73.6,89.7,True,4,Direct / Organic,Unknown,2022,44.0,605,731,Likely churned
+7475323666687,Tier 1,D1,D1,3,263.42,229.87,87.3,100.0,False,3,Subscription,Lean Protein,2024,9.0,29,578,Likely churned
+7756415500543,Tier 1,D1,D1,8,412.06,228.76,55.5,100.0,True,5,Subscription,Collagen Glow,2024,28.0,657,102,At-risk
+7756003639551,Tier 1,D1,D1,8,352.68,225.57,64.0,73.4,True,2,Direct / Organic,Unknown,2022,9.0,345,1002,Likely churned
+7968443990271,Tier 1,D1,D1,4,279.42,224.05,80.2,100.0,True,4,Direct / Organic,Unknown,2025,27.0,256,119,At-risk
+8166904529151,Tier 1,D1,D1,3,292.89,223.86,76.4,100.0,False,1,Direct / Organic,Lean Protein,2025,0.0,60,245,Likely churned
+8291080372479,Tier 1,D1,D1,2,316.61,223.08,70.5,100.0,False,2,Direct / Organic,Accessories,2025,12.0,12,234,Likely churned
+6336669483263,Tier 1,D1,D1,3,328.42,222.39,67.7,100.0,True,2,Subscription,Other,2024,153.0,196,403,Likely churned
+7261004103935,Tier 1,D1,D1,3,248.28,220.14,88.7,100.0,True,5,Subscription,Clear Protein,2024,84.0,432,237,Likely churned
+8148081869055,Tier 1,D1,D1,3,287.2,219.08,76.3,100.0,False,4,Direct / Organic,Other,2025,85.0,169,144,At-risk
+7851112497407,Tier 1,D1,D1,8,331.66,218.9,66.0,100.0,True,1,Subscription,Other,2025,27.0,209,228,Likely churned
+7756264440063,Tier 1,D1,D1,3,315.56,218.84,69.3,100.0,False,2,Direct / Organic,Other,2023,33.0,135,1076,Likely churned
+6767682453759,Tier 1,D1,D1,3,327.07,218.71,66.9,100.0,True,5,Subscription,Other,2023,299.0,360,634,Likely churned
+7475483541759,Tier 1,D1,D1,8,251.3,218.55,87.0,100.0,True,1,Subscription,Soy Protein,2024,158.0,562,45,Active
+8476754673919,Tier 1,D1,D1,3,294.5,218.0,74.0,100.0,False,2,Direct / Organic,Collagen Glow,2025,67.0,134,52,Active
+7968511426815,Tier 1,D1,D1,5,312.4,217.09,69.5,100.0,True,2,Subscription,Clear Protein,2025,34.0,314,61,Active
+8339521929471,Tier 1,D1,D1,3,252.1,216.35,85.8,100.0,False,4,Direct / Organic,Accessories,2025,16.0,182,39,Active
+7756025200895,Tier 1,D1,D1,2,444.45,215.99,48.6,32.7,False,3,Direct / Organic,Unknown,2022,227.0,227,1200,Likely churned
+8004947214591,Tier 1,D1,D1,2,300.5,213.58,71.1,100.0,False,5,Direct / Organic,Accessories,2025,18.0,18,344,Likely churned
+7756381683967,Tier 1,D1,D1,6,385.85,213.05,55.2,100.0,False,2,Direct / Organic,Other,2023,247.0,486,472,Likely churned
+7756048204031,Tier 1,D1,D1,10,396.61,212.99,53.7,98.5,True,4,Direct / Organic,Unknown,2022,796.0,1440,134,At-risk
+7723643175167,Tier 1,D1,D1,6,339.35,212.81,62.7,100.0,True,1,Subscription,Lean Protein,2024,59.0,261,233,Likely churned
+7756468125951,Tier 1,D1,D1,2,272.2,211.99,77.9,100.0,False,3,Direct / Organic,Clear Protein,2024,163.0,163,417,Likely churned
+7521916289279,Tier 1,D1,D1,3,222.19,211.37,95.1,100.0,False,6,Subscription,Other,2024,31.0,192,386,Likely churned
+7988988313855,Tier 1,D1,D1,4,311.02,210.28,67.6,100.0,False,3,Direct / Organic,Other,2025,9.0,98,267,Likely churned
+6327748264191,Tier 1,D1,D1,7,356.44,208.74,58.6,100.0,True,1,Subscription,Other,2023,56.0,308,731,Likely churned
+8071643332863,Tier 1,D1,D1,2,269.1,208.44,77.5,100.0,False,1,Direct / Organic,Other,2025,126.0,126,217,Likely churned
+7464591687935,Tier 1,D1,D1,3,234.23,207.24,88.5,100.0,False,3,Subscription,Clear Protein,2024,384.0,388,220,Likely churned
+8117513683199,Tier 1,D1,D1,5,305.83,206.7,67.6,100.0,True,3,Subscription,Clear Protein,2025,22.0,195,130,At-risk
+7756428902655,Tier 1,D1,D1,6,361.28,205.14,56.8,100.0,True,4,Subscription,Clear Protein,2024,20.0,264,442,Likely churned
+7292403122431,Tier 1,D1,D1,3,303.5,204.34,67.3,100.0,False,2,Subscription,Clear Protein,2024,235.0,300,412,Likely churned
+7756015763711,Tier 1,D1,D1,6,349.73,203.92,58.3,87.8,False,2,Direct / Organic,Unknown,2022,171.0,751,580,Likely churned
+7756440404223,Tier 1,D1,D1,5,284.03,203.67,71.7,100.0,False,4,Direct / Organic,Unknown,2024,59.0,332,337,Likely churned
+8306264637695,Tier 1,D1,D1,4,281.18,203.0,72.2,100.0,True,3,Paid Social,Lean Protein,2025,24.0,157,80,Active
+7756327911679,Tier 1,D1,D1,5,384.31,202.99,52.8,100.0,True,2,Direct / Organic,Collagen Glow,2023,217.0,788,393,Likely churned
+7756173213951,Tier 1,D1,D1,5,241.59,202.75,83.9,100.0,False,2,Direct / Organic,Soy Protein,2023,338.0,989,71,Active
+7755925750015,Tier 1,D1,D1,4,399.49,202.71,50.7,47.8,False,2,Direct / Organic,Unknown,2022,111.0,1038,433,Likely churned
+7829520974079,Tier 1,D1,D1,2,276.0,202.44,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,147.0,147,304,Likely churned
+6423226679551,Tier 1,D1,D1,3,362.61,202.05,55.7,64.4,False,2,Subscription,Unknown,2022,188.0,264,1091,Likely churned
+7476901839103,Tier 1,D1,D1,4,239.47,200.82,83.9,100.0,True,3,Subscription,Collagen Glow,2024,28.0,258,348,Likely churned
+7756043747583,Tier 1,D1,D1,2,500.62,200.25,40.0,0.0,False,1,Direct / Organic,Unknown,2022,23.0,23,1539,Likely churned
+7756418613503,Tier 1,D1,D1,4,275.72,200.02,72.5,100.0,False,4,Direct / Organic,Collagen Glow,2024,1.0,364,380,Likely churned
+8234169762047,Tier 1,D1,D1,2,220.9,199.73,90.4,100.0,False,3,Paid Social,Clear Protein,2025,42.0,42,229,Likely churned
+7984357114111,Tier 1,D1,D1,2,303.84,199.32,65.6,100.0,True,3,Subscription,Collagen Glow,2025,58.0,58,308,Likely churned
+7154402656511,Tier 1,D1,D1,4,283.9,199.31,70.2,100.0,False,2,Subscription,Clear Protein,2024,61.0,457,306,Likely churned
+8566894854399,Tier 1,D1,D1,3,260.83,199.14,76.3,100.0,True,3,Subscription,Lean Protein,2025,73.0,111,30,Active
+7756267454719,Tier 1,D1,D1,8,476.43,198.66,41.7,100.0,True,3,Direct / Organic,Other,2023,96.0,465,719,Likely churned
+6329843384575,Tier 1,D1,D1,3,207.75,198.6,95.6,74.6,False,2,Subscription,Unknown,2022,30.0,154,1185,Likely churned
+7756466028799,Tier 1,D1,D1,3,288.96,197.89,68.5,100.0,True,3,Subscription,Other,2024,110.0,155,423,Likely churned
+8253776953599,Tier 1,D1,D1,2,232.2,197.89,85.2,100.0,True,3,Subscription,Clear Protein,2025,27.0,27,233,Likely churned
+8384362742015,Tier 1,D1,D1,2,308.9,197.81,64.0,91.9,False,3,Paid Social,Clear Protein,2025,16.0,16,186,Likely churned
+7756432212223,Tier 1,D1,D1,3,248.25,197.46,79.5,100.0,False,3,Direct / Organic,Other,2024,121.0,352,348,Likely churned
+7469847445759,Tier 1,D1,D1,5,241.37,196.09,81.2,100.0,True,5,Subscription,Accessories,2024,30.0,216,394,Likely churned
+7756357435647,Tier 1,D1,D1,14,394.27,194.51,49.3,100.0,True,2,Direct / Organic,Collagen Glow,2023,148.0,1074,52,Active
+7756420579583,Tier 1,D1,D1,2,229.09,194.41,84.9,100.0,False,2,Direct / Organic,Other,2024,28.0,28,700,Likely churned
+7756468453631,Tier 1,D1,D1,2,200.45,194.41,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,0.0,0,579,Likely churned
+8249601130751,Tier 1,D1,D1,2,259.5,194.22,74.8,100.0,False,3,Direct / Organic,Lean Protein,2025,64.0,64,198,Likely churned
+7969066320127,Tier 1,D1,D1,4,268.3,193.16,72.0,100.0,True,2,Subscription,Clear Protein,2025,56.0,252,123,At-risk
+6670248935679,Tier 1,D1,D1,4,263.87,192.89,73.1,100.0,False,3,Subscription,Other,2023,37.0,675,405,Likely churned
+6336696123647,Tier 1,D1,D1,4,486.69,192.72,39.6,0.0,False,1,Subscription,Unknown,2022,2.0,105,1470,Likely churned
+7756396036351,Tier 1,D1,D1,11,427.46,192.63,45.1,100.0,True,2,Subscription,Other,2023,30.0,484,395,Likely churned
+6329603752191,Tier 1,D1,D1,3,254.08,191.76,75.5,96.8,False,2,Subscription,Unknown,2022,248.0,319,1210,Likely churned
+7756040503551,Tier 1,D1,D1,2,479.16,191.66,40.0,0.0,False,1,Direct / Organic,Unknown,2022,45.0,45,1518,Likely churned
+7756471304447,Tier 1,D1,D1,2,244.88,191.23,78.1,100.0,False,1,Direct / Organic,Clear Protein,2024,131.0,131,422,Likely churned
+7278303510783,Tier 1,D1,D1,6,300.91,188.99,62.8,100.0,True,2,Subscription,Clear Protein,2024,28.0,168,548,Likely churned
+6336718930175,Tier 1,D1,D1,3,258.5,188.78,73.0,100.0,False,4,Subscription,Other,2022,429.0,1014,203,Likely churned
+7573622128895,Tier 1,D1,D1,3,211.55,188.47,89.1,100.0,False,2,Subscription,Clear Protein,2024,329.0,339,218,Likely churned
+7968596427007,Tier 1,D1,D1,8,278.28,188.38,67.7,100.0,True,2,Subscription,Other,2025,49.0,322,53,Active
+8055471735039,Tier 1,D1,D1,3,262.8,188.23,71.6,100.0,False,2,Direct / Organic,Clear Protein,2025,12.0,85,263,Likely churned
+7307595514111,Tier 1,D1,D1,3,269.35,187.7,69.7,100.0,False,4,Subscription,Collagen Glow,2024,360.0,381,321,Likely churned
+7756476645631,Tier 1,D1,D1,3,257.34,187.13,72.7,100.0,False,3,Direct / Organic,Other,2024,341.0,360,190,Likely churned
+7756469895423,Tier 1,D1,D1,6,284.55,186.88,65.7,100.0,True,2,Subscription,Other,2024,84.0,252,324,Likely churned
+8260457005311,Tier 1,D1,D1,3,237.82,185.74,78.1,100.0,False,4,Direct / Organic,Lean Protein,2025,12.0,55,202,Likely churned
+8676694294783,Tier 1,D1,D1,2,294.91,185.63,62.9,100.0,True,3,Subscription,Collagen Glow,2026,10.0,10,103,At-risk
+6329834832127,Tier 1,D1,D1,3,209.27,184.69,88.3,53.8,False,2,Subscription,Unknown,2022,174.0,264,1312,Likely churned
+7756261589247,Tier 1,D1,D1,3,244.83,184.65,75.4,100.0,True,1,Direct / Organic,Collagen Glow,2022,644.0,1189,45,Active
+7971635331327,Tier 1,D1,D1,6,274.05,184.48,67.3,100.0,True,3,Direct / Organic,Unknown,2025,4.0,225,148,At-risk
+8067675586815,Tier 1,D1,D1,2,223.7,184.24,82.4,100.0,False,4,Direct / Organic,Other,2025,139.0,139,191,Likely churned
+7942386712831,Tier 1,D1,D1,6,322.04,184.05,57.2,100.0,True,4,Paid Social,Accessories,2025,11.0,178,182,Likely churned
+8347407614207,Tier 1,D1,D1,2,259.84,183.92,70.8,100.0,True,3,Direct / Organic,Other,2025,132.0,132,74,Active
+7959761486079,Tier 1,D1,D1,4,278.46,181.2,65.1,100.0,True,3,Subscription,Collagen Glow,2025,53.0,165,215,Likely churned
+8162392932607,Tier 1,D1,D1,3,285.95,180.71,63.2,100.0,False,1,Direct / Organic,Lean Protein,2025,108.0,189,118,At-risk
+6328212750591,Tier 1,D1,D1,4,267.6,180.02,67.3,100.0,False,5,Direct / Organic,Lean Protein,2025,4.0,13,377,Likely churned
+7756264800511,Tier 1,D1,D1,5,305.92,179.96,58.8,83.3,True,3,Direct / Organic,Unknown,2023,626.0,822,386,Likely churned
+7089442390271,Tier 1,D1,D1,4,319.66,179.95,56.3,100.0,True,3,Subscription,Other,2024,84.0,549,250,Likely churned
+7953613816063,Tier 1,D1,D1,2,233.85,179.64,76.8,100.0,False,1,Direct / Organic,Clear Protein,2025,327.0,327,58,Active
+6328274747647,Tier 1,D1,D1,4,364.68,179.57,49.2,47.7,False,2,Subscription,Unknown,2022,127.0,428,1042,Likely churned
+7956311998719,Tier 1,D1,D1,5,265.15,179.57,67.7,100.0,True,2,Subscription,Collagen Glow,2025,115.0,298,33,Active
+6329869861119,Tier 1,D1,D1,3,330.56,178.68,54.1,76.9,False,2,Subscription,Unknown,2022,119.0,419,990,Likely churned
+7756001116415,Tier 1,D1,D1,5,302.27,178.67,59.1,45.4,False,2,Direct / Organic,Unknown,2022,25.0,302,1243,Likely churned
+8114101715199,Tier 1,D1,D1,4,303.05,178.14,58.8,75.9,True,3,Subscription,Accessories,2025,34.0,64,180,Likely churned
+7756392923391,Tier 1,D1,D1,3,247.55,177.16,71.6,100.0,True,3,Direct / Organic,Unknown,2023,99.0,156,703,Likely churned
+8315540439295,Tier 1,D1,D1,2,211.86,177.1,83.6,100.0,False,3,Direct / Organic,Clear Protein,2025,22.0,22,210,Likely churned
+6336735478015,Tier 1,D1,D1,3,439.18,176.41,40.2,2.3,False,2,Subscription,Unknown,2022,696.0,1068,388,Likely churned
+7756002918655,Tier 1,D1,D1,3,198.64,175.85,88.5,59.7,False,2,Direct / Organic,Unknown,2022,123.0,253,1309,Likely churned
+6327401709823,Tier 1,D1,D1,3,363.04,175.81,48.4,22.2,False,3,Subscription,Unknown,2022,264.0,346,1122,Likely churned
+7984809738495,Tier 1,D1,D1,4,248.4,174.84,70.4,100.0,True,1,Subscription,Clear Protein,2025,27.0,140,225,Likely churned
+8071589462271,Tier 1,D1,D1,4,248.4,174.84,70.4,100.0,True,1,Subscription,Clear Protein,2025,28.0,112,231,Likely churned
+8290909290751,Tier 1,D1,D1,5,212.3,174.8,82.3,100.0,False,4,Direct / Organic,Accessories,2025,27.0,200,46,Active
+7756262801663,Tier 1,D1,D1,7,309.58,174.53,56.4,91.0,False,3,Direct / Organic,Unknown,2022,35.0,520,702,Likely churned
+7756266930431,Tier 1,D1,D1,2,276.52,174.2,63.0,92.0,False,4,Direct / Organic,Collagen Glow,2023,453.0,453,735,Likely churned
+7755978670335,Tier 1,D1,D1,10,441.73,173.98,39.4,13.2,False,2,Direct / Organic,Unknown,2022,0.0,1031,486,Likely churned
+6601910092031,Tier 1,D1,D1,6,304.3,173.92,57.2,100.0,True,2,Subscription,Other,2023,170.0,548,596,Likely churned
+7756408029439,Tier 1,D1,D1,9,468.47,173.75,37.1,96.7,True,2,Subscription,Other,2024,56.0,224,580,Likely churned
+8060160180479,Tier 1,D1,D1,4,256.02,173.33,67.7,100.0,True,3,Direct / Organic,Lean Protein,2025,6.0,270,77,Active
+7756183634175,Tier 1,D1,D1,3,258.96,172.99,66.8,100.0,True,1,Direct / Organic,Collagen Glow,2024,367.0,414,318,Likely churned
+7756461441279,Tier 1,D1,D1,3,273.55,172.94,63.2,100.0,True,2,Subscription,Lean Protein,2024,31.0,96,512,Likely churned
+6327734927615,Tier 1,D1,D1,7,279.13,172.78,61.9,72.0,True,2,Subscription,Unknown,2022,909.0,1378,81,Active
+7756406751487,Tier 1,D1,D1,2,200.26,172.69,86.2,100.0,True,3,Direct / Organic,Other,2024,46.0,46,760,Likely churned
+8290383069439,Tier 1,D1,D1,2,210.37,172.04,81.8,100.0,False,3,Direct / Organic,Accessories,2025,30.0,30,216,Likely churned
+7826465128703,Tier 1,D1,D1,2,286.98,171.54,59.8,100.0,False,1,Direct / Organic,Collagen Glow,2025,47.0,47,406,Likely churned
+8347459059967,Tier 1,D1,D1,4,233.11,171.05,73.4,100.0,True,4,Subscription,Accessories,2025,74.0,130,86,Active
+7957746417919,Tier 1,D1,D1,2,210.74,170.44,80.9,100.0,True,1,Direct / Organic,Other,2025,170.0,170,197,Likely churned
+8347824554239,Tier 1,D1,D1,3,207.87,170.15,81.9,100.0,False,2,Affiliate,Accessories,2025,64.0,75,136,At-risk
+7756457509119,Tier 1,D1,D1,4,223.98,170.04,75.9,100.0,False,3,Direct / Organic,Clear Protein,2024,18.0,290,337,Likely churned
+8676518789375,Tier 1,D1,D1,3,242.54,169.88,70.0,100.0,True,2,Direct / Organic,Clear Protein,2026,5.0,40,73,Active
+7756016615679,Tier 1,D1,D1,4,423.94,169.58,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,121,1338,Likely churned
+7756410683647,Tier 1,D1,D1,3,250.31,169.45,67.7,100.0,True,4,Direct / Organic,Lean Protein,2024,32.0,421,314,Likely churned
+7756042174719,Tier 1,D1,D1,5,325.27,169.27,52.0,58.6,True,2,Direct / Organic,Unknown,2022,1187.0,1481,43,Active
+8299066654975,Tier 1,D1,D1,2,221.55,168.87,76.2,100.0,False,3,Direct / Organic,Collagen Glow,2025,25.0,25,216,Likely churned
+7756476973311,Tier 1,D1,D1,3,217.9,168.78,77.5,100.0,False,2,Direct / Organic,Collagen Glow,2024,2.0,335,214,Likely churned
+8667708227839,Tier 1,D1,D1,3,222.89,168.76,75.7,100.0,True,3,Subscription,Clear Protein,2026,49.0,84,33,Active
+6336712409343,Tier 1,D1,D1,5,315.44,168.45,53.4,66.2,True,2,Subscription,Unknown,2021,789.0,969,611,Likely churned
+7756357763327,Tier 1,D1,D1,4,358.97,168.3,46.9,96.2,True,3,Subscription,Other,2023,125.0,420,493,Likely churned
+8702702944511,Tier 1,D1,D1,2,221.43,167.22,75.5,100.0,True,1,Direct / Organic,Clear Protein,2026,42.0,42,59,Active
+7756265619711,Tier 1,D1,D1,3,270.69,166.95,61.7,100.0,False,1,Direct / Organic,Collagen Glow,2023,227.0,954,246,Likely churned
+7756000198911,Tier 1,D1,D1,5,239.23,166.84,69.7,33.2,False,4,Direct / Organic,Unknown,2022,39.0,593,849,Likely churned
+6336719192319,Tier 1,D1,D1,4,321.41,166.24,51.7,74.1,True,3,Subscription,Unknown,2022,241.0,1174,250,Likely churned
+7756459114751,Tier 1,D1,D1,6,258.82,165.7,64.0,100.0,True,2,Direct / Organic,Clear Protein,2024,229.0,359,255,Likely churned
+7829327544575,Tier 1,D1,D1,4,238.91,165.35,69.2,100.0,True,1,Subscription,Clear Protein,2025,56.0,140,329,Likely churned
+6532484989183,Tier 1,D1,D1,4,317.28,164.77,51.9,77.9,True,2,Direct / Organic,Unknown,2022,149.0,401,943,Likely churned
+8723761168639,Tier 1,D1,D1,2,215.59,163.34,75.8,100.0,False,3,Direct / Organic,Accessories,2026,13.0,13,77,Active
+7878625362175,Tier 1,D1,D1,3,230.31,163.02,70.8,100.0,True,4,Direct / Organic,Unknown,2025,56.0,126,247,Likely churned
+8767332450559,Tier 1,D1,D1,3,249.58,161.87,64.9,100.0,True,1,Direct / Organic,Lean Protein,2026,8.0,42,37,Active
+7756430967039,Tier 1,D1,D1,3,230.06,161.81,70.3,100.0,False,3,Direct / Organic,Other,2024,123.0,225,476,Likely churned
+7756469731583,Tier 1,D1,D1,5,236.15,161.01,68.2,100.0,True,3,Direct / Organic,Other,2024,350.0,474,103,At-risk
+8590782955775,Tier 1,D1,D1,2,197.24,160.96,81.6,100.0,True,2,Subscription,Clear Protein,2025,111.0,111,35,Active
+8854317859071,Tier 1,D1,D1,2,215.7,160.92,74.6,100.0,False,2,Direct / Organic,Lean Protein,2026,4.0,4,40,Active
+7756418973951,Tier 1,D1,D1,12,329.53,160.55,48.7,100.0,True,3,Subscription,Collagen Glow,2024,37.0,513,230,Likely churned
+7756418023679,Tier 1,D1,D1,5,186.41,159.94,85.8,100.0,True,3,Subscription,Other,2024,47.0,498,249,Likely churned
+8310327673087,Tier 1,D1,D1,2,211.4,158.99,75.2,100.0,False,1,Direct / Organic,Lean Protein,2025,26.0,26,209,Likely churned
+7756428116223,Tier 1,D1,D1,2,172.75,158.98,92.0,100.0,True,3,Direct / Organic,Lean Protein,2024,40.0,40,669,Likely churned
+8149869854975,Tier 1,D1,D1,2,232.2,158.64,68.3,100.0,True,1,Subscription,Clear Protein,2025,56.0,56,256,Likely churned
+8701446029567,Tier 1,D1,D1,2,232.2,158.64,68.3,100.0,True,1,Subscription,Clear Protein,2026,28.0,28,74,Active
+7756358844671,Tier 1,D1,D1,14,445.12,158.25,35.6,100.0,True,1,Subscription,Collagen Glow,2023,28.0,782,323,Likely churned
+7756407177471,Tier 1,D1,D1,4,211.03,158.04,74.9,100.0,True,5,Subscription,Soy Protein,2024,142.0,611,200,Likely churned
+6607239348479,Tier 1,D1,D1,3,265.16,156.67,59.1,100.0,True,1,Subscription,Other,2023,28.0,56,1083,Likely churned
+8082865291519,Tier 1,D1,D1,3,209.74,155.4,74.1,100.0,True,4,Direct / Organic,Accessories,2025,6.0,199,139,At-risk
+7756461670655,Tier 1,D1,D1,3,203.64,153.76,75.5,100.0,False,4,Direct / Organic,Lean Protein,2024,236.0,552,56,Active
+7756382339327,Tier 1,D1,D1,2,236.9,153.73,64.9,92.9,False,3,Direct / Organic,Other,2023,94.0,94,859,Likely churned
+6599308607743,Tier 1,D1,D1,4,228.77,153.28,67.0,100.0,True,1,Subscription,Other,2023,28.0,81,1065,Likely churned
+8133951881471,Tier 1,D1,D1,2,232.02,153.04,66.0,100.0,True,2,Subscription,Other,2025,75.0,75,244,Likely churned
+6532494196991,Tier 1,D1,D1,3,242.52,152.14,62.7,95.8,False,3,Subscription,Other,2023,618.0,753,185,Likely churned
+7994690470143,Tier 1,D1,D1,3,222.0,151.83,68.4,100.0,False,1,Direct / Organic,Clear Protein,2025,33.0,46,318,Likely churned
+8483228352767,Tier 1,D1,D1,3,218.26,151.64,69.5,100.0,True,1,Direct / Organic,Lean Protein,2025,82.0,146,37,Active
+7394844180735,Tier 1,D1,D1,3,246.12,151.25,61.5,100.0,False,2,Subscription,Collagen Glow,2024,81.0,173,463,Likely churned
+7932359868671,Tier 1,D1,D1,2,194.15,151.01,77.8,100.0,False,2,Direct / Organic,Lean Protein,2025,281.0,281,115,At-risk
+8585926672639,Tier 1,D1,D1,2,192.1,150.76,78.5,100.0,False,1,Direct / Organic,Lean Protein,2025,38.0,38,109,At-risk
+7756410978559,Tier 1,D1,D1,2,192.23,150.41,78.2,100.0,True,2,Direct / Organic,Collagen Glow,2024,192.0,192,577,Likely churned
+8714446045439,Tier 1,D1,D1,2,212.52,150.22,70.7,100.0,False,2,Direct / Organic,Other,2026,40.0,40,55,Active
+7940967268607,Tier 1,D1,D1,2,198.54,149.34,75.2,100.0,False,2,Direct / Organic,Clear Protein,2025,172.0,172,220,Likely churned
+8474565968127,Tier 1,D1,D1,2,170.97,148.71,87.0,100.0,False,3,Direct / Organic,Clear Protein,2025,139.0,139,48,Active
+7756218728703,Tier 1,D1,D1,2,210.64,148.55,70.5,100.0,False,3,Direct / Organic,Lean Protein,2025,15.0,15,116,At-risk
+6593759609087,Tier 1,D1,D1,3,235.66,148.44,63.0,100.0,True,1,Subscription,Other,2023,28.0,28,1123,Likely churned
+6336647954687,Tier 1,D1,D1,3,249.92,148.23,59.3,47.4,False,2,Subscription,Unknown,2022,32.0,258,1219,Likely churned
+7756263457023,Tier 1,D1,D1,4,193.43,148.07,76.5,100.0,False,1,Direct / Organic,Other,2022,174.0,524,695,Likely churned
+8639310823679,Tier 1,D1,D1,2,178.92,147.8,82.6,100.0,False,4,Direct / Organic,Other,2025,64.0,64,65,Active
+8360854388991,Tier 1,D1,D1,2,212.08,147.4,69.5,100.0,True,2,Direct / Organic,Lean Protein,2025,147.0,147,60,Active
+8089410470143,Tier 1,D1,D1,2,202.24,147.1,72.7,100.0,False,3,Direct / Organic,Other,2025,24.0,24,312,Likely churned
+8310005006591,Tier 1,D1,D1,3,231.48,146.74,63.4,100.0,True,3,Paid Social,Accessories,2025,7.0,205,30,Active
+7756010160383,Tier 1,D1,D1,6,395.67,146.69,37.1,76.8,True,3,Direct / Organic,Unknown,2022,0.0,622,916,Likely churned
+7856082321663,Tier 1,D1,D1,2,223.7,146.33,65.4,100.0,False,2,Direct / Organic,Other,2025,398.0,398,30,Active
+8445907501311,Tier 1,D1,D1,2,200.4,146.17,72.9,87.6,False,4,Paid Social,Unknown,2025,11.0,11,181,Likely churned
+8015408922879,Tier 1,D1,D1,3,223.28,145.54,65.2,100.0,True,3,Subscription,Other,2025,25.0,108,252,Likely churned
+7933864575231,Tier 1,D1,D1,2,206.26,144.74,70.2,100.0,True,2,Subscription,Clear Protein,2025,145.0,145,250,Likely churned
+7756436701439,Tier 1,D1,D1,5,238.48,144.72,60.7,100.0,False,3,Direct / Organic,Collagen Glow,2024,98.0,464,219,Likely churned
+7756442730751,Tier 1,D1,D1,5,192.2,144.56,75.2,100.0,False,3,Direct / Organic,Other,2024,79.0,402,227,Likely churned
+7756477300991,Tier 1,D1,D1,3,199.52,144.35,72.3,100.0,False,1,Direct / Organic,Clear Protein,2024,284.0,308,239,Likely churned
+7168728498431,Tier 1,D1,D1,3,202.12,144.1,71.3,100.0,True,3,Subscription,Collagen Glow,2024,25.0,139,616,Likely churned
+8730866352383,Tier 1,D1,D1,2,199.47,144.02,72.2,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,59,Active
+7756435915007,Tier 1,D1,D1,2,150.71,143.6,95.3,100.0,False,2,Direct / Organic,Other,2024,194.0,194,493,Likely churned
+7937013809407,Tier 1,D1,D1,2,200.22,143.59,71.7,80.3,True,3,Direct / Organic,Other,2025,317.0,317,77,Active
+7949137477887,Tier 1,D1,D1,2,192.55,142.83,74.2,100.0,False,1,Paid Social,Clear Protein,2025,178.0,178,207,Likely churned
+7476702085375,Tier 1,D1,D1,3,189.83,142.73,75.2,100.0,False,1,Subscription,Clear Protein,2024,115.0,272,334,Likely churned
+7947663081727,Tier 1,D1,D1,2,181.84,142.69,78.5,100.0,True,3,Direct / Organic,Lean Protein,2025,76.0,76,311,Likely churned
+8361846472959,Tier 1,D1,D1,2,162.1,142.66,88.0,100.0,False,3,Email,Accessories,2025,87.0,87,117,At-risk
+7756422578431,Tier 1,D1,D1,3,244.42,141.83,58.0,100.0,True,4,Subscription,Clear Protein,2024,29.0,59,672,Likely churned
+7755954094335,Tier 1,D1,D1,4,327.82,141.62,43.2,36.3,False,2,Direct / Organic,Unknown,2022,0.0,137,1278,Likely churned
+6685270081791,Tier 1,D1,D1,3,234.94,141.57,60.3,100.0,True,2,Subscription,Other,2023,497.0,498,568,Likely churned
+8344990417151,Tier 1,D1,D1,2,176.41,141.13,80.0,100.0,True,3,Subscription,Other,2025,145.0,145,73,Active
+6327627383039,Tier 1,D1,D1,3,223.84,140.57,62.8,100.0,True,3,Subscription,Other,2024,99.0,194,317,Likely churned
+8035367223551,Tier 1,D1,D1,4,210.24,140.4,66.8,100.0,True,1,Subscription,Lean Protein,2025,27.0,111,243,Likely churned
+7957906981119,Tier 1,D1,D1,2,199.82,140.27,70.2,100.0,True,3,Subscription,Lean Protein,2025,56.0,56,326,Likely churned
+7868325495039,Tier 1,D1,D1,2,202.9,140.02,69.0,100.0,False,2,Direct / Organic,Clear Protein,2025,76.0,76,355,Likely churned
+7756453216511,Tier 1,D1,D1,2,163.46,139.99,85.6,100.0,True,3,Subscription,Soy Protein,2024,255.0,255,323,Likely churned
+6336648675583,Tier 1,D1,D1,3,170.51,139.71,81.9,100.0,False,3,Subscription,Other,2024,16.0,602,228,Likely churned
+7894464626943,Tier 1,D1,D1,3,215.55,139.55,64.7,100.0,True,1,Subscription,Other,2025,77.0,182,234,Likely churned
+8151474929919,Tier 1,D1,D1,2,207.44,139.55,67.3,100.0,False,3,Direct / Organic,Accessories,2025,203.0,203,108,At-risk
+8109930512639,Tier 1,D1,D1,2,204.85,139.14,67.9,100.0,True,1,Subscription,Lean Protein,2025,83.0,83,245,Likely churned
+8091443003647,Tier 1,D1,D1,2,185.25,139.04,75.1,100.0,True,1,Subscription,Clear Protein,2025,131.0,131,203,Likely churned
+6550479470847,Tier 1,D1,D1,3,218.51,139.03,63.6,100.0,False,2,Subscription,Other,2023,135.0,436,735,Likely churned
+7756461375743,Tier 1,D1,D1,2,177.36,138.06,77.8,100.0,False,3,Direct / Organic,Clear Protein,2024,529.0,529,79,Active
+7967440109823,Tier 1,D1,D1,2,198.2,138.03,69.6,100.0,False,1,Paid Social,Clear Protein,2025,343.0,343,33,Active
+7755970740479,Tier 1,D1,D1,3,343.67,137.47,40.0,0.0,False,1,Direct / Organic,Unknown,2022,4.0,91,1336,Likely churned
+8343572152575,Tier 1,D1,D1,2,202.33,137.3,67.9,100.0,True,3,Subscription,Accessories,2025,138.0,138,81,Active
+7919433187583,Tier 1,D1,D1,2,174.4,136.96,78.5,100.0,False,3,Direct / Organic,Accessories,2025,7.0,7,396,Likely churned
+8275771687167,Tier 1,D1,D1,2,184.34,136.26,73.9,100.0,False,2,Direct / Organic,Lean Protein,2025,209.0,209,44,Active
+7896021860607,Tier 1,D1,D1,2,247.66,135.6,54.8,98.8,True,3,Subscription,Lean Protein,2025,42.0,42,373,Likely churned
+7756425134335,Tier 1,D1,D1,2,225.0,135.43,60.2,100.0,True,4,Subscription,Collagen Glow,2024,42.0,42,679,Likely churned
+8795078983935,Tier 1,D1,D1,2,190.98,135.4,70.9,92.4,False,4,Direct / Organic,Lean Protein,2026,4.0,4,64,Active
+7756352356607,Tier 1,D1,D1,3,195.58,134.92,69.0,100.0,False,2,Direct / Organic,Collagen Glow,2023,60.0,540,607,Likely churned
+7954004803839,Tier 1,D1,D1,2,184.89,134.73,72.9,100.0,False,3,Paid Social,Other,2025,169.0,169,216,Likely churned
+7756357632255,Tier 1,D1,D1,5,233.06,133.77,57.4,93.3,True,3,Direct / Organic,Other,2023,348.0,780,347,Likely churned
+7756457148671,Tier 1,D1,D1,3,201.47,133.42,66.2,100.0,True,4,Subscription,Clear Protein,2024,22.0,189,440,Likely churned
+8069502337279,Tier 1,D1,D1,2,193.94,132.96,68.6,100.0,True,2,Subscription,Other,2025,11.0,11,332,Likely churned
+7756397412607,Tier 1,D1,D1,4,263.36,132.45,50.3,100.0,True,3,Direct / Organic,Unknown,2023,177.0,536,334,Likely churned
+6650644726015,Tier 1,D1,D1,3,221.61,132.33,59.7,100.0,True,1,Subscription,Other,2023,56.0,224,874,Likely churned
+7819138269439,Tier 1,D1,D1,3,203.6,132.16,64.9,100.0,False,2,Direct / Organic,Lean Protein,2025,59.0,127,331,Likely churned
+8245528232191,Tier 1,D1,D1,2,193.8,132.16,68.2,100.0,False,2,Direct / Organic,Lean Protein,2025,9.0,9,255,Likely churned
+7756016779519,Tier 1,D1,D1,3,329.84,131.94,40.0,0.0,False,1,Direct / Organic,Unknown,2022,9.0,115,1339,Likely churned
+7677500752127,Tier 1,D1,D1,6,215.46,131.45,61.0,100.0,True,1,Subscription,Collagen Glow,2024,38.0,317,195,Likely churned
+7476694876415,Tier 1,D1,D1,3,156.63,131.19,83.8,100.0,False,3,Subscription,Clear Protein,2024,13.0,220,386,Likely churned
+7979789648127,Tier 1,D1,D1,3,186.3,131.13,70.4,100.0,True,1,Subscription,Clear Protein,2025,56.0,174,193,Likely churned
+8770382364927,Tier 1,D1,D1,3,186.3,131.13,70.4,100.0,True,1,Subscription,Clear Protein,2026,17.0,45,33,Active
+7756483690751,Tier 1,D1,D1,2,193.85,129.73,66.9,100.0,True,4,Subscription,Accessories,2024,452.0,452,62,Active
+8786180342015,Tier 1,D1,D1,2,185.84,129.55,69.7,100.0,True,3,Subscription,Lean Protein,2026,28.0,28,44,Active
+7945581887743,Tier 1,D1,D1,4,194.61,129.1,66.3,100.0,True,2,Paid Social,Lean Protein,2025,44.0,297,91,At-risk
+6862672658687,Tier 1,D1,D1,4,207.65,129.06,62.2,100.0,True,3,Subscription,Other,2023,56.0,463,457,Likely churned
+7948693700863,Tier 1,D1,D1,3,200.67,128.16,63.9,100.0,False,3,Paid Social,Accessories,2025,123.0,152,231,Likely churned
+8146098356479,Tier 1,D1,D1,2,184.1,127.88,69.5,100.0,True,2,Subscription,Clear Protein,2025,84.0,84,230,Likely churned
+7756028248319,Tier 1,D1,D1,7,233.02,127.53,54.7,64.3,False,4,Direct / Organic,Unknown,2022,62.0,972,546,Likely churned
+7875433824511,Tier 1,D1,D1,2,173.9,127.17,73.1,96.5,False,2,Direct / Organic,Other,2025,161.0,161,268,Likely churned
+8698913390847,Tier 1,D1,D1,2,150.25,127.14,84.6,100.0,False,3,Direct / Organic,Lean Protein,2026,30.0,30,73,Active
+7870756061439,Tier 1,D1,D1,2,169.92,126.8,74.6,100.0,True,2,Subscription,Lean Protein,2025,70.0,70,351,Likely churned
+7756423627007,Tier 1,D1,D1,3,187.09,126.74,67.7,100.0,True,1,Direct / Organic,Collagen Glow,2024,37.0,150,578,Likely churned
+7756466094335,Tier 1,D1,D1,2,185.5,126.35,68.1,100.0,False,5,Direct / Organic,Clear Protein,2024,30.0,30,556,Likely churned
+8364461097215,Tier 1,D1,D1,2,167.72,126.24,75.3,100.0,False,1,Direct / Organic,Lean Protein,2025,111.0,111,97,At-risk
+8371222905087,Tier 1,D1,D1,2,143.67,126.22,87.9,100.0,True,3,Subscription,Accessories,2025,168.0,168,36,Active
+7756424708351,Tier 1,D1,D1,4,205.59,125.33,61.0,100.0,True,2,Direct / Organic,Clear Protein,2024,309.0,414,310,Likely churned
+7476877230335,Tier 1,D1,D1,3,155.68,124.93,80.2,100.0,True,3,Subscription,Lean Protein,2024,291.0,375,231,Likely churned
+8233176006911,Tier 1,D1,D1,2,239.51,124.07,51.8,100.0,True,1,Subscription,Collagen Glow,2025,133.0,133,120,At-risk
+7970493825279,Tier 1,D1,D1,2,186.5,123.49,66.2,100.0,True,2,Direct / Organic,Lean Protein,2025,142.0,142,232,Likely churned
+7756020908287,Tier 1,D1,D1,5,261.24,123.0,47.1,47.1,True,2,Direct / Organic,Unknown,2022,59.0,1149,375,Likely churned
+7756001870079,Tier 1,D1,D1,3,206.12,122.29,59.3,36.8,True,3,Direct / Organic,Unknown,2022,61.0,773,587,Likely churned
+8758133653759,Tier 1,D1,D1,2,163.8,122.26,74.6,100.0,False,1,Direct / Organic,Other,2026,41.0,41,38,Active
+8342710878463,Tier 1,D1,D1,2,173.35,122.18,70.5,100.0,False,4,Direct / Organic,Clear Protein,2025,30.0,30,189,Likely churned
+7927261954303,Tier 1,D1,D1,3,177.8,122.15,68.7,100.0,False,2,Direct / Organic,Clear Protein,2025,78.0,198,201,Likely churned
+8343144956159,Tier 1,D1,D1,2,133.14,121.91,91.6,100.0,False,1,Direct / Organic,Other,2025,169.0,169,50,Active
+7756348522751,Tier 1,D1,D1,4,218.17,121.63,55.7,92.4,False,3,Direct / Organic,Soy Protein,2023,303.0,500,668,Likely churned
+8725525266687,Tier 1,D1,D1,2,145.76,120.98,83.0,100.0,False,1,Direct / Organic,Lean Protein,2026,22.0,22,67,Active
+7756486476031,Tier 1,D1,D1,2,219.76,120.85,55.0,100.0,True,3,Direct / Organic,Accessories,2024,109.0,109,387,Likely churned
+7756360876287,Tier 1,D1,D1,2,169.95,120.7,71.0,100.0,False,4,Direct / Organic,Unknown,2023,255.0,255,833,Likely churned
+7756470976767,Tier 1,D1,D1,2,171.43,120.64,70.4,100.0,False,3,Direct / Organic,Clear Protein,2024,501.0,501,69,Active
+6327726637311,Tier 1,D1,D1,3,146.28,120.52,82.4,100.0,False,2,Subscription,Other,2024,325.0,388,374,Likely churned
+8353731182847,Tier 1,D1,D1,2,129.8,120.12,92.5,100.0,False,2,Paid Social,Accessories,2025,1.0,1,211,Likely churned
+7756460425471,Tier 1,D1,D1,2,178.74,120.01,67.1,98.5,True,5,Subscription,Unknown,2025,28.0,28,440,Likely churned
+8244468383999,Tier 1,D1,D1,2,160.57,119.25,74.3,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,47,Active
+7756404261119,Tier 1,D1,D1,2,167.38,119.19,71.2,100.0,True,3,Direct / Organic,Soy Protein,2024,219.0,219,608,Likely churned
+7572976107775,Tier 1,D1,D1,4,146.21,119.05,81.4,100.0,False,1,Subscription,Other,2024,342.0,519,38,Active
+7756017893631,Tier 1,D1,D1,3,255.43,118.96,46.6,37.6,False,2,Direct / Organic,Unknown,2022,130.0,241,1240,Likely churned
+7756043256063,Tier 1,D1,D1,3,240.18,118.91,49.5,83.6,True,3,Direct / Organic,Unknown,2022,706.0,1448,87,Active
+7756414910719,Tier 1,D1,D1,2,168.41,118.58,70.4,100.0,False,4,Direct / Organic,Clear Protein,2024,684.0,684,77,Active
+7237650612479,Tier 1,D1,D1,5,152.61,118.33,77.5,100.0,True,2,Subscription,Soy Protein,2024,28.0,422,316,Likely churned
+7756425298175,Tier 1,D1,D1,2,155.13,118.1,76.1,100.0,False,2,Direct / Organic,Clear Protein,2024,33.0,33,670,Likely churned
+8350682448127,Tier 1,D1,D1,3,158.7,117.75,74.2,100.0,False,1,Email,Other,2025,76.0,130,67,Active
+7756260671743,Tier 1,D1,D1,3,216.91,117.44,54.1,66.8,True,4,Subscription,Collagen Glow,2023,33.0,152,978,Likely churned
+7756240191743,Tier 1,D1,D1,2,145.52,117.25,80.6,100.0,False,3,Direct / Organic,Soy Protein,2024,358.0,358,379,Likely churned
+7756437750015,Tier 1,D1,D1,2,161.94,116.72,72.1,100.0,False,3,Direct / Organic,Clear Protein,2024,297.0,297,383,Likely churned
+7756420317439,Tier 1,D1,D1,2,168.82,116.65,69.1,100.0,False,1,Direct / Organic,Clear Protein,2024,33.0,33,705,Likely churned
+8120812536063,Tier 1,D1,D1,2,160.61,116.47,72.5,100.0,False,1,Direct / Organic,Lean Protein,2025,73.0,73,251,Likely churned
+8807533609215,Tier 1,D1,D1,2,169.92,116.23,68.4,100.0,True,2,Subscription,Clear Protein,2026,28.0,28,35,Active
+8301754482943,Tier 1,D1,D1,2,176.68,116.09,65.7,100.0,True,2,Direct / Organic,Lean Protein,2025,151.0,151,88,Active
+6328308859135,Tier 1,D1,D1,3,174.9,116.03,66.3,100.0,True,2,Subscription,Other,2023,449.0,533,613,Likely churned
+7756412387583,Tier 1,D1,D1,2,162.7,115.81,71.2,100.0,False,2,Direct / Organic,Other,2024,386.0,386,376,Likely churned
+7870948802815,Tier 1,D1,D1,4,192.53,115.38,59.9,100.0,True,1,Subscription,Collagen Glow,2025,70.0,120,310,Likely churned
+7756396265727,Tier 1,D1,D1,2,154.4,115.16,74.6,100.0,True,2,Subscription,Soy Protein,2023,56.0,56,811,Likely churned
+7756460294399,Tier 1,D1,D1,2,153.72,114.96,74.8,100.0,True,3,Direct / Organic,Unknown,2024,207.0,207,404,Likely churned
+7355300544767,Tier 1,D1,D1,7,181.19,114.92,63.4,100.0,True,1,Subscription,Other,2023,56.0,336,704,Likely churned
+8273489494271,Tier 1,D1,D1,3,190.06,114.84,60.4,100.0,True,1,Subscription,Lean Protein,2025,20.0,27,227,Likely churned
+8474627080447,Tier 1,D1,D1,2,158.74,114.77,72.3,100.0,False,1,Direct / Organic,Lean Protein,2025,102.0,102,85,Active
+7974875758847,Tier 1,D1,D1,4,187.15,114.23,61.0,100.0,True,1,Subscription,Lean Protein,2025,119.0,245,120,At-risk
+8304445751551,Tier 1,D1,D1,2,153.23,113.92,74.3,100.0,True,2,Direct / Organic,Lean Protein,2025,15.0,15,223,Likely churned
+6336759333119,Tier 1,D1,D1,3,292.46,113.06,38.7,0.0,False,1,Subscription,Unknown,2022,40.0,40,1473,Likely churned
+7755927191807,Tier 1,D1,D1,6,254.16,112.11,44.1,73.2,True,4,Direct / Organic,Other,2023,175.0,537,612,Likely churned
+7756034146559,Tier 1,D1,D1,3,189.27,111.07,58.7,61.1,False,2,Direct / Organic,Unknown,2022,941.0,981,460,Likely churned
+8130705981695,Tier 1,D1,D1,2,154.1,110.97,72.0,100.0,True,2,Subscription,Clear Protein,2025,83.0,83,237,Likely churned
+7756423495935,Tier 1,D1,D1,2,148.34,110.9,74.8,100.0,False,1,Direct / Organic,Collagen Glow,2024,155.0,155,546,Likely churned
+8337910989055,Tier 1,D1,D1,2,136.29,110.83,81.3,100.0,True,3,Subscription,Other,2025,80.0,80,142,At-risk
+7756037390591,Tier 1,D1,D1,2,281.45,110.4,39.2,0.0,False,1,Direct / Organic,Unknown,2022,24.0,24,1473,Likely churned
+7756361367807,Tier 1,D1,D1,2,236.82,110.22,46.5,100.0,True,3,Subscription,Other,2023,97.0,97,983,Likely churned
+7756457541887,Tier 1,D1,D1,2,159.01,110.06,69.2,100.0,False,2,Direct / Organic,Clear Protein,2024,392.0,392,237,Likely churned
+7755938726143,Tier 1,D1,D1,12,367.45,109.95,29.9,100.0,True,2,Subscription,Other,2024,27.0,456,334,Likely churned
+8714014359807,Tier 1,D1,D1,3,160.82,108.78,67.6,100.0,True,1,Subscription,Lean Protein,2026,28.0,56,36,Active
+6820808163583,Tier 1,D1,D1,5,207.6,108.76,52.4,84.9,True,2,Subscription,Unknown,2023,34.0,146,804,Likely churned
+7756429492479,Tier 1,D1,D1,2,139.09,108.68,78.1,100.0,False,2,Direct / Organic,Other,2024,31.0,31,672,Likely churned
+7756468027647,Tier 1,D1,D1,3,149.89,108.48,72.4,100.0,True,2,Direct / Organic,Other,2024,35.0,205,375,Likely churned
+7756468486399,Tier 1,D1,D1,2,127.11,108.44,85.3,100.0,True,2,Direct / Organic,Lean Protein,2024,209.0,209,370,Likely churned
+7963787067647,Tier 1,D1,D1,2,134.1,107.88,80.4,100.0,False,3,Paid Social,Unknown,2025,18.0,18,360,Likely churned
+7168908230911,Tier 1,D1,D1,3,173.25,106.83,61.7,79.2,False,4,Subscription,Clear Protein,2024,9.0,22,734,Likely churned
+6880733135103,Tier 1,D1,D1,4,160.48,106.76,66.5,100.0,True,3,Subscription,Other,2023,42.0,168,706,Likely churned
+6329836175615,Tier 1,D1,D1,3,207.41,106.56,51.4,41.5,False,3,Subscription,Unknown,2022,10.0,681,793,Likely churned
+7955250249983,Tier 1,D1,D1,2,159.74,106.49,66.7,100.0,False,5,Direct / Organic,Lean Protein,2025,151.0,151,233,Likely churned
+7756009373951,Tier 1,D1,D1,4,294.28,106.41,36.2,53.3,True,2,Direct / Organic,Unknown,2022,449.0,929,432,Likely churned
+7915596251391,Tier 1,D1,D1,2,156.39,106.24,67.9,100.0,True,1,Direct / Organic,Collagen Glow,2025,347.0,347,58,Active
+7829327708415,Tier 1,D1,D1,3,166.21,106.22,63.9,100.0,True,2,Direct / Organic,Clear Protein,2025,28.0,203,265,Likely churned
+7888540107007,Tier 1,D1,D1,2,129.2,105.74,81.8,100.0,True,2,Subscription,Accessories,2025,85.0,85,141,At-risk
+7756031361279,Tier 1,D1,D1,2,269.56,105.64,39.2,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1423,Likely churned
+7729333272831,Tier 1,D1,D1,3,161.73,105.3,65.1,100.0,True,1,Subscription,Lean Protein,2024,41.0,83,406,Likely churned
+7756260573439,Tier 1,D1,D1,2,163.42,105.29,64.4,100.0,True,2,Direct / Organic,Other,2022,183.0,183,1059,Likely churned
+7756467208447,Tier 1,D1,D1,2,160.36,105.19,65.6,100.0,True,1,Subscription,Clear Protein,2024,27.0,27,554,Likely churned
+7756383486207,Tier 1,D1,D1,3,231.67,105.07,45.4,100.0,True,2,Subscription,Other,2023,84.0,126,813,Likely churned
+7884672827647,Tier 1,D1,D1,2,153.51,104.73,68.2,100.0,False,2,Direct / Organic,Other,2025,34.0,34,386,Likely churned
+6698931585279,Tier 1,D1,D1,4,177.9,103.83,58.4,100.0,True,2,Subscription,Other,2023,197.0,365,629,Likely churned
+8761249235199,Tier 1,D1,D1,2,114.5,103.75,90.6,100.0,False,3,Direct / Organic,Accessories,2026,0.0,0,82,Active
+7756018319615,Tier 1,D1,D1,5,225.42,103.63,46.0,42.0,False,2,Direct / Organic,Unknown,2022,123.0,610,964,Likely churned
+6336631275775,Tier 2,D1,D2,2,4378.26,1751.3,40.0,0.0,False,1,Subscription,Unknown,2022,13.0,13,1465,Likely churned
+7756016877823,Tier 2,D1,D2,2,2763.27,1105.31,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1340,Likely churned
+7516736061695,Tier 2,D1,D2,2,1042.26,993.1,95.3,100.0,False,2,Subscription,Unknown,2024,2.0,2,580,Likely churned
+6327387259135,Tier 2,D1,D5,1,1693.12,677.25,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1401,Likely churned
+6327663034623,Tier 2,D1,D5,1,1660.8,662.36,39.9,0.0,False,1,Subscription,Unknown,2022,,0,1360,Likely churned
+6328270815487,Tier 2,D1,D2,2,1599.1,639.64,40.0,0.0,False,1,Subscription,Unknown,2022,189.0,189,1347,Likely churned
+6450369855743,Tier 2,D1,D2,2,688.89,590.42,85.7,100.0,False,1,Subscription,Other,2022,310.0,310,931,Likely churned
+7756032934143,Tier 2,D1,D4,1,1278.9,511.56,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1430,Likely churned
+7756015698175,Tier 2,D1,D2,2,1237.09,494.84,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1331,Likely churned
+7817754509567,Tier 2,D1,D4,1,732.8,479.07,65.4,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,458,Likely churned
+6368762626303,Tier 2,D1,D2,2,566.4,452.09,79.8,100.0,False,1,Subscription,Other,2022,515.0,515,783,Likely churned
+6329696682239,Tier 2,D1,D2,2,460.6,451.39,98.0,100.0,False,4,Subscription,Other,2022,579.0,579,700,Likely churned
+6329618301183,Tier 2,D1,D2,2,1107.88,443.15,40.0,0.0,False,1,Subscription,Unknown,2022,38.0,38,1436,Likely churned
+6423603740927,Tier 2,D1,D5,1,1099.9,439.96,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1536,Likely churned
+6327390765311,Tier 2,D1,D5,1,972.7,389.08,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1339,Likely churned
+7566592344319,Tier 2,D1,D2,2,473.7,384.44,81.2,100.0,False,2,Subscription,Lean Protein,2024,7.0,7,555,Likely churned
+6327522230527,Tier 2,D1,D5,1,959.9,383.96,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1339,Likely churned
+6423225073919,Tier 2,D1,D5,1,959.9,383.96,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1342,Likely churned
+7737236259071,Tier 2,D1,D5,1,594.92,379.02,63.7,100.0,False,1,Subscription,Other,2025,,0,483,Likely churned
+6327780704511,Tier 2,D1,D2,2,914.75,363.94,39.8,0.0,False,1,Subscription,Unknown,2022,123.0,123,1340,Likely churned
+7755920408831,Tier 2,D1,D5,1,875.05,350.02,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1366,Likely churned
+7755983421695,Tier 2,D1,D2,2,872.12,344.0,39.4,0.0,False,1,Direct / Organic,Unknown,2022,45.0,45,1508,Likely churned
+6329849118975,Tier 2,D1,D2,2,309.2,334.69,108.2,61.7,False,2,Subscription,Unknown,2022,92.0,92,1310,Likely churned
+6336658145535,Tier 2,D1,D2,2,810.06,329.82,40.7,0.0,False,1,Subscription,Unknown,2022,829.0,829,626,Likely churned
+6327709139199,Tier 2,D1,D5,1,815.91,326.36,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1400,Likely churned
+7959445766399,Tier 2,D1,D3,1,462.45,325.35,70.4,100.0,True,2,Subscription,Other,2025,,0,381,Likely churned
+7824197943551,Tier 2,D1,D4,1,493.2,323.87,65.7,100.0,False,3,Direct / Organic,Other,2025,,0,455,Likely churned
+6327720083711,Tier 2,D1,D5,1,800.9,320.36,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1418,Likely churned
+6423240638719,Tier 2,D1,D5,1,800.9,320.36,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1428,Likely churned
+6329863766271,Tier 2,D1,D2,2,391.45,313.04,80.0,82.9,False,3,Subscription,Unknown,2022,112.0,112,1231,Likely churned
+6327698981119,Tier 2,D1,D2,2,283.46,313.02,110.4,68.9,False,2,Subscription,Unknown,2022,113.0,113,1313,Likely churned
+7819297620223,Tier 2,D1,D4,1,484.1,310.4,64.1,100.0,False,1,Direct / Organic,Other,2025,,0,458,Likely churned
+6510694334719,Tier 2,D1,D2,2,384.97,301.6,78.3,100.0,False,1,Subscription,Other,2023,67.0,67,1136,Likely churned
+6423463854335,Tier 2,D1,D5,1,743.75,297.5,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1449,Likely churned
+6336712999167,Tier 2,D1,D2,2,739.36,291.82,39.5,0.0,False,1,Subscription,Unknown,2022,1.0,1,1357,Likely churned
+6336651559167,Tier 2,D1,D2,2,470.69,289.15,61.4,56.4,False,2,Subscription,Unknown,2022,905.0,905,606,Likely churned
+7756044239103,Tier 2,D1,D4,1,727.7,288.65,39.7,0.0,False,1,Direct / Organic,Unknown,2022,,0,1541,Likely churned
+6329708708095,Tier 2,D1,D2,2,560.02,286.08,51.1,24.7,False,2,Subscription,Unknown,2022,151.0,151,1282,Likely churned
+7341135954175,Tier 2,D1,D2,2,360.4,286.03,79.4,100.0,False,4,Subscription,Clear Protein,2024,604.0,604,77,Active
+6365653270783,Tier 2,D1,D5,1,229.79,261.37,113.7,75.2,False,2,Subscription,Unknown,2022,,0,1301,Likely churned
+6336660734207,Tier 2,D1,D2,2,562.7,259.84,46.2,30.4,True,3,Subscription,Unknown,2022,622.0,622,810,Likely churned
+6327399940351,Tier 2,D1,D5,1,648.91,259.56,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1410,Likely churned
+7755941183743,Tier 2,D1,D2,2,650.73,259.2,39.8,0.0,False,1,Direct / Organic,Unknown,2022,29.0,29,1471,Likely churned
+6336747471103,Tier 2,D1,D5,1,639.9,255.96,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1456,Likely churned
+8766572364031,Tier 2,D1,D2,1,371.52,253.14,68.1,100.0,False,2,Direct / Organic,Other,2026,,0,79,Active
+6328238899455,Tier 2,D1,D5,1,629.28,251.71,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1577,Likely churned
+7516825649407,Tier 2,D1,D2,2,303.96,246.94,81.2,100.0,False,4,Subscription,Clear Protein,2024,97.0,97,485,Likely churned
+6423590142207,Tier 2,D1,D2,2,615.5,246.2,40.0,0.0,False,1,Subscription,Unknown,2022,0.0,0,1457,Likely churned
+7756019466495,Tier 2,D1,D4,1,620.61,245.82,39.6,0.0,False,1,Direct / Organic,Unknown,2022,,0,1365,Likely churned
+6362962821375,Tier 2,D1,D2,2,242.5,244.49,100.8,100.0,False,1,Subscription,Other,2022,215.0,215,1088,Likely churned
+7252742078719,Tier 2,D1,D2,2,241.25,244.27,101.3,100.0,False,1,Subscription,Other,2024,186.0,186,546,Likely churned
+7272645099775,Tier 2,D1,D5,1,300.9,243.66,81.0,100.0,False,2,Subscription,Unknown,2024,,0,720,Likely churned
+7335218184447,Tier 2,D1,D5,1,318.6,243.66,76.5,100.0,False,1,Subscription,Clear Protein,2024,,0,686,Likely churned
+6336698253567,Tier 2,D1,D2,2,617.55,243.1,39.4,0.0,False,1,Subscription,Unknown,2022,22.0,22,1406,Likely churned
+7267551379711,Tier 2,D1,D2,2,289.1,242.09,83.7,100.0,False,2,Subscription,Clear Protein,2024,54.0,54,669,Likely churned
+8602896433407,Tier 2,D1,D2,1,348.3,236.52,67.9,100.0,True,1,Subscription,Lean Protein,2025,,0,141,At-risk
+7755986567423,Tier 2,D1,D4,1,590.0,236.0,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1523,Likely churned
+6327702487295,Tier 2,D1,D2,2,576.66,230.66,40.0,0.0,False,1,Subscription,Unknown,2022,97.0,97,1455,Likely churned
+6327523148031,Tier 2,D1,D5,1,275.09,230.36,83.7,100.0,False,1,Subscription,Other,2023,,0,1123,Likely churned
+6329833160959,Tier 2,D1,D2,2,580.55,230.26,39.7,0.0,False,1,Subscription,Unknown,2022,5.0,5,1478,Likely churned
+6327763042559,Tier 2,D1,D5,1,573.2,229.28,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1570,Likely churned
+6423605838079,Tier 2,D1,D2,2,571.95,224.86,39.3,0.0,False,1,Subscription,Unknown,2022,0.0,0,1546,Likely churned
+8236594004223,Tier 2,D1,D3,1,303.8,221.94,73.1,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,270,Likely churned
+8341118517503,Tier 2,D1,D3,1,267.19,221.92,83.1,100.0,False,3,Direct / Organic,Other,2025,,0,220,Likely churned
+7135383421183,Tier 2,D1,D2,2,253.04,214.13,84.6,100.0,False,3,Subscription,Clear Protein,2024,152.0,152,608,Likely churned
+7339270406399,Tier 2,D1,D5,1,203.16,213.48,105.1,100.0,False,4,Subscription,Clear Protein,2024,,0,671,Likely churned
+7521591755007,Tier 2,D1,D5,1,206.78,213.47,103.2,100.0,False,4,Subscription,Clear Protein,2024,,0,578,Likely churned
+6329639960831,Tier 2,D1,D2,2,451.61,210.26,46.6,24.8,False,3,Subscription,Unknown,2022,1365.0,1365,80,Active
+8345098289407,Tier 2,D1,D3,1,276.6,207.65,75.1,100.0,False,4,Paid Social,Clear Protein,2025,,0,218,Likely churned
+8226067218687,Tier 2,D1,D3,1,263.42,204.7,77.7,100.0,False,3,Direct / Organic,Accessories,2025,,0,233,Likely churned
+7269385601279,Tier 2,D1,D2,2,225.03,204.31,90.8,100.0,False,2,Subscription,Soy Protein,2024,22.0,22,700,Likely churned
+7696462545151,Tier 2,D1,D2,2,239.5,202.44,84.5,100.0,False,1,Subscription,Unknown,2024,156.0,156,350,Likely churned
+7869262201087,Tier 2,D1,D3,1,269.55,202.3,75.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,431,Likely churned
+7756015894783,Tier 2,D1,D2,2,475.13,200.81,42.3,10.1,False,2,Direct / Organic,Unknown,2022,178.0,178,1158,Likely churned
+7521930281215,Tier 2,D1,D2,2,216.58,199.68,92.2,100.0,False,2,Subscription,Other,2024,31.0,31,547,Likely churned
+6328230281471,Tier 2,D1,D2,2,302.37,197.66,65.4,62.1,False,2,Subscription,Unknown,2022,344.0,344,1121,Likely churned
+6366358503679,Tier 2,D1,D2,2,252.8,196.49,77.7,100.0,False,1,Subscription,Other,2022,67.0,67,1233,Likely churned
+6835415613695,Tier 2,D1,D2,2,239.19,194.09,81.1,100.0,False,2,Subscription,Soy Protein,2023,308.0,308,613,Likely churned
+8713832366335,Tier 2,D1,D2,1,268.9,193.76,72.1,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,95,At-risk
+7340202328319,Tier 2,D1,D5,1,248.94,191.44,76.9,100.0,False,5,Subscription,Accessories,2024,,0,682,Likely churned
+7519676170495,Tier 2,D1,D2,2,183.61,191.43,104.3,100.0,False,2,Subscription,Other,2024,28.0,28,549,Likely churned
+6763164958975,Tier 2,D1,D5,1,287.64,190.36,66.2,100.0,False,1,Subscription,Other,2023,,0,1000,Likely churned
+6329708839167,Tier 2,D1,D5,1,475.12,190.05,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1407,Likely churned
+7304552186111,Tier 2,D1,D2,2,219.79,189.71,86.3,100.0,False,2,Subscription,Clear Protein,2024,99.0,99,606,Likely churned
+7755921326335,Tier 2,D1,D2,2,252.77,188.98,74.8,100.0,False,4,Direct / Organic,Clear Protein,2025,36.0,36,229,Likely churned
+8761752518911,Tier 2,D1,D2,1,219.13,185.72,84.8,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,82,Active
+8366984167679,Tier 2,D1,D2,1,213.1,185.46,87.0,100.0,False,4,Direct / Organic,Accessories,2025,,0,207,Likely churned
+8364385337599,Tier 2,D1,D2,1,235.62,185.3,78.6,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,208,Likely churned
+8286033117439,Tier 2,D1,D3,1,265.68,182.34,68.6,100.0,True,1,Subscription,Lean Protein,2025,,0,249,Likely churned
+7733235646719,Tier 2,D1,D2,2,234.78,181.18,77.2,100.0,False,4,Subscription,Collagen Glow,2024,54.0,54,433,Likely churned
+7251339804927,Tier 2,D1,D2,2,187.25,176.18,94.1,100.0,False,4,Subscription,Other,2024,33.0,33,700,Likely churned
+7756044566783,Tier 2,D1,D4,1,439.77,175.91,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1546,Likely churned
+8663410245887,Tier 2,D1,D2,1,249.0,175.44,70.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,119,At-risk
+7755958354175,Tier 2,D1,D2,2,272.35,175.06,64.3,100.0,False,3,Direct / Organic,Clear Protein,2024,46.0,46,707,Likely churned
+8312709251327,Tier 2,D1,D3,1,240.44,174.41,72.5,100.0,False,2,Paid Social,Accessories,2025,,0,234,Likely churned
+6327719231743,Tier 2,D1,D2,2,211.48,174.4,82.5,100.0,False,2,Direct / Organic,Lean Protein,2025,75.0,75,318,Likely churned
+7756470321407,Tier 2,D1,D4,1,217.64,173.71,79.8,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,575,Likely churned
+7519345475839,Tier 2,D1,D2,2,217.66,173.15,79.6,100.0,False,3,Subscription,Clear Protein,2024,339.0,339,241,Likely churned
+7756440535295,Tier 2,D1,D4,1,229.14,171.86,75.0,100.0,False,4,Direct / Organic,Lean Protein,2024,,0,669,Likely churned
+7756039913727,Tier 2,D1,D4,1,429.09,171.64,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1513,Likely churned
+7534855061759,Tier 2,D1,D5,1,221.31,170.96,77.2,100.0,False,1,Subscription,Unknown,2024,,0,569,Likely churned
+8832270598399,Tier 2,D1,D2,1,222.73,170.05,76.3,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,53,Active
+8286293852415,Tier 2,D1,D3,1,234.6,169.71,72.3,100.0,False,5,Direct / Organic,Other,2025,,0,249,Likely churned
+6327712874751,Tier 2,D1,D5,1,423.28,169.31,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1359,Likely churned
+6336758251775,Tier 2,D1,D2,2,158.73,169.27,106.6,78.6,False,2,Subscription,Unknown,2022,64.0,64,1298,Likely churned
+6329600409855,Tier 2,D1,D5,1,422.3,168.92,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1343,Likely churned
+7304842477823,Tier 2,D1,D2,2,261.97,168.46,64.3,100.0,False,2,Subscription,Clear Protein,2024,26.0,26,678,Likely churned
+6329709887743,Tier 2,D1,D5,1,421.14,168.46,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1421,Likely churned
+7135034441983,Tier 2,D1,D2,2,217.31,167.75,77.2,100.0,True,2,Subscription,Clear Protein,2024,14.0,14,760,Likely churned
+6327691772159,Tier 2,D1,D5,1,418.08,167.23,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1445,Likely churned
+7475322421503,Tier 2,D1,D5,1,167.72,166.04,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7476820934911,Tier 2,D1,D5,1,167.72,164.99,98.4,100.0,False,2,Subscription,Clear Protein,2024,,0,606,Likely churned
+7475341721855,Tier 2,D1,D2,2,185.69,164.57,88.6,100.0,False,2,Subscription,Clear Protein,2024,169.0,169,438,Likely churned
+7476853145855,Tier 2,D1,D5,1,167.72,163.94,97.7,100.0,False,2,Subscription,Clear Protein,2024,,0,606,Likely churned
+7483704705279,Tier 2,D1,D2,2,233.61,163.52,70.0,100.0,False,2,Subscription,Clear Protein,2024,280.0,280,322,Likely churned
+6683695710463,Tier 2,D1,D2,2,255.61,162.77,63.7,100.0,False,1,Subscription,Other,2023,296.0,296,772,Likely churned
+7366249840895,Tier 2,D1,D2,2,189.2,162.67,86.0,100.0,False,2,Subscription,Clear Protein,2024,58.0,58,611,Likely churned
+7756048597247,Tier 2,D1,D4,1,406.55,162.62,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1575,Likely churned
+7138245443839,Tier 2,D1,D5,1,188.8,162.44,86.0,100.0,False,1,Subscription,Clear Protein,2024,,0,760,Likely churned
+7154163482879,Tier 2,D1,D5,1,188.8,162.44,86.0,100.0,False,1,Subscription,Clear Protein,2024,,0,763,Likely churned
+7259717894399,Tier 2,D1,D5,1,177.0,162.44,91.8,100.0,False,1,Subscription,Clear Protein,2024,,0,728,Likely churned
+7307284611327,Tier 2,D1,D5,1,165.2,162.44,98.3,100.0,False,1,Subscription,Clear Protein,2024,,0,703,Likely churned
+7308209324287,Tier 2,D1,D5,1,165.2,162.44,98.3,100.0,False,1,Subscription,Clear Protein,2024,,0,702,Likely churned
+7523069362431,Tier 2,D1,D5,1,167.72,162.37,96.8,100.0,False,3,Subscription,Lean Protein,2024,,0,577,Likely churned
+7311808626943,Tier 2,D1,D2,2,189.96,161.99,85.3,100.0,False,2,Subscription,Clear Protein,2024,24.0,24,676,Likely churned
+6334077829375,Tier 2,D1,D5,1,404.64,161.86,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1441,Likely churned
+7308405080319,Tier 2,D1,D5,1,167.72,161.84,96.5,100.0,False,1,Subscription,Lean Protein,2024,,0,702,Likely churned
+6372751343871,Tier 2,D1,D2,2,240.54,160.09,66.6,100.0,False,1,Subscription,Other,2022,61.0,61,1234,Likely churned
+7756041027839,Tier 2,D1,D4,1,400.0,160.0,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1519,Likely churned
+7841564426495,Tier 2,D1,D3,1,217.8,160.0,73.5,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,440,Likely churned
+8904390836479,Tier 2,D1,D2,1,236.48,159.33,67.4,100.0,True,3,Subscription,Clear Protein,2026,,0,30,Active
+8761818906879,Tier 2,D1,D2,1,232.02,158.92,68.5,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,82,Active
+7268175544575,Tier 2,D1,D2,2,203.97,158.66,77.8,100.0,False,1,Subscription,Other,2024,143.0,143,579,Likely churned
+7537170055423,Tier 2,D1,D2,2,233.61,158.52,67.9,100.0,False,2,Subscription,Other,2024,155.0,155,414,Likely churned
+8794668663039,Tier 2,D1,D2,1,200.64,158.33,78.9,100.0,True,3,Subscription,Other,2026,,0,68,Active
+7995001045247,Tier 2,D1,D3,1,160.09,158.26,98.9,100.0,False,3,Direct / Organic,Accessories,2025,,47,305,Likely churned
+8349936746751,Tier 2,D1,D3,1,215.71,156.44,72.5,100.0,True,3,Subscription,Other,2025,,0,214,Likely churned
+6329637929215,Tier 2,D1,D2,2,162.62,156.36,96.2,100.0,False,2,Subscription,Clear Protein,2024,39.0,39,762,Likely churned
+7258491322623,Tier 2,D1,D5,1,198.72,156.21,78.6,100.0,False,3,Subscription,Clear Protein,2024,,0,729,Likely churned
+8234476634367,Tier 2,D1,D3,1,199.67,155.56,77.9,100.0,False,2,Direct / Organic,Accessories,2025,,0,271,Likely churned
+7756429820159,Tier 2,D1,D4,1,160.36,155.53,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,703,Likely churned
+7756469436671,Tier 2,D1,D4,1,160.36,155.53,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+7183640199423,Tier 2,D1,D5,1,167.72,155.2,92.5,100.0,False,1,Subscription,Other,2024,,0,703,Likely churned
+7254253404415,Tier 2,D1,D2,2,208.66,155.2,74.4,100.0,False,1,Subscription,Other,2024,364.0,364,367,Likely churned
+7308128321791,Tier 2,D1,D5,1,167.72,155.2,92.5,100.0,False,1,Subscription,Other,2024,,0,702,Likely churned
+7910880280831,Tier 2,D1,D3,1,215.64,155.2,72.0,100.0,False,1,Direct / Organic,Other,2025,,0,407,Likely churned
+7583185371391,Tier 2,D1,D2,2,226.81,155.04,68.4,100.0,False,1,Subscription,Lean Protein,2024,364.0,364,184,Likely churned
+6529440514303,Tier 2,D1,D2,2,227.39,154.85,68.1,66.6,False,2,Subscription,Other,2023,41.0,41,1141,Likely churned
+6329611485439,Tier 2,D1,D2,2,248.75,154.27,62.0,57.2,False,2,Subscription,Unknown,2022,213.0,213,1186,Likely churned
+6787329097983,Tier 2,D1,D2,2,244.44,154.0,63.0,100.0,False,1,Subscription,Other,2023,186.0,186,791,Likely churned
+7308278366463,Tier 2,D1,D2,2,173.5,153.49,88.5,100.0,False,3,Subscription,Lean Protein,2024,10.0,10,692,Likely churned
+7308582682879,Tier 2,D1,D2,2,150.29,152.65,101.6,100.0,False,2,Subscription,Clear Protein,2024,122.0,122,580,Likely churned
+8902266945791,Tier 2,D1,D2,1,186.12,151.74,81.5,100.0,False,5,Paid Social,Lean Protein,2026,,0,31,Active
+6582510584063,Tier 2,D1,D5,1,217.08,150.72,69.4,100.0,True,1,Subscription,Other,2023,,0,1159,Likely churned
+8825355141375,Tier 2,D1,D2,1,225.48,150.2,66.6,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,56,Active
+7313591402751,Tier 2,D1,D2,2,161.24,149.47,92.7,100.0,True,3,Subscription,Lean Protein,2024,83.0,83,616,Likely churned
+8765829415167,Tier 2,D1,D2,1,210.98,149.39,70.8,100.0,False,4,Direct / Organic,Lean Protein,2026,,0,79,Active
+6423596531967,Tier 2,D1,D2,2,382.12,148.93,39.0,0.0,False,1,Subscription,Unknown,2022,0.0,0,1495,Likely churned
+7756003803391,Tier 2,D1,D2,2,174.11,148.33,85.2,100.0,False,2,Direct / Organic,Clear Protein,2024,58.0,58,702,Likely churned
+7425530396927,Tier 2,D1,D5,1,197.8,148.32,75.0,100.0,False,2,Direct / Organic,Other,2025,,0,357,Likely churned
+7113287008511,Tier 2,D1,D2,2,175.34,147.73,84.3,85.5,False,4,Subscription,Other,2024,82.0,82,703,Likely churned
+8837407637759,Tier 2,D1,D2,1,223.39,147.72,66.1,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,51,Active
+7756469600511,Tier 2,D1,D4,1,154.34,146.92,95.2,100.0,False,4,Direct / Organic,Other,2024,,0,577,Likely churned
+7430469386495,Tier 2,D1,D2,2,186.86,146.63,78.5,100.0,False,3,Subscription,Clear Protein,2024,53.0,53,579,Likely churned
+7172742021375,Tier 2,D1,D2,2,207.63,146.48,70.5,100.0,False,4,Subscription,Clear Protein,2024,173.0,173,581,Likely churned
+6424716706047,Tier 2,D1,D2,2,231.71,145.48,62.8,77.8,False,4,Subscription,Collagen Glow,2023,647.0,647,443,Likely churned
+7756042502399,Tier 2,D1,D4,1,363.15,145.26,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1529,Likely churned
+8657433362687,Tier 2,D1,D2,1,186.7,145.2,77.8,100.0,False,1,Paid Social,Lean Protein,2025,,0,122,At-risk
+6336660111615,Tier 2,D1,D2,2,233.32,144.5,61.9,79.7,False,3,Subscription,Unknown,2023,37.0,37,942,Likely churned
+8351278334207,Tier 2,D1,D3,1,177.2,143.47,81.0,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,214,Likely churned
+6329858785535,Tier 2,D1,D2,2,367.25,142.98,38.9,0.0,False,1,Subscription,Unknown,2022,0.0,0,1471,Likely churned
+8480155238655,Tier 2,D1,D2,1,178.11,142.96,80.3,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,184,Likely churned
+7756043583743,Tier 2,D1,D4,1,357.2,142.88,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1538,Likely churned
+8364503302399,Tier 2,D1,D2,1,178.2,142.83,80.2,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,208,Likely churned
+6822588449023,Tier 2,D1,D2,2,196.66,142.77,72.6,100.0,False,1,Subscription,Other,2023,369.0,369,579,Likely churned
+7875674800383,Tier 2,D1,D3,1,257.8,142.63,55.3,50.0,False,3,Direct / Organic,Unknown,2025,,0,429,Likely churned
+6329836339455,Tier 2,D1,D2,2,355.61,142.24,40.0,0.0,False,1,Subscription,Unknown,2022,53.0,53,1437,Likely churned
+6423592370431,Tier 2,D1,D2,2,307.29,141.63,46.1,32.2,False,2,Subscription,Unknown,2022,486.0,486,981,Likely churned
+6336758808831,Tier 2,D1,D2,2,148.52,141.62,95.4,47.6,False,3,Subscription,Unknown,2022,19.0,19,1311,Likely churned
+8244287111423,Tier 2,D1,D3,1,164.48,141.55,86.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,265,Likely churned
+8835435233535,Tier 2,D1,D2,1,215.04,141.48,65.8,100.0,True,1,Subscription,Clear Protein,2026,,0,52,Active
+8841410478335,Tier 2,D1,D2,1,215.04,141.48,65.8,100.0,True,1,Subscription,Clear Protein,2026,,0,49,Active
+7756008128767,Tier 2,D1,D4,1,205.96,141.33,68.6,100.0,False,1,Direct / Organic,Other,2022,,0,1280,Likely churned
+6329857638655,Tier 2,D1,D5,1,125.58,141.3,112.5,100.0,False,1,Subscription,Other,2024,,0,703,Likely churned
+6329699729663,Tier 2,D1,D5,1,357.62,141.09,39.5,0.0,False,1,Subscription,Unknown,2022,,0,1343,Likely churned
+6423599907071,Tier 2,D1,D5,1,356.86,140.78,39.5,0.0,False,1,Subscription,Unknown,2022,,0,1521,Likely churned
+6327404921087,Tier 2,D1,D2,2,361.09,140.72,39.0,69.7,False,3,Subscription,Unknown,2022,309.0,309,1043,Likely churned
+6334060429567,Tier 2,D1,D2,2,356.21,140.52,39.4,0.0,False,1,Subscription,Unknown,2022,1.0,1,1482,Likely churned
+6336662634751,Tier 2,D1,D2,2,233.13,139.29,59.7,100.0,True,1,Subscription,Other,2023,413.0,413,702,Likely churned
+6328231035135,Tier 2,D1,D5,1,348.12,139.25,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1463,Likely churned
+7756464914687,Tier 2,D1,D4,1,206.43,139.17,67.4,100.0,False,2,Direct / Organic,Other,2024,,0,590,Likely churned
+7089768923391,Tier 2,D1,D2,2,154.4,138.96,90.0,100.0,False,1,Subscription,Other,2024,39.0,39,760,Likely churned
+6776240406783,Tier 2,D1,D2,2,216.24,137.83,63.7,100.0,False,1,Subscription,Other,2023,50.0,50,938,Likely churned
+8694256533759,Tier 2,D1,D2,1,194.77,137.62,70.7,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,105,At-risk
+6377877831935,Tier 2,D1,D2,2,185.6,137.47,74.1,83.3,False,3,Subscription,Other,2022,133.0,133,1157,Likely churned
+8780897124607,Tier 2,D1,D2,1,151.61,137.16,90.5,100.0,True,1,Subscription,Collagen Glow,2026,,0,47,Active
+8848376529151,Tier 2,D1,D2,1,151.54,137.08,90.5,100.0,True,1,Subscription,Collagen Glow,2026,,0,46,Active
+7756016582911,Tier 2,D1,D4,1,341.83,135.64,39.7,0.0,False,1,Direct / Organic,Unknown,2022,,0,1338,Likely churned
+8325623087359,Tier 2,D1,D3,1,131.6,135.28,102.8,100.0,False,3,Direct / Organic,Other,2025,,0,229,Likely churned
+8226075803903,Tier 2,D1,D3,1,131.72,135.17,102.6,100.0,False,3,Direct / Organic,Other,2025,,0,222,Likely churned
+8334140932351,Tier 2,D1,D3,1,131.59,135.04,102.6,100.0,False,3,Direct / Organic,Other,2025,,0,225,Likely churned
+7961351127295,Tier 2,D1,D3,1,208.8,134.81,64.6,100.0,False,3,Direct / Organic,Other,2025,,0,380,Likely churned
+7475205636351,Tier 2,D1,D2,2,157.94,134.37,85.1,100.0,False,2,Subscription,Clear Protein,2024,551.0,551,56,Active
+7756170002687,Tier 2,D1,D4,1,166.0,134.06,80.8,100.0,True,2,Subscription,Other,2025,,0,251,Likely churned
+7309950812415,Tier 2,D1,D2,2,183.78,133.61,72.7,100.0,True,3,Subscription,Clear Protein,2024,26.0,26,675,Likely churned
+8329035481343,Tier 2,D1,D3,1,147.58,133.39,90.4,100.0,False,3,Direct / Organic,Other,2025,,0,227,Likely churned
+6423596761343,Tier 2,D1,D2,2,343.13,133.33,38.9,0.0,False,1,Subscription,Unknown,2022,60.0,60,1498,Likely churned
+6327622566143,Tier 2,D1,D5,1,332.74,133.1,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1465,Likely churned
+8794067861759,Tier 2,D1,D2,1,176.31,132.03,74.9,100.0,False,3,Direct / Organic,Other,2026,,0,68,Active
+7461546655999,Tier 2,D1,D2,2,156.81,131.5,83.9,100.0,False,3,Subscription,Soy Protein,2024,373.0,373,243,Likely churned
+8306218533119,Tier 2,D1,D3,1,129.0,131.47,101.9,100.0,False,3,Affiliate,Other,2025,,0,237,Likely churned
+8274425446655,Tier 2,D1,D3,1,178.39,131.33,73.6,100.0,True,3,Subscription,Other,2025,,0,254,Likely churned
+6327391977727,Tier 2,D1,D2,2,211.97,131.11,61.9,53.3,False,3,Subscription,Unknown,2022,153.0,153,1211,Likely churned
+7755989319935,Tier 2,D1,D2,2,270.69,130.01,48.0,35.8,False,2,Direct / Organic,Unknown,2022,360.0,360,1161,Likely churned
+7146181067007,Tier 2,D1,D5,1,258.87,129.63,50.1,100.0,False,1,Subscription,Other,2024,,0,767,Likely churned
+6532515791103,Tier 2,D1,D2,2,282.58,129.33,45.8,26.1,False,2,Direct / Organic,Unknown,2022,243.0,243,1189,Likely churned
+8633033228543,Tier 2,D1,D2,1,179.28,129.26,72.1,100.0,False,2,Direct / Organic,Collagen Glow,2025,,0,132,At-risk
+8364298830079,Tier 2,D1,D3,1,154.53,128.83,83.4,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,208,Likely churned
+6327655891199,Tier 2,D1,D2,2,195.18,128.56,65.9,64.4,False,2,Subscription,Unknown,2022,229.0,229,1120,Likely churned
+7843128967423,Tier 2,D1,D3,1,180.34,128.42,71.2,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,443,Likely churned
+6348036178175,Tier 2,D1,D5,1,96.0,127.68,133.0,100.0,False,1,Subscription,Other,2022,,0,1316,Likely churned
+8037819154687,Tier 2,D1,D3,1,159.21,127.19,79.9,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,353,Likely churned
+8844887752959,Tier 2,D1,D2,1,162.56,127.17,78.2,100.0,True,1,Subscription,Lean Protein,2026,,0,43,Active
+7927412392191,Tier 2,D1,D3,1,183.29,127.07,69.3,100.0,False,2,Paid Social,Lean Protein,2025,,0,399,Likely churned
+7753766043903,Tier 2,D1,D2,2,182.81,126.82,69.4,100.0,True,2,Subscription,Clear Protein,2025,402.0,402,74,Active
+8474630390015,Tier 2,D1,D2,1,152.75,126.75,83.0,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,187,Likely churned
+8807161102591,Tier 2,D1,D2,1,184.23,126.36,68.6,100.0,True,3,Subscription,Clear Protein,2026,,0,63,Active
+7756045811967,Tier 2,D1,D4,1,315.55,126.22,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1564,Likely churned
+6327633510655,Tier 2,D1,D2,2,194.11,125.93,64.9,69.4,False,3,Subscription,Unknown,2023,929.0,929,232,Likely churned
+7673187434751,Tier 2,D1,D5,1,151.92,124.92,82.2,100.0,True,5,Subscription,Lean Protein,2024,,0,514,Likely churned
+8160918765823,Tier 2,D1,D3,1,117.53,124.77,106.2,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,308,Likely churned
+8477676601599,Tier 2,D1,D2,1,154.7,124.73,80.6,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,185,Likely churned
+6976895189247,Tier 2,D1,D2,2,181.51,124.7,68.7,100.0,False,1,Subscription,Other,2024,501.0,501,346,Likely churned
+7482746601727,Tier 2,D1,D5,1,161.64,124.7,77.1,100.0,False,1,Subscription,Other,2024,,0,602,Likely churned
+6526214340863,Tier 2,D1,D5,1,160.19,124.54,77.7,71.4,False,2,Subscription,Unknown,2023,,0,1190,Likely churned
+7475360497919,Tier 2,D1,D2,2,125.79,124.53,99.0,100.0,False,1,Subscription,Clear Protein,2024,1.0,1,606,Likely churned
+7755966710015,Tier 2,D1,D2,2,278.74,124.48,44.7,40.4,False,2,Direct / Organic,Unknown,2022,409.0,409,1090,Likely churned
+7264693223679,Tier 2,D1,D5,1,160.92,124.27,77.2,100.0,False,2,Subscription,Other,2024,,0,725,Likely churned
+7755999576319,Tier 2,D1,D2,2,310.45,124.18,40.0,0.0,False,1,Direct / Organic,Unknown,2021,157.0,157,1423,Likely churned
+8329028370687,Tier 2,D1,D3,1,131.6,123.71,94.0,100.0,False,3,Direct / Organic,Other,2025,,0,227,Likely churned
+8781274153215,Tier 2,D1,D2,1,148.0,123.59,83.5,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,74,Active
+8787607060735,Tier 2,D1,D2,1,148.0,123.59,83.5,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,71,Active
+8795868758271,Tier 2,D1,D2,1,148.0,123.59,83.5,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,67,Active
+8796871360767,Tier 2,D1,D2,1,148.0,123.59,83.5,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,67,Active
+8798951178495,Tier 2,D1,D2,1,148.0,123.59,83.5,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,65,Active
+7470529708287,Tier 2,D1,D5,1,134.77,123.48,91.6,100.0,False,2,Subscription,Lean Protein,2024,,0,609,Likely churned
+7441933336831,Tier 2,D1,D2,2,169.1,123.47,73.0,100.0,False,2,Subscription,Clear Protein,2024,559.0,559,66,Active
+8147962560767,Tier 2,D1,D3,1,182.0,122.64,67.4,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,313,Likely churned
+7522002174207,Tier 2,D1,D2,2,166.63,122.01,73.2,100.0,False,1,Subscription,Lean Protein,2024,231.0,231,347,Likely churned
+7252280738047,Tier 2,D1,D2,2,160.5,121.98,76.0,100.0,False,2,Subscription,Clear Protein,2024,382.0,382,350,Likely churned
+7476574650623,Tier 2,D1,D2,2,155.74,121.91,78.3,100.0,False,3,Subscription,Clear Protein,2024,25.0,25,581,Likely churned
+8849562370303,Tier 2,D1,D2,1,172.06,121.84,70.8,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,45,Active
+7056242082047,Tier 2,D1,D2,2,117.95,121.83,103.3,100.0,False,1,Subscription,Clear Protein,2024,41.0,41,772,Likely churned
+7125851439359,Tier 2,D1,D2,2,145.5,121.83,83.7,100.0,False,1,Subscription,Clear Protein,2024,76.0,76,701,Likely churned
+7141155700991,Tier 2,D1,D5,1,168.15,121.83,72.5,100.0,False,1,Subscription,Clear Protein,2024,,0,770,Likely churned
+7202402926847,Tier 2,D1,D5,1,150.45,121.83,81.0,100.0,False,1,Subscription,Clear Protein,2024,,0,744,Likely churned
+7252598948095,Tier 2,D1,D5,1,137.65,121.83,88.5,100.0,False,1,Subscription,Clear Protein,2024,,0,732,Likely churned
+7307052122367,Tier 2,D1,D5,1,123.9,121.83,98.3,100.0,False,1,Subscription,Clear Protein,2024,,0,703,Likely churned
+7321657475327,Tier 2,D1,D2,2,155.35,121.83,78.4,100.0,False,1,Subscription,Clear Protein,2024,21.0,21,673,Likely churned
+7075370729727,Tier 2,D1,D2,2,125.92,121.68,96.6,100.0,False,2,Subscription,Clear Protein,2024,70.0,70,733,Likely churned
+6336654704895,Tier 2,D1,D2,2,303.67,121.47,40.0,0.0,False,1,Subscription,Unknown,2022,4.0,4,1337,Likely churned
+7515696890111,Tier 2,D1,D2,2,160.64,121.38,75.6,100.0,False,1,Subscription,Lean Protein,2024,3.0,3,580,Likely churned
+7991992877311,Tier 2,D1,D3,1,183.2,121.24,66.2,100.0,False,2,Direct / Organic,Other,2025,,0,364,Likely churned
+6327399678207,Tier 2,D1,D2,2,109.29,120.49,110.2,69.0,False,2,Subscription,Unknown,2022,131.0,131,1311,Likely churned
+8767224807679,Tier 2,D1,D2,1,167.32,120.4,72.0,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,79,Active
+6329687212287,Tier 2,D1,D5,1,142.32,120.02,84.3,100.0,False,2,Subscription,Clear Protein,2024,,0,760,Likely churned
+7305996370175,Tier 2,D1,D5,1,125.16,119.87,95.8,100.0,False,3,Subscription,Clear Protein,2024,,0,703,Likely churned
+8303876473087,Tier 2,D1,D3,1,138.0,119.54,86.6,100.0,False,2,Direct / Organic,Accessories,2025,,0,238,Likely churned
+6616678793471,Tier 2,D1,D2,2,193.49,119.28,61.6,100.0,True,1,Subscription,Other,2023,27.0,27,1103,Likely churned
+6329719718143,Tier 2,D1,D5,1,302.53,119.05,39.4,0.0,False,1,Subscription,Unknown,2022,,0,1426,Likely churned
+8071788527871,Tier 2,D1,D3,1,154.17,118.91,77.1,100.0,False,3,Direct / Organic,Other,2025,,0,342,Likely churned
+7756007866623,Tier 2,D1,D4,1,127.15,118.66,93.3,100.0,False,1,Direct / Organic,Soy Protein,2022,,0,1284,Likely churned
+6336760545535,Tier 2,D1,D5,1,296.38,118.55,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1414,Likely churned
+7475348308223,Tier 2,D1,D5,1,125.79,118.06,93.9,100.0,False,2,Subscription,Other,2024,,0,607,Likely churned
+7869806838015,Tier 2,D1,D3,1,132.52,117.55,88.7,100.0,True,2,Subscription,Accessories,2025,,0,430,Likely churned
+8326961922303,Tier 2,D1,D3,1,126.64,117.54,92.8,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,228,Likely churned
+6329694191871,Tier 2,D1,D5,1,109.85,117.44,106.9,100.0,False,1,Subscription,Soy Protein,2023,,0,1202,Likely churned
+6508011389183,Tier 2,D1,D5,1,109.85,117.44,106.9,100.0,False,1,Subscription,Soy Protein,2023,,0,1205,Likely churned
+8339344425215,Tier 2,D1,D3,1,113.0,117.27,103.8,100.0,False,3,Direct / Organic,Other,2025,,0,221,Likely churned
+8369445601535,Tier 2,D1,D2,1,113.0,117.27,103.8,100.0,False,3,Direct / Organic,Other,2025,,0,205,Likely churned
+8312861491455,Tier 2,D1,D3,1,153.55,116.7,76.0,100.0,False,5,Direct / Organic,Other,2025,,0,233,Likely churned
+8629353545983,Tier 2,D1,D2,1,160.34,116.67,72.8,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,133,At-risk
+8067328737535,Tier 2,D1,D3,1,143.55,116.63,81.2,100.0,False,3,Affiliate,Other,2025,,0,338,Likely churned
+7968778813695,Tier 2,D1,D3,1,143.48,116.54,81.2,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,375,Likely churned
+8150025306367,Tier 2,D1,D3,1,151.92,116.54,76.7,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,312,Likely churned
+6648608686335,Tier 2,D1,D2,2,183.51,116.4,63.4,100.0,False,1,Subscription,Other,2023,116.0,116,832,Likely churned
+7136674087167,Tier 2,D1,D2,2,189.5,116.4,61.4,100.0,False,1,Subscription,Other,2024,78.0,78,693,Likely churned
+7519112855807,Tier 2,D1,D5,1,125.79,116.4,92.5,100.0,False,1,Subscription,Other,2024,,0,580,Likely churned
+6547456491775,Tier 2,D1,D2,2,212.31,116.23,54.7,70.5,False,2,Subscription,Collagen Glow,2023,139.0,139,1035,Likely churned
+7582665900287,Tier 2,D1,D2,2,139.48,116.09,83.2,100.0,False,2,Subscription,Lean Protein,2024,108.0,108,441,Likely churned
+7756022874367,Tier 2,D1,D2,2,292.93,116.08,39.6,0.0,False,1,Direct / Organic,Unknown,2022,49.0,49,1450,Likely churned
+8358432014591,Tier 2,D1,D3,1,149.01,116.06,77.9,100.0,False,2,Direct / Organic,Other,2025,,0,209,Likely churned
+8286057464063,Tier 2,D1,D3,1,158.9,115.77,72.9,100.0,False,2,Direct / Organic,Other,2025,,0,249,Likely churned
+7756468945151,Tier 2,D1,D4,1,113.91,115.6,101.5,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,578,Likely churned
+7756469240063,Tier 2,D1,D4,1,113.91,115.6,101.5,100.0,False,2,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+6329603490047,Tier 2,D1,D5,1,145.19,115.18,79.3,100.0,False,1,Subscription,Other,2023,,0,1200,Likely churned
+6390669017343,Tier 2,D1,D2,2,153.64,115.18,75.0,100.0,False,1,Subscription,Other,2022,0.0,0,1282,Likely churned
+6477783892223,Tier 2,D1,D5,1,145.19,115.18,79.3,100.0,False,1,Subscription,Other,2023,,0,1203,Likely churned
+7520123322623,Tier 2,D1,D5,1,108.92,115.13,105.7,100.0,False,2,Subscription,Other,2024,,0,578,Likely churned
+6327740727551,Tier 2,D1,D5,1,150.91,114.98,76.2,61.9,False,4,Subscription,Accessories,2023,,0,1158,Likely churned
+6334064951551,Tier 2,D1,D5,1,114.59,114.73,100.1,100.0,False,2,Subscription,Other,2024,,0,703,Likely churned
+8312444027135,Tier 2,D1,D3,1,131.72,114.44,86.9,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,200,Likely churned
+8394724212991,Tier 2,D1,D2,1,131.72,113.93,86.5,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,200,Likely churned
+8438245097727,Tier 2,D1,D2,1,152.06,113.7,74.8,100.0,False,2,Direct / Organic,Accessories,2025,,0,193,Likely churned
+8343051698431,Tier 2,D1,D3,1,131.7,113.64,86.3,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,219,Likely churned
+8115042943231,Tier 2,D1,D3,1,142.92,113.22,79.2,100.0,False,2,Direct / Organic,Other,2025,,0,326,Likely churned
+6532501864703,Tier 2,D1,D2,2,230.19,113.06,49.1,100.0,False,2,Direct / Organic,Other,2022,11.0,11,1211,Likely churned
+6327616831743,Tier 2,D1,D5,1,282.6,113.04,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1432,Likely churned
+6663954465023,Tier 2,D1,D2,2,169.89,112.94,66.5,100.0,True,2,Subscription,Other,2023,1017.0,1017,70,Active
+6336631603455,Tier 2,D1,D2,2,169.11,112.42,66.5,100.0,False,1,Subscription,Other,2023,239.0,239,827,Likely churned
+6336726204671,Tier 2,D1,D2,2,225.45,112.32,49.8,70.8,False,3,Subscription,Unknown,2022,542.0,542,799,Likely churned
+8681942548735,Tier 2,D1,D2,1,137.63,112.03,81.4,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,98,At-risk
+8857096126719,Tier 2,D1,D2,1,105.97,111.76,105.5,100.0,False,1,Direct / Organic,Soy Protein,2026,,0,43,Active
+6327505322239,Tier 2,D1,D5,1,160.36,111.75,69.7,100.0,False,2,Subscription,Other,2024,,0,692,Likely churned
+8343062544639,Tier 2,D1,D3,1,129.06,111.67,86.5,100.0,True,3,Subscription,Other,2026,,0,74,Active
+8335227355391,Tier 2,D1,D3,1,149.6,111.64,74.6,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,224,Likely churned
+7825248059647,Tier 2,D1,D4,1,132.34,111.54,84.3,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,454,Likely churned
+8348116812031,Tier 2,D1,D3,1,128.9,111.18,86.3,100.0,False,3,Direct / Organic,Accessories,2025,,0,216,Likely churned
+6592949715199,Tier 2,D1,D5,1,161.64,111.05,68.7,83.4,False,3,Subscription,Collagen Glow,2023,,0,1152,Likely churned
+7735604707583,Tier 2,D1,D2,2,160.7,110.91,69.0,100.0,False,2,Subscription,Lean Protein,2024,117.0,117,368,Likely churned
+7341024936191,Tier 2,D1,D5,1,129.0,110.54,85.7,100.0,False,2,Direct / Organic,Accessories,2025,,0,233,Likely churned
+8312191123711,Tier 2,D1,D3,1,129.0,110.54,85.7,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,234,Likely churned
+8714975674623,Tier 2,D1,D2,1,148.9,110.54,74.2,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,95,At-risk
+8862032593151,Tier 2,D1,D2,1,164.78,110.07,66.8,100.0,True,2,Subscription,Lean Protein,2026,,0,31,Active
+8242684559615,Tier 2,D1,D3,1,126.48,110.02,87.0,100.0,False,3,Direct / Organic,Accessories,2025,,0,266,Likely churned
+8324492656895,Tier 2,D1,D3,1,128.9,110.02,85.4,100.0,False,3,Direct / Organic,Accessories,2025,,0,230,Likely churned
+7756468355327,Tier 2,D1,D4,1,122.56,109.45,89.3,100.0,False,2,Direct / Organic,Clear Protein,2024,,0,579,Likely churned
+8251601027327,Tier 2,D1,D3,1,148.8,109.39,73.5,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,261,Likely churned
+8294475825407,Tier 2,D1,D3,1,148.8,109.39,73.5,100.0,False,3,Direct / Organic,Accessories,2025,,0,244,Likely churned
+7897447629055,Tier 2,D1,D3,1,137.5,109.19,79.4,100.0,False,2,Email,Clear Protein,2026,,0,59,Active
+8792260149503,Tier 2,D1,D2,1,135.24,108.71,80.4,100.0,False,3,Direct / Organic,Lean Protein,2026,,0,69,Active
+6329870385407,Tier 2,D1,D2,2,281.41,108.64,38.6,0.0,False,1,Subscription,Unknown,2022,62.0,62,1441,Likely churned
+8696541905151,Tier 2,D1,D2,1,135.14,108.59,80.4,100.0,False,3,Email,Lean Protein,2026,,0,65,Active
+6631997964543,Tier 2,D1,D2,2,191.02,108.59,56.8,75.0,True,2,Subscription,Other,2023,168.0,168,948,Likely churned
+7756185796863,Tier 2,D1,D4,1,134.54,107.87,80.2,100.0,False,3,Email,Lean Protein,2026,,0,77,Active
+8881050845439,Tier 2,D1,D2,1,149.87,107.23,71.5,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,35,Active
+7862649389311,Tier 2,D1,D3,1,130.58,107.01,81.9,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,430,Likely churned
+8829393436927,Tier 2,D1,D2,1,149.63,106.95,71.5,100.0,True,2,Subscription,Clear Protein,2026,,0,54,Active
+6328277893375,Tier 2,D1,D2,2,203.76,106.83,52.4,100.0,True,1,Subscription,Other,2023,178.0,178,861,Likely churned
+6479260352767,Tier 2,D1,D2,2,109.31,106.75,97.7,100.0,False,1,Subscription,Other,2022,0.0,0,1228,Likely churned
+7159798726911,Tier 2,D1,D5,1,150.0,106.69,71.1,100.0,False,2,Subscription,Collagen Glow,2024,,0,758,Likely churned
+7476683997439,Tier 2,D1,D5,1,104.79,106.57,101.7,100.0,False,2,Subscription,Clear Protein,2024,,0,606,Likely churned
+8335390179583,Tier 2,D1,D3,1,129.0,106.57,82.6,100.0,False,3,Direct / Organic,Accessories,2025,,0,223,Likely churned
+7136595673343,Tier 2,D1,D2,2,136.85,106.04,77.5,100.0,False,2,Subscription,Other,2024,10.0,10,763,Likely churned
+7756040634623,Tier 2,D1,D4,1,264.11,105.64,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1518,Likely churned
+8074346168575,Tier 2,D1,D3,1,127.24,105.1,82.6,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,341,Likely churned
+6373099667711,Tier 2,D1,D5,1,150.34,104.98,69.8,100.0,False,2,Subscription,Accessories,2022,,0,1295,Likely churned
+7113347105023,Tier 2,D1,D2,2,153.62,104.73,68.2,100.0,False,3,Subscription,Other,2024,95.0,95,690,Likely churned
+7756362645759,Tier 2,D1,D4,1,147.16,104.58,71.1,100.0,False,1,Direct / Organic,Other,2023,,0,1063,Likely churned
+7478289858815,Tier 2,D1,D2,2,130.66,104.5,80.0,100.0,True,2,Subscription,Clear Protein,2024,376.0,376,229,Likely churned
+8696770265343,Tier 2,D1,D2,1,141.04,104.26,73.9,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,104,At-risk
+7756019532031,Tier 2,D1,D2,2,265.53,104.03,39.2,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1363,Likely churned
+8333431931135,Tier 2,D1,D3,1,140.76,103.98,73.9,100.0,False,1,Direct / Organic,Accessories,2025,,0,225,Likely churned
+7522847850751,Tier 2,D1,D5,1,104.79,103.95,99.2,100.0,False,4,Subscription,Other,2024,,0,577,Likely churned
+8283591377151,Tier 2,D1,D3,1,134.0,103.87,77.5,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,250,Likely churned
+7756393611519,Tier 2,D1,D4,1,104.41,103.81,99.4,100.0,False,1,Direct / Organic,Other,2023,,0,864,Likely churned
+8087298408703,Tier 2,D1,D3,1,126.7,103.7,81.8,100.0,True,2,Subscription,Lean Protein,2025,,0,337,Likely churned
+7756485230847,Tier 2,D1,D4,1,132.73,103.43,77.9,100.0,False,2,Direct / Organic,Accessories,2024,,0,502,Likely churned
+8117830811903,Tier 3,D2,D1,3,161.73,103.41,63.9,100.0,True,1,Subscription,Lean Protein,2025,56.0,84,241,Likely churned
+7756288622847,Tier 3,D2,D1,3,183.53,103.29,56.3,90.6,False,2,Direct / Organic,Unknown,2023,4.0,83,1090,Likely churned
+7756429361407,Tier 3,D2,D1,6,208.42,102.53,49.2,92.6,True,3,Subscription,Other,2024,126.0,336,368,Likely churned
+7756181897471,Tier 3,D2,D1,6,218.18,101.78,46.6,87.6,True,2,Direct / Organic,Unknown,2023,157.0,805,323,Likely churned
+6423595909375,Tier 3,D2,D1,3,268.45,101.5,37.8,0.0,False,1,Subscription,Unknown,2022,0.0,0,1492,Likely churned
+7756264177919,Tier 3,D2,D1,2,184.13,101.45,55.1,75.0,False,2,Direct / Organic,Other,2023,112.0,112,1102,Likely churned
+7756264997119,Tier 3,D2,D1,2,165.72,101.45,61.2,75.0,False,2,Direct / Organic,Unknown,2023,46.0,46,1160,Likely churned
+7866897531135,Tier 3,D2,D1,2,147.9,101.22,68.4,100.0,False,1,Direct / Organic,Clear Protein,2025,111.0,111,321,Likely churned
+7755924472063,Tier 3,D2,D1,7,187.05,101.16,54.1,63.6,True,3,Direct / Organic,Unknown,2022,146.0,1083,363,Likely churned
+7756193169663,Tier 3,D2,D1,2,146.65,100.79,68.7,100.0,False,2,Direct / Organic,Clear Protein,2024,329.0,329,352,Likely churned
+7878900580607,Tier 3,D2,D1,4,125.41,100.56,80.2,100.0,True,2,Subscription,Other,2025,56.0,182,245,Likely churned
+7756211585279,Tier 3,D2,D1,2,162.84,100.3,61.6,100.0,False,3,Direct / Organic,Other,2023,313.0,313,864,Likely churned
+8781121421567,Tier 3,D2,D1,2,177.09,99.83,56.4,100.0,True,2,Direct / Organic,Accessories,2026,4.0,4,70,Active
+7756439585023,Tier 3,D2,D1,2,135.84,99.8,73.5,100.0,True,4,Subscription,Lean Protein,2024,294.0,294,377,Likely churned
+7756485853439,Tier 3,D2,D1,2,135.62,98.81,72.9,100.0,False,3,Direct / Organic,Accessories,2024,435.0,435,65,Active
+8347971485951,Tier 3,D2,D1,3,138.75,98.67,71.1,100.0,False,4,Direct / Organic,Accessories,2025,34.0,129,87,Active
+8244140081407,Tier 3,D2,D1,2,157.35,98.63,62.7,100.0,False,1,Paid Social,Lean Protein,2025,63.0,63,201,Likely churned
+6532489183487,Tier 3,D2,D1,3,156.52,98.56,63.0,100.0,False,3,Direct / Organic,Collagen Glow,2023,38.0,280,916,Likely churned
+7958933405951,Tier 3,D2,D1,2,157.14,98.14,62.5,100.0,False,3,Paid Social,Unknown,2025,304.0,304,77,Active
+8017438605567,Tier 3,D2,D1,2,133.75,97.9,73.2,100.0,True,4,Direct / Organic,Accessories,2025,170.0,170,188,Likely churned
+8608022495487,Tier 3,D2,D1,2,120.94,97.56,80.7,100.0,False,2,Direct / Organic,Other,2025,74.0,74,66,Active
+7114650845439,Tier 3,D2,D1,3,153.72,97.19,63.2,100.0,True,2,Subscription,Clear Protein,2024,81.0,165,618,Likely churned
+6328249286911,Tier 3,D2,D1,3,179.91,97.06,53.9,47.7,False,3,Subscription,Unknown,2022,788.0,1026,476,Likely churned
+7756406522111,Tier 3,D2,D1,2,123.23,97.0,78.7,100.0,False,2,Direct / Organic,Other,2024,235.0,235,580,Likely churned
+7583061606655,Tier 3,D2,D1,3,145.57,96.86,66.5,100.0,True,2,Subscription,Unknown,2024,56.0,135,414,Likely churned
+7756349866239,Tier 3,D2,D1,3,176.34,96.65,54.8,100.0,False,2,Direct / Organic,Unknown,2023,23.0,25,1130,Likely churned
+7972114432255,Tier 3,D2,D1,4,131.46,96.64,73.5,100.0,True,4,Subscription,Accessories,2025,1.0,56,317,Likely churned
+6351154741503,Tier 3,D2,D1,6,108.52,96.64,89.0,75.6,False,2,Direct / Organic,Unknown,2022,0.0,464,1075,Likely churned
+7756320964863,Tier 3,D2,D1,3,195.64,96.28,49.2,100.0,True,2,Subscription,Other,2023,78.0,390,762,Likely churned
+7756387909887,Tier 3,D2,D1,7,189.53,96.01,50.7,100.0,True,3,Direct / Organic,Unknown,2024,148.0,410,439,Likely churned
+7755960910079,Tier 3,D2,D1,5,131.39,95.97,73.0,100.0,True,2,Subscription,Soy Protein,2023,28.0,514,455,Likely churned
+8255558091007,Tier 3,D2,D1,2,144.8,95.92,66.2,100.0,False,2,Direct / Organic,Lean Protein,2025,4.0,4,255,Likely churned
+7756484772095,Tier 3,D2,D1,2,127.3,95.82,75.3,100.0,False,3,Direct / Organic,Accessories,2024,450.0,450,54,Active
+7756015927551,Tier 3,D2,D1,3,242.24,95.81,39.5,0.0,False,1,Direct / Organic,Unknown,2022,47.0,231,1337,Likely churned
+8593221681407,Tier 3,D2,D1,2,121.73,95.65,78.6,100.0,False,2,Direct / Organic,Accessories,2025,5.0,5,140,At-risk
+7756400787711,Tier 3,D2,D1,12,280.62,95.35,34.0,100.0,True,2,Subscription,Other,2024,42.0,455,386,Likely churned
+7756190777599,Tier 3,D2,D1,5,236.69,94.83,40.1,100.0,True,2,Subscription,Other,2023,38.0,595,366,Likely churned
+6327561027839,Tier 3,D2,D1,3,230.58,94.82,41.1,9.6,True,2,Subscription,Unknown,2022,121.0,508,952,Likely churned
+7756483952895,Tier 3,D2,D1,2,137.97,94.79,68.7,100.0,False,1,Direct / Organic,Accessories,2024,91.0,91,422,Likely churned
+7756407505151,Tier 3,D2,D1,4,221.97,94.62,42.6,85.7,True,3,Direct / Organic,Other,2024,61.0,103,695,Likely churned
+7756033687807,Tier 3,D2,D1,2,236.36,94.55,40.0,0.0,False,1,Direct / Organic,Unknown,2022,51.0,51,1440,Likely churned
+7756034703615,Tier 3,D2,D1,2,248.48,94.55,38.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1450,Likely churned
+7756375097599,Tier 3,D2,D1,2,280.56,94.35,33.6,58.7,True,3,Subscription,Other,2023,20.0,20,981,Likely churned
+8260054483199,Tier 3,D2,D1,2,86.1,94.32,109.5,100.0,True,1,Direct / Organic,Clear Protein,2025,180.0,180,77,Active
+8719946580223,Tier 3,D2,D1,2,136.0,94.32,69.4,100.0,True,1,Subscription,Clear Protein,2026,7.0,7,85,Active
+7756027887871,Tier 3,D2,D1,3,213.47,94.21,44.1,0.0,False,1,Direct / Organic,Unknown,2022,324.0,546,991,Likely churned
+7756464947455,Tier 3,D2,D1,2,132.3,93.78,70.9,100.0,False,3,Direct / Organic,Clear Protein,2024,203.0,203,387,Likely churned
+7756030705919,Tier 3,D2,D1,3,185.86,93.65,50.4,85.9,True,3,Direct / Organic,Unknown,2022,847.0,867,549,Likely churned
+7756462096639,Tier 3,D2,D1,2,112.83,93.53,82.9,100.0,False,2,Direct / Organic,Clear Protein,2024,196.0,196,409,Likely churned
+7960963154175,Tier 3,D2,D1,2,123.73,93.48,75.6,100.0,False,3,Direct / Organic,Lean Protein,2025,64.0,64,316,Likely churned
+7829214429439,Tier 3,D2,D1,3,142.62,93.36,65.5,100.0,True,2,Subscription,Lean Protein,2025,28.0,42,409,Likely churned
+6327515152639,Tier 3,D2,D1,3,154.88,93.27,60.2,67.8,True,2,Subscription,Unknown,2022,920.0,1106,363,Likely churned
+7756421497087,Tier 3,D2,D1,2,128.72,93.08,72.3,89.8,False,4,Direct / Organic,Lean Protein,2024,186.0,186,548,Likely churned
+6327515873535,Tier 3,D2,D1,3,184.41,92.92,50.4,38.8,False,2,Subscription,Unknown,2022,77.0,257,1279,Likely churned
+8123952955647,Tier 3,D2,D1,2,119.57,92.86,77.7,100.0,False,2,Direct / Organic,Clear Protein,2025,274.0,274,49,Active
+8478316331263,Tier 3,D2,D1,2,122.78,92.74,75.5,100.0,True,1,Direct / Organic,Clear Protein,2025,39.0,39,146,At-risk
+7756008030463,Tier 3,D2,D1,4,190.97,92.31,48.3,77.4,False,2,Direct / Organic,Unknown,2022,269.0,608,944,Likely churned
+8242647171327,Tier 3,D2,D1,2,129.03,92.17,71.4,100.0,True,2,Subscription,Clear Protein,2025,84.0,84,182,Likely churned
+7756462227711,Tier 3,D2,D1,2,111.7,91.44,81.9,100.0,False,2,Direct / Organic,Other,2024,129.0,129,476,Likely churned
+7756199952639,Tier 3,D2,D1,4,206.47,91.15,44.1,100.0,True,2,Subscription,Other,2023,28.0,354,502,Likely churned
+8304218046719,Tier 3,D2,D1,2,120.4,91.14,75.7,100.0,True,2,Subscription,Accessories,2025,42.0,42,196,Likely churned
+7756215746815,Tier 3,D2,D1,2,128.51,91.12,70.9,100.0,False,2,Direct / Organic,Lean Protein,2024,269.0,269,434,Likely churned
+7756409667839,Tier 3,D2,D1,3,155.58,91.03,58.5,100.0,False,5,Direct / Organic,Other,2024,180.0,452,338,Likely churned
+7756001804543,Tier 3,D2,D1,4,154.15,90.92,59.0,60.9,False,3,Direct / Organic,Unknown,2022,141.0,345,1133,Likely churned
+8435695354111,Tier 3,D2,D1,2,131.08,90.85,69.3,100.0,False,4,Paid Social,Accessories,2025,5.0,5,190,Likely churned
+7755927912703,Tier 3,D2,D1,4,215.99,90.56,41.9,100.0,True,3,Subscription,Accessories,2023,40.0,129,732,Likely churned
+8802529640703,Tier 3,D2,D1,2,132.31,90.43,68.3,100.0,True,2,Subscription,Lean Protein,2026,28.0,28,36,Active
+7756357796095,Tier 3,D2,D1,8,254.35,90.43,35.6,100.0,True,1,Subscription,Collagen Glow,2023,28.0,364,762,Likely churned
+8090152206591,Tier 3,D2,D1,5,128.97,90.37,70.1,100.0,True,3,Affiliate,Accessories,2025,3.0,27,309,Likely churned
+6327689543935,Tier 3,D2,D1,3,230.49,90.24,39.1,0.0,False,1,Subscription,Unknown,2022,6.0,46,1464,Likely churned
+7756428509439,Tier 3,D2,D1,5,139.94,90.15,64.4,100.0,True,4,Subscription,Collagen Glow,2024,6.0,362,346,Likely churned
+7756486672639,Tier 3,D2,D1,5,162.27,90.12,55.5,100.0,True,1,Subscription,Collagen Glow,2024,44.0,162,333,Likely churned
+7756378931455,Tier 3,D2,D1,3,147.58,89.83,60.9,100.0,False,2,Direct / Organic,Other,2023,28.0,47,925,Likely churned
+7756414091519,Tier 3,D2,D1,2,111.75,89.57,80.2,100.0,False,2,Direct / Organic,Other,2024,67.0,67,700,Likely churned
+6644955775231,Tier 3,D2,D1,3,209.3,89.13,42.6,29.7,False,2,Direct / Organic,Unknown,2022,64.0,468,1104,Likely churned
+7756263817471,Tier 3,D2,D1,2,131.25,88.86,67.7,100.0,False,2,Direct / Organic,Collagen Glow,2023,5.0,5,1205,Likely churned
+7756430213375,Tier 3,D2,D1,4,127.82,88.72,69.4,91.9,True,3,Subscription,Other,2024,78.0,136,567,Likely churned
+8763296612607,Tier 3,D2,D1,2,129.74,88.45,68.2,100.0,False,2,Direct / Organic,Other,2026,4.0,4,77,Active
+7756439683327,Tier 3,D2,D1,2,119.13,88.13,74.0,100.0,True,3,Direct / Organic,Accessories,2024,169.0,169,502,Likely churned
+7756430180607,Tier 3,D2,D1,2,120.78,87.81,72.7,100.0,False,3,Direct / Organic,Other,2024,93.0,93,610,Likely churned
+7756027429119,Tier 3,D2,D1,3,145.65,87.44,60.0,48.0,False,2,Direct / Organic,Unknown,2022,4.0,264,1205,Likely churned
+7946949165311,Tier 3,D2,D1,2,124.2,87.42,70.4,100.0,True,1,Subscription,Clear Protein,2025,55.0,55,332,Likely churned
+8015956279551,Tier 3,D2,D1,2,124.2,87.42,70.4,100.0,True,1,Subscription,Clear Protein,2025,49.0,49,311,Likely churned
+8035905110271,Tier 3,D2,D1,2,117.99,87.42,74.1,100.0,True,1,Subscription,Clear Protein,2025,84.0,84,270,Likely churned
+8079432679679,Tier 3,D2,D1,2,124.2,87.42,70.4,100.0,True,1,Subscription,Clear Protein,2025,112.0,112,227,Likely churned
+8082604687615,Tier 3,D2,D1,2,114.88,87.42,76.1,100.0,True,1,Subscription,Clear Protein,2025,30.0,30,308,Likely churned
+7756037128447,Tier 3,D2,D1,2,217.89,87.16,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1472,Likely churned
+7756469010687,Tier 3,D2,D1,2,113.81,86.73,76.2,100.0,True,2,Subscription,Lean Protein,2024,28.0,28,550,Likely churned
+7756461244671,Tier 3,D2,D1,3,123.13,86.7,70.4,100.0,False,2,Direct / Organic,Other,2024,62.0,202,407,Likely churned
+7756462326015,Tier 3,D2,D1,2,126.03,86.52,68.7,100.0,False,1,Direct / Organic,Clear Protein,2024,203.0,203,401,Likely churned
+7756038373631,Tier 3,D2,D1,3,224.18,86.4,38.5,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1488,Likely churned
+7756440305919,Tier 3,D2,D1,3,140.68,86.23,61.3,100.0,False,1,Direct / Organic,Lean Protein,2024,50.0,93,576,Likely churned
+6328281137407,Tier 3,D2,D1,4,107.64,86.08,80.0,100.0,True,1,Subscription,Other,2025,50.0,213,49,Active
+7756396921087,Tier 3,D2,D1,7,213.36,85.9,40.3,92.8,True,3,Subscription,Other,2023,125.0,522,354,Likely churned
+8715066867967,Tier 3,D2,D1,2,135.19,85.54,63.3,100.0,True,3,Direct / Organic,Clear Protein,2026,12.0,12,82,Active
+8144255942911,Tier 3,D2,D1,2,91.07,85.31,93.7,100.0,True,1,Subscription,Soy Protein,2025,267.0,267,47,Active
+7756363104511,Tier 3,D2,D1,4,123.08,85.04,69.1,100.0,True,2,Subscription,Unknown,2023,56.0,112,946,Likely churned
+7929521078527,Tier 3,D2,D1,3,128.08,84.33,65.8,100.0,False,3,Paid Social,Clear Protein,2025,17.0,51,347,Likely churned
+6554631667967,Tier 3,D2,D1,5,152.99,83.97,54.9,36.1,True,2,Subscription,Unknown,2023,18.0,561,607,Likely churned
+6532515332351,Tier 3,D2,D1,3,177.73,83.2,46.8,56.9,False,2,Direct / Organic,Unknown,2022,30.0,249,971,Likely churned
+7755918934271,Tier 3,D2,D1,3,210.29,83.02,39.5,0.0,False,1,Direct / Organic,Unknown,2022,44.0,44,1481,Likely churned
+8109213352191,Tier 3,D2,D1,2,119.38,82.6,69.2,100.0,True,1,Subscription,Clear Protein,2025,57.0,57,271,Likely churned
+7756434899199,Tier 3,D2,D1,2,163.8,82.11,50.1,100.0,False,2,Direct / Organic,Other,2024,12.0,12,680,Likely churned
+6532515561727,Tier 3,D2,D1,3,142.7,81.61,57.2,100.0,False,3,Direct / Organic,Other,2023,418.0,533,672,Likely churned
+7843278913791,Tier 3,D2,D1,2,129.6,81.55,62.9,100.0,False,1,Direct / Organic,Lean Protein,2025,20.0,20,423,Likely churned
+6616314282239,Tier 3,D2,D1,8,203.36,81.34,40.0,0.0,True,1,Subscription,Unknown,2023,28.0,262,869,Likely churned
+8633915900159,Tier 3,D2,D1,2,115.74,81.34,70.3,100.0,False,1,Direct / Organic,Clear Protein,2025,53.0,53,79,Active
+7756477628671,Tier 3,D2,D1,2,101.54,81.09,79.9,100.0,True,2,Subscription,Clear Protein,2024,84.0,84,461,Likely churned
+7894442672383,Tier 3,D2,D1,2,117.72,80.92,68.7,100.0,False,1,Affiliate,Lean Protein,2025,39.0,39,376,Likely churned
+7967067177215,Tier 3,D2,D1,2,129.8,80.92,62.3,100.0,False,1,Paid Social,Lean Protein,2025,73.0,73,303,Likely churned
+7756487655679,Tier 3,D2,D1,4,130.69,79.89,61.1,100.0,True,1,Subscription,Other,2024,42.0,126,362,Likely churned
+8311560995071,Tier 3,D2,D1,2,113.5,79.88,70.4,100.0,False,3,Paid Social,Other,2025,23.0,23,211,Likely churned
+7755925487871,Tier 3,D2,D1,4,202.18,79.78,39.5,0.0,False,1,Direct / Organic,Unknown,2022,16.0,230,1340,Likely churned
+8820475494655,Tier 3,D2,D1,2,123.19,79.49,64.5,100.0,True,2,Subscription,Lean Protein,2026,26.0,26,31,Active
+7955058655487,Tier 3,D2,D1,2,121.81,78.91,64.8,100.0,False,2,Direct / Organic,Lean Protein,2025,270.0,270,114,At-risk
+8698453983487,Tier 3,D2,D1,2,107.35,78.89,73.5,100.0,False,2,Direct / Organic,Clear Protein,2026,21.0,21,82,Active
+7756398035199,Tier 3,D2,D1,3,149.95,78.5,52.3,100.0,False,1,Direct / Organic,Other,2023,180.0,492,370,Likely churned
+8726668050687,Tier 3,D2,D1,2,107.02,78.49,73.3,100.0,True,2,Subscription,Clear Protein,2026,42.0,42,47,Active
+7756464783615,Tier 3,D2,D1,2,129.28,78.31,60.6,100.0,False,1,Direct / Organic,Other,2024,37.0,37,554,Likely churned
+7756418941183,Tier 3,D2,D1,2,136.41,78.27,57.4,91.8,False,4,Direct / Organic,Accessories,2024,7.0,7,736,Likely churned
+7756433883391,Tier 3,D2,D1,2,90.81,78.22,86.1,100.0,True,2,Subscription,Soy Protein,2024,87.0,87,610,Likely churned
+7756461605119,Tier 3,D2,D1,2,115.18,77.55,67.3,100.0,True,3,Subscription,Collagen Glow,2024,224.0,224,384,Likely churned
+7756380111103,Tier 3,D2,D1,4,171.71,76.81,44.7,30.9,True,3,Subscription,Unknown,2023,28.0,47,919,Likely churned
+7756436013311,Tier 3,D2,D1,4,102.93,76.77,74.6,100.0,True,1,Subscription,Soy Protein,2024,70.0,320,366,Likely churned
+8799534481663,Tier 3,D2,D1,2,95.43,75.77,79.4,100.0,False,2,Direct / Organic,Clear Protein,2026,24.0,24,41,Active
+8297726083327,Tier 3,D2,D1,2,99.12,75.74,76.4,100.0,True,2,Subscription,Lean Protein,2025,2.0,2,240,Likely churned
+7756031754495,Tier 3,D2,D1,3,191.76,75.61,39.4,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1426,Likely churned
+8029437657343,Tier 3,D2,D1,2,112.82,75.56,67.0,100.0,True,1,Direct / Organic,Lean Protein,2025,94.0,94,262,Likely churned
+8084383236351,Tier 3,D2,D1,2,116.9,75.4,64.5,100.0,True,3,Direct / Organic,Collagen Glow,2025,5.0,5,332,Likely churned
+7092583399679,Tier 3,D2,D1,3,144.51,75.3,52.1,40.7,False,2,Subscription,Unknown,2024,32.0,114,681,Likely churned
+7756038603007,Tier 3,D2,D1,2,193.56,75.24,38.9,0.0,False,1,Direct / Organic,Unknown,2021,87.0,87,1493,Likely churned
+7962467172607,Tier 3,D2,D1,4,108.44,74.97,69.1,100.0,False,4,Paid Social,Unknown,2025,5.0,303,76,Active
+7756033327359,Tier 3,D2,D1,3,189.45,74.69,39.4,0.0,False,1,Direct / Organic,Unknown,2022,0.0,72,1436,Likely churned
+7756427919615,Tier 3,D2,D1,2,128.22,74.26,57.9,88.0,True,4,Subscription,Other,2024,84.0,84,625,Likely churned
+7756428378367,Tier 3,D2,D1,2,128.22,74.26,57.9,88.0,True,4,Subscription,Other,2024,28.0,28,681,Likely churned
+7756473794815,Tier 3,D2,D1,4,100.95,73.71,73.0,100.0,True,2,Subscription,Other,2024,128.0,315,249,Likely churned
+8241099636991,Tier 3,D2,D1,2,97.27,73.43,75.5,100.0,True,1,Subscription,Lean Protein,2025,84.0,84,183,Likely churned
+7988833779967,Tier 3,D2,D1,2,100.99,73.15,72.4,100.0,True,1,Subscription,Lean Protein,2025,52.0,52,313,Likely churned
+7756409045247,Tier 3,D2,D1,2,134.46,72.97,54.3,100.0,False,1,Direct / Organic,Other,2024,94.0,94,700,Likely churned
+8702918426879,Tier 3,D2,D1,2,103.5,72.69,70.2,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,73,Active
+7756411535615,Tier 3,D2,D1,2,125.36,72.66,58.0,100.0,True,2,Subscription,Other,2024,70.0,70,700,Likely churned
+7756420546815,Tier 3,D2,D1,2,130.39,72.59,55.7,100.0,True,3,Subscription,Clear Protein,2024,28.0,28,707,Likely churned
+8239569142015,Tier 3,D2,D1,2,109.49,72.52,66.2,100.0,True,1,Subscription,Lean Protein,2025,58.0,58,210,Likely churned
+8712672116991,Tier 3,D2,D1,2,107.82,72.52,67.3,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,68,Active
+8712179876095,Tier 3,D2,D1,3,107.73,72.15,67.0,100.0,True,1,Subscription,Collagen Glow,2026,27.0,55,41,Active
+7756458098943,Tier 3,D2,D1,2,98.07,72.13,73.6,100.0,True,2,Subscription,Other,2024,27.0,27,595,Likely churned
+7756203524351,Tier 3,D2,D1,4,129.82,72.1,55.5,100.0,True,1,Subscription,Collagen Glow,2024,28.0,84,419,Likely churned
+7756007670015,Tier 3,D2,D1,4,165.24,72.02,43.6,20.0,False,2,Direct / Organic,Unknown,2022,12.0,223,1285,Likely churned
+8800401391871,Tier 3,D2,D1,2,104.59,71.89,68.7,100.0,True,1,Direct / Organic,Lean Protein,2026,11.0,11,54,Active
+8279962517759,Tier 3,D2,D1,2,109.3,71.7,65.6,100.0,True,1,Subscription,Lean Protein,2025,201.0,201,50,Active
+8701271113983,Tier 3,D2,D1,2,107.82,71.5,66.3,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,74,Active
+7898656243967,Tier 3,D2,D1,2,135.11,71.4,52.8,79.4,False,1,Direct / Organic,Other,2025,74.0,74,339,Likely churned
+7756415860991,Tier 3,D2,D1,3,134.47,71.21,53.0,100.0,True,3,Subscription,Collagen Glow,2024,42.0,84,672,Likely churned
+7756040896767,Tier 3,D2,D1,2,183.33,71.15,38.8,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1519,Likely churned
+8117549793535,Tier 3,D2,D1,2,107.82,70.73,65.6,100.0,True,1,Subscription,Lean Protein,2025,120.0,120,205,Likely churned
+7756419203327,Tier 3,D2,D1,2,102.87,70.57,68.6,100.0,False,2,Direct / Organic,Clear Protein,2024,129.0,129,612,Likely churned
+7756048236799,Tier 3,D2,D1,2,181.5,70.42,38.8,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1574,Likely churned
+8124723888383,Tier 3,D2,D1,2,107.82,70.2,65.1,100.0,True,1,Subscription,Lean Protein,2025,56.0,56,267,Likely churned
+7756380176639,Tier 3,D2,D1,4,157.18,70.05,44.6,100.0,True,2,Subscription,Other,2023,28.0,223,742,Likely churned
+7756435587327,Tier 3,D2,D1,2,154.81,69.64,45.0,100.0,True,3,Subscription,Accessories,2024,183.0,183,506,Likely churned
+7829327675647,Tier 3,D2,D1,2,111.22,68.62,61.7,100.0,False,1,Direct / Organic,Lean Protein,2025,379.0,379,90,At-risk
+7823779168511,Tier 3,D2,D1,4,120.9,68.54,56.7,100.0,True,2,Subscription,Collagen Glow,2025,28.0,120,351,Likely churned
+7756430737663,Tier 3,D2,D1,3,107.52,68.31,63.5,100.0,True,3,Paid Social,Unknown,2025,197.0,321,65,Active
+8799977931007,Tier 3,D2,D1,2,104.55,68.23,65.3,100.0,True,1,Subscription,Lean Protein,2026,28.0,28,37,Active
+8014286160127,Tier 3,D2,D1,2,95.79,68.11,71.1,100.0,True,2,Subscription,Lean Protein,2025,143.0,143,213,Likely churned
+7756430377215,Tier 3,D2,D1,2,98.19,68.08,69.3,100.0,True,3,Subscription,Clear Protein,2024,28.0,28,674,Likely churned
+7756398264575,Tier 3,D2,D1,3,188.15,68.08,36.2,100.0,True,3,Subscription,Unknown,2023,49.0,77,780,Likely churned
+7756431786239,Tier 3,D2,D1,2,109.64,67.87,61.9,100.0,True,2,Direct / Organic,Other,2024,326.0,326,227,Likely churned
+6336754450687,Tier 3,D2,D1,3,122.79,67.14,54.7,60.1,False,2,Subscription,Unknown,2022,322.0,406,1158,Likely churned
+8148206747903,Tier 3,D2,D1,3,107.73,67.01,62.2,100.0,True,1,Subscription,Collagen Glow,2025,56.0,224,89,Active
+6327732863231,Tier 3,D2,D1,3,177.2,66.96,37.8,0.0,True,1,Subscription,Unknown,2022,180.0,415,1124,Likely churned
+7756463243519,Tier 3,D2,D1,2,88.69,66.8,75.3,100.0,False,2,Direct / Organic,Other,2024,52.0,52,547,Likely churned
+6590913347839,Tier 3,D2,D1,3,131.09,66.74,50.9,100.0,True,1,Subscription,Other,2023,42.0,485,669,Likely churned
+7756457312511,Tier 3,D2,D1,2,132.73,66.53,50.1,100.0,False,2,Direct / Organic,Other,2024,42.0,42,584,Likely churned
+7756035817727,Tier 3,D2,D1,3,174.34,66.46,38.1,0.0,False,1,Direct / Organic,Unknown,2022,16.0,49,1460,Likely churned
+7756465537279,Tier 3,D2,D1,2,103.09,66.31,64.3,100.0,True,1,Subscription,Clear Protein,2024,111.0,111,477,Likely churned
+7756465668351,Tier 3,D2,D1,2,103.09,66.31,64.3,100.0,True,1,Subscription,Clear Protein,2024,28.0,28,560,Likely churned
+7756468846847,Tier 3,D2,D1,2,87.63,66.31,75.7,100.0,True,1,Subscription,Clear Protein,2024,168.0,168,410,Likely churned
+7981535985919,Tier 3,D2,D1,3,94.07,66.14,70.3,100.0,False,4,Paid Social,Unknown,2025,28.0,56,311,Likely churned
+7756037325055,Tier 3,D2,D1,3,164.0,65.6,40.0,0.0,False,1,Direct / Organic,Unknown,2022,26.0,26,1473,Likely churned
+8167174832383,Tier 3,D2,D1,2,98.65,65.45,66.3,100.0,True,2,Direct / Organic,Clear Protein,2025,44.0,44,261,Likely churned
+7756043518207,Tier 3,D2,D1,3,157.0,65.11,41.5,0.0,False,1,Direct / Organic,Unknown,2022,316.0,371,1166,Likely churned
+7756440338687,Tier 3,D2,D1,2,97.37,64.87,66.6,100.0,False,2,Direct / Organic,Other,2024,60.0,60,609,Likely churned
+7756277252351,Tier 3,D2,D1,3,124.13,64.79,52.2,100.0,True,3,Subscription,Other,2024,42.0,154,579,Likely churned
+6329853542655,Tier 3,D2,D1,3,156.33,64.77,41.4,100.0,True,2,Subscription,Other,2023,56.0,679,379,Likely churned
+7756458885375,Tier 3,D2,D1,2,103.09,64.73,62.8,100.0,True,2,Subscription,Clear Protein,2024,54.0,54,563,Likely churned
+7755917885695,Tier 3,D2,D1,3,157.85,64.41,40.8,18.7,False,1,Direct / Organic,Unknown,2022,120.0,381,1142,Likely churned
+7968738312447,Tier 3,D2,D1,2,69.12,64.26,93.0,100.0,True,3,Subscription,Other,2025,19.0,19,356,Likely churned
+7756037488895,Tier 3,D2,D1,2,172.7,64.23,37.2,0.0,False,1,Direct / Organic,Unknown,2022,44.0,44,1475,Likely churned
+8784016179455,Tier 3,D2,D1,2,84.58,64.23,75.9,100.0,True,2,Direct / Organic,Clear Protein,2026,12.0,12,61,Active
+7905973895423,Tier 3,D2,D1,3,92.57,64.12,69.3,100.0,False,4,Direct / Organic,Unknown,2025,28.0,237,136,At-risk
+7755996463359,Tier 3,D2,D1,3,160.47,64.02,39.9,33.2,True,2,Direct / Organic,Unknown,2022,34.0,482,1044,Likely churned
+8839905706239,Tier 3,D2,D1,2,105.55,63.84,60.5,100.0,False,2,Direct / Organic,Accessories,2026,19.0,19,31,Active
+7826394972415,Tier 3,D2,D1,2,108.18,62.18,57.5,100.0,False,2,Direct / Organic,Lean Protein,2025,32.0,32,421,Likely churned
+7756043321599,Tier 3,D2,D1,2,111.13,61.13,55.0,63.7,False,3,Direct / Organic,Unknown,2022,356.0,356,1180,Likely churned
+6424704024831,Tier 4,D2,D5,1,119.8,103.06,86.0,100.0,False,1,Direct / Organic,Other,2025,,0,359,Likely churned
+7756035588351,Tier 4,D2,D4,1,256.58,102.63,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1457,Likely churned
+8371435536639,Tier 4,D2,D2,1,117.98,102.46,86.8,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,204,Likely churned
+7756020580607,Tier 4,D2,D4,1,256.0,102.4,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1500,Likely churned
+7756039127295,Tier 4,D2,D4,1,256.0,102.4,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1500,Likely churned
+7756039258367,Tier 4,D2,D4,1,256.0,102.4,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1500,Likely churned
+7010309046527,Tier 4,D2,D5,1,110.08,102.26,92.9,100.0,False,2,Subscription,Other,2024,,0,838,Likely churned
+6423611441407,Tier 4,D2,D5,1,255.38,102.15,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1573,Likely churned
+6588193865983,Tier 4,D2,D2,2,149.45,101.88,68.2,100.0,False,1,Subscription,Collagen Glow,2023,117.0,117,1038,Likely churned
+8796055666943,Tier 4,D2,D2,1,139.7,101.8,72.9,100.0,False,2,Direct / Organic,Accessories,2026,,0,67,Active
+8890628243711,Tier 4,D2,D2,1,140.12,101.76,72.6,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,34,Active
+7169592623359,Tier 4,D2,D5,1,110.4,101.22,91.7,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,82,Active
+7580912025855,Tier 4,D2,D5,1,117.3,101.22,86.3,100.0,False,1,Subscription,Clear Protein,2024,,0,551,Likely churned
+7807449334015,Tier 4,D2,D4,1,138.0,101.22,73.3,100.0,False,1,Subscription,Clear Protein,2025,,0,466,Likely churned
+7830799909119,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,450,Likely churned
+7903429984511,Tier 4,D2,D3,1,117.3,101.22,86.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,410,Likely churned
+7958813212927,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,381,Likely churned
+7968715604223,Tier 4,D2,D3,1,124.2,101.22,81.5,100.0,False,1,Affiliate,Clear Protein,2025,,0,375,Likely churned
+8003138027775,Tier 4,D2,D3,1,124.2,101.22,81.5,100.0,False,1,Affiliate,Clear Protein,2025,,0,363,Likely churned
+8042937680127,Tier 4,D2,D3,1,124.2,101.22,81.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,351,Likely churned
+8064049643775,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,345,Likely churned
+8084515258623,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,337,Likely churned
+8106290151679,Tier 4,D2,D3,1,131.1,101.22,77.2,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,330,Likely churned
+8108000968959,Tier 4,D2,D3,1,117.3,101.22,86.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,329,Likely churned
+8110293385471,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Paid Social,Clear Protein,2025,,0,328,Likely churned
+8119961092351,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Paid Social,Clear Protein,2025,,0,324,Likely churned
+8124393455871,Tier 4,D2,D3,1,124.2,101.22,81.5,100.0,False,1,Affiliate,Clear Protein,2025,,0,323,Likely churned
+8139501338879,Tier 4,D2,D3,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,316,Likely churned
+8164599759103,Tier 4,D2,D3,1,124.2,101.22,81.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,306,Likely churned
+8246793732351,Tier 4,D2,D3,1,117.3,101.22,86.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,263,Likely churned
+8300895535359,Tier 4,D2,D3,1,117.3,101.22,86.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,240,Likely churned
+8438000550143,Tier 4,D2,D2,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,193,Likely churned
+8607713788159,Tier 4,D2,D2,1,117.3,101.22,86.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,140,At-risk
+8608561889535,Tier 4,D2,D2,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,139,At-risk
+8667748958463,Tier 4,D2,D2,1,139.54,101.22,72.5,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,117,At-risk
+8677680251135,Tier 4,D2,D2,1,138.0,101.22,73.3,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,112,At-risk
+8712473673983,Tier 4,D2,D2,1,124.2,101.22,81.5,100.0,False,1,Affiliate,Clear Protein,2026,,0,96,At-risk
+8761558171903,Tier 4,D2,D2,1,110.4,101.22,91.7,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,82,Active
+8338200854783,Tier 4,D2,D3,1,125.07,101.06,80.8,100.0,False,3,Direct / Organic,Accessories,2025,,0,222,Likely churned
+8702512464127,Tier 4,D2,D2,1,143.0,101.06,70.7,100.0,False,2,Direct / Organic,Collagen Glow,2026,,0,101,At-risk
+7756375785727,Tier 4,D2,D4,1,186.45,100.94,54.1,100.0,False,1,Direct / Organic,Other,2023,,0,997,Likely churned
+6327675945215,Tier 4,D2,D2,2,255.03,100.92,39.6,0.0,False,1,Direct / Organic,Unknown,2022,42.0,42,1520,Likely churned
+8882059575551,Tier 4,D2,D2,1,123.59,100.65,81.4,100.0,False,4,Direct / Organic,Lean Protein,2026,,0,34,Active
+8416333791487,Tier 4,D2,D2,1,152.59,100.55,65.9,83.3,False,2,Paid Social,Unknown,2025,,0,197,Likely churned
+7872851575039,Tier 4,D2,D3,1,126.56,100.47,79.4,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,430,Likely churned
+8846411104511,Tier 4,D2,D2,1,117.09,100.38,85.7,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,47,Active
+6773309407487,Tier 4,D2,D5,1,152.71,100.29,65.7,100.0,True,1,Subscription,Other,2023,,0,991,Likely churned
+7826734874879,Tier 4,D2,D3,1,135.81,100.17,73.8,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,453,Likely churned
+8327709753599,Tier 4,D2,D3,1,111.14,99.76,89.8,100.0,False,3,Direct / Organic,Accessories,2025,,0,228,Likely churned
+8713364570367,Tier 4,D2,D2,1,132.07,99.6,75.4,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,95,At-risk
+7307232772351,Tier 4,D2,D5,1,96.53,99.54,103.1,100.0,False,2,Subscription,Accessories,2024,,0,703,Likely churned
+8843730125055,Tier 4,D2,D2,1,99.0,99.32,100.3,100.0,False,1,Direct / Organic,Other,2026,,0,48,Active
+6549652734207,Tier 4,D2,D5,1,143.64,99.28,69.1,100.0,False,1,Subscription,Other,2023,,0,1172,Likely churned
+7098288799999,Tier 4,D2,D5,1,183.29,98.89,54.0,100.0,False,1,Subscription,Other,2024,,0,794,Likely churned
+6423606231295,Tier 4,D2,D5,1,246.98,98.79,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1550,Likely churned
+8335092252927,Tier 4,D2,D3,1,153.9,98.53,64.0,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,224,Likely churned
+7347175325951,Tier 4,D2,D2,2,110.28,98.5,89.3,100.0,True,1,Subscription,Soy Protein,2026,27.0,27,42,Active
+8878172831999,Tier 4,D2,D2,1,136.19,98.06,72.0,100.0,False,3,Paid Social,Lean Protein,2026,,0,36,Active
+8757515223295,Tier 4,D2,D2,1,136.16,97.84,71.9,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,84,Active
+8905962848511,Tier 4,D2,D2,1,136.16,97.84,71.9,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,30,Active
+7574819307775,Tier 4,D2,D5,1,90.16,97.71,108.4,100.0,False,2,Subscription,Other,2024,,0,547,Likely churned
+6327503552767,Tier 4,D2,D5,1,132.81,97.6,73.5,100.0,False,1,Subscription,Other,2023,,0,1186,Likely churned
+6329828180223,Tier 4,D2,D5,1,132.81,97.6,73.5,100.0,False,1,Subscription,Other,2022,,0,1238,Likely churned
+6514794725631,Tier 4,D2,D5,1,112.89,97.6,86.5,100.0,False,1,Subscription,Other,2023,,0,1199,Likely churned
+6585818710271,Tier 4,D2,D5,1,106.25,97.6,91.9,100.0,False,1,Subscription,Other,2023,,0,1157,Likely churned
+6586846314751,Tier 4,D2,D5,1,106.25,97.6,91.9,100.0,False,1,Subscription,Other,2023,,0,1156,Likely churned
+6624970440959,Tier 4,D2,D5,1,112.89,97.6,86.5,100.0,False,1,Subscription,Other,2023,,0,1122,Likely churned
+6659616538879,Tier 4,D2,D5,1,132.81,97.6,73.5,100.0,False,1,Subscription,Other,2023,,0,1090,Likely churned
+7252877705471,Tier 4,D2,D2,2,144.61,97.56,67.5,100.0,True,3,Subscription,Unknown,2024,54.0,54,677,Likely churned
+6780370485503,Tier 4,D2,D5,1,169.6,97.45,57.5,100.0,True,1,Subscription,Collagen Glow,2023,,0,984,Likely churned
+7756395020543,Tier 4,D2,D4,1,151.42,97.3,64.3,100.0,False,1,Direct / Organic,Other,2024,,0,763,Likely churned
+8819560546559,Tier 4,D2,D2,1,135.6,97.24,71.7,100.0,False,2,Paid Social,Clear Protein,2026,,0,58,Active
+8738683289855,Tier 4,D2,D2,1,139.74,97.23,69.6,100.0,True,3,Subscription,Lean Protein,2026,,0,86,Active
+6327555457279,Tier 4,D2,D2,2,152.03,97.13,63.9,77.9,False,2,Subscription,Unknown,2022,517.0,517,827,Likely churned
+8311984554239,Tier 4,D2,D3,1,126.33,97.07,76.8,100.0,False,2,Direct / Organic,Accessories,2025,,0,234,Likely churned
+8899202810111,Tier 4,D2,D2,1,133.68,96.9,72.5,100.0,True,1,Subscription,Clear Protein,2026,,0,32,Active
+8211027558655,Tier 4,D2,D3,1,133.08,96.3,72.4,100.0,False,1,Paid Social,Clear Protein,2025,,0,261,Likely churned
+7469864222975,Tier 4,D2,D5,1,91.2,96.14,105.4,100.0,False,2,Subscription,Other,2024,,0,610,Likely churned
+8899465314559,Tier 4,D2,D2,1,134.28,95.92,71.4,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,32,Active
+8865785348351,Tier 4,D2,D2,1,128.31,95.86,74.7,100.0,False,3,Direct / Organic,Accessories,2026,,0,40,Active
+7755991482623,Tier 4,D2,D2,2,241.82,95.64,39.5,0.0,False,1,Direct / Organic,Unknown,2022,47.0,47,1487,Likely churned
+7756362973439,Tier 4,D2,D4,1,138.07,95.46,69.1,100.0,False,2,Direct / Organic,Other,2023,,0,1059,Likely churned
+8144777707775,Tier 4,D2,D3,1,122.0,95.24,78.1,100.0,True,2,Subscription,Clear Protein,2025,,0,314,Likely churned
+6395505901823,Tier 4,D2,D5,1,107.64,95.24,88.5,100.0,False,1,Subscription,Other,2022,,0,1278,Likely churned
+7427649962239,Tier 4,D2,D2,2,169.6,95.18,56.1,100.0,False,1,Subscription,Other,2024,20.0,20,614,Likely churned
+8081416552703,Tier 4,D2,D3,1,139.34,95.16,68.3,100.0,False,3,Direct / Organic,Other,2025,,0,338,Likely churned
+7756407341311,Tier 4,D2,D4,1,153.18,95.06,62.1,100.0,False,1,Direct / Organic,Collagen Glow,2024,,0,811,Likely churned
+7756007702783,Tier 4,D2,D2,2,150.52,95.05,63.1,100.0,True,2,Direct / Organic,Other,2022,1050.0,1050,235,Likely churned
+8394029629695,Tier 4,D2,D2,1,118.56,94.95,80.1,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,200,Likely churned
+8686846345471,Tier 4,D2,D2,1,131.71,94.93,72.1,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,108,At-risk
+8635114750207,Tier 4,D2,D2,1,131.65,94.87,72.1,100.0,False,1,Paid Social,Clear Protein,2025,,0,131,At-risk
+8637500195071,Tier 4,D2,D2,1,131.65,94.87,72.1,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,130,At-risk
+8633602900223,Tier 4,D2,D2,1,132.44,94.82,71.6,100.0,False,3,Direct / Organic,Accessories,2025,,0,132,At-risk
+7307883872511,Tier 4,D2,D5,1,106.89,94.64,88.5,100.0,True,2,Subscription,Other,2024,,0,702,Likely churned
+7249233608959,Tier 4,D2,D5,1,101.68,94.43,92.9,100.0,True,2,Subscription,Other,2024,,0,730,Likely churned
+7756023890175,Tier 4,D2,D2,2,236.04,94.42,40.0,0.0,False,1,Direct / Organic,Unknown,2022,11.0,11,1421,Likely churned
+8721444208895,Tier 4,D2,D2,1,131.1,94.32,71.9,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,91,At-risk
+8344473633023,Tier 4,D2,D3,1,130.9,94.3,72.0,100.0,False,3,Direct / Organic,Clear Protein,2025,,0,218,Likely churned
+8088279548159,Tier 4,D2,D3,1,113.98,94.08,82.5,100.0,True,3,Subscription,Clear Protein,2025,,0,336,Likely churned
+8341396881663,Tier 4,D2,D3,1,98.9,93.76,94.8,100.0,False,3,Direct / Organic,Other,2025,,0,220,Likely churned
+7756420153599,Tier 4,D2,D4,1,130.34,93.61,71.8,100.0,False,3,Direct / Organic,Clear Protein,2024,,0,706,Likely churned
+7364057563391,Tier 4,D2,D5,1,101.7,93.6,92.0,100.0,False,3,Subscription,Accessories,2024,,0,671,Likely churned
+7971533324543,Tier 4,D2,D3,1,151.4,93.54,61.8,100.0,False,2,Paid Social,Lean Protein,2025,,0,373,Likely churned
+7756033949951,Tier 4,D2,D4,1,233.05,93.22,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1440,Likely churned
+8488361033983,Tier 4,D2,D2,1,116.01,92.86,80.0,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,180,Likely churned
+8679067418879,Tier 4,D2,D2,1,109.57,92.86,84.7,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,112,At-risk
+8761342951679,Tier 4,D2,D2,1,109.57,92.86,84.7,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,82,Active
+8761387385087,Tier 4,D2,D2,1,103.12,92.86,90.1,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,82,Active
+6423591354623,Tier 4,D2,D5,1,231.81,92.72,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1463,Likely churned
+8305762664703,Tier 4,D2,D3,1,98.9,92.48,93.5,100.0,False,3,Direct / Organic,Other,2025,,0,237,Likely churned
+8373295153407,Tier 4,D2,D2,1,106.92,92.47,86.5,100.0,False,2,Direct / Organic,Other,2025,,0,203,Likely churned
+8427522457855,Tier 4,D2,D2,1,113.0,92.44,81.8,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,196,Likely churned
+8722679988479,Tier 4,D2,D2,1,128.9,92.35,71.6,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,90,At-risk
+8761739477247,Tier 4,D2,D2,1,128.9,92.35,71.6,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,82,Active
+8858569834751,Tier 4,D2,D2,1,128.9,92.35,71.6,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,42,Active
+8814719992063,Tier 4,D2,D2,1,128.83,92.34,71.7,100.0,True,2,Subscription,Lean Protein,2026,,0,59,Active
+7756440502527,Tier 4,D2,D4,1,99.91,92.29,92.4,100.0,False,2,Direct / Organic,Other,2024,,0,669,Likely churned
+8049669374207,Tier 4,D2,D3,1,109.65,92.22,84.1,100.0,False,1,Direct / Organic,Accessories,2025,,85,265,Likely churned
+8234630742271,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,271,Likely churned
+8244487782655,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,265,Likely churned
+8245924004095,Tier 4,D2,D3,1,116.1,92.22,79.4,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,264,Likely churned
+8289397440767,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Paid Social,Clear Protein,2025,,0,247,Likely churned
+8298998956287,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,241,Likely churned
+8299058594047,Tier 4,D2,D3,1,109.65,92.22,84.1,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,241,Likely churned
+8351296422143,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Paid Social,Clear Protein,2025,,0,214,Likely churned
+8354197012735,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Paid Social,Clear Protein,2025,,0,211,Likely churned
+8362599383295,Tier 4,D2,D3,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,209,Likely churned
+8464926867711,Tier 4,D2,D2,1,116.1,92.22,79.4,100.0,False,2,Affiliate,Unknown,2025,,0,188,Likely churned
+8488207614207,Tier 4,D2,D2,1,116.1,92.22,79.4,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,180,Likely churned
+8488391901439,Tier 4,D2,D2,1,116.1,92.22,79.4,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,180,Likely churned
+8488870707455,Tier 4,D2,D2,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,180,Likely churned
+8618087284991,Tier 4,D2,D2,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,136,At-risk
+8705236009215,Tier 4,D2,D2,1,129.0,92.22,71.5,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,100,At-risk
+6528300384511,Tier 4,D2,D5,1,107.24,92.12,85.9,100.0,False,1,Subscription,Other,2023,,0,1188,Likely churned
+8488364703999,Tier 4,D2,D2,1,115.99,92.1,79.4,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,180,Likely churned
+7756456820991,Tier 4,D2,D4,1,143.64,92.03,64.1,100.0,False,3,Direct / Organic,Accessories,2024,,0,631,Likely churned
+8896736788735,Tier 4,D2,D2,1,128.0,91.96,71.8,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,32,Active
+7671933108479,Tier 4,D2,D5,1,96.67,91.7,94.9,100.0,False,2,Subscription,Clear Protein,2024,,0,514,Likely churned
+8055235969279,Tier 4,D2,D3,1,129.5,91.7,70.8,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,348,Likely churned
+8094545182975,Tier 4,D2,D3,1,128.9,91.7,71.1,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,334,Likely churned
+8161189069055,Tier 4,D2,D3,1,109.57,91.7,83.7,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,308,Likely churned
+8247928389887,Tier 4,D2,D3,1,92.48,91.69,99.1,100.0,False,4,Direct / Organic,Other,2025,,0,263,Likely churned
+8895815352575,Tier 4,D2,D2,1,156.82,91.61,58.4,68.8,False,2,Direct / Organic,Lean Protein,2026,,0,33,Active
+8800401883391,Tier 4,D2,D2,1,108.99,91.44,83.9,100.0,True,1,Subscription,Clear Protein,2026,,0,65,Active
+7707724022015,Tier 4,D2,D5,1,128.9,91.07,70.7,100.0,False,2,Subscription,Lean Protein,2024,,0,501,Likely churned
+7723877564671,Tier 4,D2,D5,1,128.9,91.07,70.7,100.0,False,2,Subscription,Lean Protein,2025,,0,475,Likely churned
+7728017015039,Tier 4,D2,D5,1,109.56,91.07,83.1,100.0,False,2,Subscription,Clear Protein,2024,,0,491,Likely churned
+7867022213375,Tier 4,D2,D3,1,116.01,91.07,78.5,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,432,Likely churned
+7977957818623,Tier 4,D2,D3,1,128.9,91.07,70.7,100.0,False,2,Paid Social,Clear Protein,2025,,0,369,Likely churned
+8121945030911,Tier 4,D2,D3,1,116.01,91.07,78.5,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,324,Likely churned
+8171262771455,Tier 4,D2,D3,1,128.9,91.07,70.7,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,303,Likely churned
+6423596499199,Tier 4,D2,D2,2,237.47,91.07,38.3,0.0,False,1,Subscription,Unknown,2022,28.0,28,1494,Likely churned
+8683550081279,Tier 4,D2,D2,1,121.43,90.89,74.8,100.0,False,2,Direct / Organic,Other,2026,,0,110,At-risk
+8393520251135,Tier 4,D2,D2,1,119.18,90.74,76.1,100.0,False,3,Paid Social,Lean Protein,2025,,0,201,Likely churned
+7476608958719,Tier 4,D2,D5,1,90.79,90.53,99.7,100.0,False,3,Subscription,Clear Protein,2024,,0,606,Likely churned
+6327719330047,Tier 4,D2,D2,2,149.71,90.47,60.4,73.1,False,3,Subscription,Unknown,2022,248.0,248,1177,Likely churned
+8368009117951,Tier 4,D2,D2,1,108.82,90.4,83.1,100.0,False,3,Paid Social,Clear Protein,2025,,0,206,Likely churned
+8767346180351,Tier 4,D2,D2,1,127.13,90.35,71.1,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,79,Active
+8298977493247,Tier 4,D2,D3,1,129.7,90.11,69.5,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,241,Likely churned
+8841594208511,Tier 4,D2,D2,1,126.81,90.03,71.0,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,49,Active
+8898839871743,Tier 4,D2,D2,1,126.78,90.0,71.0,100.0,False,1,Paid Social,Clear Protein,2026,,0,32,Active
+6329694552319,Tier 4,D2,D5,1,126.76,89.98,71.0,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,34,Active
+8796338585855,Tier 4,D2,D2,1,123.38,89.94,72.9,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,67,Active
+7756468519167,Tier 4,D2,D4,1,99.25,89.93,90.6,100.0,False,2,Direct / Organic,Other,2024,,0,579,Likely churned
+8310473425151,Tier 4,D2,D3,1,93.9,89.86,95.7,100.0,False,3,Direct / Organic,Other,2025,,0,235,Likely churned
+6327614800127,Tier 4,D2,D5,1,224.62,89.85,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1415,Likely churned
+8748175589631,Tier 4,D2,D2,1,126.62,89.84,71.0,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,85,Active
+8289248674047,Tier 4,D2,D3,1,113.9,89.78,78.8,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,247,Likely churned
+8097477132543,Tier 4,D2,D3,1,122.9,89.72,73.0,100.0,True,3,Subscription,Accessories,2025,,0,332,Likely churned
+7168840892671,Tier 4,D2,D5,1,115.92,89.63,77.3,100.0,False,3,Subscription,Collagen Glow,2024,,0,756,Likely churned
+8759001809151,Tier 4,D2,D2,1,127.7,89.34,70.0,100.0,True,2,Subscription,Clear Protein,2026,,0,83,Active
+8767300337919,Tier 4,D2,D2,1,127.7,89.34,70.0,100.0,True,2,Subscription,Clear Protein,2026,,0,79,Active
+8796446458111,Tier 4,D2,D2,1,127.7,89.34,70.0,100.0,True,2,Subscription,Clear Protein,2026,,0,67,Active
+6327696425215,Tier 4,D2,D5,1,131.24,89.32,68.1,80.2,True,3,Subscription,Collagen Glow,2023,,0,1122,Likely churned
+8791594074367,Tier 4,D2,D2,1,126.5,89.11,70.4,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,69,Active
+6336720011519,Tier 4,D2,D5,1,222.28,88.91,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1427,Likely churned
+6336694845695,Tier 4,D2,D5,1,226.62,88.69,39.1,0.0,False,1,Subscription,Unknown,2022,,0,1523,Likely churned
+6532495900927,Tier 4,D2,D2,2,123.63,88.68,71.7,100.0,False,4,Subscription,Clear Protein,2024,395.0,395,383,Likely churned
+7756000788735,Tier 4,D2,D2,2,129.85,88.45,68.1,26.1,False,1,Direct / Organic,Unknown,2022,5.0,5,1313,Likely churned
+8445726687487,Tier 4,D2,D2,1,113.51,88.27,77.8,100.0,True,2,Subscription,Clear Protein,2025,,0,192,Likely churned
+6329625379071,Tier 4,D2,D5,1,111.12,88.2,79.4,100.0,False,2,Subscription,Other,2024,,0,762,Likely churned
+8415875727615,Tier 4,D2,D2,1,97.5,88.01,90.3,100.0,False,2,Direct / Organic,Other,2025,,0,197,Likely churned
+7755919819007,Tier 4,D2,D2,2,219.71,87.88,40.0,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1356,Likely churned
+6327761830143,Tier 4,D2,D2,2,229.42,87.85,38.3,0.0,False,1,Subscription,Unknown,2022,27.0,27,1461,Likely churned
+8147523043583,Tier 4,D2,D3,1,113.8,87.64,77.0,100.0,False,3,Direct / Organic,Other,2025,,0,313,Likely churned
+6336692224255,Tier 4,D2,D5,1,123.31,87.6,71.0,100.0,False,1,Subscription,Other,2023,,0,1176,Likely churned
+6644271644927,Tier 4,D2,D2,2,139.6,87.6,62.8,100.0,False,1,Subscription,Other,2023,123.0,123,982,Likely churned
+7304430321919,Tier 4,D2,D2,2,118.17,87.58,74.1,100.0,False,2,Subscription,Other,2024,47.0,47,622,Likely churned
+6716826288383,Tier 4,D2,D5,1,138.98,87.51,63.0,82.4,False,2,Direct / Organic,Other,2023,,0,1038,Likely churned
+8115150946559,Tier 4,D2,D3,1,124.2,87.42,70.4,100.0,True,1,Subscription,Clear Protein,2025,,0,326,Likely churned
+8119165911295,Tier 4,D2,D3,1,111.78,87.42,78.2,100.0,True,1,Subscription,Clear Protein,2025,,0,324,Likely churned
+8459023909119,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,79,Active
+8763046232319,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,81,Active
+8765608427775,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,80,Active
+8780621709567,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,74,Active
+8800267174143,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,65,Active
+8811190157567,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,61,Active
+8885362819327,Tier 4,D2,D2,1,124.2,87.42,70.4,100.0,False,1,Direct / Organic,Clear Protein,2026,,0,34,Active
+8856763826431,Tier 4,D2,D2,1,123.35,87.31,70.8,100.0,True,2,Subscription,Lean Protein,2026,,0,43,Active
+8800596754687,Tier 4,D2,D2,1,118.71,87.24,73.5,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,65,Active
+7756485656831,Tier 4,D2,D4,1,120.03,87.23,72.7,100.0,False,3,Direct / Organic,Accessories,2024,,0,494,Likely churned
+8708128473343,Tier 4,D2,D2,1,115.11,87.04,75.6,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,98,At-risk
+7845454479615,Tier 4,D2,D3,1,126.21,86.8,68.8,100.0,False,3,Paid Social,Lean Protein,2025,,0,355,Likely churned
+8867118907647,Tier 4,D2,D2,1,111.83,86.79,77.6,100.0,False,3,Paid Social,Clear Protein,2026,,0,39,Active
+6327673618687,Tier 4,D2,D2,2,225.76,86.38,38.3,0.0,False,1,Subscription,Unknown,2022,0.0,0,1439,Likely churned
+7312284057855,Tier 4,D2,D5,1,91.58,85.93,93.8,100.0,True,3,Subscription,Clear Protein,2024,,0,700,Likely churned
+8094505500927,Tier 4,D2,D3,1,106.1,85.72,80.8,100.0,False,3,Direct / Organic,Accessories,2025,,0,334,Likely churned
+8226074820863,Tier 4,D2,D3,1,120.49,85.63,71.1,100.0,False,1,Email,Lean Protein,2025,,0,261,Likely churned
+6929385324799,Tier 4,D2,D5,1,141.26,85.52,60.5,79.9,False,2,Subscription,Other,2023,,0,875,Likely churned
+7886223180031,Tier 4,D2,D3,1,103.76,85.34,82.2,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,422,Likely churned
+8293395071231,Tier 4,D2,D3,1,122.5,84.88,69.3,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,245,Likely churned
+7107881697535,Tier 4,D2,D5,1,163.62,84.72,51.8,100.0,False,2,Subscription,Other,2024,,0,788,Likely churned
+7055525249279,Tier 4,D2,D5,1,166.34,84.65,50.9,100.0,False,2,Subscription,Other,2024,,0,813,Likely churned
+8837740986623,Tier 4,D2,D2,1,121.4,84.62,69.7,100.0,True,1,Subscription,Clear Protein,2026,,0,51,Active
+7756376637695,Tier 4,D2,D4,1,98.07,84.61,86.3,100.0,False,1,Direct / Organic,Other,2023,,0,985,Likely churned
+8482740830463,Tier 4,D2,D2,1,101.83,84.5,83.0,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,183,Likely churned
+8687142535423,Tier 4,D2,D2,1,101.83,84.5,83.0,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,108,At-risk
+8312613896447,Tier 4,D2,D3,1,113.67,84.41,74.3,100.0,True,2,Subscription,Clear Protein,2025,,0,234,Likely churned
+8241444520191,Tier 4,D2,D3,1,122.52,84.27,68.8,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,267,Likely churned
+8248092655871,Tier 4,D2,D3,1,110.26,84.25,76.4,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,263,Likely churned
+8422907248895,Tier 4,D2,D2,1,119.8,83.99,70.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,195,Likely churned
+8716791546111,Tier 4,D2,D2,1,114.0,83.99,73.7,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,94,At-risk
+8717736640767,Tier 4,D2,D2,1,114.0,83.99,73.7,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,93,At-risk
+8794639859967,Tier 4,D2,D2,1,101.83,83.99,82.5,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,68,Active
+8349350920447,Tier 4,D2,D3,1,97.94,83.94,85.7,100.0,False,3,Paid Social,Other,2025,,0,215,Likely churned
+7829412086015,Tier 4,D2,D3,1,174.36,83.88,48.1,100.0,False,1,Direct / Organic,Other,2023,,0,1175,Likely churned
+7206147490047,Tier 4,D2,D5,1,128.36,83.65,65.2,100.0,False,3,Subscription,Other,2024,,0,743,Likely churned
+6328275697919,Tier 4,D2,D5,1,208.76,83.5,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1419,Likely churned
+8899717791999,Tier 4,D2,D2,1,120.28,83.5,69.4,100.0,True,1,Subscription,Clear Protein,2026,,0,32,Active
+7829327184127,Tier 4,D2,D3,1,97.59,83.48,85.5,100.0,False,3,Direct / Organic,Accessories,2025,,0,219,Likely churned
+7756430803199,Tier 4,D2,D4,1,95.01,83.47,87.9,100.0,False,3,Direct / Organic,Collagen Glow,2024,,0,701,Likely churned
+7756465570047,Tier 4,D2,D4,1,128.94,83.47,64.7,100.0,False,3,Direct / Organic,Clear Protein,2024,,0,588,Likely churned
+8288888717567,Tier 4,D2,D3,1,122.32,83.44,68.2,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,247,Likely churned
+7755935547647,Tier 4,D2,D5,1,207.88,83.15,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1339,Likely churned
+6352858775807,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7471355822335,Tier 4,D2,D5,1,94.8,83.02,87.6,100.0,False,1,Subscription,Clear Protein,2024,,0,609,Likely churned
+7471389180159,Tier 4,D2,D5,1,94.75,83.02,87.6,100.0,False,1,Subscription,Clear Protein,2024,,0,609,Likely churned
+7471478767871,Tier 4,D2,D5,1,94.8,83.02,87.6,100.0,False,1,Subscription,Clear Protein,2024,,0,609,Likely churned
+7471875326207,Tier 4,D2,D5,1,94.8,83.02,87.6,100.0,False,1,Subscription,Clear Protein,2024,,0,608,Likely churned
+7475184992511,Tier 4,D2,D2,2,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,1.0,1,606,Likely churned
+7475289653503,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475301023999,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475340181759,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475370459391,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475447496959,Tier 4,D2,D5,1,94.8,83.02,87.6,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475480199423,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7475531383039,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,607,Likely churned
+7476462551295,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476558364927,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476578058495,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476629799167,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476681769215,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476753400063,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476778959103,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476805697791,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476822147327,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476840038655,Tier 4,D2,D2,2,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,0.0,0,606,Likely churned
+7476875067647,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476880802047,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476882833663,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476927922431,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7476928381183,Tier 4,D2,D5,1,83.86,83.02,99.0,100.0,False,1,Subscription,Clear Protein,2024,,0,606,Likely churned
+7493685543167,Tier 4,D2,D5,1,101.83,83.02,81.5,100.0,False,1,Subscription,Clear Protein,2024,,0,595,Likely churned
+7756486443263,Tier 4,D2,D4,1,96.35,83.0,86.1,100.0,False,3,Direct / Organic,Lean Protein,2024,,0,498,Likely churned
+7756474777855,Tier 4,D2,D4,1,117.68,82.81,70.4,100.0,False,3,Direct / Organic,Accessories,2024,,0,560,Likely churned
+6424475828479,Tier 4,D2,D5,1,100.53,82.62,82.2,100.0,False,3,Subscription,Collagen Glow,2024,,0,627,Likely churned
+6329714376959,Tier 4,D2,D2,2,206.48,82.59,40.0,0.0,False,1,Subscription,Unknown,2022,2.0,2,1465,Likely churned
+6423592337663,Tier 4,D2,D2,2,216.25,82.58,38.2,0.0,False,1,Subscription,Unknown,2022,94.0,94,1467,Likely churned
+8343827972351,Tier 4,D2,D3,1,100.79,82.54,81.9,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,218,Likely churned
+8111806447871,Tier 4,D2,D3,1,125.4,82.18,65.5,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,327,Likely churned
+7756466061567,Tier 4,D2,D4,1,131.93,82.08,62.2,100.0,False,3,Direct / Organic,Collagen Glow,2024,,0,586,Likely churned
+8902720225535,Tier 4,D2,D2,1,122.34,82.05,67.1,100.0,True,2,Subscription,Other,2026,,0,31,Active
+7476727906559,Tier 4,D2,D2,2,91.73,81.97,89.4,100.0,False,2,Subscription,Lean Protein,2024,12.0,12,594,Likely churned
+7484961325311,Tier 4,D2,D5,1,113.81,81.97,72.0,100.0,False,2,Subscription,Lean Protein,2024,,0,598,Likely churned
+7489532428543,Tier 4,D2,D5,1,113.81,81.97,72.0,100.0,False,2,Subscription,Clear Protein,2024,,0,598,Likely churned
+6336760447231,Tier 4,D2,D2,2,209.41,81.8,39.1,0.0,False,1,Subscription,Unknown,2022,71.0,71,1413,Likely churned
+7756181373183,Tier 4,D2,D4,1,124.73,81.76,65.5,100.0,True,3,Subscription,Lean Protein,2026,,0,31,Active
+8259196453119,Tier 4,D2,D3,1,122.24,81.7,66.8,100.0,False,2,Direct / Organic,Other,2025,,0,258,Likely churned
+7845034328319,Tier 4,D2,D3,1,119.8,81.55,68.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,441,Likely churned
+7878869090559,Tier 4,D2,D3,1,119.8,81.55,68.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,427,Likely churned
+8161186349311,Tier 4,D2,D3,1,101.83,81.55,80.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,308,Likely churned
+8170778689791,Tier 4,D2,D3,1,119.8,81.55,68.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,303,Likely churned
+8312130797823,Tier 4,D2,D3,1,119.8,81.55,68.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,234,Likely churned
+8277078343935,Tier 4,D2,D3,1,103.24,81.53,79.0,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,248,Likely churned
+8790289252607,Tier 4,D2,D2,1,107.1,81.49,76.1,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,70,Active
+6327629250815,Tier 4,D2,D5,1,100.74,81.4,80.8,100.0,False,1,Subscription,Other,2023,,0,1207,Likely churned
+8731505590527,Tier 4,D2,D2,1,108.0,81.34,75.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,66,Active
+8779021549823,Tier 4,D2,D2,1,108.0,81.34,75.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,75,Active
+8785318707455,Tier 4,D2,D2,1,108.0,81.34,75.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,72,Active
+8798376165631,Tier 4,D2,D2,1,108.0,81.34,75.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,66,Active
+7125782331647,Tier 4,D2,D5,1,106.2,81.22,76.5,100.0,False,1,Subscription,Clear Protein,2024,,0,740,Likely churned
+7126219489535,Tier 4,D2,D5,1,100.3,81.22,81.0,100.0,False,1,Subscription,Clear Protein,2024,,0,777,Likely churned
+7151788130559,Tier 4,D2,D5,1,106.2,81.22,76.5,100.0,False,1,Subscription,Clear Protein,2024,,0,765,Likely churned
+7154295111935,Tier 4,D2,D5,1,99.3,81.22,81.8,100.0,False,1,Subscription,Clear Protein,2024,,0,759,Likely churned
+7154553553151,Tier 4,D2,D5,1,99.3,81.22,81.8,100.0,False,1,Subscription,Clear Protein,2024,,0,763,Likely churned
+7155253117183,Tier 4,D2,D5,1,99.3,81.22,81.8,100.0,False,1,Subscription,Clear Protein,2024,,0,762,Likely churned
+7155442090239,Tier 4,D2,D5,1,99.3,81.22,81.8,100.0,False,1,Subscription,Clear Protein,2024,,0,760,Likely churned
+7158892429567,Tier 4,D2,D5,1,112.1,81.22,72.5,100.0,False,1,Subscription,Clear Protein,2024,,0,759,Likely churned
+7168931725567,Tier 4,D2,D5,1,100.3,81.22,81.0,100.0,False,1,Subscription,Clear Protein,2024,,0,756,Likely churned
+7182578843903,Tier 4,D2,D5,1,106.2,81.22,76.5,100.0,False,1,Subscription,Clear Protein,2024,,0,738,Likely churned
+7218224693503,Tier 4,D2,D5,1,100.3,81.22,81.0,100.0,False,1,Subscription,Clear Protein,2024,,0,743,Likely churned
+7241275932927,Tier 4,D2,D5,1,100.3,81.22,81.0,100.0,False,1,Subscription,Clear Protein,2024,,0,736,Likely churned
+7252347551999,Tier 4,D2,D5,1,94.4,81.22,86.0,100.0,False,1,Subscription,Clear Protein,2024,,0,732,Likely churned
+7252477477119,Tier 4,D2,D5,1,94.4,81.22,86.0,100.0,False,1,Subscription,Clear Protein,2024,,0,732,Likely churned
+7279632613631,Tier 4,D2,D5,1,87.5,81.22,92.8,100.0,False,1,Subscription,Clear Protein,2024,,0,700,Likely churned
+7308613058815,Tier 4,D2,D5,1,87.5,81.22,92.8,100.0,False,1,Subscription,Clear Protein,2024,,0,702,Likely churned
+7316711014655,Tier 4,D2,D5,1,112.1,81.22,72.5,100.0,False,1,Subscription,Clear Protein,2024,,0,697,Likely churned
+7434780836095,Tier 4,D2,D5,1,112.1,81.22,72.5,100.0,False,1,Subscription,Clear Protein,2024,,0,630,Likely churned
+7446789619967,Tier 4,D2,D5,1,112.1,81.22,72.5,100.0,False,1,Subscription,Clear Protein,2024,,0,621,Likely churned
+8029078454527,Tier 4,D2,D3,1,118.0,81.22,68.8,100.0,True,1,Subscription,Clear Protein,2026,,0,44,Active
+8721983963391,Tier 4,D2,D2,1,118.0,81.22,68.8,100.0,True,1,Subscription,Clear Protein,2026,,0,91,At-risk
+8854738862335,Tier 4,D2,D2,1,118.0,81.22,68.8,100.0,True,1,Subscription,Clear Protein,2026,,0,44,Active
+8875121836287,Tier 4,D2,D2,1,118.0,81.22,68.8,100.0,True,1,Subscription,Clear Protein,2026,,0,37,Active
+8325712871679,Tier 4,D2,D3,1,106.54,81.18,76.2,100.0,False,2,Paid Social,Clear Protein,2025,,0,229,Likely churned
+7308139725055,Tier 4,D2,D5,1,88.13,81.07,92.0,100.0,False,2,Subscription,Lean Protein,2024,,0,702,Likely churned
+7311522038015,Tier 4,D2,D5,1,88.13,81.07,92.0,100.0,False,2,Subscription,Clear Protein,2024,,0,700,Likely churned
+8789820375295,Tier 4,D2,D2,1,96.12,81.06,84.3,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,70,Active
+7891339510015,Tier 4,D2,D3,1,111.0,81.05,73.0,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,418,Likely churned
+7756038308095,Tier 4,D2,D4,1,202.5,81.0,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1487,Likely churned
+7756033720575,Tier 4,D2,D4,1,214.44,80.93,37.7,0.0,False,1,Direct / Organic,Unknown,2022,,0,1439,Likely churned
+7312475947263,Tier 4,D2,D5,1,83.86,80.92,96.5,100.0,False,1,Subscription,Lean Protein,2024,,0,607,Likely churned
+7475199344895,Tier 4,D2,D5,1,83.86,80.92,96.5,100.0,False,1,Subscription,Lean Protein,2024,,0,607,Likely churned
+7477933015295,Tier 4,D2,D5,1,113.81,80.92,71.1,100.0,False,1,Subscription,Lean Protein,2024,,0,605,Likely churned
+7877314773247,Tier 4,D2,D3,1,101.83,80.92,79.5,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,428,Likely churned
+8165022564607,Tier 4,D2,D3,1,107.82,80.92,75.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,306,Likely churned
+8166847676671,Tier 4,D2,D3,1,107.82,80.92,75.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,305,Likely churned
+8166912459007,Tier 4,D2,D3,1,107.82,80.92,75.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,305,Likely churned
+8337704026367,Tier 4,D2,D3,1,105.74,80.92,76.5,78.1,False,3,Direct / Organic,Unknown,2025,,0,222,Likely churned
+8000261095679,Tier 4,D2,D3,1,92.48,80.82,87.4,100.0,False,4,Direct / Organic,Other,2025,,0,363,Likely churned
+7756033458431,Tier 4,D2,D4,1,201.84,80.74,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1438,Likely churned
+7944904311039,Tier 4,D2,D3,1,94.15,80.48,85.5,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,389,Likely churned
+8875701960959,Tier 4,D2,D2,1,116.26,80.45,69.2,100.0,False,1,Paid Social,Lean Protein,2026,,0,37,Active
+7516977463551,Tier 4,D2,D5,1,113.81,80.4,70.6,100.0,False,3,Subscription,Clear Protein,2024,,0,581,Likely churned
+8077416464639,Tier 4,D2,D3,1,108.8,80.38,73.9,100.0,False,3,Paid Social,Clear Protein,2025,,0,340,Likely churned
+8904738275583,Tier 4,D2,D2,1,98.72,80.33,81.4,100.0,True,1,Subscription,Lean Protein,2026,,0,30,Active
+7476861501695,Tier 4,D2,D2,2,83.86,80.31,95.8,100.0,False,2,Subscription,Other,2024,0.0,0,606,Likely churned
+7480472994047,Tier 4,D2,D5,1,94.75,80.31,84.8,100.0,False,2,Subscription,Clear Protein,2024,,0,604,Likely churned
+7490946433279,Tier 4,D2,D5,1,113.81,80.31,70.6,100.0,False,2,Subscription,Other,2024,,0,596,Likely churned
+8407616291071,Tier 4,D2,D2,1,104.8,80.29,76.6,100.0,False,2,Direct / Organic,Other,2025,,0,198,Likely churned
+8093656678655,Tier 4,D2,D3,1,116.52,80.22,68.8,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,334,Likely churned
+7755946361087,Tier 4,D2,D5,1,200.54,80.21,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1364,Likely churned
+8817306009855,Tier 4,D2,D2,1,104.93,79.89,76.1,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,58,Active
+7847033995519,Tier 4,D2,D3,1,116.03,79.73,68.7,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,440,Likely churned
+7251086573823,Tier 4,D2,D5,1,108.0,79.5,73.6,100.0,True,4,Subscription,Unknown,2024,,0,733,Likely churned
+7363427959039,Tier 4,D2,D5,1,94.08,79.5,84.5,100.0,False,3,Subscription,Clear Protein,2024,,0,671,Likely churned
+7148373213439,Tier 4,D2,D5,1,101.06,79.41,78.6,100.0,False,2,Subscription,Other,2024,,0,766,Likely churned
+7257876594943,Tier 4,D2,D5,1,94.07,79.41,84.4,100.0,False,2,Subscription,Other,2024,,0,729,Likely churned
+7294782996735,Tier 4,D2,D5,1,112.95,79.41,70.3,100.0,False,2,Subscription,Other,2024,,0,710,Likely churned
+7313721196799,Tier 4,D2,D5,1,112.95,79.41,70.3,100.0,False,2,Subscription,Other,2024,,0,699,Likely churned
+8143262155007,Tier 4,D2,D3,1,98.68,79.32,80.4,100.0,True,1,Subscription,Clear Protein,2025,,0,314,Likely churned
+7756019335423,Tier 4,D2,D2,2,203.73,79.31,38.9,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1361,Likely churned
+7306157261055,Tier 4,D2,D5,1,101.83,79.26,77.8,100.0,False,2,Subscription,Lean Protein,2024,,0,704,Likely churned
+7567909912831,Tier 4,D2,D5,1,107.82,79.26,73.5,100.0,False,2,Subscription,Other,2024,,0,562,Likely churned
+7756266242303,Tier 4,D2,D4,1,115.79,79.21,68.4,100.0,False,1,Direct / Organic,Collagen Glow,2023,,0,1194,Likely churned
+8286039703807,Tier 4,D2,D3,1,118.9,79.19,66.6,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,248,Likely churned
+7230763499775,Tier 4,D2,D5,1,121.32,79.18,65.3,100.0,False,2,Subscription,Other,2024,,0,738,Likely churned
+8341214560511,Tier 4,D2,D3,1,123.06,79.11,64.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,112,At-risk
+8338561401087,Tier 4,D2,D3,1,93.9,78.89,84.0,78.1,False,3,Direct / Organic,Accessories,2025,,0,221,Likely churned
+8035262234879,Tier 4,D2,D3,1,116.01,78.81,67.9,100.0,True,2,Subscription,Lean Protein,2025,,0,353,Likely churned
+8125883908351,Tier 4,D2,D3,1,104.4,78.81,75.5,100.0,True,2,Subscription,Lean Protein,2025,,0,322,Likely churned
+7884680397055,Tier 4,D2,D3,1,111.0,78.77,71.0,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,399,Likely churned
+7523193225471,Tier 4,D2,D5,1,78.89,78.64,99.7,100.0,False,3,Subscription,Collagen Glow,2024,,0,577,Likely churned
+8811892932863,Tier 4,D2,D2,1,115.3,78.52,68.1,100.0,True,1,Subscription,Clear Protein,2026,,0,61,Active
+8828478980351,Tier 4,D2,D2,1,100.97,78.25,77.5,100.0,False,3,Direct / Organic,Collagen Glow,2026,,0,55,Active
+8133545754879,Tier 4,D2,D3,1,116.01,78.18,67.4,100.0,True,2,Subscription,Lean Protein,2025,,0,319,Likely churned
+6329860260095,Tier 4,D2,D5,1,199.56,77.86,39.0,0.0,False,1,Subscription,Unknown,2022,,0,1567,Likely churned
+8731388903679,Tier 4,D2,D2,1,114.62,77.84,67.9,100.0,True,1,Subscription,Clear Protein,2026,,0,86,Active
+7756408750335,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,799,Likely churned
+7756411470079,Tier 4,D2,D4,1,97.94,77.77,79.4,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,779,Likely churned
+7756415303935,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,760,Likely churned
+7756421595391,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,2,Direct / Organic,Other,2024,,0,734,Likely churned
+7756421726463,Tier 4,D2,D4,1,91.64,77.77,84.9,100.0,False,2,Direct / Organic,Other,2024,,0,733,Likely churned
+7756428771583,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,701,Likely churned
+7756431327487,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,701,Likely churned
+7756434407679,Tier 4,D2,D4,1,85.91,77.77,90.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,672,Likely churned
+7756435521791,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,689,Likely churned
+7756435751167,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,688,Likely churned
+7756437520639,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,680,Likely churned
+7756439716095,Tier 4,D2,D4,1,91.64,77.77,84.9,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,671,Likely churned
+7756440043775,Tier 4,D2,D4,1,91.64,77.77,84.9,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,669,Likely churned
+7756440240383,Tier 4,D2,D4,1,91.64,77.77,84.9,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,669,Likely churned
+7756446793983,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,636,Likely churned
+7756460458239,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,611,Likely churned
+7756462653695,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,603,Likely churned
+7756465373439,Tier 4,D2,D4,1,97.36,77.77,79.9,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,589,Likely churned
+7756465864959,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,586,Likely churned
+7756466913535,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,583,Likely churned
+7756467634431,Tier 4,D2,D4,1,82.91,77.77,93.8,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+7756467994879,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+7756468257023,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,580,Likely churned
+7756468420863,Tier 4,D2,D4,1,86.24,77.77,90.2,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,579,Likely churned
+7756469043455,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,578,Likely churned
+7756469207295,Tier 4,D2,D4,1,108.82,77.77,71.5,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+7756469797119,Tier 4,D2,D4,1,80.18,77.77,97.0,100.0,False,1,Direct / Organic,Clear Protein,2024,,0,577,Likely churned
+6697080127743,Tier 4,D2,D2,2,77.09,77.67,100.8,100.0,False,1,Subscription,Soy Protein,2023,272.0,272,782,Likely churned
+6327830610175,Tier 4,D2,D5,1,113.81,77.6,68.2,100.0,False,1,Subscription,Other,2023,,0,1047,Likely churned
+6424534089983,Tier 4,D2,D5,1,113.81,77.6,68.2,100.0,False,1,Subscription,Other,2023,,0,967,Likely churned
+6689737474303,Tier 4,D2,D5,1,113.81,77.6,68.2,100.0,False,1,Subscription,Other,2023,,0,1062,Likely churned
+6798553186559,Tier 4,D2,D2,2,94.6,77.6,82.0,100.0,False,1,Subscription,Other,2023,134.0,134,801,Likely churned
+6964050362623,Tier 4,D2,D5,1,107.82,77.6,72.0,100.0,False,1,Subscription,Other,2023,,0,863,Likely churned
+7093066268927,Tier 4,D2,D5,1,113.81,77.6,68.2,100.0,False,1,Subscription,Other,2024,,0,797,Likely churned
+7117603078399,Tier 4,D2,D2,2,100.74,77.6,77.0,100.0,False,1,Subscription,Other,2024,175.0,175,607,Likely churned
+7174332809471,Tier 4,D2,D5,1,107.82,77.6,72.0,100.0,False,1,Subscription,Other,2024,,0,753,Likely churned
+7176356004095,Tier 4,D2,D5,1,107.82,77.6,72.0,100.0,False,1,Subscription,Other,2024,,0,751,Likely churned
+7309650067711,Tier 4,D2,D2,2,129.6,77.6,59.9,100.0,False,1,Subscription,Other,2024,106.0,106,595,Likely churned
+7312493347071,Tier 4,D2,D5,1,88.76,77.6,87.4,100.0,False,1,Subscription,Other,2024,,0,700,Likely churned
+7470139703551,Tier 4,D2,D5,1,94.75,77.6,81.9,100.0,False,1,Subscription,Other,2024,,0,610,Likely churned
+7505538220287,Tier 4,D2,D5,1,113.81,77.6,68.2,100.0,False,1,Subscription,Other,2024,,0,589,Likely churned
+7521212825855,Tier 4,D2,D5,1,88.76,77.6,87.4,100.0,False,1,Subscription,Other,2024,,0,578,Likely churned
+8239061270783,Tier 4,D2,D3,1,119.8,77.6,64.8,100.0,False,1,Direct / Organic,Other,2025,,0,268,Likely churned
+8765564977407,Tier 4,D2,D2,1,114.32,77.54,67.8,100.0,True,1,Subscription,Clear Protein,2026,,0,80,Active
+7755992695039,Tier 4,D2,D4,1,193.46,77.38,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1340,Likely churned
+7147869012223,Tier 4,D2,D5,1,100.83,77.35,76.7,100.0,True,3,Subscription,Other,2024,,0,766,Likely churned
+6836180877567,Tier 4,D2,D5,1,161.68,77.28,47.8,100.0,False,1,Subscription,Other,2023,,0,934,Likely churned
+7755935875327,Tier 4,D2,D2,2,198.55,77.24,38.9,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1466,Likely churned
+6991974007039,Tier 4,D2,D5,1,114.53,77.13,67.3,100.0,True,2,Subscription,Other,2024,,0,842,Likely churned
+8275327189247,Tier 4,D2,D3,1,99.7,77.1,77.3,100.0,False,2,Direct / Organic,Accessories,2025,,0,253,Likely churned
+8836836098303,Tier 4,D2,D2,1,91.36,77.03,84.3,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,36,Active
+7513899139327,Tier 4,D2,D5,1,90.91,76.98,84.7,100.0,False,2,Subscription,Soy Protein,2024,,0,584,Likely churned
+6328289788159,Tier 4,D2,D5,1,197.12,76.89,39.0,0.0,False,1,Subscription,Unknown,2022,,0,1415,Likely churned
+8201852879103,Tier 4,D2,D3,1,105.7,76.86,72.7,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,239,Likely churned
+7756476449023,Tier 4,D2,D4,1,108.82,76.72,70.5,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,550,Likely churned
+6723752263935,Tier 4,D2,D5,1,91.51,76.67,83.8,100.0,True,1,Subscription,Other,2023,,0,1034,Likely churned
+8067217883391,Tier 4,D2,D3,1,92.47,76.53,82.8,100.0,True,3,Subscription,Clear Protein,2025,,0,341,Likely churned
+8293135089919,Tier 4,D2,D3,1,115.4,76.52,66.3,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,245,Likely churned
+6521577373951,Tier 4,D2,D2,2,125.51,76.41,60.9,100.0,False,1,Subscription,Collagen Glow,2023,64.0,64,1129,Likely churned
+6601910255871,Tier 4,D2,D5,1,102.34,76.41,74.7,100.0,False,1,Subscription,Collagen Glow,2023,,0,1114,Likely churned
+6880155533567,Tier 4,D2,D5,1,113.71,76.41,67.2,100.0,False,1,Subscription,Collagen Glow,2023,,0,911,Likely churned
+7756016648447,Tier 4,D2,D4,1,190.8,76.32,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1339,Likely churned
+6336691994879,Tier 4,D2,D2,2,135.39,76.1,56.2,44.5,False,2,Subscription,Unknown,2022,336.0,336,1123,Likely churned
+7961039569151,Tier 4,D2,D3,1,92.56,76.08,82.2,100.0,False,2,Direct / Organic,Collagen Glow,2025,,0,370,Likely churned
+8350713184511,Tier 4,D2,D3,1,99.9,75.98,76.1,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,214,Likely churned
+8700295446783,Tier 4,D2,D2,1,111.0,75.98,68.5,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,102,At-risk
+8712923447551,Tier 4,D2,D2,1,99.9,75.98,76.1,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,96,At-risk
+8244467302655,Tier 4,D2,D3,1,106.11,75.84,71.5,92.3,False,3,Email,Lean Protein,2025,,0,257,Likely churned
+7029599928575,Tier 4,D2,D5,1,109.17,75.83,69.5,100.0,True,3,Subscription,Unknown,2024,,0,829,Likely churned
+7756260540671,Tier 4,D2,D4,1,115.82,75.79,65.4,100.0,False,2,Direct / Organic,Other,2023,,0,1211,Likely churned
+7756405211391,Tier 4,D2,D4,1,147.6,75.71,51.3,100.0,False,1,Direct / Organic,Other,2024,,0,821,Likely churned
+8798809587967,Tier 4,D2,D2,1,112.58,75.7,67.2,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,66,Active
+8596648853759,Tier 4,D2,D2,1,101.61,75.45,74.3,100.0,True,1,Subscription,Soy Protein,2025,,0,123,At-risk
+8002156495103,Tier 4,D2,D3,1,113.0,75.38,66.7,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,323,Likely churned
+8404537704703,Tier 4,D2,D2,1,113.0,75.38,66.7,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,191,Likely churned
+8477642031359,Tier 4,D2,D2,1,113.0,75.38,66.7,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,185,Likely churned
+8621981827327,Tier 4,D2,D2,1,101.7,75.38,74.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,134,At-risk
+8653165756671,Tier 4,D2,D2,1,101.7,75.38,74.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,124,At-risk
+6329710412031,Tier 4,D2,D5,1,192.98,75.23,39.0,0.0,False,1,Subscription,Unknown,2022,,0,1531,Likely churned
+7756428476671,Tier 4,D2,D4,1,108.79,75.11,69.0,100.0,False,4,Direct / Organic,Other,2024,,0,708,Likely churned
+8812239978751,Tier 4,D2,D2,1,112.96,75.06,66.4,100.0,True,2,Subscription,Lean Protein,2026,,0,60,Active
+7946205430015,Tier 4,D2,D3,1,109.0,75.0,68.8,100.0,False,2,Direct / Organic,Other,2025,,0,384,Likely churned
+8063660425471,Tier 4,D2,D3,1,109.0,75.0,68.8,100.0,False,2,Direct / Organic,Other,2025,,0,345,Likely churned
+8175536832767,Tier 4,D2,D3,1,95.02,75.0,78.9,100.0,True,1,Subscription,Clear Protein,2026,,0,80,Active
+8251162099967,Tier 4,D2,D3,1,98.1,75.0,76.5,100.0,False,2,Direct / Organic,Other,2025,,0,261,Likely churned
+8771600711935,Tier 4,D2,D2,1,111.78,75.0,67.1,100.0,True,1,Subscription,Clear Protein,2026,,0,77,Active
+8784170647807,Tier 4,D2,D2,1,111.78,75.0,67.1,100.0,True,1,Subscription,Clear Protein,2026,,0,73,Active
+8800920436991,Tier 4,D2,D2,1,111.78,75.0,67.1,100.0,True,1,Subscription,Clear Protein,2026,,0,64,Active
+8814978072831,Tier 4,D2,D2,1,95.02,75.0,78.9,100.0,True,1,Subscription,Clear Protein,2026,,0,59,Active
+8822106685695,Tier 4,D2,D2,1,111.78,75.0,67.1,100.0,True,1,Subscription,Clear Protein,2026,,0,57,Active
+8340290339071,Tier 4,D2,D3,1,84.38,74.88,88.7,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,220,Likely churned
+8095915049215,Tier 4,D2,D3,1,93.65,74.86,79.9,100.0,False,1,Paid Social,Clear Protein,2025,,0,333,Likely churned
+8111245000959,Tier 4,D2,D3,1,98.5,74.86,76.0,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,328,Likely churned
+8704297763071,Tier 4,D2,D2,1,103.53,74.84,72.3,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,100,At-risk
+8904301314303,Tier 4,D2,D2,1,110.12,74.82,67.9,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,30,Active
+7756374016255,Tier 4,D2,D4,1,106.49,74.81,70.2,100.0,True,1,Subscription,Other,2024,,0,580,Likely churned
+8868214866175,Tier 4,D2,D2,1,112.65,74.75,66.4,100.0,False,2,Paid Social,Lean Protein,2026,,0,39,Active
+8096402768127,Tier 4,D2,D3,1,111.0,74.7,67.3,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,333,Likely churned
+8151997710591,Tier 4,D2,D3,1,99.9,74.7,74.8,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,311,Likely churned
+6329631146239,Tier 4,D2,D5,1,95.6,74.55,78.0,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,210,Likely churned
+7756468879615,Tier 4,D2,D4,1,73.99,74.42,100.6,100.0,False,3,Direct / Organic,Other,2024,,0,578,Likely churned
+8142910947583,Tier 4,D2,D3,1,88.3,74.28,84.1,100.0,False,1,Direct / Organic,Other,2025,,276,38,Active
+8772592926975,Tier 4,D2,D2,1,110.04,74.23,67.5,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,77,Active
+7938715844863,Tier 4,D2,D3,1,114.13,74.17,65.0,100.0,False,3,Direct / Organic,Collagen Glow,2025,,0,393,Likely churned
+8127814893823,Tier 4,D2,D3,1,98.9,74.16,75.0,100.0,False,2,Direct / Organic,Other,2025,,0,322,Likely churned
+8287246614783,Tier 4,D2,D3,1,113.0,74.12,65.6,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,248,Likely churned
+8675023978751,Tier 4,D2,D2,1,113.0,74.12,65.6,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,114,At-risk
+8164768678143,Tier 4,D2,D3,1,94.8,74.0,78.1,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,306,Likely churned
+8270038335743,Tier 4,D2,D3,1,98.8,73.93,74.8,100.0,False,3,Paid Social,Clear Protein,2025,,0,254,Likely churned
+7756415205631,Tier 4,D2,D4,1,127.93,73.93,57.8,100.0,False,3,Direct / Organic,Accessories,2024,,0,761,Likely churned
+8163541680383,Tier 4,D2,D3,1,94.8,73.78,77.8,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,307,Likely churned
+8247671292159,Tier 4,D2,D3,1,110.95,73.75,66.5,100.0,True,2,Subscription,Clear Protein,2025,,0,263,Likely churned
+8343381836031,Tier 4,D2,D3,1,95.79,73.71,76.9,100.0,False,2,Paid Social,Other,2025,,0,219,Likely churned
+8722076762367,Tier 4,D2,D2,1,95.76,73.52,76.8,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,91,At-risk
+7756005900543,Tier 4,D2,D2,2,163.73,73.47,44.9,29.6,False,2,Direct / Organic,Unknown,2022,33.0,33,1293,Likely churned
+6695490814207,Tier 4,D2,D5,1,102.54,73.28,71.5,100.0,False,1,Subscription,Other,2023,,0,1055,Likely churned
+7756017107199,Tier 4,D2,D2,2,188.55,73.24,38.8,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1342,Likely churned
+7156209287423,Tier 4,D2,D5,1,84.66,73.09,86.3,100.0,False,2,Subscription,Collagen Glow,2024,,0,761,Likely churned
+7756411797759,Tier 4,D2,D4,1,102.21,72.97,71.4,100.0,False,2,Direct / Organic,Other,2024,,0,734,Likely churned
+8304456368383,Tier 4,D2,D3,1,91.6,72.8,79.5,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,238,Likely churned
+8312187060479,Tier 4,D2,D3,1,91.6,72.8,79.5,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,234,Likely churned
+8098546254079,Tier 4,D2,D3,1,93.5,72.75,77.8,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,332,Likely churned
+8171195957503,Tier 4,D2,D3,1,91.44,72.53,79.3,100.0,False,3,Direct / Organic,Lean Protein,2025,,0,303,Likely churned
+7756410749183,Tier 4,D2,D4,1,96.9,72.38,74.7,100.0,False,2,Direct / Organic,Other,2024,,0,761,Likely churned
+6532515594495,Tier 4,D2,D5,1,180.82,72.33,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1424,Likely churned
+6336651133183,Tier 4,D2,D2,2,144.47,72.3,50.0,41.7,False,2,Subscription,Unknown,2022,941.0,941,560,Likely churned
+7756407996671,Tier 4,D2,D4,1,102.99,72.25,70.2,100.0,False,1,Direct / Organic,Other,2024,,0,801,Likely churned
+6480331735295,Tier 4,D2,D5,1,119.59,71.99,60.2,71.4,False,2,Subscription,Unknown,2022,,0,1227,Likely churned
+8841867395327,Tier 4,D2,D2,1,89.87,71.95,80.1,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,49,Active
+8710500319487,Tier 4,D2,D2,1,107.54,71.73,66.7,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,97,At-risk
+7756421923071,Tier 4,D2,D4,1,102.42,71.65,70.0,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,500,Likely churned
+7547822899455,Tier 4,D2,D5,1,91.57,71.58,78.2,100.0,True,2,Subscription,Other,2024,,0,567,Likely churned
+7709267230975,Tier 4,D2,D5,1,96.96,71.58,73.8,100.0,True,2,Subscription,Other,2024,,0,500,Likely churned
+8415963611391,Tier 4,D2,D2,1,93.9,71.54,76.2,100.0,False,2,Direct / Organic,Other,2025,,0,197,Likely churned
+8757996159231,Tier 4,D2,D2,1,107.82,71.5,66.3,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,84,Active
+8821302821119,Tier 4,D2,D2,1,107.82,71.5,66.3,100.0,False,1,Direct / Organic,Lean Protein,2026,,0,57,Active
+8244228129023,Tier 4,D2,D3,1,96.37,71.44,74.1,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,265,Likely churned
+7756180357375,Tier 4,D2,D4,1,99.15,71.42,72.0,100.0,False,2,Email,Lean Protein,2026,,0,65,Active
+8329648210175,Tier 4,D2,D3,1,83.5,71.35,85.4,100.0,False,2,Direct / Organic,Accessories,2025,,0,227,Likely churned
+7756356616447,Tier 4,D2,D4,1,104.15,71.26,68.4,100.0,False,2,Direct / Organic,Soy Protein,2023,,0,1130,Likely churned
+8795253014783,Tier 4,D2,D2,1,98.99,71.24,72.0,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,67,Active
+8787345572095,Tier 4,D2,D2,1,98.85,71.08,71.9,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,71,Active
+8006221234431,Tier 4,D2,D3,1,104.87,70.99,67.7,100.0,False,2,Affiliate,Collagen Glow,2025,,0,362,Likely churned
+7949327368447,Tier 4,D2,D3,1,84.07,70.93,84.4,100.0,True,4,Subscription,Clear Protein,2025,,0,386,Likely churned
+7755969102079,Tier 4,D2,D2,2,119.91,70.9,59.1,43.3,False,2,Direct / Organic,Unknown,2022,270.0,270,1066,Likely churned
+7154177769727,Tier 4,D2,D2,2,75.58,70.78,93.6,100.0,False,1,Subscription,Other,2024,63.0,63,700,Likely churned
+7364114153727,Tier 4,D2,D5,1,128.56,70.68,55.0,100.0,False,2,Subscription,Other,2024,,0,609,Likely churned
+7312633561343,Tier 4,D2,D5,1,67.69,70.65,104.4,100.0,False,1,Subscription,Other,2024,,0,700,Likely churned
+6328304304383,Tier 4,D2,D5,1,176.57,70.63,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1504,Likely churned
+8371571982591,Tier 4,D2,D2,1,87.44,70.6,80.7,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,204,Likely churned
+6423604887807,Tier 4,D2,D5,1,181.1,70.48,38.9,0.0,False,1,Subscription,Unknown,2022,,0,1539,Likely churned
+8149547942143,Tier 4,D2,D3,1,100.94,70.36,69.7,100.0,False,1,Direct / Organic,Other,2025,,0,266,Likely churned
+8337920524543,Tier 4,D2,D3,1,84.8,70.24,82.8,100.0,False,1,Direct / Organic,Other,2025,,0,222,Likely churned
+7695737127167,Tier 4,D2,D2,2,107.82,70.2,65.1,100.0,True,1,Subscription,Lean Protein,2024,86.0,86,421,Likely churned
+7756016812287,Tier 4,D2,D2,2,175.32,70.13,40.0,0.0,False,1,Direct / Organic,Unknown,2022,194.0,194,1339,Likely churned
+8477606019327,Tier 4,D2,D2,1,90.75,70.0,77.1,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,185,Likely churned
+6612679590143,Tier 4,D2,D2,2,128.88,69.86,54.2,100.0,True,2,Subscription,Other,2023,28.0,28,1105,Likely churned
+8665323438335,Tier 4,D2,D2,1,94.92,69.7,73.4,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,118,At-risk
+7967450366207,Tier 4,D2,D3,1,103.86,69.68,67.1,100.0,True,2,Subscription,Soy Protein,2025,,0,376,Likely churned
+7341017956607,Tier 4,D2,D5,1,122.26,69.65,57.0,100.0,True,2,Subscription,Other,2024,,0,678,Likely churned
+6329848889599,Tier 4,D2,D5,1,100.51,69.62,69.3,100.0,False,1,Subscription,Other,2023,,0,1111,Likely churned
+8088380178687,Tier 4,D2,D3,1,103.23,69.59,67.4,100.0,True,1,Subscription,Other,2025,,0,336,Likely churned
+7755986731263,Tier 4,D2,D4,1,103.58,69.58,67.2,100.0,False,2,Direct / Organic,Other,2025,,0,379,Likely churned
+6423224484095,Tier 4,D2,D5,1,178.76,69.54,38.9,0.0,False,1,Subscription,Unknown,2022,,0,1337,Likely churned
+7180621021439,Tier 4,D2,D5,1,124.43,69.4,55.8,45.0,False,2,Subscription,Unknown,2024,,0,748,Likely churned
+7755953963263,Tier 4,D2,D5,1,172.95,69.18,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1577,Likely churned
+7756239372543,Tier 4,D2,D4,1,91.59,69.1,75.4,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,92,At-risk
+7755916050687,Tier 4,D2,D2,2,196.67,68.97,35.1,0.0,False,1,Direct / Organic,Unknown,2022,0.0,0,1472,Likely churned
+7471600238847,Tier 4,D2,D2,2,107.82,68.94,63.9,100.0,True,1,Subscription,Lean Protein,2024,28.0,28,581,Likely churned
+7522714976511,Tier 4,D2,D2,2,107.82,68.94,63.9,100.0,True,1,Subscription,Lean Protein,2024,28.0,28,549,Likely churned
+8090103939327,Tier 4,D2,D3,1,93.9,68.93,73.4,100.0,False,2,Direct / Organic,Accessories,2025,,0,336,Likely churned
+8091391557887,Tier 4,D2,D3,1,85.01,68.93,81.1,100.0,False,2,Paid Social,Accessories,2025,,0,335,Likely churned
+8325816582399,Tier 4,D2,D3,1,74.0,68.93,93.1,100.0,False,2,Direct / Organic,Accessories,2025,,0,229,Likely churned
+8327681605887,Tier 4,D2,D3,1,74.0,68.93,93.1,100.0,False,2,Direct / Organic,Accessories,2025,,0,228,Likely churned
+8329594667263,Tier 4,D2,D3,1,74.0,68.93,93.1,100.0,False,2,Direct / Organic,Accessories,2025,,0,227,Likely churned
+8337828905215,Tier 4,D2,D3,1,74.0,68.93,93.1,100.0,False,2,Paid Social,Accessories,2025,,0,222,Likely churned
+8718699757823,Tier 4,D2,D2,1,88.9,68.93,77.5,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,93,At-risk
+6336688324863,Tier 4,D2,D5,1,102.56,68.91,67.2,100.0,False,2,Subscription,Accessories,2022,,0,1276,Likely churned
+8891214725375,Tier 4,D2,D2,1,104.72,68.91,65.8,100.0,True,1,Subscription,Lean Protein,2026,,0,34,Active
+7756004786431,Tier 4,D2,D2,2,93.19,68.84,73.9,100.0,False,3,Direct / Organic,Unknown,2022,17.0,17,1282,Likely churned
+6327628464383,Tier 4,D2,D5,1,142.21,68.72,48.3,33.3,False,2,Subscription,Other,2023,,0,850,Likely churned
+8868033036543,Tier 4,D2,D2,1,105.03,68.71,65.4,100.0,False,1,Paid Social,Lean Protein,2026,,0,39,Active
+7304255078655,Tier 4,D2,D5,1,82.6,68.52,83.0,100.0,True,4,Subscription,Collagen Glow,2024,,0,702,Likely churned
+7058101633279,Tier 4,D2,D5,1,109.02,68.52,62.9,100.0,False,3,Subscription,Accessories,2024,,0,811,Likely churned
+8474707689727,Tier 4,D2,D2,1,78.12,68.26,87.4,100.0,False,1,Direct / Organic,Clear Protein,2025,,0,187,Likely churned
+7976335540479,Tier 4,D2,D3,1,95.8,68.16,71.1,100.0,False,2,Direct / Organic,Soy Protein,2025,,0,370,Likely churned
+7756435849471,Tier 4,D2,D4,1,117.58,68.11,57.9,100.0,False,1,Direct / Organic,Other,2024,,0,607,Likely churned
+7756423037183,Tier 4,D2,D4,1,108.99,68.07,62.5,86.7,False,2,Direct / Organic,Other,2024,,0,730,Likely churned
+7756437881087,Tier 4,D2,D4,1,89.64,67.62,75.4,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,679,Likely churned
+7756438667519,Tier 4,D2,D4,1,100.18,67.62,67.5,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,676,Likely churned
+7756439879935,Tier 4,D2,D4,1,79.09,67.62,85.5,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,671,Likely churned
+7756440731903,Tier 4,D2,D4,1,73.82,67.62,91.6,100.0,False,2,Direct / Organic,Unknown,2024,,91,577,Likely churned
+7756461342975,Tier 4,D2,D4,1,90.3,67.62,74.9,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,609,Likely churned
+7756463964415,Tier 4,D2,D4,1,100.18,67.62,67.5,100.0,False,2,Direct / Organic,Clear Protein,2024,,0,595,Likely churned
+7756466946303,Tier 4,D2,D4,1,100.18,67.62,67.5,100.0,False,2,Direct / Organic,Clear Protein,2024,,0,582,Likely churned
+7755989221631,Tier 4,D2,D2,2,97.2,67.52,69.5,100.0,False,2,Direct / Organic,Other,2024,91.0,91,578,Likely churned
+7496402895103,Tier 4,D2,D5,1,93.86,67.48,71.9,100.0,False,2,Subscription,Clear Protein,2024,,0,593,Likely churned
+7504260137215,Tier 4,D2,D5,1,93.86,67.48,71.9,100.0,False,2,Subscription,Other,2024,,0,589,Likely churned
+8797495951615,Tier 4,D2,D2,1,100.66,67.47,67.0,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,66,Active
+7756361498879,Tier 4,D2,D4,1,112.78,67.32,59.7,21.7,False,2,Direct / Organic,Unknown,2023,,0,1071,Likely churned
+8226072887551,Tier 4,D2,D3,1,102.44,67.14,65.5,100.0,True,1,Subscription,Lean Protein,2026,,0,50,Active
+8649011167487,Tier 4,D2,D2,1,93.42,67.08,71.8,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,126,At-risk
+8692036763903,Tier 4,D2,D2,1,90.88,67.08,73.8,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,106,At-risk
+6334064328959,Tier 4,D2,D5,1,167.55,67.02,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1519,Likely churned
+7475279692031,Tier 4,D2,D5,1,69.86,66.98,95.9,100.0,False,2,Subscription,Clear Protein,2024,,0,607,Likely churned
+7476910588159,Tier 4,D2,D5,1,69.86,66.98,95.9,100.0,False,2,Subscription,Clear Protein,2024,,0,606,Likely churned
+7756016189695,Tier 4,D2,D2,2,170.1,66.95,39.4,0.0,False,1,Direct / Organic,Unknown,2022,3.0,3,1337,Likely churned
+8794176553215,Tier 4,D2,D2,1,91.91,66.87,72.8,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,68,Active
+7101868769535,Tier 4,D2,D2,2,118.7,66.7,56.2,100.0,False,1,Subscription,Other,2024,169.0,169,623,Likely churned
+8789804351743,Tier 4,D2,D2,1,91.7,66.66,72.7,100.0,False,3,Direct / Organic,Clear Protein,2026,,0,70,Active
+8252828811519,Tier 4,D2,D3,1,89.83,66.56,74.1,100.0,False,2,Direct / Organic,Lean Protein,2025,,0,261,Likely churned
+8396561285375,Tier 4,D2,D2,1,64.64,66.56,103.0,100.0,False,2,Direct / Organic,Accessories,2025,,0,199,Likely churned
+6703429976319,Tier 4,D2,D5,1,150.95,66.55,44.1,100.0,False,1,Subscription,Other,2023,,0,1047,Likely churned
+8710576505087,Tier 4,D2,D2,1,93.9,66.54,70.9,100.0,False,2,Direct / Organic,Clear Protein,2026,,0,97,At-risk
+7756469469439,Tier 4,D2,D4,1,72.16,66.31,91.9,100.0,True,1,Subscription,Clear Protein,2024,,0,577,Likely churned
+6336684065023,Tier 4,D2,D2,2,165.44,66.18,40.0,0.0,False,1,Subscription,Unknown,2022,16.0,16,1545,Likely churned
+8890334576895,Tier 4,D2,D2,1,102.44,66.12,64.5,100.0,True,1,Subscription,Lean Protein,2026,,0,34,Active
+7139969335551,Tier 4,D2,D5,1,84.02,66.08,78.6,100.0,False,2,Subscription,Collagen Glow,2024,,0,762,Likely churned
+7254008201471,Tier 4,D2,D5,1,84.02,66.08,78.6,100.0,False,2,Subscription,Collagen Glow,2024,,0,731,Likely churned
+7288937775359,Tier 4,D2,D5,1,93.95,66.08,70.3,100.0,False,2,Subscription,Collagen Glow,2024,,0,714,Likely churned
+7293467492607,Tier 4,D2,D5,1,93.95,66.08,70.3,100.0,False,2,Subscription,Clear Protein,2024,,0,711,Likely churned
+7312130572543,Tier 4,D2,D5,1,74.13,66.08,89.1,100.0,False,2,Subscription,Collagen Glow,2024,,0,700,Likely churned
+8676491591935,Tier 4,D2,D2,1,91.53,66.06,72.2,100.0,False,2,Direct / Organic,Other,2026,,0,113,At-risk
+7499170152703,Tier 4,D2,D2,2,87.01,65.94,75.8,100.0,False,2,Subscription,Accessories,2024,174.0,174,417,Likely churned
+7475029606655,Tier 4,D2,D5,1,69.86,65.93,94.4,100.0,False,2,Subscription,Lean Protein,2024,,0,607,Likely churned
+7475157991679,Tier 4,D2,D5,1,69.86,65.93,94.4,100.0,False,2,Subscription,Collagen Glow,2024,,0,607,Likely churned
+7756351439103,Tier 4,D2,D4,1,136.86,65.9,48.2,62.5,False,2,Direct / Organic,Unknown,2023,,0,1151,Likely churned
+8366920139007,Tier 4,D2,D2,1,64.47,65.83,102.1,100.0,False,2,Direct / Organic,Accessories,2025,,0,193,Likely churned
+8226081210623,Tier 4,D2,D3,1,107.19,65.76,61.3,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,270,Likely churned
+6327696097535,Tier 4,D2,D5,1,164.25,65.7,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1574,Likely churned
+8820378665215,Tier 4,D2,D2,1,95.67,65.65,68.6,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,57,Active
+7755974082815,Tier 4,D2,D4,1,84.19,65.65,78.0,100.0,False,3,Direct / Organic,Clear Protein,2024,,0,605,Likely churned
+6327516889343,Tier 4,D2,D2,2,107.82,65.62,60.9,100.0,True,1,Subscription,Other,2025,27.0,27,343,Likely churned
+6334064722175,Tier 4,D2,D2,2,107.82,65.62,60.9,100.0,True,1,Subscription,Other,2025,28.0,28,352,Likely churned
+8723271581951,Tier 4,D2,D2,1,80.11,65.55,81.8,100.0,True,2,Subscription,Clear Protein,2026,,0,90,At-risk
+8831281823999,Tier 4,D2,D2,1,75.66,65.55,86.6,100.0,True,2,Subscription,Clear Protein,2026,,0,53,Active
+7585086046463,Tier 4,D2,D2,2,76.49,65.54,85.7,100.0,True,3,Subscription,Other,2024,81.0,81,466,Likely churned
+7448764088575,Tier 4,D2,D2,2,109.6,65.28,59.6,100.0,False,2,Subscription,Other,2024,196.0,196,423,Likely churned
+6788480467199,Tier 4,D2,D5,1,120.37,65.17,54.1,100.0,False,1,Subscription,Other,2023,,0,976,Likely churned
+8337895751935,Tier 4,D2,D3,1,70.8,65.13,92.0,100.0,False,2,Paid Social,Lean Protein,2025,,0,221,Likely churned
+8175629893887,Tier 4,D2,D3,1,64.61,65.0,100.6,100.0,False,2,Direct / Organic,Accessories,2025,,0,220,Likely churned
+7756429754623,Tier 4,D2,D4,1,73.8,64.96,88.0,100.0,False,2,Direct / Organic,Lean Protein,2024,,0,702,Likely churned
+8845556613375,Tier 4,D2,D2,1,89.92,64.95,72.2,100.0,False,2,Paid Social,Clear Protein,2026,,0,47,Active
+8350728290559,Tier 4,D2,D3,1,65.73,64.94,98.8,100.0,False,2,Paid Social,Accessories,2025,,0,214,Likely churned
+8699412250879,Tier 4,D2,D2,1,110.38,64.92,58.8,100.0,True,1,Subscription,Collagen Glow,2026,,0,103,At-risk
+7335513391359,Tier 4,D2,D2,2,103.26,64.9,62.9,100.0,True,2,Subscription,Clear Protein,2024,56.0,56,630,Likely churned
+6329716637951,Tier 4,D2,D5,1,167.04,64.86,38.8,0.0,False,1,Subscription,Unknown,2022,,0,1577,Likely churned
+7756037718271,Tier 4,D2,D4,1,164.73,64.8,39.3,0.0,False,1,Direct / Organic,Unknown,2022,,0,1479,Likely churned
+7756038275327,Tier 4,D2,D4,1,162.0,64.8,40.0,0.0,False,1,Direct / Organic,Unknown,2022,,0,1487,Likely churned
+7756348915967,Tier 4,D2,D4,1,100.8,64.75,64.2,51.4,False,2,Direct / Organic,Unknown,2023,,0,1162,Likely churned
+8304454074623,Tier 4,D2,D3,1,102.98,64.73,62.9,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,238,Likely churned
+6327635181823,Tier 4,D2,D5,1,161.8,64.72,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1566,Likely churned
+6336758415615,Tier 4,D2,D2,2,161.79,64.72,40.0,0.0,False,1,Subscription,Unknown,2022,117.0,117,1357,Likely churned
+8807018856703,Tier 4,D2,D2,1,80.0,64.48,80.6,100.0,True,1,Subscription,Collagen Glow,2026,,0,63,Active
+8249665028351,Tier 4,D2,D3,1,102.66,64.41,62.7,100.0,False,1,Paid Social,Lean Protein,2025,,0,262,Likely churned
+7922624430335,Tier 4,D2,D3,1,81.52,64.28,78.9,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,401,Likely churned
+7347034816767,Tier 4,D2,D2,2,95.11,64.27,67.6,100.0,False,2,Subscription,Other,2024,129.0,129,549,Likely churned
+8283892121855,Tier 4,D2,D3,1,89.8,64.27,71.6,100.0,False,2,Direct / Organic,Other,2025,,0,250,Likely churned
+7875698360575,Tier 4,D2,D3,1,102.46,64.21,62.7,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,429,Likely churned
+7153236443391,Tier 4,D2,D5,1,76.02,64.16,84.4,100.0,False,2,Subscription,Other,2024,,0,764,Likely churned
+7183853453567,Tier 4,D2,D5,1,89.35,64.16,71.8,100.0,False,2,Subscription,Clear Protein,2024,,0,745,Likely churned
+6327552540927,Tier 4,D2,D2,2,169.6,63.92,37.7,0.0,False,1,Subscription,Unknown,2022,26.0,26,1461,Likely churned
+7711383027967,Tier 4,D2,D5,1,98.02,63.62,64.9,100.0,True,3,Subscription,Clear Protein,2024,,0,497,Likely churned
+7153029873919,Tier 4,D2,D2,2,100.3,63.52,63.3,100.0,True,1,Subscription,Clear Protein,2024,28.0,28,736,Likely churned
+6423596663039,Tier 4,D2,D5,1,163.62,63.49,38.8,0.0,False,1,Subscription,Unknown,2022,,0,1496,Likely churned
+6832308551935,Tier 4,D2,D5,1,123.21,63.47,51.5,23.1,False,2,Subscription,Other,2024,,0,751,Likely churned
+7756267258111,Tier 4,D2,D4,1,65.99,63.46,96.2,100.0,False,1,Direct / Organic,Other,2023,,0,1186,Likely churned
+7756267389183,Tier 4,D2,D4,1,77.64,63.46,81.7,100.0,False,1,Direct / Organic,Other,2023,,0,1186,Likely churned
+7756397609215,Tier 4,D2,D4,1,63.55,63.46,99.9,100.0,False,1,Direct / Organic,Other,2023,,0,868,Likely churned
+7756266864895,Tier 4,D2,D4,1,92.63,63.37,68.4,100.0,False,1,Direct / Organic,Collagen Glow,2023,,0,1188,Likely churned
+7756328435967,Tier 4,D2,D4,1,98.69,63.37,64.2,100.0,False,1,Direct / Organic,Collagen Glow,2023,,0,1179,Likely churned
+7756401017087,Tier 4,D2,D4,1,98.08,63.37,64.6,100.0,False,1,Direct / Organic,Collagen Glow,2024,,0,840,Likely churned
+7756469403903,Tier 4,D2,D4,1,84.76,63.37,74.8,100.0,False,1,Direct / Organic,Collagen Glow,2024,,0,577,Likely churned
+8446136254719,Tier 4,D2,D2,1,77.85,63.34,81.4,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,185,Likely churned
+8697064423679,Tier 4,D2,D2,1,87.93,63.31,72.0,100.0,False,2,Direct / Organic,Lean Protein,2026,,0,104,At-risk
+7756413239551,Tier 4,D2,D4,1,92.43,63.21,68.4,100.0,False,2,Direct / Organic,Unknown,2024,,0,772,Likely churned
+7756438962431,Tier 4,D2,D4,1,82.16,63.21,76.9,100.0,False,2,Direct / Organic,Clear Protein,2024,,0,672,Likely churned
+7959059300607,Tier 4,D2,D3,1,80.62,63.16,78.3,100.0,False,1,Direct / Organic,Lean Protein,2025,,0,381,Likely churned
+8344497946879,Tier 4,D2,D3,1,76.07,63.14,83.0,100.0,False,2,Direct / Organic,Accessories,2025,,0,218,Likely churned
+8902232310015,Tier 4,D2,D2,1,65.86,62.92,95.5,100.0,False,2,Direct / Organic,Accessories,2026,,0,31,Active
+8763339538687,Tier 4,D2,D2,1,99.11,62.79,63.4,100.0,True,1,Subscription,Lean Protein,2026,,0,81,Active
+7756012585215,Tier 4,D2,D2,2,129.7,62.67,48.3,59.2,False,2,Direct / Organic,Unknown,2022,135.0,135,1225,Likely churned
+7756434112767,Tier 4,D2,D4,1,83.17,62.62,75.3,100.0,False,2,Direct / Organic,Soy Protein,2024,,0,696,Likely churned
+7308786237695,Tier 4,D2,D5,1,67.76,62.61,92.4,100.0,False,1,Subscription,Other,2024,,0,702,Likely churned
+8312653938943,Tier 4,D2,D3,1,80.73,62.2,77.0,100.0,True,1,Subscription,Other,2025,,0,234,Likely churned
+8621587202303,Tier 4,D2,D2,1,83.21,62.19,74.7,100.0,False,2,Direct / Organic,Accessories,2025,,0,135,At-risk
+7176846934271,Tier 4,D2,D5,1,104.4,62.14,59.5,100.0,True,2,Subscription,Other,2024,,0,751,Likely churned
+8310327738623,Tier 4,D2,D3,1,67.1,62.03,92.4,100.0,True,2,Subscription,Accessories,2025,,0,235,Likely churned
+8343408869631,Tier 4,D2,D3,1,67.1,62.03,92.4,100.0,True,2,Subscription,Accessories,2025,,0,219,Likely churned
+7476690583807,Tier 4,D2,D5,1,62.86,61.96,98.6,100.0,False,1,Subscription,Other,2024,,0,606,Likely churned
+7174366757119,Tier 4,D2,D5,1,100.31,61.95,61.8,100.0,True,2,Subscription,Clear Protein,2024,,0,753,Likely churned
+7756169871615,Tier 4,D2,D4,1,102.44,61.87,60.4,76.1,False,3,Direct / Organic,Unknown,2022,,0,1221,Likely churned
+8358854361343,Tier 4,D2,D3,1,88.9,61.83,69.6,100.0,False,2,Direct / Organic,Clear Protein,2025,,0,211,Likely churned
+6329641795839,Tier 4,D2,D5,1,153.58,61.43,40.0,0.0,False,1,Subscription,Unknown,2022,,0,1533,Likely churned
+6424908759295,Tier 4,D2,D5,1,97.04,61.23,63.1,100.0,True,1,Subscription,Lean Protein,2026,,0,84,Active
+8772284514559,Tier 4,D2,D2,1,97.04,61.23,63.1,100.0,True,1,Subscription,Lean Protein,2026,,0,60,Active
