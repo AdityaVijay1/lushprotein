@@ -172,6 +172,26 @@ Use the chart: `outputs/charts/rec_sys_why_4_layers.png`
 
 ---
 
+### Slide 2 — Bullet Points to Display on Slide
+
+**Context bullets (set up the chart):**
+- Shopify's default algorithm treats every customer the same — it has no concept of customer stage
+- The right recommendation depends entirely on *where the customer is in their journey*, not just what they've bought
+- 67% of customers have only 1 order — any ML or personalisation system fails them entirely on first contact
+- The 4-layer system maps one algorithm to one customer moment: no single layer does everything, but together they cover 100% of the customer pool
+
+**What each layer solves (one line per layer — read alongside left panel of chart):**
+- **L1 Rule-Based:** Every new buyer gets a relevant cross-category suggestion from Day 1 — no history needed
+- **L2 Association Rules:** Customers browsing right now see "Frequently Bought Together" on the product page — captures basket expansion at the highest-intent moment
+- **L3 Sequential Timed:** Post-purchase email + physical sample fires at the exact day before the customer's reorder window — converts one-category buyers into two
+- **L4 Item-CF:** The 730 most loyal customers (3+ orders) get personalised recommendations based on their unique purchase fingerprint
+
+**Transition to Slide 3 (say before clicking next):**
+- L1, L2, and L4 are largely automated once the rules and matrix are built
+- L3 is the most operationally unique layer — it requires knowing *when* to fire, *what* sample to send, and *how* to route it through fulfilment
+- The timing is not arbitrary — it is calculated from real reorder data from repeat buyers
+- That precision is exactly why L3 is the highest-leverage layer in this system — and it is what the next slide is about
+
 ---
 
 ## SLIDE 3 — Layer 3 Deep Dive: The Timing Engine

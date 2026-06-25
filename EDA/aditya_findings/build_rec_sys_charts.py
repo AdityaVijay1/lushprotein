@@ -170,10 +170,6 @@ def chart_rec_sys_why_4_layers():
     ax.set_xlim(0, 130)
     ax.set_xlabel("% of 4,290-customer pool reached")
     ax.set_title("Coverage: Why You Need All 4 Layers", fontweight="bold")
-    ax.text(0.5, -0.12,
-            "L4 alone (CF) would miss 83% of customers — cold-start problem",
-            transform=ax.transAxes, ha="center", fontsize=9,
-            style="italic", color=PALETTE["accent"])
     ax.spines[["top", "right"]].set_visible(False)
 
     # ── RIGHT: failure modes if you use only one model ──
@@ -185,13 +181,13 @@ def chart_rec_sys_why_4_layers():
 
     rows = [
         ("Only collaborative\nfiltering (CF/ML)", PALETTE["accent"],
-         "67% have NO history  →  cold-start fail for majority of customers"),
+         "67% have NO history -> cold-start fails for majority"),
         ("Only association\nrules", PALETTE["T3"],
-         "Works for same cart, but completely misses post-order\ncross-sell timing (day 14 email, day 44 sachet)"),
+         "Works for same cart, but misses post-order\ncross-sell timing (day 14 email, day 44 sachet)"),
         ("Only rule-based\n(L1 forever)", PALETTE["T4"],
-         "Works for first purchase, but never personalises\nrepeat buyers (ignores their actual purchase history)"),
+         "Works for first purchase, but never personalises\nrepeat buyers (ignores actual purchase history)"),
         ("Only post-purchase\nemail", PALETTE["L3"],
-         "Misses basket expansion during active session\n(no PDP widget  =  no same-cart upsell)"),
+         "Misses basket expansion during active session\n(no PDP widget = no same-cart upsell)"),
     ]
     y = 4.8
     for label, col, desc in rows:
@@ -201,9 +197,9 @@ def chart_rec_sys_why_4_layers():
         ax.add_patch(rect)
         ax.text(1.6, y, label, ha="center", va="center",
                 fontsize=8.5, fontweight="bold", color="white")
-        ax.text(3.4, y, "→", ha="center", va="center",
-                fontsize=14, color=PALETTE["accent"], fontweight="bold")
-        ax.text(3.8, y, desc, ha="left", va="center",
+        ax.annotate("", xy=(3.7, y), xytext=(3.2, y),
+                    arrowprops=dict(arrowstyle="-|>", color=PALETTE["accent"], lw=1.5))
+        ax.text(3.85, y, desc, ha="left", va="center",
                 fontsize=8.5, color="#333", linespacing=1.3)
         y -= 1.2
 
@@ -213,7 +209,7 @@ def chart_rec_sys_why_4_layers():
             bbox=dict(boxstyle="round,pad=0.3", facecolor="#eef6fb",
                       edgecolor=PALETTE["T2"], lw=1.5))
 
-    fig.suptitle("Why a 4-Layer Architecture — Not One Universal Algorithm",
+    fig.suptitle("Why a 4-Layer Architecture - Not One Universal Algorithm",
                  fontsize=14, fontweight="bold", y=1.01)
     fig.tight_layout()
     _save(fig, "rec_sys_why_4_layers.png")

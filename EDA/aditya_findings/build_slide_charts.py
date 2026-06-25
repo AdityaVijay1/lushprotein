@@ -55,10 +55,6 @@ def chart_slide1_problem():
             fontsize=10, color="white", fontweight="bold")
     ax.set_title("Gap 1 - Retention\n5,694 total customers", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.18,
-            "Most customers never come back.\n"
-            "Shopify's default recs show them the same\nproducts - no nudge, no timing.",
-            ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
 
     # Panel 2: Category ladder
     ax = axes[1]
@@ -90,10 +86,6 @@ def chart_slide1_problem():
                   f"S${val}", ha="center", fontsize=10, color=DARK)
     ax.set_title("Gap 2 - Category Depth\n65% stuck at one product type", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.26,
-            "More categories = higher GP & stronger repeat.\n"
-            "The cross-sell opportunity is right here in the data.",
-            ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
 
     # Panel 3: Subscriber gap
     ax = axes[2]
@@ -119,17 +111,8 @@ def chart_slide1_problem():
             bbox=dict(boxstyle="round,pad=0.3", facecolor=LGREY, edgecolor=DARK, lw=1))
     ax.set_title("Gap 3 - Subscription\nSubscribers 3.6x more likely to return", fontsize=12,
                  fontweight="bold", color=DARK, pad=12)
-    ax.text(0.5, -0.18,
-            "Subscribers behave completely differently.\n"
-            "Converting repeat buyers = highest ROI move.",
-            ha="center", transform=ax.transAxes, fontsize=9, color=MID, style="italic")
 
-    plt.tight_layout(rect=[0, 0.13, 1, 1])
-    fig.text(0.5, 0.01,
-             "WHAT'S WORKING:  D1 customers (top 10% by profit) = 57.7% of total GP  |  "
-             "VIP avg GP = S$476  |  Collagen-first buyers repeat at 30% vs 18% accessories-first",
-             ha="center", fontsize=9, color=GREEN, fontweight="bold",
-             bbox=dict(boxstyle="round,pad=0.4", facecolor="#E8F5EE", edgecolor=GREEN, lw=1))
+    plt.tight_layout(rect=[0, 0.02, 1, 1])
     plt.savefig(f"{OUT}/slide1_problem_statement.png", dpi=150, bbox_inches="tight")
     plt.close()
     print("Saved slide1_problem_statement.png")
