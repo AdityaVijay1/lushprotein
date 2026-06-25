@@ -1,3 +1,5 @@
+# Raw customer data (contains PII - do not commit)
+Customer_data_raw/
 1.customer_transaction
 2.product_master
 3.Discounts
