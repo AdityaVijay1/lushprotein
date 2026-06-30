@@ -2,13 +2,6 @@
 ## Final Report — Group 1 (SMU × LushProtein)
 
 
-
----
-
-> **Document note:** This report is formatted for conversion to PDF at font size 10, single spacing. Target length: 25 pages excluding cover and table of contents. Placeholders marked `[INSERT: …]` indicate where screenshots, pipeline diagrams, or updated run outputs should be inserted before submission.
-
----
-
 ## Table of Contents
 
 1. [Executive Summary](#1-executive-summary)
