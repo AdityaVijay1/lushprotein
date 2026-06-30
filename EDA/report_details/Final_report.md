@@ -16,15 +16,17 @@
 
 1. [Executive Summary](#1-executive-summary)
 2. [Part A — Data Cleaning & Data Quality Improvements](#part-a--data-cleaning--data-quality-improvements)
-   - 2.1 [Scope and Evolution from Mid-Term](#21-scope-and-evolution-from-mid-term)
-   - 2.2 [Data Sources and Pipeline Overview](#22-data-sources-and-pipeline-overview)
-   - 2.3 [Mid-Term Baseline vs Final Improvements](#23-mid-term-baseline-vs-final-improvements)
-   - 2.4 [Layer 1 — Core Data Quality Drops (DQ-02 to DQ-04)](#24-layer-1--core-data-quality-drops-dq-02-to-dq-04)
-   - 2.5 [Layer 2 — LushProtein Business Filters (LP-F01 to LP-F04)](#25-layer-2--lushprotein-business-filters-lp-f01-to-lp-f04)
-   - 2.6 [Layer 0 and Layer 3 — Order Window and Order-Month Filters](#26-layer-0-and-layer-3--order-window-and-order-month-filters)
-   - 2.7 [Additional Validations and Enrichments (Post Mid-Term)](#27-additional-validations-and-enrichments-post-mid-term)
-   - 2.8 [Before vs After Summary](#28-before-vs-after-summary)
-   - 2.9 [Assumptions and Residual Limitations](#29-assumptions-and-residual-limitations)
+   - 2.1 [Introduction and Dataset Coverage (Mid-Term §1 — carried forward)](#21-introduction-and-dataset-coverage-mid-term-1--carried-forward)
+   - 2.2 [Summary Statistics and Distributions (Mid-Term §2 — carried forward)](#22-summary-statistics-and-distributions-mid-term-2--carried-forward)
+   - 2.3 [Data Issues and Discrepancies (Mid-Term §3 — carried forward)](#23-data-issues-and-discrepancies-mid-term-3--carried-forward)
+   - 2.4 [LTV and Metric Definitions (Mid-Term §4.1)](#24-ltv-and-metric-definitions-mid-term-41)
+   - 2.5 [Final Revisions Since Mid-Term (NEW)](#25-final-revisions-since-mid-term-new)
+   - 2.6 [Layer 1 — DQ Drops with Manifest Counts](#26-layer-1--dq-drops-with-manifest-counts)
+   - 2.7 [Layer 2 — LP Business Filters (LP-F01 to LP-F04)](#27-layer-2--lp-business-filters-lp-f01-to-lp-f04)
+   - 2.8 [Layers 0 & 3 — Order Window and Seasonality](#28-layers-0--3--order-window-and-seasonality)
+   - 2.9 [COGS Enrichment and Additional Validations](#29-cogs-enrichment-and-additional-validations)
+   - 2.10 [Before vs After Summary](#210-before-vs-after-summary)
+   - 2.11 [Assumptions and Residual Limitations](#211-assumptions-and-residual-limitations)
 3. [Part B — Insights & Recommendations (Solution 2)](#part-b--insights--recommendations-solution-2)
    - 3.1 [Business Problem Restated](#31-business-problem-restarted)
    - 3.2 [What the Data Shows — Three Gaps](#32-what-the-data-shows--three-gaps)
@@ -59,285 +61,358 @@ This report has two parts:
 
 # Part A — Data Cleaning & Data Quality Improvements
 
-## 2.1 Scope and Evolution from Mid-Term
-
-The mid-term report (March 2026) established the raw data landscape: **27,350 order-header rows**, **13,780 unique customers**, mixed currencies (SG/MY/HK), and a documented set of data quality issues (zero-revenue orders, 100%-discount fulfilments, wholesale outliers, UTM gaps, Recharge ID mismatches, and incomplete COGS).
-
-After the mid-term presentation, LushProtein provided explicit guidance on **which customers represent their current target market**. The finals analysis therefore applies:
-
-1. All mid-term **DQ drops** (unchanged in principle, now codified in `13_build_finals_datasets.py`)
-2. Four new **LP feedback filters** (LP-F01 to LP-F04)
-3. Additional **order-window** and **order-month** rules (Layers 0 and 3)
-4. **COGS enrichment** from LushProtein's June 2026 cost file (replacing the mid-term 40% margin proxy where coverage allows)
-
-**Design principle:** Mid-term EDA remains valid for historical exploration. **Finals-filtered datasets** (`outputs_finals/`) are the single source of truth for recommendations.
-
-`[INSERT: Figure A-1 — Cohort funnel diagram: 13,780 → DQ → LP filters → 5,694 finals customers]`
+> **Instructor guidance:** Part A carries forward the mid-term data-quality work (Sections 2.1–2.4 below). **Section 2.5 onward documents finals revisions** made visible after LushProtein feedback — codified in `EDA/13_build_finals_datasets.py` and `EDA/outputs_finals/manifest.json`.
 
 ---
 
-## 2.2 Data Sources and Pipeline Overview
+## 2.1 Introduction and Dataset Coverage (Mid-Term §1 — carried forward)
 
-| Source | Role | Finals usage |
-|--------|------|--------------|
-| Shopify order exports (SG/MY/HK) | Transaction history | Primary — orders/lines/customers |
-| Customer export (June 2026) | PII + join keys | Dashboard demo only; anonymised |
-| Product master | SKU/handle mapping | Category assignment via `PRODUCT_MAP` |
-| Recharge subscription export | Subscription events | Partial (2025–2026 window; joined on `shopify_order_id`) |
-| LP COGS file (June 2026) | Unit costs | Margin enrichment — 74.7% revenue coverage |
-| Discount codes export | Campaign reference | Not joinable to orders at line level — documented limitation |
+Dataset covers LushProtein operations from December 2019 to March 2026: customer transactions, products, discounts, campaigns, and subscription data.
 
-**Reproducibility:** Run `python EDA/13_build_finals_datasets.py`, then `python EDA/aditya_findings/enrich_finals_with_margin.py`.
+### Temporal Coverage
+
+**Period of analysis:** 2019-12-31 to 2026-03-30
+
+| Period | Orders | Unique Customers | Notes |
+|--------|--------|------------------|-------|
+| 2019 | 3 | 3 | Incomplete year — excluded from cohort analysis |
+| 2020 | 2,847 | 1,696 | Full year, zero discounting |
+| 2021 | 6,259 | 3,815 | Peak revenue year (S$848K) |
+| 2022 | 3,710 | 2,299 | First discounting introduced |
+| 2023 | 2,253 | 1,399 | Revenue collapse year |
+| 2024 | 4,261 | 2,621 | Recovery, heavy discounting |
+| 2025 | 6,407 | 4,107 | Highest order volume |
+| 2026 (Partial) | 1,610 | 1,230 | Jan–Mar only; excluded from full-year charts |
+
+**Figure A-1:** `charts/part_a_temporal_orders.png` — *[optional: insert orders-by-year bar chart from `outputs/12_acquisition_by_year.csv`]*
+
+### Store and Currency Coverage
+
+| Store | Orders | Revenue (Own Currency) | FX Rate | Revenue (SGD) |
+|-------|--------|------------------------|---------|---------------|
+| SG | 16,041 | S$1,913,068 | 1.00 | S$1,913,068 |
+| MY | 11,309 | RM $3,958,566 | 3.30 | S$1,199,566 |
+| HK | 2 | HK$1,943 | 6.10 | S$319 |
+| **All markets** | **27,350** | — | — | **S$3,112,952** |
+
+**FX methodology:** 5-year average rates (2020–2026) at load. Measurement error up to ±10% on absolute MY revenue; directional findings unaffected.
+
+**Known limitations:** MY dormant by 2025 (S$9,617 vs S$441,022 in 2021); HK immaterial (2 orders).
 
 ---
 
-## 2.3 Mid-Term Baseline vs Final Improvements
+## 2.2 Summary Statistics and Distributions (Mid-Term §2 — carried forward)
 
-| Area | Mid-term state | Final improvement |
-|------|----------------|-------------------|
-| Customer pool | 13,780 all paid customers | **5,694** finals-eligible (LP scope) |
-| Order pool | 27,350 headers | **8,955** finals orders |
-| Margin | 40% fixed proxy (65% COGS null) | **True COGS** where available; weighted margin **70.5%** on covered revenue |
-| Promo cohorts | Flagged in narrative | **Excluded** (Jul/Nov acquisition + 51%+ first-discount) |
-| Bulk SKU | Mentioned | **Systematically excluded** (`better-whey-protein-elite`) |
-| Pre-2022 cohort | Included in some charts | **Customer-level cut** — entire customer dropped if first order before 2022 |
-| Discount narrative | 51%+ story in slides | **Removed from finals narrative** per LP feedback; retained in historical EDA only |
-| Dataset location | `EDA/outputs/` | **`EDA/outputs_finals/`** with manifest and README |
+Understanding raw distributions motivated every countermeasure in Section 2.3.
+
+### 2.2.1 Order Revenue Distribution (SGD, post-FX)
+
+| Statistics | All Markets | SG Only | MY Only |
+|------------|-------------|---------|---------|
+| Count | 27,530 | 16,039 | 11,309 |
+| Mean | S$113.83 | S$119.28 | S$106.07 |
+| Median | S$59.90 | S$62.10 | S$55.48 |
+| Std Dev | S$413.76 | S$405.16 | S$425.60 |
+| Maximum | S$34,618 | S$26,520 | S$34,618 |
+
+Mean ≈ 2× median → right-skewed; wholesale/reseller orders drive the tail. **Figure A-2:** `charts/part_a_revenue_distribution.png`
+
+### 2.2.2 Orders per Customer
+
+| Statistics | All Markets | SG Only |
+|------------|-------------|---------|
+| Mean orders | 1.98 | 1.80 |
+| Median | 1 | 1 |
+| Max orders | 667 | 667 |
+| Unique customers | 13,780 | 8,920 |
+| Exactly 1 order | 9,321 (67.6%) | 6,454 (72.4%) |
+
+**Figure A-3:** `charts/part_a_one_time_buyer_rate.png` — one-time rate rises as cohort is cleaned (67.6% → 77.3% finals).
+
+### 2.2.3 Discount Distribution
+
+- 9,024 orders discounted (33% of total)
+- Discount depth = Discount / (Total + Discount)
+- **14.5% spike at 90–100% off** (1,308 orders) — referral/PR/subscription gifts at zero customer cost → addressed by DQ-03
+
+### 2.2.4 LTV by Acquisition Year and Channel
+
+| Channel | 2022 | 2023 | 2024 | 2025 | 2026 |
+|---------|------|------|------|------|------|
+| Direct / Organic | S$216 | S$105 | S$92 | S$73 | S$79 |
+| Subscription | S$292 | S$190 | S$134 | S$173 | S$110 |
+| Marketplace | S$128 | S$74 | S$57 | S$131 | S$139 |
+| Paid Social | — | — | — | S$70 | S$84 |
+
+Subscription-acquired customers highest LTV; marketplace repeat 14.4% vs Direct 33.5%.
+
+### 2.2.5 Missing Value Summary
+
+| Column | % Missing | Notes |
+|--------|-----------|-------|
+| Browser: UTM Source/Medium | 94.9% | Fallback: Shopify tags |
+| Browser: UTM Campaign | 95.0% | Same |
+| Browser: Referrer Domain | 81.8% | Expected for direct traffic |
+| Tags | 62.3% | Expected |
+| Line: Product Handle | 49.3% | Header rows without line items |
+| second_order_date | 67.6% | Expected — one-time buyers |
+| Shipping: Country | 3.9% | Minor |
+| Order Fulfilment Status | 0.8% | Minor |
+
+**Figure A-4:** `charts/part_a_missing_values.png`
 
 ---
 
-## 2.4 Layer 1 — Core Data Quality Drops (DQ-02 to DQ-04)
+## 2.3 Data Issues and Discrepancies (Mid-Term §3 — carried forward)
 
-Each issue follows: **Issue → Impact → Countermeasure → Validation → Result**.
+Each issue uses: **Issue → Impact → Countermeasure → Validation → Result**.
 
----
-
-### DQ-02: Zero Revenue and Zero Discount Orders
+### 3.1 Mixed Currencies
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | 336 orders with `Price: Total = 0` and `Price: Total Discount = 0` |
-| **Impact on analysis** | Inflates order counts; distorts AOV and repeat metrics with non-purchase events |
-| **Countermeasure applied** | Drop order if revenue = 0 AND discount = 0 |
-| **Validation performed** | Row count before/after; spot-check of dropped IDs against raw export |
-| **Result/improvement** | Removed non-behavioural rows; mid-term base reduced to clean paid-order set |
+| **Issue** | No FX at point of sale in raw export |
+| **Impact** | Non-comparable revenue across SG/MY/HK |
+| **Countermeasure** | 1 SGD = 3.3 MYR, 1 SGD = 6.1 HKD (5-year average) |
+| **Validation** | Store-level totals reconcile to mid-term table |
+| **Result** | All revenue in SGD for analysis |
 
----
-
-### DQ-03: 100%-Discount / Complimentary Fulfilments
+### 3.2 Zero Revenue and Zero Discount Orders (→ DQ-02)
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | 1,281 orders with revenue = 0 but positive discount value (influencer/PR/referral gifts) |
-| **Impact on analysis** | Skews LTV, discount depth, and retention if treated as paid acquisition |
-| **Countermeasure applied** | Exclude from finals analysis (confirmed with LP as non-consumer behaviour) |
-| **Validation performed** | LP validation at mid-term; tag/discount pattern review |
-| **Result/improvement** | Finals LTV and repeat rates reflect **paid consumer behaviour** only |
+| **Issue** | 336 orders: Price Total = 0 AND Discount = 0 |
+| **Impact** | Inflates counts; non-purchase events |
+| **Countermeasure** | Remove from analysis |
+| **Validation** | Row audit vs raw export |
+| **Result** | Clean paid-order base |
 
----
-
-### DQ-04: Wholesale and Extreme-Value Outliers
+### 3.3 100%-Discount Orders (→ DQ-03)
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | 78 B2B/outlier orders (65 `wholesale-sale` tag + 14 orders > S$5,000) |
-| **Impact on analysis** | Right-skewed revenue (mean S$114 vs median S$60); reseller behaviour dominates top decile |
-| **Countermeasure applied** | Exclude tagged wholesale OR orders > S$5,000 |
-| **Validation performed** | Distribution of AOV before/after; max order review |
-| **Result/improvement** | Consumer-focused metrics; largest retained order aligned with DTC range |
+| **Issue** | 1,281 orders: revenue = 0, discount > 0 (LP-confirmed gifts/PR) |
+| **Impact** | Skews LTV and discount analysis |
+| **Countermeasure** | Exclude from consumer behaviour analysis |
+| **Validation** | LP confirmation at mid-term |
+| **Result** | Paid-consumer LTV only |
 
----
-
-### Additional Mid-Term Handling (Carried Forward)
-
-| Issue | Countermeasure | Status in finals |
-|-------|----------------|------------------|
-| Mixed currencies (SG/MY/HK) | 5-year average FX at load (SGD/MYR 3.3, SGD/HKD 6.1) | Applied; ±10% measurement error on early MY revenue |
-| Line vs header rows | Split `orders.parquet` (Top Row = 1) vs `lines.parquet` (Line Item) | Maintained |
-| UTM 95% missing | Fallback: Shopify tags + `is_subscription` for channel | Maintained |
-| Recharge ID mismatch | Join on `shopify_order_id` not customer ID | Documented; churn window 2025–2026 only |
-| Duplicate customer IDs | Normalise apostrophe/scientific notation in exports | Extended to dashboard demo pipeline |
-
-`[INSERT: Table A-1 — Order counts at each DQ layer from 13_build_finals_datasets.py console output]`
-
----
-
-## 2.5 Layer 2 — LushProtein Business Filters (LP-F01 to LP-F04)
-
-These filters implement **LP's post mid-term scope decisions**. They are not data errors; they define the **addressable DTC consumer base**.
-
----
-
-### LP-F01: Exclude Better Whey Protein Elite Buyers
+### 3.4 Wholesale / Outlier Orders (→ DQ-04)
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | `better-whey-protein-elite` attracts bulk buyers not representative of core consumers |
-| **Impact on analysis** | Inflates one-time high-AOV behaviour; distorts cross-sell and reorder timing |
-| **Countermeasure applied** | Flag customers with any elite handle purchase; exclude from `finals_eligible` |
-| **Validation performed** | Handle search across line items; LP confirmation |
-| **Result/improvement** | ~200 customers removed from recommendation targeting pool |
+| **Issue** | 78 orders: `wholesale-sale` tag and/or > S$5,000 |
+| **Impact** | Mean S$114 vs median S$60; reseller dominates tail |
+| **Countermeasure** | Exclude wholesale tag OR revenue > S$5,000 |
+| **Validation** | AOV distribution before/after |
+| **Result** | DTC-focused metrics |
 
----
-
-### LP-F02: Exclude July and November Acquisition Months
+### 3.5 Missing UTM Attributions
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | July (anniversary) and November (BFCM) drive promotion-heavy, atypical cohorts |
-| **Impact on analysis** | Skews LTV benchmarks and repeat-rate comparisons |
-| **Countermeasure applied** | Exclude customers whose **first order month** is July or November |
-| **Validation performed** | Monthly acquisition vs discount depth charts |
-| **Result/improvement** | Retention benchmarks reflect **non-promo acquisition** |
+| **Issue** | 94.9% missing UTM fields |
+| **Impact** | Cannot rely on browser UTM for channel |
+| **Countermeasure** | Marketplace via Shopify tags; subscription via `is_subscription`; else Direct/Own |
+| **Validation** | Tag cross-check; 3,263/3,265 subscription matches |
+| **Result** | Reliable channel classification without UTM |
 
----
-
-### LP-F03: Post-January 2022 Customer Cut (Lifetime)
+### 3.6 Line-Item vs Order-Level Row Structure
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | Pre-2022 = product/pricing experimentation phase per LP |
-| **Impact on analysis** | Mixing eras blends incompatible pricing and portfolio strategies |
-| **Countermeasure applied** | If lifetime `first_order_date < 2022-01-01`, drop **entire customer** (all orders) |
-| **Validation performed** | Cohort LTV by year; LP sign-off |
-| **Result/improvement** | Stable reference period for all finals insights |
+| **Issue** | Raw export mixes header and line rows; 49.3% null Product Handle |
+| **Impact** | Double-counting or wrong SKU attribution |
+| **Countermeasure** | Split: `orders.parquet` (Top Row = 1) and `lines.parquet` (Line Item) |
+| **Validation** | 27,350 orders vs 50,963 line items |
+| **Result** | Correct order vs SKU analysis |
 
-**Important:** This is a **customer cut**, not an order cut. A customer acquired in March 2022 retains all 2022–2025 orders.
-
----
-
-### LP-F04: Exclude >50% First-Order Discount
+### 3.7 Subscription Tag vs Flag
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | 51%+ first-order discount = referral/sampling/gifting, not organic repeat potential |
-| **Impact on analysis** | Overstates one-and-done rate drivers; confounds L3 timing (non-typical replenishment intent) |
-| **Countermeasure applied** | Exclude if first retained order discount bin = `51%+` |
-| **Validation performed** | Discount bin vs repeat rate cross-tab |
-| **Result/improvement** | L3 reorder medians based on **paid-first-order** behaviour |
+| **Issue** | 3,267 tagged vs 3,265 `is_subscription = true` |
+| **Impact** | Negligible (2 orders) |
+| **Countermeasure** | Use `is_subscription` flag consistently |
+| **Validation** | Cross-tab |
+| **Result** | Single subscription definition |
 
----
-
-### Cohort Funnel (Finals)
-
-| Stage | Customers | Notes |
-|-------|-----------|-------|
-| Total paid, non-DQ customers | ~13,780 | Mid-term base |
-| After LP-F03 (2022+ acquisition) | ~6,200 | Pre-2022 removed |
-| After LP-F01, F02, F04 | **5,694** | **Finals-eligible** |
-| After marketplace/reseller exclusion (decile work) | 4,949 | Used for profit decile — see Appendix C |
-| After full decile exclusions | 4,290 | Rankable consumer pool for tier analysis |
-
-**Finals recommendation metrics (Solution 2) use 5,694** unless otherwise stated.
-
-`[INSERT: Figure A-2 — Filter decision tree: DQ → LP-F01–F04 → finals_eligible flag]`
-
----
-
-## 2.6 Layer 0 and Layer 3 — Order Window and Order-Month Filters
-
-### Layer 0 — 2022+ Order Window (on Retained Customers)
+### 3.8 Marketplace Subscription and Repeat Measurement
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | Retained customers may have pre-2022 order history |
-| **Impact on analysis** | Category breadth and reorder intervals could include obsolete SKUs |
-| **Countermeasure applied** | Keep only orders with `order_date >= 2022-01-01` for finals tables |
-| **Validation performed** | Order count drop logged in build script |
-| **Result/improvement** | **8,955 orders** in finals `orders.parquet` |
+| **Issue** | Shopify cannot see Shopee/Lazada → 0% marketplace subscription rate |
+| **Impact** | Misleading if interpreted as behaviour |
+| **Countermeasure** | Document as platform limitation; 14.4% repeat = lower bound |
+| **Validation** | 2,126 marketplace-first customers |
+| **Result** | Valid relative comparison vs 33.5% Direct |
 
-### Layer 3 — July/November Order Months + Elite Line Items
-
-| Element | Detail |
-|---------|--------|
-| **Issue identified** | Promo-month **orders** (not just acquisitions) distort seasonality; elite lines remain in basket |
-| **Impact on analysis** | Reorder medians and co-purchase rates could reflect promo stacking |
-| **Countermeasure applied** | Drop orders in months 7 and 11; remove elite handle from `lines.parquet` |
-| **Validation performed** | Seasonal order volume check; line-item count reconciliation |
-| **Result/improvement** | **14,448 line items** in clean finals lines file |
-
----
-
-## 2.7 Additional Validations and Enrichments (Post Mid-Term)
-
-### Subscription Flag Consistency
-
-| Check | Result | Rule |
-|-------|--------|------|
-| Tag vs `is_subscription` | 3,263 / 3,265 match (99.9%) | **Use `is_subscription` flag** consistently |
-
-### Channel Attribution
-
-| Check | Result | Rule |
-|-------|--------|------|
-| Marketplace subscription rate | 0% (platform limitation) | Do not interpret as true behaviour |
-| Marketplace repeat vs Direct | 14.4% vs 33.5% | Valid relative comparison (same Shopify-visible baseline) |
-
-### COGS / Margin Enrichment (June 2026)
+### 3.9 Unused Campaigns Dataset
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | Mid-term: 65% of variants missing COGS → 40% margin proxy only |
-| **Countermeasure applied** | Join LP COGS file; compute `true_gross_profit`, deciles, CRM tiers |
-| **Validation performed** | Coverage report: **74.7% revenue**, **70.5% weighted margin** |
-| **Result/improvement** | GP figures in prize model use **true margin where covered**; proxy labelled where not |
+| **Issue** | Sessions CSV: 246,909 rows, no dates or customer IDs |
+| **Impact** | Cannot join to orders |
+| **Countermeasure** | Not used; order-level UTM/tags instead |
+| **Validation** | Schema review |
+| **Result** | No false precision from session aggregates |
 
-### Product Category Mapping
+### 3.10 Discount Codes Not Linked to Orders
 
 | Element | Detail |
 |---------|--------|
-| **Issue identified** | Handles vary (legacy packs, sachets, POS unlinked SKUs) |
-| **Countermeasure applied** | Central `PRODUCT_MAP` in `00_config.py`; fallback category `Unknown` |
-| **Validation performed** | Category distribution sanity check; manual review of top 20 handles |
-| **Result/improvement** | L3 routing key (`first_product_category`) stable for 7-row lookup |
+| **Issue** | 367 discount codes; no order-level join key in export |
+| **Impact** | Cannot attribute specific campaigns to orders |
+| **Countermeasure** | Use binary `has_discount` + discount depth % |
+| **Validation** | Export schema |
+| **Result** | Discount analysis at order level only |
 
-### Duplicate and Missing Value Rules (Finals)
+### 3.11 Recharge Data Gaps
 
-| Field | Handling |
-|-------|----------|
-| `customer_id` | Strip `'`, commas, `.0`; reject scientific notation in UI demos |
-| `second_order_date` | Null for 67.6% one-time buyers — **expected**, not imputed |
-| `Tags` / UTM | Missing treated as Direct/Own; not used for L3 routing |
-| Duplicate orders | Dedupe on `order_id` at load |
+| Element | Detail |
+|---------|--------|
+| **Issue** | Recharge April 2025–2026 only; 8-digit IDs ≠ 13-digit Shopify IDs |
+| **Impact** | Incomplete subscription history; churn window limited |
+| **Countermeasure** | Join on `shopify_order_id`: 1,163/1,215 matched |
+| **Validation** | Match rate 95.7% |
+| **Result** | Churn findings labelled 2025–2026 window only |
 
-### Outlier Handling Summary
+### 3.12 Product Master COGS (Updated in Finals — see §2.9)
 
-| Type | Method |
-|------|--------|
-| Revenue outliers | DQ-04 (>S$5,000) + wholesale tag |
-| Reorder interval outliers | **Median** per customer, then median across SKU buyers (not mean) |
-| Discount outliers | LP-F04 for acquisition; historical 51%+ retained in EDA only |
+| Element | Detail |
+|---------|--------|
+| **Issue (mid-term)** | 65% variants null COGS; 58/167 with cost |
+| **Impact** | Profit figures required 40% proxy |
+| **Countermeasure (mid-term)** | `MARGIN_RATE = 0.40`; label "profit proxy" |
+| **Countermeasure (finals)** | LP COGS file June 2026 → 74.7% revenue coverage |
+| **Result** | True GP where covered; proxy labelled elsewhere |
 
-`[INSERT: Screenshot — margin_enrichment_summary.json key metrics]`
-
----
-
-## 2.8 Before vs After Summary
-
-| Metric | Mid-term (broad base) | Finals (filtered) | Interpretation |
-|--------|----------------------|-------------------|----------------|
-| Customers | 13,780 | **5,694** | LP addressable DTC base |
-| Orders | 27,350 | **8,955** | 2022+ consumer orders |
-| One-time buyer rate | 67.6% | **77.3%** | Higher — promo/bulk noise removed |
-| Single-category share | ~59% (broader) | **65%** (3,681) | Stricter cohort shows deeper category stuck |
-| Margin basis | 40% proxy | **70.5% weighted true margin** (74.7% rev coverage) | More defensible GP prize model |
-| Primary data path | `EDA/outputs/` | **`EDA/outputs_finals/`** | All final slides use finals |
-
-**Reliability improvement:** Finals cohort aligns with **who LushProtein wants to grow today** — post-2022, non-promo-acquired, non-bulk, paid-first-order consumers. L3 reorder days (Clear 54d, Lean 35d, Collagen 42d) are measured on this cleaned base.
+**Figure A-5:** `charts/part_a_filter_layers.png` — relative impact of each cleaning layer.
 
 ---
 
-## 2.9 Assumptions and Residual Limitations
+## 2.4 LTV and Metric Definitions (Mid-Term §4.1)
 
-1. **FX:** 5-year average rates; MY early-year revenue may differ ±10% in SGD terms — direction unchanged.
-2. **COGS:** 25.3% of revenue lacks unit cost — GP on uncovered SKUs uses coverage-weighted averages or is excluded from SKU-level profit claims.
-3. **Marketplace:** Repeat rates are **lower bounds** (Shopify cannot see Shopee/Lazada reorders).
-4. **Recharge:** One-year export window; long-tenure subscriber churn understated.
-5. **2026 partial year:** Jan–Mar 2026 excluded from full-year trend charts where noted.
-6. **HK store:** Immaterial (2 orders) — SG-dominated conclusions.
+**Primary LTV:** Sum of `Price: Total` per customer across paid, non-restocked orders (SGD).
+
+**Gross profit LTV (mid-term):** LTV × 0.40 (40% proxy when COGS missing).
+
+**Gross profit LTV (finals):** Sum of `true_gross_profit` from margin-enriched `customers.parquet` where COGS coverage exists; otherwise flagged as proxy.
 
 ---
 
+## 2.5 Final Revisions Since Mid-Term (NEW)
+
+After the mid-term presentation, LushProtein confirmed four **business-scope filters** (mid-term §5). These were **codified and extended** in June 2026:
+
+| Mid-term action | Finals implementation | Change visible? |
+|-----------------|----------------------|-----------------|
+| Four LP filters described | LP-F01 to LP-F04 in `13_build_finals_datasets.py` | **Yes — reproducible script** |
+| Estimated 6,353 customers | **Authoritative 5,694** (`manifest.json`) | **Yes — order-window refinement** |
+| 40% margin proxy only | COGS enrichment (74.7% rev coverage) | **Yes — true GP** |
+| Manual filter narrative | Layer 0 + Layer 3 order rules | **Yes — new** |
+| Mid-term base in `outputs/` | Finals base in `outputs_finals/` | **Yes — separate folder** |
+
+**Mid-term §5 filter list (unchanged intent):**
+
+1. Exclude **Better Whey Protein Elite** buyers (bulk, non-representative)
+2. Exclude **July and November acquisitions** (anniversary, BFCM)
+3. **Post-January 2022** acquisitions only (stable portfolio era)
+4. Exclude **>50% first-purchase discount** (referral/sampling)
+
+**Figure A-6:** `charts/part_a_cohort_funnel.png` — 13,780 → 12,801 (DQ) → 5,694 (finals customers).
+
+**Figure A-7:** `charts/part_a_order_funnel.png` — 27,350 → 25,658 (DQ) → 8,955 (finals orders).
+
+---
+
+## 2.6 Layer 1 — DQ Drops with Manifest Counts
+
+Authoritative counts from `outputs_finals/manifest.json`:
+
+| Rule ID | Rule | Orders dropped (approx.) |
+|---------|------|--------------------------|
+| **DQ-02** | Revenue = 0 AND discount = 0 | 336 |
+| **DQ-03** | Revenue = 0 AND discount > 0 | 1,281 |
+| **DQ-04** | `wholesale-sale` OR revenue > S$5,000 | 78 |
+| **Total DQ** | — | 27,350 → **25,658** orders; 13,780 → **12,801** customers |
+
+Reference snapshots: `outputs_finals/do_not_use_these/*_dq_clean.parquet`
+
+---
+
+## 2.7 Layer 2 — LP Business Filters (LP-F01 to LP-F04)
+
+| Rule ID | Rule | Customers affected (approx.) |
+|---------|------|------------------------------|
+| **LP-F03** | Lifetime `first_order_date >= 2022-01-01` — entire customer excluded if before | ~7,500 excluded |
+| **LP-F01** | Any purchase of `better-whey-protein-elite` | ~200 |
+| **LP-F02** | Acquired in July or November | ~400 |
+| **LP-F04** | First retained order discount bin = 51%+ | ~659 |
+| **Finals eligible** | All LP flags pass | **5,694 customers** |
+
+**Note on 6,353 vs 5,694:** Mid-term estimated 6,353 after LP filters before order-window and Layer 3 refinements. The manifest **5,694** is authoritative for all final recommendations.
+
+---
+
+## 2.8 Layers 0 & 3 — Order Window and Seasonality
+
+| Layer | Rule | Result |
+|-------|------|--------|
+| **L0** | `order_date >= 2022-01-01` on retained customers | Pre-2022 orders dropped from finals tables |
+| **L3** | Drop orders in **July and November** (order month) | Promo-season orders excluded |
+| **L3** | Drop `better-whey-protein-elite` from line items | Bulk SKU removed from co-purchase/reorder calcs |
+
+**Final row counts:** 8,955 orders · 14,448 line items · 5,694 customers
+
+---
+
+## 2.9 COGS Enrichment and Additional Validations
+
+**June 2026 update:** `enrich_finals_with_margin.py` joins LP COGS file.
+
+| Metric | Mid-term | Finals |
+|--------|----------|--------|
+| COGS coverage | 35% variants | **74.7% revenue** |
+| Weighted margin | 40% proxy | **70.5% true margin** (covered rev) |
+| Customer GP field | `total_revenue × 0.40` | `true_gross_profit` |
+
+Additional checks carried forward: subscription flag consistency (99.9%), marketplace repeat as lower bound, `PRODUCT_MAP` category mapping, customer ID normalisation for dashboard demo.
+
+`[INSERT: screenshot — margin_enrichment_summary.json]`
+
+**Optional Figure A-8:** `aditya_findings/margin_analysis/outputs/fig_proxy_vs_true_gp.png`
+
+---
+
+## 2.10 Before vs After Summary
+
+| Metric | Mid-term base | After DQ only | Finals (all layers) |
+|--------|---------------|---------------|---------------------|
+| Customers | 13,780 | 12,801 | **5,694** |
+| Orders | 27,350 | 25,658 | **8,955** |
+| One-time buyer % | 67.6% | ~70% | **77.3%** |
+| Margin basis | 40% proxy | 40% proxy | **True COGS (74.7% cov.)** |
+| Data path | `outputs/` | `do_not_use_these/` | **`outputs_finals/`** |
+
+Cleaning **increases** observed one-and-done rate because promo/bulk/gift buyers are removed — the finals cohort is harder to retain, and recommendations target realistic DTC consumers.
+
+---
+
+## 2.11 Assumptions and Residual Limitations
+
+1. **FX:** ±10% on early MY revenue in SGD — direction unchanged.
+2. **COGS:** 25.3% revenue without unit cost — GP claims scoped to covered SKUs.
+3. **Marketplace:** Repeat rates are lower bounds.
+4. **Recharge:** One-year window only.
+5. **2026:** Partial year excluded from full-year trends where noted.
+6. **HK:** Immaterial (2 orders).
+
+**Reproducibility:** `python EDA/13_build_finals_datasets.py` then `python EDA/aditya_findings/enrich_finals_with_margin.py`
+
+**Regenerate Part A charts:** `python EDA/report_details/build_part_a_charts.py`
+
+---
 # Part B — Insights & Recommendations (Solution 2)
 
 > **Scope note:** Solution 1 (customer tiering, reinvestment budget, win-back campaigns) is documented in the presentation materials and covered by another team member. This section covers **Solution 2 only** — the recommendation system and subscription development engine.
@@ -760,10 +835,16 @@ Use this map when converting the report to PDF. Insert figures near the referenc
 
 | Figure ID | File path | Section | Caption |
 |-----------|-----------|---------|---------|
-| A-1 | `[CREATE: cohort funnel]` | 2.1 | Customer count at each filter stage (13,780 → 5,694) |
-| A-2 | `[CREATE: filter decision tree]` | 2.5 | DQ and LP filter logic |
-| A-3 | Output of `13_build_finals_datasets.py` | 2.4 | Console log — rows dropped per rule |
-| A-4 | `margin_enrichment_summary.json` | 2.7 | COGS coverage and weighted margin |
+| A-1 | `report_details/charts/part_a_cohort_funnel.png` | 2.5 | Customer funnel: 13,780 → 12,801 (DQ) → 5,694 (finals) |
+| A-2 | `report_details/charts/part_a_revenue_distribution.png` | 2.2.1 | Order revenue before vs after cleaning (cap S$5K display) |
+| A-3 | `report_details/charts/part_a_one_time_buyer_rate.png` | 2.2.2 | One-time buyer % rises as cohort gets cleaner |
+| A-4 | `report_details/charts/part_a_missing_values.png` | 2.2.5 | Missing value profile — key Shopify fields |
+| A-5 | `report_details/charts/part_a_filter_layers.png` | 2.3 | DQ + LP + order-window layers — relative impact |
+| A-6 | `report_details/charts/part_a_cohort_funnel.png` | 2.5 | Same as A-1 — customer cohort funnel |
+| A-7 | `report_details/charts/part_a_order_funnel.png` | 2.5 | Order funnel: 27,350 → 25,658 → 8,955 |
+| A-8 | `aditya_findings/margin_analysis/outputs/fig_proxy_vs_true_gp.png` | 2.9 | 40% proxy vs true COGS margin |
+| A-9 | Screenshot `outputs_finals/manifest.json` | 2.6 | Authoritative row counts per filter layer |
+| A-10 | Console output `13_build_finals_datasets.py` | 2.6 | Rows dropped per DQ/LP rule |
 
 ## Part B — Solution 2 (Recommendation System)
 
@@ -827,4 +908,4 @@ Solution 2 (L3) **feeds** Solution 1 by moving Untiered customers toward Silver/
 
 ---
 
-*End of report. Regenerate charts: `python EDA/aditya_findings/build_slide_charts.py` and `python EDA/aditya_findings/build_rec_sys_charts.py`.*
+*End of report. Regenerate Part A charts: `python EDA/report_details/build_part_a_charts.py`. Regenerate Part B charts: `python EDA/aditya_findings/build_slide_charts.py` and `python EDA/aditya_findings/build_rec_sys_charts.py`.*
