@@ -1,10 +1,7 @@
 # ISSS603 Applied Data Science for Customer Insights
 ## Final Report — Group 1 (SMU × LushProtein)
 
-**Prepared for:** LushProtein (Lush Protein Pte Ltd)  
-**Prepared by:** Aditya Vijay, Ang Wei Lin, Aung Shwe Tin, Lee Sae Lin, Pham Vinh Tan Emily, Toh Zheng Feng  
-**Submission date:** June 2026  
-**Report type:** Consulting deliverable — data quality improvements and customer development recommendations
+
 
 ---
 
