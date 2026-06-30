@@ -1,0 +1,81 @@
+﻿=== CROSS SELL TIMING AND SAMPLES ===
+Cols: ['first_product_category', 'cross_sell_category', 'sample_category', 'sample_product_suggestion', 'email_cross_sell_day_after_delivery', 'physical_sample_day_after_delivery', 'median_reorder_days', 'sample_timing_rationale', 'email_timing_rationale', 'at_checkout_action', 'co_purchase_evidence_pct', 'evidence_note', 'purchase_number_for_sample', 'subscribe_trigger_day']
+  first_product_category cross_sell_category sample_category                                     sample_product_suggestion  email_cross_sell_day_after_delivery  physical_sample_day_after_delivery  median_reorder_days                                                                                                                  sample_timing_rationale                                                        email_timing_rationale                                                            at_checkout_action  co_purchase_evidence_pct                                            evidence_note                                                purchase_number_for_sample  subscribe_trigger_day
+0          Clear Protein        Lean Protein   Collagen Glow  Collagen Glow 25g sachet or Lean 40g single-serve (TMT/Taro)                                   14                                  44                   54  Ship sample on day 44 (10d before median reorder at 54d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 14 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      25.0             25% all-pool / 53% D1 co-purchase ClearΓåÆLean  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     48
+1           Lean Protein       Clear Protein   Collagen Glow    Clear 25g sachet (Peach or White Grape) or Collagen sachet                                   14                                  25                   35  Ship sample on day 25 (10d before median reorder at 35d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 14 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      28.9           28.9% all-pool / 65% D1 co-purchase LeanΓåÆClear  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     48
+2          Collagen Glow       Clear Protein    Lean Protein               Clear 25g sachet Peach OR Lean 40g single-serve                                   21                                  32                   42  Ship sample on day 32 (10d before median reorder at 42d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 21 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      23.8  Collagen-first buyers need protein attach; 30.5% repeat  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     42
+3            Accessories        Lean Protein   Clear Protein                 Clear 25g sachet ΓÇö do NOT send another shaker                                    7                                  25                   35  Ship sample on day 25 (10d before median reorder at 35d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.   Day 7 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      41.2     AccessoriesΓåÆLean 41%; shaker-led acq only 20% repeat  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     42
+4            Soy Protein       Clear Protein    Lean Protein                            Clear or Lean 25g/40g single-serve                                   14                                  74                   84  Ship sample on day 74 (10d before median reorder at 84d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 14 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      10.0                       Low co-purchase; push hero protein  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     42
+5                  Other       Clear Protein    Lean Protein                  Discovery sampler 6-pack OR Clear 25g sachet                                   14                                  40                   50  Ship sample on day 40 (10d before median reorder at 50d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 14 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                      15.5                           Default to hero protein ladder  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     42
+6                Unknown       Clear Protein    Lean Protein                                        Clear 25g sachet Peach                                   14                                  40                   50  Ship sample on day 40 (10d before median reorder at 50d) ΓÇö NOT in first order box. Customer tries new category before reorder decision.  Day 14 after order 1 delivery ΓÇö product experienced, reorder not yet placed.  Layer 2 only: same-category bundle (e.g. Peach+W.Grape) ΓÇö not cross-category                       9.1                        Fallback ΓÇö map SKU in PRODUCT_MAP  1st order buyers (T4/T3); 2nd order buyers get 3rd-category sample day 7                     42
+
+=== NEXT BEST SKU PER FIRST PURCHASE ===
+Cols: ['first_order_sku', 'recommended_next_sku', 'transition_count', 'first_sku_customers', 'p_second_given_first']
+                                               first_order_sku                                        recommended_next_sku  transition_count  first_sku_customers  p_second_given_first
+0                                        0724999808361|default                                         clear-protein|Peach                 7                   36                0.1944
+1                                  0724999810463|Thai Milk Tea                                  lean-protein|Thai Milk Tea                10                   21                0.4762
+2                                           0724999810470|Taro                                         clear-protein|Peach                 7                   16                0.4375
+3                                   better-whey|Cocoa Dinosaur                                  better-whey|Cocoa Dinosaur                38                   90                0.4222
+4                                       better-whey|Matchawhey                                      better-whey|Matchawhey                13                   34                0.3824
+5                            better-whey|Natural (Unflavoured)                           better-whey|Natural (Unflavoured)                12                   35                0.3429
+6                                        better-whey|Teh Tarik                                       better-whey|Teh Tarik                 7                   18                0.3889
+7                                          better-whey|Vanilla                                         better-whey|Vanilla                 5                   16                0.3125
+8                        clear-protein-25g-single-sachet|Peach                                  lean-protein|Thai Milk Tea                 6                   25                0.2400
+9                  clear-protein-25g-single-sachet|White Grape                                  lean-protein|Thai Milk Tea                10                   28                0.3571
+10                                         clear-protein|Peach                                         clear-protein|Peach                85                  182                0.4670
+11                                   clear-protein|White Grape                                   clear-protein|White Grape                50                  136                0.3676
+12                   collagen-glow|1 x 300g pack (30 servings)                   collagen-glow|1 x 300g pack (30 servings)                 7                   14                0.5000
+13                                          collagen-glow|300g                   collagen-glow|1 x 300g pack (30 servings)                 4                   12                0.3333
+14                                     collagen-glow|300g Pack                                     collagen-glow|300g Pack                17                   38                0.4474
+15                       collagen-glow|300g Pack (30 servings)                       collagen-glow|300g Pack (30 servings)                14                   25                0.5600
+16                         collagen-glow|Natural (Unflavoured)                         collagen-glow|Natural (Unflavoured)                16                   29                0.5517
+17                                   collagen-glow|Unflavoured                                   collagen-glow|Unflavoured                 5                   12                0.4167
+18  creatine-monohydrate-sachet|10 x 5g (10 servings) *Most Po  creatine-monohydrate-sachet|10 x 5g (10 servings) *Most Po                 4                   11                0.3636
+19                                           lean-protein|Taro                                           lean-protein|Taro                43                   80                0.5375
+
+=== FIRST TO SECOND SKU MATRIX ===
+Cols: ['first_order_sku', 'second_order_sku', 'transition_count', 'first_sku_customers', 'p_second_given_first']
+          first_order_sku                                       second_order_sku  transition_count  first_sku_customers  p_second_given_first
+0   0724999808361|default                                    clear-protein|Peach                 7                   36                0.1944
+1   0724999808361|default                  collagen-glow|300g Pack (30 servings)                 7                   36                0.1944
+2   0724999808361|default                             better-whey|Cocoa Dinosaur                 6                   36                0.1667
+3   0724999808361|default                              clear-protein|White Grape                 6                   36                0.1667
+4   0724999808361|default                             lean-protein|Thai Milk Tea                 4                   36                0.1111
+5   0724999808361|default                                  0724999808361|default                 3                   36                0.0833
+6   0724999808361|default              soy-protein-isolate|Natural (Unflavoured)                 3                   36                0.0833
+7   0724999808361|default                                 better-whey|Matchawhey                 2                   36                0.0556
+8   0724999808361|default                                  plant-protein|Vanilla                 2                   36                0.0556
+9   0724999808361|default                                      lean-protein|Taro                 2                   36                0.0556
+10  0724999808361|default                    plant-protein|Natural (Unflavoured)                 2                   36                0.0556
+11  0724999808361|default               prime-whey-isolate|Natural (Unflavoured)                 1                   36                0.0278
+12  0724999808361|default                      better-whey|Vanilla (unsweetened)                 1                   36                0.0278
+13  0724999808361|default  pureburn-fat-burner-capsules|90 Tablets (90 servings)                 1                   36                0.0278
+14  0724999808361|default                      prime-whey-isolate|Cocoa Dinosaur                 1                   36                0.0278
+
+=== L1 RULE BASED ===
+       if_bought      recommend                                       rule
+0  Clear Protein   Lean Protein                D1 T3: 25-62% also buy Lean
+1   Lean Protein  Clear Protein                D1 T3: 61.7% also buy Clear
+2   Lean Protein    Accessories            Cohort T3: 29% also Accessories
+3  Clear Protein    Accessories               Cart add-on, not acquisition
+4  Collagen Glow  Clear Protein  Collagen repeat 30.5%, protein cross-sell
+5    Accessories   Lean Protein                AccessoriesΓåÆLean 41% cohort
+6    Accessories  Clear Protein           Shaker buyers need protein trial
+
+=== SKU ASSOCIATION RULES (L2) ===
+                                                 antecedent                                               consequent  support  confidence   lift  pair_orders
+0                               0724999810463|Thai Milk Tea                           lushprotein-clear-shaker|White   0.0161      0.9290  10.22          144
+1                                        0724999810470|Taro                              0724999810463|Thai Milk Tea   0.0137      0.9179  53.03          123
+2                                        0724999810470|Taro                           lushprotein-clear-shaker|White   0.0135      0.9030   9.93          121
+3                               0724999810463|Thai Milk Tea                                       0724999810470|Taro   0.0137      0.7935  53.03          123
+4               clear-protein-25g-single-sachet|White Grape                    clear-protein-25g-single-sachet|Peach   0.0170      0.7136  27.66          152
+5            lushprotein-lean-protein-40g-single-serve|Taro  lushprotein-lean-protein-40g-single-serve|Thai Milk Tea   0.0170      0.6786  24.31          152
+6                     clear-protein-25g-single-sachet|Peach              clear-protein-25g-single-sachet|White Grape   0.0170      0.6580  27.66          152
+7   lushprotein-lean-protein-40g-single-serve|Thai Milk Tea           lushprotein-lean-protein-40g-single-serve|Taro   0.0170      0.6080  24.31          152
+8                                         lean-protein|Taro                               lean-protein|Thai Milk Tea   0.0286      0.3590   2.86          256
+9                                 clear-protein|White Grape                                      clear-protein|Peach   0.0372      0.3561   2.52          333
+10           lushprotein-lean-protein-40g-single-serve|Taro                           lushprotein-clear-shaker|White   0.0088      0.3527   3.88           79
+11  lushprotein-lean-protein-40g-single-serve|Thai Milk Tea                           lushprotein-clear-shaker|White   0.0088      0.3160   3.48           79
+12              clear-protein-25g-single-sachet|White Grape                           lushprotein-clear-shaker|White   0.0070      0.2958   3.25           63
+13                    clear-protein-25g-single-sachet|Peach  lushprotein-lean-protein-40g-single-serve|Thai Milk Tea   0.0075      0.2900  10.39           67
+14                    clear-protein-25g-single-sachet|Peach                           lushprotein-clear-shaker|White   0.0070      0.2727   3.00           63

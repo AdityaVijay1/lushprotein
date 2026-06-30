@@ -1,0 +1,19 @@
+{
+  "pool_customers": 4290,
+  "tier_counts": {
+    "T4": 2120,
+    "T5": 831,
+    "T2": 744,
+    "T1": 532,
+    "T3": 63
+  },
+  "budget_pct_low": 0.05,
+  "budget_pct_high": 0.1,
+  "outputs": [
+    "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\outputs_finals\\crm_treatment_tiers.csv",
+    "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\aditya_findings\\outputs\\crm_tier_incentive_summary.csv",
+    "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\aditya_findings\\outputs\\cm_decile_incentive_budgets.csv",
+    "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\aditya_findings\\outputs\\cross_sell_timing_and_samples.csv",
+    "C:\\Users\\adity\\Documents\\Aditya SMU\\SMU Sem 5\\Lush Protein SMU X\\LushProtein_Project_Data_20260505\\EDA\\aditya_findings\\outputs\\sample_strategy_by_purchase_stage.csv"
+  ]
+}

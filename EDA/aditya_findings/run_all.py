@@ -17,6 +17,8 @@ SCRIPTS = [
     ROOT / "recommendation_systems" / "build_recommenders.py",
     ROOT / "recommendation_systems" / "hierarchical_clustering.py",
     ROOT / "build_pitch_analysis.py",
+    ROOT / "build_crm_tiers_and_timing.py",
+    ROOT / "build_presentation_charts.py",
 ]
 
 for script in SCRIPTS:

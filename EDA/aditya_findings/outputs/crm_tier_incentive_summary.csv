@@ -1,0 +1,6 @@
+crm_treatment_tier,n_customers,avg_cm,median_cm,avg_orders,avg_aov,pct_subscribed,budget_5pct_avg,budget_10pct_avg,max_sample_avg,treatment
+T1,532,258.16,184.14,4.14,112.63,0.54,12.91,25.82,25.82,"VIP Champions — exclusive access, partner rewards (HYROX/events), early launches. NO % discounts."
+T2,744,116.94,94.8,2.01,131.25,0.22,5.85,11.69,11.69,"High-Value Repeaters — Subscribe & Save, category bundles, 2nd/3rd category push."
+T3,63,41.15,42.78,2.0,44.48,0.13,2.06,4.12,2.06,"Growth Customers — day-14 cross-sell, pre-reorder category sample, 2nd-category incentive."
+T4,2120,50.75,45.34,1.0,75.67,0.11,2.54,5.08,2.54,"First Purchasers — onboarding series, complementary sachet optional, 2nd-purchase journey."
+T5,831,8.81,8.0,1.02,18.75,0.02,0.44,0.88,0.0,Low Value — automated win-back only; no product gifts.
