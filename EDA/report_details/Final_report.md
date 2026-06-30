@@ -20,8 +20,11 @@
 3. [Part B — Insights & Recommendations (Solution 2)](#part-b--insights--recommendations-solution-2)
    - 3.1 [Business Problem Restated](#31-business-problem-restarted)
    - 3.2 [What the Data Shows — Three Gaps](#32-what-the-data-shows--three-gaps)
-   - 3.3 [Solution 2 Overview — 4-Layer Recommendation System](#33-solution-2-overview--4-layer-recommendation-system)
-   - 3.4 [Layer 3 — Simplified for LushProtein Implementation](#34-layer-3--simplified-for-lushprotein-implementation)
+   - 3.3 [Solution 2 — 4-Layer Recommendation System](#33-solution-2--4-layer-recommendation-system)
+     - [Why not Shopify default](#331-why-not-shopify-default)
+     - [Three problems, four layers](#332-three-problems-four-layers)
+     - [Layer summary](#333-layer-summary)
+   - 3.4 [Layer 3 — Phase 1 Focus & Implementation](#34-layer-3--phase-1-focus--implementation)
    - 3.5 [Implementation Architecture (Medallion Pipeline)](#35-implementation-architecture-medallion-pipeline)
    - 3.6 [ROI and Budget Analysis](#36-roi-and-budget-analysis)
    - 3.7 [Phased Roadmap and Recommendation Breakdown](#37-phased-roadmap-and-recommendation-breakdown)
@@ -453,28 +456,162 @@ Moving from 1 → 3 categories is associated with a **~5× repeat-rate increase*
 
 ---
 
-## 3.3 Solution 2 Overview — 4-Layer Recommendation System
+## 3.3 Solution 2 — 4-Layer Recommendation System
 
-One algorithm cannot serve all customers. Each layer maps to a **customer moment**:
+Through our analysis and discussions with LushProtein, a central constraint emerged: **LushProtein does not currently operate a custom Shopify app or third-party recommender linked to their store**. Day-to-day product suggestions rely on **Shopify's built-in recommendation engine**, which surfaces products based on **generic popularity and store-wide co-occurrence** — the same logic used by large fashion and general merchandise stores with hundreds or thousands of SKUs.
 
-| Layer | Question answered | When | Method | Coverage |
-|-------|-------------------|------|--------|----------|
-| **L1** | What should a new buyer try next? | After Order 1 | Rule-based co-purchase | ~100% |
-| **L2** | What goes in the cart now? | Active session / PDP | Association rules (MBA) | ~100% |
-| **L3** | What to email/sample before reorder? | Post-purchase | Timed 7-row CSV lookup | ~32% (~1,390/yr new buyers) |
-| **L4** | What does this loyal buyer want? | 3+ orders, logged in | Item-item CF | ~17% (~730) |
+That approach is reasonable when the goal is to show *something* related on a product page. It is a poor fit for LushProtein because:
 
-**Why not ML only?** 77% buy once — collaborative filtering has no history. L1 and L3 cover the cold-start majority.
+- The catalogue is **small and structured** (~6–8 core product categories: Clear Protein, Lean Protein, Collagen, Accessories, etc.), not a long-tail fashion assortment
+- Customer value depends on **category exploration and reorder timing**, not impulse add-ons alone
+- **77.3% of customers buy once** — the critical moment is not the first page view alone, but **what happens between Order 1 and Order 2**
+- Shopify's default widget has **no post-purchase sequencing**, **no category routing rules**, and **no physical sample workflow**
 
-**Visualisations:**
-- `rec_sys_why_4_layers.png` — coverage + failure modes
-- `rec_sys_architecture_v2.png` — lifecycle view
+Solution 2 is therefore a **lifecycle-based recommendation architecture**: four layers, each mapped to a specific customer moment, built from LushProtein's own order data rather than generic platform defaults.
+
+**Visualisation:** `r2_shopify_vs_custom_engine.png` — Shopify default vs 4-layer engine capability comparison.
 
 ---
 
-## 3.4 Layer 3 — Simplified for LushProtein Implementation
+### 3.3.1 Why not Shopify default
 
-The full 4-layer design is the long-term target. For a resource-constrained team, **L3 should be simplified to what can run in Phase 1 without engineering**.
+| Capability | Shopify default | LushProtein 4-layer engine |
+|------------|-----------------|----------------------------|
+| Cold-start guidance (no history) | Generic "popular" products | L1 rules from D1 co-purchase behaviour |
+| Same-session basket expansion | Basic co-occurrence widget | L2 association rules with confidence scores |
+| Post-purchase cross-sell timing | Not supported | L3 email + sample on measured reorder windows |
+| Personalisation for repeat buyers | Same widget for all | L4 item-item CF for 3+ order customers |
+| Physical sample dispatch | Not supported | L3 fulfilment tags + daily dispatch report |
+
+No single Shopify setting replaces this stack. Phase 1 can run without a custom app — using email flows, CSV lookup tables, and Shopify customer tags — but the **logic must come from our analysis**, not the platform default.
+
+---
+
+### 3.3.2 Three problems, four layers
+
+The four layers collectively address **three distinct problems** in the customer journey:
+
+```
+Problem 1 — COLD START (no customer history)     →  L1 + L2
+Problem 2 — POST-FIRST-PURCHASE (habit window)  →  L3
+Problem 3 — LOYAL BUYER PERSONALISATION         →  L4
+```
+
+---
+
+#### Problem 1 — Cold start: maximise the first visit (L1 + L2)
+
+**Who:** Every new visitor and first-time buyer — **100% of the customer pool** (~5,694 finals-eligible customers).
+
+**The problem:** At first contact we have **no purchase history, no category preference, and no reorder pattern**. Shopify's generic widget cannot distinguish a first-time Clear Protein buyer from a fifth-order subscriber. If we do nothing structured here, customers leave with one SKU and never discover the rest of the range — consistent with **65% stuck at one product category**.
+
+**Layer 1 — Rule-based cold start (post-purchase rules)**
+
+- **When:** Immediately after first purchase (welcome email, Day 1–14 cross-sell email)
+- **How:** Rules derived from **D1 co-purchase rates** — what LushProtein's most profitable customers actually bought together
+- **Examples:**
+  - Bought Clear Protein → recommend Lean Protein (53% D1 co-purchase)
+  - Bought Lean Protein → recommend Clear Protein (65% D1 co-purchase)
+  - Bought Accessories → recommend Lean Protein urgently (41% transition; do not send another shaker)
+- **Why rules, not ML:** 77% of customers have only one order — collaborative filtering has nothing to learn from
+
+**Layer 2 — Association rules / market basket analysis (in-session)**
+
+- **When:** Active browsing — product detail page (PDP), cart drawer, checkout
+- **How:** Market basket analysis on 8,955 finals orders — "customers who bought X in the same order also bought Y"
+- **Examples:** Lean TMT + Clear Shaker (93% confidence); Clear Peach + Clear White Grape (36% confidence, 333 orders)
+- **Goal:** Expand the **current basket** with same-category bundles and high-confidence pairs while the customer is still shopping
+
+**Combined L1 + L2 objective:** Use the **first visit and first order** to expose as many relevant categories as possible — same-cart upsell (L2) plus post-purchase category introduction (L1) — before the customer goes quiet.
+
+**Visualisations:** `rec_sys_l1_cold_start.png`, `rec_sys_l2_mba_rules.png`
+
+---
+
+#### Problem 2 — After first purchase: the habit-formation window (L3)
+
+**Who:** First-time buyers who have completed Order 1 — approximately **32% of the active pool per year** (~1,390 customers/year entering the L3 journey).
+
+**Why this moment matters:** The data shows that customers who never try a second category repeat at **13%**; customers who reach three categories repeat at **63%**. The window **between Order 1 and the expected reorder** is when the customer is forming a replenishment habit. Cross-selling at checkout (L2) is too early — they have already decided what to buy. Cross-selling **14 days after delivery**, and shipping a **physical sample ~10 days before their reorder window**, targets the moment they are deciding what to reorder next.
+
+**Our approach — three decisions per customer:**
+
+1. **What to recommend** — cross-sell category from first purchase (7-row routing table)
+2. **When to email** — Day 7, 14, or 21 after delivery depending on category
+3. **When to ship a physical sample** — calculated from **median reorder interval minus 10 days**, shipped **separately from the first order box**
+
+**Rules source:** `cross_sell_timing_and_samples.csv` — one row per first-purchase category, built offline from:
+- D1 co-purchase matrix (`co_purchase_matrix_d1.csv`)
+- Median reorder intervals per SKU (`12_reorder_interval_by_sku.csv`)
+
+**Sample and reorder calculation (method):**
+
+1. For each hero SKU, identify customers with **2+ orders** of that SKU
+2. Compute **day gaps** between consecutive orders per customer; take **median gap per customer**
+3. Take **median across all repeat buyers** for that SKU → `median_reorder_days`
+   - Clear Peach 500g: **54 days** (81 repeat buyers; mean 76d — median used to avoid bulk-buyer skew)
+   - Lean TMT 1kg: **35 days** (39 repeat buyers)
+   - Collagen Glow 300g: **42 days** (40 repeat buyers)
+4. Apply timing formula:
+
+```
+sample_ship_day = max(email_day + 7, median_reorder_days − 10)
+reorder_window   = median_reorder_days
+email_day          = category-specific (7 / 14 / 21)
+```
+
+**Why sample ships separately:** A sachet in the first order box is ignored during unboxing excitement. A sample arriving **10 days before the customer runs low** introduces a new category at the **reorder decision moment** — the core insight validated with LushProtein.
+
+**Runtime engine:** Not machine learning. A **7-row CSV lookup** at batch time — the intelligence was built in EDA; production reads the table.
+
+**Visualisations:** `rec_sys_l3_timing_detail.png`, `slide3a_timing_bars.png`, `slide3c_evidence.png`
+
+---
+
+#### Problem 3 — Loyal buyer personalisation (L4)
+
+**Who:** Logged-in customers with **3+ orders** — **~730 customers (17% of pool)**. These are disproportionately valuable: D1 customers (top profit decile) generate **57.7% of total GP**.
+
+**The problem:** L1 rules treat every Clear buyer the same; L3 treats every first-time buyer the same. A customer who has bought Lean TMT six times and Clear Peach twice has a **specific purchase fingerprint** that generic rules cannot capture.
+
+**Layer 4 — Item-item collaborative filtering**
+
+- **How:** Build a customer × SKU purchase matrix (4,290 customers × 83 active SKUs). Compute **cosine similarity** between SKU pairs — "SKUs bought by similar customers"
+- **Output:** For each SKU a customer has purchased, surface the top similar SKUs they have **not yet tried**
+- **Example:** Lean TMT 1kg → Lean Taro 1kg (similarity 0.86); Clear Peach → Clear White Grape (0.41)
+- **Why item-item, not user-user CF:** 67% one-and-done → user vectors too sparse; item vectors have enough density across repeat buyers
+- **When to deploy:** Phase 3 (Week 6+) — after L1–L3 generate the repeat buyers L4 can personalise
+
+**Visualisation:** `rec_sys_l4_item_cf_heatmap.png`
+
+---
+
+### 3.3.3 Layer summary
+
+| Layer | Problem solved | Question answered | When | Method | Coverage |
+|-------|----------------|-------------------|------|--------|----------|
+| **L1** | Cold start | What should a new buyer try next? | After Order 1 | Rule-based co-purchase | ~100% |
+| **L2** | Cold start | What goes in the cart now? | Active session / PDP | Association rules (MBA) | ~100% |
+| **L3** | Post-purchase habit | What to email/sample before reorder? | Order 1 → Order 2 window | Timed 7-row CSV lookup | ~32%/yr |
+| **L4** | Loyal personalisation | What does this buyer specifically want? | 3+ orders, logged in | Item-item CF | ~17% |
+
+**Why not one model?** ML-only (L4) fails for 83% of customers with insufficient history. Rules-only (L1 forever) never personalises repeat buyers. A single post-purchase email misses in-session basket expansion. **All four layers are required** — each solves a problem the others cannot.
+
+**Visualisations:**
+- `rec_sys_why_4_layers.png` — coverage bars + failure modes if only one layer is used
+- `rec_sys_architecture_v2.png` — lifecycle view from first order to loyal buyer
+
+---
+
+## 3.4 Layer 3 — Phase 1 Focus & Implementation
+
+The full 4-layer system is the long-term architecture. **Layer 3 is the recommended Phase 1 priority** for three reasons confirmed with LushProtein:
+
+1. **Highest impact on the core problem** — 77.3% one-and-done rate is driven by what happens after Order 1, which is exactly what L3 addresses
+2. **Lowest implementation complexity** — no custom Shopify app; a 7-row CSV lookup + email flows + fulfilment tags
+3. **All data already built** — routing rules, reorder medians, and co-purchase evidence are complete in project outputs
+
+L1 and L2 can run in parallel from Week 1–2 (email copy + PDP widget). L4 is deferred until L3 generates repeat buyers. **This section details L3 in operational terms** — what LushProtein can execute without engineering resource.
 
 ### What L3 Is (Business Terms)
 
@@ -821,8 +958,12 @@ Use this map when converting the report to PDF. Insert figures near the referenc
 | Figure ID | File path | Section | Caption |
 |-----------|-----------|---------|---------|
 | B-1 | `slide1_problem_statement.png` | 3.2 | Three gaps: retention, category, subscription |
-| B-2 | `rec_sys_why_4_layers.png` | 3.3 | Why one model fails; layer coverage |
-| B-3 | `rec_sys_architecture_v2.png` | 3.3 | 4-layer lifecycle architecture |
+| B-2 | `rec_sys_why_4_layers.png` | 3.3.3 | Why one model fails; layer coverage |
+| B-3 | `rec_sys_architecture_v2.png` | 3.3.3 | 4-layer lifecycle architecture |
+| B-2a | `r2_shopify_vs_custom_engine.png` | 3.3.1 | Shopify default vs custom engine |
+| B-2b | `rec_sys_l1_cold_start.png` | 3.3.2 | L1 cold-start rules |
+| B-2c | `rec_sys_l2_mba_rules.png` | 3.3.2 | L2 association rules |
+| B-2d | `rec_sys_l4_item_cf_heatmap.png` | 3.3.2 | L4 item similarity |
 | B-4 | `slide3a_timing_bars.png` | 3.4 | L3 timing: email, sample, reorder by category |
 | B-5 | `slide3b_routing_grid.png` | 3.4 | First purchase → recommend → sample |
 | B-6 | `slide3c_evidence.png` | 3.4 | Sample-not-in-box rationale + co-purchase evidence |
