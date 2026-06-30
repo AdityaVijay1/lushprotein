@@ -504,18 +504,7 @@ sample_ship_day = max(email_day + 7, median_reorder_days − 10)
 
 **Evidence:** Clear→Lean 53% D1 co-purchase; Lean→Clear 65%; reorder medians from 81 Clear Peach and 39 Lean TMT repeat buyers.
 
-### What to Remove / Defer (Complexity Reduction)
-
-| Full design | Phase 1 simplification |
-|-------------|------------------------|
-| 5 separate CS flows (CS-01–05) | **Start with 3 flows:** Clear, Lean, Collagen |
-| Automated Shopify Flow tags | **Daily spreadsheet** + manual tag OR weekly ops review |
-| Custom webhook pipeline | **Nightly CSV export** + VLOOKUP (MVP) |
-| L4 item-CF on account page | **Defer to Phase 3** (Week 6+) |
-| L2 PDP widget | **Phase 2** — use Shopify's widget with our rule CSV as input |
-| Per-SKU micro-segmentation | **Category-level routing only** (7 rows) |
-
-### Three CRM Outputs (Keep These)
+### Three CRM Outputs 
 
 | Output | Owner | Tool |
 |--------|-------|------|
@@ -546,15 +535,6 @@ L3 production follows a **medallion-style batch pipeline** (no real-time ML):
 | **Dashboard** | Layer 3 Streamlit app | Read-only Gold view for founder QA |
 
 **Visualisation:** `slide4a_pipeline.png` or custom medallion diagram (Bronze → Silver → Gold → 3 CRM cards)
-
-**Phase 1 runtime flow:**
-
-```
-Shopify order fulfilled
-  → nightly export (customer_id, first_product_category)
-  → VLOOKUP cross_sell_timing_and_samples.csv
-  → 3 actions: email list | fulfilment tag | subscribe queue
-```
 
 ---
 
