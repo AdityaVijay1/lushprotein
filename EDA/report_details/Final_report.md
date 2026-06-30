@@ -729,73 +729,9 @@ Reported range: S$17,000 – S$30,000  (stress-test at 3% conversion ≈ S$17K)
 
 ---
 
-### B. Phase 1 Implementation Cost (Assumptions)
 
-| Cost item | Assumption | Year 1 cost (SGD) |
-|-----------|------------|-------------------|
-| Sample sachets | 400 first-time buyers × 60% L3 eligible × S$2.50/sachet | **S$600** |
-| Extra fulfilment labour | 1 hr/week × 52 × S$25/hr internal | **S$1,300** |
-| Email platform | Existing Klaviyo/Omnisend — incremental flows only | **S$0** |
-| Shopify tags / exports | Native — no app dev | **S$0** |
-| Setup (flows + spreadsheet) | 30 hrs internal × S$30/hr opportunity cost | **S$900** |
-| Contingency (10%) | — | **S$280** |
-| **Total Phase 1 cost** | | **≈ S$3,080** |
 
-*Assumption: LP already pays for email platform and fulfilment staff — we cost **incremental** sample and setup time only.*
-
----
-
-### C. ROI Calculation
-
-**Formula:**
-
-```
-ROI (%) = (Gain from Investment − Cost of Investment) / Cost of Investment × 100
-```
-
-**Conservative scenario (low gain, high cost):**
-
-```
-Gain  = S$17,000
-Cost  = S$4,000  (upper cost bound)
-Net   = S$17,000 − S$4,000 = S$13,000
-
-ROI   = (13,000 / 4,000) × 100 = 325%
-```
-
-**Base scenario:**
-
-```
-Gain  = S$22,496
-Cost  = S$3,080
-Net   = S$19,416
-
-ROI   = (19,416 / 3,080) × 100 = 630%
-```
-
-**Optimistic scenario (high gain, low cost):**
-
-```
-Gain  = S$30,000
-Cost  = S$2,500
-Net   = S$27,500
-
-ROI   = (27,500 / 2,500) × 100 = 1,100%
-```
-
-**Reinvestible income (Year 1, base scenario):**
-
-```
-Reinvestible income = Additional GP − Implementation cost
-                    = S$22,496 − S$3,080
-                    = S$19,416
-```
-
-This is **gross profit**, not cash flow — sample COGS is embedded in the S$2.50/sachet estimate above.
-
----
-
-### D. How LushProtein Should Measure Success
+### B. How LushProtein Should Measure Success
 
 | KPI | Baseline | Phase 1 target (6 months) | Data source |
 |-----|----------|---------------------------|-------------|
@@ -822,10 +758,8 @@ This is **gross profit**, not cash flow — sample COGS is embedded in the S$2.5
 | **Timeline** | Weeks 1–2 |
 | **Priority** | **P0 — highest** |
 
-**Phase 1 (0–3 months) — action items:**
-- Export nightly fulfilled first-time orders
-- VLOOKUP `cross_sell_timing_and_samples.csv`
-- Activate CS-01 (Clear), CS-02 (Lean), CS-03 (Collagen)
+**Phase 1 — action items:**
+- Activate CS-01 (Clear), CS-02 (Lean), CS-03 (Collagen) categories for cross selling and sampling
 - **Expected outcome:** Timed cross-sell emails live for top 3 categories
 
 ---
@@ -842,9 +776,9 @@ This is **gross profit**, not cash flow — sample COGS is embedded in the S$2.5
 | **Priority** | **P0** |
 
 **Phase 1 action items:**
-- Daily "sample dispatch" report from Gold table
+- Daily "sample dispatch" report 
 - Shopify tag: `sample_sku` + `sample_ship_date`
-- **Rule:** Ship separately — never in first order box
+- **Rule:** Ship separately — never in first order box based on the calculated median reorder day 
 
 ---
 
@@ -860,9 +794,9 @@ This is **gross profit**, not cash flow — sample COGS is embedded in the S$2.5
 | **Priority** | **P1** |
 
 **Phase 2 (3–6 months) — action items:**
-- L2 PDP "Frequently Bought Together" using `sku_association_rules.csv`
-- Accessories CS-04 flow (Day 7 urgent protein trial)
-- **Expected outcome:** Same-cart basket lift + shaker-led acquisition fix
+- Using layers 1,2 and 3 for recommendation to make a push for subscription based on categories explored
+- After the 2nd purchase has been made
+- **Expected outcome:** Same-cart basket lift + Subscription
 
 ---
 
@@ -882,18 +816,12 @@ This is **gross profit**, not cash flow — sample COGS is embedded in the S$2.5
 - Full 4-layer integration with CRM tiers
 - **Expected outcome:** Personalised experience for proven repeaters
 
-**Visualisation:** `rec_sys_implementation_roadmap.png`
-
 ---
 
-## 3.8 Resource Constraints and Three Baby Steps
-
-LushProtein may not have engineering bandwidth to build a custom app, ML pipeline, or real-time recommender in Year 1. **That is acceptable.** The analysis was designed so Phase 1 runs on tools LP already owns.
+## 3.8 Resource Constraints 
 
 ### Practical Limitations
 
-- No dedicated data engineer for nightly pipelines (use CSV + spreadsheet MVP)
-- Limited sample inventory budget (~S$50–100/month)
 - Email platform migration may delay automation triggers
 - Marketplace customers invisible to Shopify post-purchase flows
 
@@ -901,15 +829,15 @@ LushProtein may not have engineering bandwidth to build a custom app, ML pipelin
 
 1. **L3 email** for Clear + Lean first-time buyers (largest volume, strongest co-purchase evidence)
 2. **Sample dispatch** for Clear buyers only (54-day cycle — easiest to explain operationally)
-3. **SUB-01** only after Order 2 is confirmed in Shopify
+3. Push for subscription only after Order 2 is confirmed in Shopify
 
 ### Three Realistic Baby Steps (Start This Month)
 
-| Step | Action | Effort | Impact |
+| Step | Action | Impact |
 |------|--------|--------|--------|
-| **Baby Step 1** | Manually email Clear buyers 14 days after delivery with Lean recommendation | 2 hrs/week | Tests messaging before automation |
-| **Baby Step 2** | Weekly export → VLOOKUP rule CSV → fulfilment sample list | 1 hr/week | Proves sample timing without webhooks |
-| **Baby Step 3** | Tag Order-2 customers in Shopify; send one SUB-01 test to 20 customers | 3 hrs one-off | Validates subscription offer timing |
+| **Step 1** | Manually email Clear buyers 14 days after delivery with Lean recommendation | Tests messaging before automation |
+| **Step 2** | Weekly export → rule CSV → fulfilment sample list | Proves sample timing |
+| **Step 3** | Tag Order-2 customers in Shopify; send one subscription push test to 20 customers |  Validates subscription offer timing |
 
 ---
 
