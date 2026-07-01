@@ -1,0 +1,8 @@
+first_product_category,cross_sell_category,sample_category,email_day,physical_sample_day,median_reorder_days
+Clear Protein,Lean Protein,Collagen Glow,14,44,54
+Lean Protein,Clear Protein,Collagen Glow,14,25,35
+Collagen Glow,Clear Protein,Lean Protein,21,32,42
+Accessories,Lean Protein,Clear Protein,7,25,35
+Soy Protein,Clear Protein,Lean Protein,14,74,84
+Other,Clear Protein,Lean Protein,14,40,50
+Unknown,Clear Protein,Lean Protein,14,40,50
