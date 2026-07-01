@@ -167,6 +167,11 @@ def main():
 
     df = pd.read_csv(decile_path)
     df["customer_id"] = df["customer_id"].astype(str)
+    # lushprotein_decile.ipynb exports profit_decile / is_top_profit (D1–D5)
+    if "contribution_margin_decile" not in df.columns and "profit_decile" in df.columns:
+        df["contribution_margin_decile"] = df["profit_decile"]
+    if "is_top_cm" not in df.columns and "is_top_profit" in df.columns:
+        df["is_top_cm"] = df["is_top_profit"]
     df["aov"] = df["finals_revenue"] / df["finals_orders"].clip(lower=1)
 
     # ── T1–T5 assignment ─────────────────────────────────────────────────────
