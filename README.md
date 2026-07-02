@@ -6,17 +6,16 @@
 
 ---
 
-## Quick start for instructors / reviewers
+## Quick start 
 
 This repository contains **reproducible Python analysis** for LushProtein’s finals cohort and **Solution 2** (four-layer recommendation engine). Choose one path:
 
 | Goal | What to run | Time |
 |------|-------------|------|
-| **Full pipeline from raw data only** | `solution2_standalone_from_raw.ipynb` (project root) | ~3–5 min |
-| **Solution 2 on pre-built finals** | `solution2_recommendation_engine.ipynb` (project root) | ~1 min |
-| **Profit decile analysis** | `EDA/lushprotein_decile.ipynb` | ~2 min |
-| **Batch scripts (EDA + Solution 2)** | See [§5 Batch script pipelines](#5-batch-script-pipelines) | ~10–15 min |
-
+| **Full pipeline from raw data only** | `solution2_standalone_from_raw.ipynb` (project root) | 
+| **Solution 2 on pre-built finals** | `solution2_recommendation_engine.ipynb` (project root) | 
+| **Profit decile analysis** | `EDA/lushprotein_decile.ipynb` | 
+| **Batch scripts (EDA + Solution 2)** | See [§5 Batch script pipelines](#5-batch-script-pipelines) | 
 **Prerequisites:** Python 3.10+, Jupyter (for notebooks). Dependencies auto-install in the standalone notebook; otherwise:
 
 ```bash
