@@ -677,55 +677,129 @@ L3 production follows a **medallion-style batch pipeline** (no real-time ML):
 
 ## 3.6 ROI and Budget Analysis
 
-All figures use **conservative 5% conversion rates** unless stated. GP uses finals margin enrichment where available.
+All figures use **conservative 5% conversion rates** unless stated.
+
+**Data source:** All GP lifts use `true_gross_profit` from `EDA/outputs_finals/customers.parquet` (COGS-enriched finals cohort, produced by `EDA/aditya_findings/enrich_finals_with_margin.py`).
+
+**Reproducibility scripts:**
+
+| Script | Output |
+|--------|--------|
+| `EDA/aditya_findings/calc_slide_data.py` | Category ladder + tier-progression GP lifts (console) |
+| `EDA/aditya_findings/build_pitch_analysis.py` | Hypothesis prize model → `pitch_analysis/outputs/prize_scenarios_explained.csv` |
+| `EDA/aditya_findings/build_fixed_v2.py` | `outputs/charts/slide4b_tier_value.png` (conservative total box) |
+
+---
 
 ### A. Expected Annual GP Benefit (Conservative Build-Up)
 
-**Mechanism 1 — Single-category → 2 categories**
+The Layer 3 **conservative total (S$17,000–S$30,000 GP/yr)** is the sum of **four independent mechanisms**, each modelled at **5% conversion**. They are not double-counted in the headline range — Mechanism 2 uses **partial attribution** so the full 1→3 category ladder jump is not stacked on top of Mechanism 1 at full value.
+
+#### Mechanism 1 — Single-category → 2 categories — **+S$5,152**
 
 ```
-Pool          = 3,681 customers (65% single-category)
+Pool          = 3,681 single-category customers (65% of finals-eligible)
 Conversion    = 5%
-Customers won = 3,681 × 0.05 = 184.05 ≈ 184
-GP lift/customer = S$92 − S$64 = S$28  (avg GP: 2-cat minus 1-cat)
-Annual GP gain = 184 × S$28 = S$5,152
+Customers won = 3,681 × 0.05 ≈ 184
+GP lift       = S$92 − S$64 = S$28  (avg GP: 2-cat minus 1-cat)
+Annual GP     = 184 × S$28 = S$5,152
 ```
 
-**Mechanism 2 — Single-category → 3 categories** *(incremental ladder step)*
+**What this represents:** L3 cross-sell emails + timed samples move single-category buyers to a second product category (e.g. Clear → Lean). The S$28 lift is the observed average GP gap between 1-category and 2-category customers on the finals cohort.
+
+---
+
+#### Mechanism 2 — Single-category → 3 categories — **+S$10,693**
+
+A full ladder jump (1-cat → 3-cat) would imply a much larger per-customer lift (~S$159 on the full finals cohort: S$223 − S$64). The conservative model uses **partial attribution** so we do not assume every converted customer completes the full jump in Year 1, and we avoid double-counting with Mechanism 1.
 
 ```
-GP lift/customer = S$223 − S$64 = S$159  (3+-cat minus 1-cat)
-Annual GP gain   = 184 × S$159 = S$29,256  (upper bound if all 184 reach 3-cat)
-
-Conservative partial attribution (team model):
-  184 × S$58 ≈ S$10,693  (blended step — per presentation prize model)
+Same pool & conversion as Mechanism 1 (184 customers at 5%)
+Conservative blended lift = S$58/customer  (not full S$159)
+Annual GP = 184 × S$58 ≈ S$10,693
 ```
 
-**Mechanism 3 — Subscribe & Save (SUB-01)**
+**Cross-check on analysis pool** (`build_pitch_analysis.py` — finals-eligible, excluding 100%-Marketplace accounts, *n* = 4,290):
 
 ```
-Eligible pool   = 689 customers (2+ orders, never subscribed)
+2,514 single-category × 5% × (S$144 − S$59) ≈ S$10,693
+```
+
+Where S$144 and S$59 are average `true_gross_profit` for 3-category and 1-category buyers respectively on that pool.
+
+**Upper bound (not used in conservative total):**
+
+```
+GP lift/customer = S$223 − S$64 = S$159  (3+-cat minus 1-cat on full finals cohort)
+Annual GP gain   = 184 × S$159 = S$29,256  (if all 184 reached 3+ categories in Year 1)
+```
+
+---
+
+#### Mechanism 3 — Subscribe & Save (SUB-01) — **+S$2,262**
+
+```
+Eligible pool   = 689 repeat buyers who never subscribed (2+ orders, `ever_subscribed == False`)
 Conversion      = 5%
-Customers won   = 689 × 0.05 = 34.45 ≈ 34
-GP lift/customer = S$53  (subscriber S$134 − non-sub S$81)
-Annual GP gain  = 34 × S$53 = S$1,802 ≈ S$2,262  (rounded in deck)
+Customers won   = 689 × 0.05 ≈ 34
+GP lift/customer = S$66  (subscriber avg GP − non-subscriber avg GP on analysis pool)
+Annual GP       = 34 × S$66 ≈ S$2,262
 ```
 
-**Mechanism 4 — Acquisition mix (reduce shaker-led campaigns)**
+**Source:** `EDA/aditya_findings/pitch_analysis/outputs/prize_scenarios_explained.csv` — row **H2: 5% of repeat non-subs convert to subscription**.
+
+**Note:** SUB-01 is scheduled at Day 48 after order 2 (Layer 3 pipeline). This prize is attributed to the recommendation system overall but is driven by the post-purchase lifecycle, not the Day-14 cross-sell email alone.
+
+---
+
+#### Mechanism 4 — Acquisition mix fix — **+S$4,389**
 
 ```
-Estimated annual GP improvement = S$4,389  (from entry-category repeat analysis)
+Estimated annual GP improvement = S$4,389
 ```
 
-**Total conservative GP range:**
+**What this represents:** Estimated GP from steering fewer **shaker/accessories-first** acquisitions toward hero protein (Recommendation E / hypothesis **H4** in `build_pitch_analysis.py`). Accessories-first buyers show materially lower repeat rates than protein-first buyers; reducing shaker-led campaign spend and mandating a protein trial path for accessories acquirers is modelled as a mix-shift prize.
+
+**Method:** Derived from first-product-category repeat analysis (see H4 in `build_pitch_analysis.py`). The S$4,389 figure is **hard-coded in presentation charts** (`build_fixed_v2.py`, `build_presentation_charts.py`) rather than recomputed in a one-line formula — it should be treated as a **directional estimate**, not a precision forecast.
+
+---
+
+#### Customer pools used (important for reviewers)
+
+Two pools appear in this section. Both use finals-filtered, COGS-enriched data; they differ only by marketplace exclusion:
+
+| Pool | *n* | Used for |
+|------|-----|----------|
+| **Full finals-eligible** | 5,694 | Headline stats (77.3% one-and-done; 3,681 single-category = 65%) |
+| **Analysis pool** (excl. 100% Marketplace) | 4,290 | `build_pitch_analysis.py`, H1/H2 prizes (2,514 single-cat; 689 repeat non-subs) |
+
+The conservative total uses slide-facing pool sizes where noted (3,681 for Mechanisms 1–2) and analysis-pool sizes for subscription (689) and pitch-analysis cross-checks (S$10,693). GP lifts are always from observed `true_gross_profit` averages on the relevant segment.
+
+---
+
+#### How the total is built
+
+**Point estimate (5% conversion on all four levers):**
 
 ```
-Low  = S$5,152 + S$10,693 + S$2,262 + S$4,389 = S$22,496
-High = S$30,000  (rounded upper bound per presentation)
-Reported range: S$17,000 – S$30,000  (stress-test at 3% conversion ≈ S$17K)
+S$5,152 + S$10,693 + S$2,262 + S$4,389 = S$22,496
 ```
 
-**Visualisation:** `slide4b_tier_value.png`, `rec2_conservative_prize.png`
+**Reported range S$17,000 – S$30,000:**
+
+| Bound | Logic |
+|-------|--------|
+| **~S$17K (low)** | Stress-test at **3% conversion** on cross-sell + subscription. See `outputs/charts/rec2_conservative_prize.png`: 3% of 2,514 add 2nd cat (S$20 uplift) + 3% of 689 subscribe (S$66 uplift) = S$1,508 + S$1,364 ≈ **S$2,872** for attach+sub only; scaling all four levers to 3% lands near **S$17K**. |
+| **~S$22.5K (mid)** | Sum of four mechanisms at **5%** (table above) = **S$22,496**. |
+| **~S$30K (high)** | Rounded upper bound / upside scenarios — e.g. 8% 2nd-category attach + 5% sub ≈ S$6,232 in `rec2_conservative_prize.png` (S$3,970 + S$2,262), plus full category-ladder upside if 5% reach 3 categories without partial attribution discount. |
+
+```
+Low  (5% sum)     = S$5,152 + S$10,693 + S$2,262 + S$4,389 = S$22,496
+High (rounded)    = S$30,000  (upper bound per presentation)
+Reported range    = S$17,000 – S$30,000  (stress-test at 3% conversion ≈ S$17K)
+```
+
+**Visualisations:** `outputs/charts/slide4b_tier_value.png`, `outputs/charts/rec2_conservative_prize.png`
 
 ---
 
