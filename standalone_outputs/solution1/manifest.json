@@ -1,0 +1,9 @@
+{
+  "source": "solution1_from_raw.ipynb",
+  "row_counts": {
+    "orders": 8955,
+    "lines": 14448,
+    "customers": 5694
+  },
+  "pct_lines_with_cogs": 21.0
+}
