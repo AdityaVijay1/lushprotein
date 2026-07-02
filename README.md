@@ -383,22 +383,9 @@ Key files: `01a_revenue_discount_trend.png`, `03a_cross_product_ltv.png`, `04b_c
 - `store` is **derived** from order `Name` prefix (LP/LPSG=SG, LPMY=MY, LPHK=HK)
 
 ---
-
-## 12. Team & references
-
 **Course:** ISSS603 Applied Data Science for Customer Insights, Singapore Management University  
 **Industry partner:** LushProtein  
 **Group:** Group 1
 
-**Reproducibility checklist for graders:**
-
-- [ ] Raw data folders placed at project root (or use pre-built `outputs_finals/`)
-- [ ] `pip install -r requirements-solution2.txt`
-- [ ] Run `solution2_standalone_from_raw.ipynb` **or** `solution2_recommendation_engine.ipynb` end-to-end
-- [ ] Verify finals counts: 5,694 customers · 8,955 orders · 14,448 lines
-- [ ] Verify headline metric: **77.3%** one-and-done on finals cohort
-- [ ] Layer 3 CSV has **7 rows** in `cross_sell_timing_and_samples.csv`
-
----
 
 *Last updated: July 2026 · ISSS603 Science of Customer Analytics · SMU × LushProtein*
